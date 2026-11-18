@@ -89,6 +89,7 @@ form.contact label{display:block;font-weight:700;margin:12px 0 4px}form.contact 
 .wijzigt li{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px}
 .wijzigt li b{display:block}.wijzigt .bedrag{float:right;font:700 20px var(--num);margin-left:10px}.wijzigt .op{color:#b42318}.wijzigt .af{color:var(--green)}
 @media(min-width:700px){.tegels{grid-template-columns:repeat(3,minmax(0,1fr))}.drie{grid-template-columns:repeat(3,minmax(0,1fr))}.hero{padding:40px 36px 34px}.wijzigt{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.tool{display:flex;gap:14px;align-items:flex-start;border-color:var(--green);background:linear-gradient(135deg,var(--green-soft),var(--surface) 75%)}.tool .ic{flex:none;display:grid;place-items:center;width:48px;height:48px;border-radius:14px;background:var(--tag);color:var(--tag-ink)}.tool p{margin:4px 0 12px}
 @media(max-width:400px){nav.top a.wide{display:none}.logo span{font-size:17px}}
 """
 
@@ -125,7 +126,7 @@ def widget(naam, titel):
 NAV = '<nav class="top" aria-label="Hoofdmenu"><a href="/zorgverzekering-2027/">Zorg</a><a href="/energie-2027/">Energie</a><a href="/internet-en-mobiel/">Internet</a><a href="/contact/" class="wide">Contact</a></nav>'
 FOOT = f"""<footer><div class="wrap">
 <p><b>Bespaarvriend</b> helpt je eenvoudig besparen op je vaste lasten. Onafhankelijk uitgelegd, zonder verkooppraatjes. Wij geven geen persoonlijk financieel advies.</p>
-<nav aria-label="Over"><a href="/zorgverzekering-2027/">Zorgverzekering 2027</a><a href="/eigen-risico-2027/">Eigen risico 2027</a><a href="/zorgtoeslag-2027/">Zorgtoeslag 2027</a><a href="/energie-2027/">Energie 2027</a><a href="/internet-en-mobiel/">Internet en mobiel</a><a href="https://boodschappenvergelijk.nl/">Boodschappen vergelijken</a><a href="/over/">Over Bespaarvriend</a><a href="/privacy/">Privacy</a><a href="/contact/">Contact</a></nav>
+<nav aria-label="Over"><a href="/zorgverzekering-2027/">Zorgverzekering 2027</a><a href="/eigen-risico-2027/">Eigen risico 2027</a><a href="/zorgtoeslag-2027/">Zorgtoeslag 2027</a><a href="/energie-2027/">Energie 2027</a><a href="/internet-en-mobiel/">Internet en mobiel</a><a href="https://salderingscheck-nl.netlify.app/">Salderingscheck</a><a href="https://boodschappenvergelijk.nl/">Boodschappen vergelijken</a><a href="/over/">Over Bespaarvriend</a><a href="/privacy/">Privacy</a><a href="/contact/">Contact</a></nav>
 <p>© {datetime.date.today().year} Bespaarvriend – Erik Beltman. Bijgewerkt op {BIJGEWERKT}.</p></div></footer>"""
 
 
@@ -343,6 +344,7 @@ else u.textContent='Je komt waarschijnlijk in aanmerking. Hoe lager je inkomen, 
             '<li><span class="bedrag op">+ € 141</span><b>Netbeheer duurder</b>De kosten voor het transport van stroom en gas stijgen volgens de ACM-prognose fors. Dat zijn vaste kosten: elk huishouden betaalt ongeveer hetzelfde bedrag extra.</li>'
             '<li><b>Gas zwaarder belast, stroom lichter</b>De energiebelasting op gas stijgt met 2,6%, die op stroom daalt met 3,9%. Netto scheelt dat bij gemiddeld verbruik maar een paar euro.</li>'
             '<li><b>Groen gas bijmengen</b>Leveranciers moeten een deel van het gas vervangen door duurder groen gas. Die meerprijs komt in je gastarief terecht. De CO₂-heffing op gas is uitgesteld tot 2028.</li></ul>'
+            f'<div class="kaart tool"><span class="ic">{ICON["zon"]}</span><div><b>Zonnepanelen? Reken het zelf uit</b><p>Met de <b>Salderingscheck</b> zie je wat het einde van salderen jou per jaar kost, en of een thuisbatterij zich terugverdient. Gratis, ook van de maker van Bespaarvriend.</p><a class="btn" href="https://salderingscheck-nl.netlify.app/">Naar de Salderingscheck{ICON["pijl"]}</a></div></div>'
             '<h2>Zo bespaar je in 4 stappen</h2><ol class="stappen">'
             '<li><b>Pak je jaarafrekening erbij.</b> Daarop staat je echte verbruik in kWh en m³. Vergelijken met een gemiddelde levert vaak een verkeerd beeld op.</li>'
             '<li><b>Kijk wanneer je contract afloopt.</b> Heb je een variabel contract, dan kun je altijd overstappen. Bij een vast contract kan eerder stoppen geld kosten.</li>'
@@ -436,6 +438,7 @@ else u.textContent='Je komt waarschijnlijk in aanmerking. Hoe lager je inkomen, 
 - [Zorgtoeslag 2027]({BASE}/zorgtoeslag-2027/): maximaal € 140 per maand (alleenstaand), inkomensgrens ± € 42.950, vermogensgrens € 119.122.
 - [Energie 2027]({BASE}/energie-2027/): salderen stopt 1 januari 2027; energiebelasting gas € 0,7457/m³, stroom € 0,1065/kWh, vermindering € 628,69; netbeheer gemiddeld + € 141.
 - [Internet en mobiel]({BASE}/internet-en-mobiel/): na de contractperiode maximaal 1 maand opzegtermijn; 79% van de internetabonnementen loopt al door na de contractperiode.
+- [Salderingscheck](https://salderingscheck-nl.netlify.app/): rekent uit wat het einde van salderen per jaar kost en of een thuisbatterij loont.
 - [Boodschappen vergelijken](https://boodschappenvergelijk.nl/): dagelijkse prijzen van supermarkten.
 """)
     print(f"klaar: {len(PAGES)} pagina's in {OUT}")

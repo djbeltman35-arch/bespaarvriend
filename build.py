@@ -89,6 +89,7 @@ form.contact label{display:block;font-weight:700;margin:12px 0 4px}form.contact 
 .wijzigt li{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px}
 .wijzigt li b{display:block}.wijzigt .bedrag{float:right;font:700 20px var(--num);margin-left:10px}.wijzigt .op{color:#b42318}.wijzigt .af{color:var(--green)}
 @media(min-width:700px){.tegels{grid-template-columns:repeat(3,minmax(0,1fr))}.tegels.tools{grid-template-columns:repeat(4,minmax(0,1fr))}.drie{grid-template-columns:repeat(3,minmax(0,1fr))}.hero{padding:40px 36px 34px}.wijzigt{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.partner .ad{margin:0 0 4px;font-size:13px;color:var(--muted)}.partner b{display:block;font-size:18px}.partner p{margin:4px 0 12px}.partner .bron{margin:10px 0 0}
 .tool{display:flex;gap:14px;align-items:flex-start;border-color:var(--green);background:linear-gradient(135deg,var(--green-soft),var(--surface) 75%)}.tool .ic{flex:none;display:grid;place-items:center;width:48px;height:48px;border-radius:14px;background:var(--tag);color:var(--tag-ink)}.tool p{margin:4px 0 12px}
 @media(max-width:400px){nav.top a.wide{display:none}.logo span{font-size:17px}}
 """
@@ -129,6 +130,11 @@ def widget(naam, titel):
     if not code:
         return ""
     return (f'<section class="widget" aria-label="{esc(titel)}"><p class="ad">Advertentie · vergelijker van Daisycon. Sluit je via deze vergelijker iets af, dan krijgt Bespaarvriend een vergoeding. Jij betaalt niets extra.</p>{code}</section>')
+
+def partner(url, titel, tekst, knop):
+    return (f'<div class="kaart partner"><p class="ad">Advertentie</p><b>{titel}</b><p>{tekst}</p>'
+            f'<a class="btn" href="{url}" rel="sponsored noopener" target="_blank">{knop}{ICON["pijl"]}</a>'
+            '<p class="bron">Sluit je via deze link iets af, dan krijgt Bespaarvriend een kleine vergoeding. Jij betaalt niets extra.</p></div>')
 
 NAV = '<nav class="top" aria-label="Hoofdmenu"><a href="/zorgverzekering-2027/">Zorg</a><a href="/energie-2027/">Energie</a><a href="/internet-en-mobiel/">Internet</a><a href="/contact/" class="wide">Contact</a></nav>'
 FOOT = f"""<footer><div class="wrap">
@@ -367,7 +373,7 @@ else u.textContent='Je komt waarschijnlijk in aanmerking. Hoe lager je inkomen, 
             '<li><b>Kijk wanneer je contract afloopt.</b> Heb je een variabel contract, dan kun je altijd overstappen. Bij een vast contract kan eerder stoppen geld kosten.</li>'
             '<li><b>Vergelijk op de tarieven vanaf 2027.</b> Heb je zonnepanelen? Let dan vooral op de terugleververgoeding en de terugleverkosten vanaf 1 januari, niet alleen op de prijs per kWh.</li>'
             '<li><b>Verbruik slim.</b> Met zonnepanelen loont het om stroom te gebruiken als de zon schijnt: wasmachine, vaatwasser of auto opladen overdag.</li></ol>'
-            + widget("energie", "Energie vergelijken") +
+            + widget("energie", "Energie vergelijken") + partner("https://www.awin1.com/cread.php?awinmid=8520&amp;awinaffid=3152283&amp;clickref=bespaarvriend-energie", "Energiecontracten vergelijken", "Bij Gaslicht.com vergelijk je contracten van alle grote leveranciers, inclusief de tarieven en terugleververgoeding vanaf 2027.", "Vergelijk bij Gaslicht.com") +
             '<h2>Vast, variabel of dynamisch?</h2><table><tr><th>Contract</th><th>Prijs</th><th>Past bij</th></tr>'
             '<tr><td><b>Vast</b></td><td>Staat vast voor 1, 2 of 3 jaar</td><td>Wie zekerheid wil over het maandbedrag</td></tr>'
             '<tr><td><b>Variabel</b></td><td>Kan tussentijds wijzigen</td><td>Wie flexibel wil blijven en wil kunnen overstappen</td></tr>'
@@ -403,6 +409,7 @@ else u.textContent='Je komt waarschijnlijk in aanmerking. Hoe lager je inkomen, 
             + widget("telecom", "Internet vergelijken") +
             f'<h2>Mobiel</h2><div class="paginakop" style="margin-top:0"><span class="ic">{ICON["mobiel"]}</span><p style="margin:0">Werkt je telefoon nog goed? Dan is sim only bijna altijd de goedkoopste keuze.</p></div>'
             '<div class="let"><b>Rekenvoorbeeld:</b> een nieuw-toestel-abonnement van € 45 per maand kost in 2 jaar € 1.080. Een refurbished toestel van € 350 plus 24 maanden sim only van € 8 kost € 542. Dat scheelt € 538.</div>'
+            + partner("https://www.awin1.com/cread.php?awinmid=112024&amp;awinaffid=3152283&amp;clickref=bespaarvriend-mobiel", "Refurbished telefoon met garantie", "Bij Refurbished.nl koop je gebruikte telefoons die gecontroleerd en schoongemaakt zijn, met garantie.", "Bekijk bij Refurbished.nl") +
             '<ul class="links"><li>Kijk in je account hoeveel data je echt gebruikt. Veel mensen betalen voor een bundel die ze niet halen.</li>'
             '<li>Maandelijks opzegbaar kost vaak € 1 tot € 4 per maand meer dan een jaarcontract.</li>'
             '<li>Reken met de gemiddelde prijs over de hele looptijd, niet met de actieprijs.</li></ul>'

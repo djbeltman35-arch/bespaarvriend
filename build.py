@@ -123,7 +123,7 @@ def bouw():
              ("Geven jullie persoonlijk advies?", "Nee. We leggen uit hoe het zit en verwijzen naar onafhankelijke vergelijkers en officiële bronnen. De keuze maak je zelf."),
              ("Tot wanneer kan ik overstappen van zorgverzekering?", "Zeg je huidige zorgverzekering uiterlijk 31 december 2026 op. Je hebt daarna tot en met 31 januari 2027 om een nieuwe af te sluiten; die gaat in per 1 januari 2027.")]
     body = ('<h1>Slim besparen op je vaste lasten</h1><p class="lead">Eerlijk uitgelegd, zonder verkooppraatjes. Begin met de zorgverzekering: daar valt nu het meest te halen.</p>'
-            '<div class="let"><b>⏰ Overstappen kan nog tot 31 december.</b> Tussen de goedkoopste en duurste basisverzekering zit in 2027 € 649 per jaar, voor dezelfde basiszorg. <a href="/zorgverzekering-2027/">Zo stap je over →</a></div>'
+            '<div class="let"><b>⏰ Overstappen kan nog tot 31 december.</b> Tussen de laagste en hoogste premie voor de basisverzekering zit in 2027 € 649 per jaar, voor dezelfde basiszorg. <a href="/zorgverzekering-2027/">Zo stap je over →</a></div>'
             '<div class="tegels">'
             '<a href="/zorgverzekering-2027/"><span class="ic">🩺</span><b>Zorgverzekering</b><small>Premies 2027 en overstappen</small></a>'
             '<a href="/eigen-risico-2027/"><span class="ic">💶</span><b>Eigen risico</b><small>€ 400 in 2027, rekenhulp</small></a>'
@@ -139,15 +139,15 @@ def bouw():
 
     # ---------- Zorgverzekering 2027 ----------
     ch, cld = crumbs("Zorgverzekering 2027", "/zorgverzekering-2027/")
-    faq_z = [("Hoeveel kost de zorgverzekering in 2027?", "De gemiddelde basisverzekering kost in 2027 € 173,13 per maand, € 14,83 meer dan in 2026. De goedkoopste kost € 148,40 per maand, de duurste € 202,50."),
+    faq_z = [("Hoeveel kost de zorgverzekering in 2027?", "De gemiddelde basisverzekering kost in 2027 € 173,13 per maand, € 14,83 meer dan in 2026. De laagste premie is € 148,40 per maand, de hoogste € 202,50."),
              ("Is de basisverzekering overal hetzelfde?", "Wat er in het basispakket zit, bepaalt de overheid. Dat is bij elke verzekeraar gelijk. Het verschil zit vooral in de vrije keuze van zorgverlener: bij een goedkope naturapolis krijg je bij een zorgverlener zonder contract soms minder vergoed."),
              ("Tot wanneer kan ik overstappen?", "Zeg je huidige verzekering uiterlijk 31 december 2026 op. Sluit daarna uiterlijk 31 januari 2027 een nieuwe af; die gaat met terugwerkende kracht in op 1 januari 2027. Vaak zegt je nieuwe verzekeraar de oude voor je op."),
              ("Moet ik mijn aanvullende verzekering ook opzeggen?", "Niet per se. Kijk of je de aanvullende verzekering het afgelopen jaar echt hebt gebruikt. Wie weinig naar tandarts of fysio gaat, betaalt vaak meer premie dan hij terugkrijgt."),
              ("Kan ik geweigerd worden?", "Voor de basisverzekering niet: iedere verzekeraar moet je accepteren. Voor een aanvullende verzekering mag een verzekeraar soms wel een gezondheidsverklaring vragen.")]
     body = (ch + '<h1>Zorgverzekering 2027: dit betaal je en zo stap je over</h1><p class="lead">Alle zorgverzekeringen worden duurder. Maar het verschil tussen goedkoop en duur is groter dan ooit.</p>'
             '<div class="kerncijfers"><div><b>€ 173,13</b><small>gemiddeld per maand</small></div><div><b>+ € 14,83</b><small>per maand t.o.v. 2026</small></div>'
-            '<div><b>€ 148,40</b><small>goedkoopste (VinkVink)</small></div><div><b>€ 202,50</b><small>duurste (CZ Zorgvariatiepolis)</small></div></div>'
-            '<div class="let"><b>Verschil goedkoopste en duurste: € 649 per jaar</b>, voor dezelfde basiszorg. Met z\'n tweeën kan dat oplopen tot bijna € 1.300 per jaar.</div>'
+            '<div><b>€ 148,40</b><small>laagste premie</small></div><div><b>€ 202,50</b><small>hoogste premie</small></div></div>'
+            '<div class="let"><b>Verschil laagste en hoogste premie: € 649 per jaar</b>, voor dezelfde basiszorg. Met z\'n tweeën kan dat oplopen tot bijna € 1.300 per jaar.</div>'
             '<h2>Zo stap je over in 4 stappen</h2><ol class="stappen">'
             '<li><b>Kijk wat je echt gebruikt.</b> Pak je jaaroverzicht erbij: welke zorg had je, en had je die aanvullende verzekering nodig?</li>'
             '<li><b>Vergelijk de premies.</b> Gebruik een onafhankelijke vergelijker (zie hieronder). Let op: naturapolis of restitutiepolis.</li>'
@@ -160,7 +160,7 @@ def bouw():
             '<h2>Onafhankelijk vergelijken</h2>' + VERGELIJKERS
             + '<h2>Meer besparen op je zorgkosten</h2><ul class="links"><li><a href="/eigen-risico-2027/">Eigen risico 2027: loont een vrijwillig eigen risico?</a></li><li><a href="/zorgtoeslag-2027/">Zorgtoeslag 2027: heb jij recht?</a></li></ul>'
             + faq_html(faq_z) + BRONNEN_ZORG)
-    page("/zorgverzekering-2027/", "Zorgverzekering 2027: premies, verschillen en overstappen", "De zorgpremie 2027 is gemiddeld € 173,13 per maand. Goedkoopste € 148,40, duurste € 202,50: € 649 per jaar verschil. Zo stap je vóór 31 december over.",
+    page("/zorgverzekering-2027/", "Zorgverzekering 2027: premies, verschillen en overstappen", "De zorgpremie 2027 is gemiddeld € 173,13 per maand. Laagste premie € 148,40, hoogste € 202,50: € 649 per jaar verschil. Zo stap je vóór 31 december over.",
          body, [cld, faq_ld(faq_z)], prio="0.9")
 
     # ---------- Eigen risico 2027 ----------
@@ -273,7 +273,7 @@ else u.textContent='Je komt waarschijnlijk in aanmerking. Hoe lager je inkomen, 
         f.write(f"""# Bespaarvriend
 > Gratis, onafhankelijke uitleg over besparen op vaste lasten in Nederland. Gemaakt door Erik Beltman (ook maker van boodschappenvergelijk.nl). Bijgewerkt op {BIJGEWERKT}.
 
-- [Zorgverzekering 2027]({BASE}/zorgverzekering-2027/): gemiddelde premie € 173,13 per maand, goedkoopste € 148,40, duurste € 202,50, verschil € 649 per jaar; overstappen vóór 31 december 2026.
+- [Zorgverzekering 2027]({BASE}/zorgverzekering-2027/): gemiddelde premie € 173,13 per maand, laagste premie € 148,40, hoogste € 202,50, verschil € 649 per jaar; overstappen vóór 31 december 2026.
 - [Eigen risico 2027]({BASE}/eigen-risico-2027/): verplicht eigen risico € 400 (2026: € 385), met rekenhulp vrijwillig eigen risico.
 - [Zorgtoeslag 2027]({BASE}/zorgtoeslag-2027/): maximaal € 140 per maand (alleenstaand), inkomensgrens ± € 42.950, vermogensgrens € 119.122.
 - [Boodschappen vergelijken](https://boodschappenvergelijk.nl/): dagelijkse prijzen van supermarkten.

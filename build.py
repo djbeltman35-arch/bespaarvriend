@@ -10,46 +10,58 @@ BIJGEWERKT = "18 november 2026"
 esc = html.escape
 
 CSS = """
-:root{--g:#0b6a3f;--g2:#17a061;--ink:#1d2a22;--mut:#5b6b62;--line:#dde5df;--bg:#f4f7f3;--soft:#e8f3ec;--geel:#fff6d6}
-*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-body{margin:0;font:17px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg)}
-a{color:var(--g)}img{max-width:100%}
-.wrap{max-width:760px;margin:0 auto;padding:0 16px}
-header.top{background:#fff;border-bottom:1px solid var(--line)}
-header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:60px}
-.logo{display:flex;align-items:center;gap:8px;font-weight:800;font-size:1.2rem;color:var(--ink);text-decoration:none}
-.logo span.ic{display:inline-grid;place-items:center;width:34px;height:34px;background:var(--g);color:#fff;font-size:1.1rem}
-nav.top{display:flex;gap:12px;font-weight:700;font-size:.92rem}@media(max-width:400px){.logo{font-size:1.05rem}.logo span.ic{width:30px;height:30px}nav.top{gap:10px;font-size:.88rem}}nav.top a{text-decoration:none}
-.crumbs{font-size:.85rem;color:var(--mut);margin:14px 0 0}.crumbs a{color:var(--mut)}
-h1{font-size:1.9rem;line-height:1.15;margin:14px 0 8px}h2{font-size:1.35rem;margin:28px 0 10px}h3{font-size:1.08rem;margin:18px 0 6px}
-.lead{font-size:1.1rem;color:var(--mut);margin:0 0 16px}
-.kaart{background:#fff;border:1px solid var(--line);padding:16px 18px;margin:14px 0;box-shadow:0 3px 6px rgba(20,40,28,.08)}
-.kerncijfers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;margin:14px 0;border:1px solid var(--line);background:#fff}
-.kerncijfers div{padding:14px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
-.kerncijfers div:nth-child(2n){border-right:0}.kerncijfers div:nth-last-child(-n+2){border-bottom:0}
-.kerncijfers b{display:block;font-size:1.45rem;color:var(--g)}.kerncijfers small{color:var(--mut);font-size:.88rem}
-.tegels{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border:1px solid var(--line);background:#fff;margin:16px 0}
-.tegels a{display:block;padding:16px 14px;text-decoration:none;color:var(--ink);border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
-.tegels a:nth-child(2n){border-right:0}.tegels a:nth-last-child(-n+2){border-bottom:0}
-.tegels .ic{font-size:1.6rem;display:block}.tegels b{display:block;font-size:1.05rem}.tegels small{color:var(--mut)}
-.let{background:var(--geel);border:1px solid #f0e2a8;padding:12px 14px;margin:14px 0}
-.btn{display:inline-block;background:linear-gradient(#17a061,#0b6a3f);color:#fff;font-weight:800;padding:12px 18px;border:0;border-radius:10px;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 3px 0 #08502f;cursor:pointer;font-size:1rem}
-.btn:active{transform:translateY(2px);box-shadow:0 1px 0 #08502f}
+@font-face{font-family:"Atkinson Hyperlegible";font-weight:400;font-display:swap;src:url(/fonts/atkinson-hyperlegible-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:"Atkinson Hyperlegible";font-weight:700;font-display:swap;src:url(/fonts/atkinson-hyperlegible-latin-700-normal.woff2) format("woff2")}
+@font-face{font-family:"Barlow Condensed";font-weight:700;font-display:swap;src:url(/fonts/barlow-condensed-latin-700-normal.woff2) format("woff2")}
+:root{--page:#f4f7f1;--surface:#fff;--ink:#1e2a22;--muted:#5d6a61;--line:#e1e7dc;--soft:#eef3ea;--green:#0e7c4a;--green-dark:#0a6239;--green-soft:#e2f2e8;--on-green:#fff;--tag:#ffd43b;--tag-ink:#1e2a22;--tag-soft:#fff6cc;
+--text:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;--num:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;--r:14px;color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--page:#121813;--surface:#1a221c;--ink:#e9efe8;--muted:#a3b0a6;--line:#2b362e;--soft:#202a23;--green:#3fbf7f;--green-dark:#5ad093;--green-soft:#1d3326;--on-green:#0f1a13;--tag-soft:#3a3315;color-scheme:dark}}
+*,*::before,*::after{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--page);color:var(--ink);font:17px/1.5 var(--text)}
+a{color:var(--green-dark);text-underline-offset:3px;text-decoration-thickness:1px}a:hover{color:var(--green)}img{max-width:100%}
+:focus-visible{outline:3px solid var(--green);outline-offset:2px;border-radius:6px}
+.wrap{max-width:820px;margin:0 auto;padding:0 max(16px,env(safe-area-inset-left,0px))}
+header.top{background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;gap:12px;padding-block:12px;max-width:1140px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:19px;color:var(--ink);text-decoration:none}
+.logo span.ic{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:10px;background:var(--green);color:var(--on-green);font:700 20px var(--num)}
+nav.top{margin-left:auto;display:flex;gap:4px}nav.top a{text-decoration:none;font-weight:700;font-size:15px;padding:8px 10px;border-radius:10px;color:var(--ink)}
+nav.top a:hover{background:var(--green-soft);color:var(--green-dark)}
+@media(max-width:420px){.logo{font-size:17px}.logo span.ic{width:30px;height:30px}nav.top{gap:0}nav.top a{font-size:14px;padding:7px 6px}}
+.crumbs{font-size:14px;color:var(--muted);margin:16px 0 0}.crumbs a{color:var(--muted)}
+h1{font:700 clamp(28px,4.6vw,40px)/1.12 var(--text);letter-spacing:-.015em;margin:14px 0 10px;text-wrap:balance}
+h2{font:700 22px/1.25 var(--text);margin:30px 0 10px}h3{font-size:18px;margin:20px 0 6px}h1,h2,h3{overflow-wrap:break-word;hyphens:auto}
+.lead{font-size:18px;color:var(--muted);margin:0 0 16px}
+.kaart{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;margin:14px 0}
+.kerncijfers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:16px 0}
+.kerncijfers div{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px}
+.kerncijfers b{display:inline-block;background:var(--tag);color:var(--tag-ink);font:700 26px/1 var(--num);padding:5px 9px 4px;border-radius:5px;box-shadow:inset 0 -3px 0 rgba(0,0,0,.08);font-variant-numeric:tabular-nums;margin-bottom:6px}
+.kerncijfers small{display:block;color:var(--muted);font-size:14px}
+.tegels{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:16px 0}
+.tegels a{display:block;padding:16px 14px;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:var(--r);transition:border-color .15s}
+.tegels a:hover{border-color:var(--green)}
+.tegels .ic{font-size:26px;display:block}.tegels b{display:block;font-size:17px;margin-top:4px}.tegels small{color:var(--muted);font-size:14px}
+.let{background:var(--tag-soft);border:1px solid var(--line);border-left:5px solid var(--tag);border-radius:var(--r);padding:12px 14px;margin:14px 0}
+.btn{display:inline-block;background:var(--green);color:var(--on-green);font:700 16px var(--text);padding:12px 18px;border:0;border-radius:12px;text-decoration:none;cursor:pointer}
+.btn:hover{background:var(--green-dark);color:var(--on-green)}
 ol.stappen{counter-reset:s;list-style:none;padding:0;margin:12px 0}
-ol.stappen li{counter-increment:s;position:relative;padding:10px 0 10px 44px;border-bottom:1px solid var(--line)}
-ol.stappen li:before{content:counter(s);position:absolute;left:0;top:9px;width:30px;height:30px;border-radius:50%;background:var(--g);color:#fff;font-weight:800;display:grid;place-items:center}
-table{border-collapse:collapse;width:100%;background:#fff;margin:10px 0;font-size:.95rem}th,td{border:1px solid var(--line);padding:8px 10px;text-align:left}th{background:var(--soft)}
-td.r,th.r{text-align:right;white-space:nowrap}
-.faq details{background:#fff;border:1px solid var(--line);margin:8px 0}.faq summary{cursor:pointer;padding:12px 14px;font-weight:700}.faq details p{margin:0;padding:0 14px 12px}
-.reken label{display:block;font-weight:700;margin:10px 0 4px}.reken input,.reken select{width:100%;padding:11px;font:inherit;border:1px solid var(--line);background:#fbfdfb}
-.reken .uit{margin-top:12px;padding:12px;background:var(--soft);font-weight:600;min-height:1em}
-.bron{font-size:.85rem;color:var(--mut)}
-.links li{margin:4px 0}
-footer{margin-top:40px;background:#fff;border-top:1px solid var(--line);padding:20px 0;font-size:.92rem;color:var(--mut)}
-footer nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 16px;margin:10px 0}footer nav a{font-weight:700;text-decoration:none}
-form.contact label{display:block;font-weight:700;margin:10px 0 4px}form.contact input,form.contact select,form.contact textarea{width:100%;padding:11px;font:inherit;border:1px solid var(--line)}
+ol.stappen li{counter-increment:s;position:relative;padding:12px 0 12px 46px;border-bottom:1px solid var(--line)}
+ol.stappen li:before{content:counter(s);position:absolute;left:0;top:10px;width:32px;height:32px;border-radius:50%;background:var(--green);color:var(--on-green);font:700 18px var(--num);display:grid;place-items:center}
+table{width:100%;border-collapse:separate;border-spacing:0;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:10px 0;font-size:16px}
+th,td{padding:11px 14px;text-align:left;border-top:1px solid var(--line)}tr:first-child th,tr:first-child td{border-top:0}th{background:var(--soft);font-size:14px;color:var(--muted)}
+td.r,th.r{text-align:right;white-space:nowrap;font-family:var(--num);font-size:18px}
+.faq details{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);margin:8px 0}.faq summary{cursor:pointer;padding:13px 16px;font-weight:700}.faq details p{margin:0;padding:0 16px 14px}
+.reken label{display:block;font-weight:700;margin:12px 0 4px}.reken input,.reken select{width:100%;padding:11px 12px;font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:12px}
+.reken .uit{margin-top:14px;padding:14px;background:var(--green-soft);border-radius:12px;font-weight:700;min-height:1em}
+.bron{font-size:14px;color:var(--muted)}.links li{margin:4px 0}
+.widget{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:12px;margin:14px 0;min-height:200px}
+.ad{font-size:13px;color:var(--muted);margin:0 0 6px}
+footer{margin-top:40px;background:var(--surface);border-top:1px solid var(--line);padding:24px 0 30px;font-size:15px;color:var(--muted)}
+footer p:first-child{color:var(--ink);font-weight:700}
+footer nav{display:flex;flex-wrap:wrap;gap:6px 18px;margin:10px 0}footer nav a{font-weight:700;text-decoration:none;color:var(--green-dark)}footer nav a:hover{text-decoration:underline}
+form.contact label{display:block;font-weight:700;margin:12px 0 4px}form.contact input,form.contact select,form.contact textarea{width:100%;padding:11px 12px;font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:12px}
 .hp{position:absolute;left:-9999px}
-@media(min-width:700px){h1{font-size:2.3rem}.kerncijfers,.tegels{grid-template-columns:repeat(4,minmax(0,1fr))}.kerncijfers div,.tegels a{border-bottom:0;border-right:1px solid var(--line)!important}.kerncijfers div:last-child,.tegels a:last-child{border-right:0!important}}
+@media(min-width:700px){.kerncijfers,.tegels{grid-template-columns:repeat(4,minmax(0,1fr))}}
 """
 
 NAV = '<nav class="top" aria-label="Hoofdmenu"><a href="/zorgverzekering-2027/">Zorg</a><a href="/zorgtoeslag-2027/">Toeslag</a><a href="/contact/">Contact</a></nav>'
@@ -83,10 +95,11 @@ def page(path, title, desc, body, ld=(), noindex=False, prio="0.8"):
             "dateModified": VANDAAG, "publisher": {"@type": "Organization", "name": "Bespaarvriend", "url": BASE}}] + list(ld)
     doc = f"""<!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{esc(title)}</title><meta name="description" content="{esc(desc)}"><link rel="canonical" href="{BASE}{path}">
-{'<meta name="robots" content="noindex">' if noindex else ''}<meta name="theme-color" content="#0b6a3f">
+{'<meta name="robots" content="noindex">' if noindex else ''}<meta name="theme-color" content="#0e7c4a">
 {'<meta name="e0d5a73bd035a1c" content="277030417ea9ada19f69ae08c41fb74b">' if path == "/" else ''}
 <meta property="og:type" content="website"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc)}"><meta property="og:url" content="{BASE}{path}"><meta property="og:locale" content="nl_NL"><meta property="og:site_name" content="Bespaarvriend">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230b6a3f'/%3E%3Ctext x='50' y='70' font-size='62' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'%3E€%3C/text%3E%3C/svg%3E">
+<link rel="preload" href="/fonts/atkinson-hyperlegible-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230e7c4a'/%3E%3Ctext x='50' y='70' font-size='62' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'%3E€%3C/text%3E%3C/svg%3E">
 <style>{CSS}</style>
 {''.join('<script type="application/ld+json">' + json.dumps(x, ensure_ascii=False) + '</script>' for x in lds)}
 </head><body><header class="top"><div class="wrap"><a class="logo" href="/"><span class="ic">€</span>Bespaarvriend</a>{NAV}</div></header>
@@ -117,6 +130,7 @@ def bouw():
     if os.path.isdir(OUT):
         shutil.rmtree(OUT)
     os.makedirs(OUT)
+    shutil.copytree(os.path.join(os.path.dirname(os.path.abspath(__file__)),'static'), OUT, dirs_exist_ok=True)
 
     # ---------- Home ----------
     faq_h = [("Wat is Bespaarvriend?", "Een gratis site die in gewone taal uitlegt hoe je bespaart op je vaste lasten, zoals je zorgverzekering, zorgtoeslag en boodschappen. Wij verkopen zelf niets."),
@@ -128,7 +142,7 @@ def bouw():
             '<a href="/zorgverzekering-2027/"><span class="ic">🩺</span><b>Zorgverzekering</b><small>Premies 2027 en overstappen</small></a>'
             '<a href="/eigen-risico-2027/"><span class="ic">💶</span><b>Eigen risico</b><small>€ 400 in 2027, rekenhulp</small></a>'
             '<a href="/zorgtoeslag-2027/"><span class="ic">🧾</span><b>Zorgtoeslag</b><small>Heb jij recht? Check</small></a>'
-            '<a href="https://boodschappenvergelijk.nl/"><span class="ic">🛒</span><b>Boodschappen</b><small>11 supermarkten vergelijken</small></a>'
+            '<a href="https://boodschappenvergelijk.nl/"><span class="ic">🛒</span><b>Boodschappen</b><small>12 supermarkten vergelijken</small></a>'
             '</div>'
             '<h2>Waarom Bespaarvriend?</h2><div class="kaart"><p style="margin-top:0">Ik ben Erik, de maker van <a href="https://boodschappenvergelijk.nl/">Goedkope Boodschappen</a>, bekend van Hart van Nederland en RTV Oost. '
             'Met Bespaarvriend wil ik mensen op dezelfde manier helpen met hun andere vaste lasten: duidelijk, eerlijk en gratis.</p>'

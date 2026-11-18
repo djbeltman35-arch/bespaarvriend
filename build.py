@@ -88,7 +88,7 @@ form.contact label{display:block;font-weight:700;margin:12px 0 4px}form.contact 
 .wijzigt{list-style:none;padding:0;margin:12px 0;display:grid;gap:10px}
 .wijzigt li{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px}
 .wijzigt li b{display:block}.wijzigt .bedrag{float:right;font:700 20px var(--num);margin-left:10px}.wijzigt .op{color:#b42318}.wijzigt .af{color:var(--green)}
-@media(min-width:700px){.tegels{grid-template-columns:repeat(3,minmax(0,1fr))}.drie{grid-template-columns:repeat(3,minmax(0,1fr))}.hero{padding:40px 36px 34px}.wijzigt{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(min-width:700px){.tegels{grid-template-columns:repeat(3,minmax(0,1fr))}.tegels.vier{grid-template-columns:repeat(4,minmax(0,1fr))}.drie{grid-template-columns:repeat(3,minmax(0,1fr))}.hero{padding:40px 36px 34px}.wijzigt{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .tool{display:flex;gap:14px;align-items:flex-start;border-color:var(--green);background:linear-gradient(135deg,var(--green-soft),var(--surface) 75%)}.tool .ic{flex:none;display:grid;place-items:center;width:48px;height:48px;border-radius:14px;background:var(--tag);color:var(--tag-ink)}.tool p{margin:4px 0 12px}
 @media(max-width:400px){nav.top a.wide{display:none}.logo span{font-size:17px}}
 """
@@ -107,6 +107,9 @@ ICON = {
     "klok": _svg('<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>'),
     "bron": _svg('<path d="M4 19.5V4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/>'),
     "pijl": _svg('<path d="M5 12h14M13 6l6 6-6 6"/>'),
+    "tank": _svg('<path d="M3 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18M2 22h14M7 7h4"/><path d="M15 9h2a2 2 0 0 1 2 2v6a1.5 1.5 0 0 0 3 0V8l-3-3"/>'),
+    "vlucht": _svg('<path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/>'),
+    "weg": _svg('<path d="M4 22 9 2M20 22 15 2M12 4v3M12 11v3M12 18v3"/>'),
     "zon": _svg('<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>'),
 }
 LOGO = ('<svg viewBox="0 0 40 40" width="36" height="36" aria-hidden="true"><rect width="40" height="40" rx="11" fill="var(--green)"/>'
@@ -126,7 +129,7 @@ def widget(naam, titel):
 NAV = '<nav class="top" aria-label="Hoofdmenu"><a href="/zorgverzekering-2027/">Zorg</a><a href="/energie-2027/">Energie</a><a href="/internet-en-mobiel/">Internet</a><a href="/contact/" class="wide">Contact</a></nav>'
 FOOT = f"""<footer><div class="wrap">
 <p><b>Bespaarvriend</b> helpt je eenvoudig besparen op je vaste lasten. Onafhankelijk uitgelegd, zonder verkooppraatjes. Wij geven geen persoonlijk financieel advies.</p>
-<nav aria-label="Over"><a href="/zorgverzekering-2027/">Zorgverzekering 2027</a><a href="/eigen-risico-2027/">Eigen risico 2027</a><a href="/zorgtoeslag-2027/">Zorgtoeslag 2027</a><a href="/energie-2027/">Energie 2027</a><a href="/internet-en-mobiel/">Internet en mobiel</a><a href="https://salderingscheck-nl.netlify.app/">Salderingscheck</a><a href="https://boodschappenvergelijk.nl/">Boodschappen vergelijken</a><a href="/over/">Over Bespaarvriend</a><a href="/privacy/">Privacy</a><a href="/contact/">Contact</a></nav>
+<nav aria-label="Over"><a href="/zorgverzekering-2027/">Zorgverzekering 2027</a><a href="/eigen-risico-2027/">Eigen risico 2027</a><a href="/zorgtoeslag-2027/">Zorgtoeslag 2027</a><a href="/energie-2027/">Energie 2027</a><a href="/internet-en-mobiel/">Internet en mobiel</a><a href="https://salderingscheck-nl.netlify.app/">Salderingscheck</a><a href="https://goedkopertanken.netlify.app/">Tankwijzer</a><a href="https://vluchtwijzer.netlify.app/">Vluchtwijzer</a><a href="https://euroroadrules.eu/">EuroRoadRules</a><a href="https://boodschappenvergelijk.nl/">Boodschappen vergelijken</a><a href="/over/">Over Bespaarvriend</a><a href="/privacy/">Privacy</a><a href="/contact/">Contact</a></nav>
 <p>© {datetime.date.today().year} Bespaarvriend – Erik Beltman. Bijgewerkt op {BIJGEWERKT}.</p></div></footer>"""
 
 
@@ -209,6 +212,12 @@ def bouw():
             f'<a href="/energie-2027/"><span class="ic">{ICON["energie"]}</span>{pijl}<b>Energie</b><small>Wat verandert er in 2027</small><span class="nieuw">Nieuw</span></a>'
             f'<a href="/internet-en-mobiel/"><span class="ic">{ICON["internet"]}</span>{pijl}<b>Internet en mobiel</b><small>Stop met te veel betalen</small><span class="nieuw">Nieuw</span></a>'
             f'<a href="https://boodschappenvergelijk.nl/"><span class="ic">{ICON["boodschappen"]}</span>{pijl}<b>Boodschappen</b><small>12 supermarkten vergelijken</small></a>'
+            '</div>'
+            '<h2>Meer gratis hulpmiddelen</h2><p class="bron" style="margin-top:-4px">Ook gemaakt door Erik, net zo eerlijk en gratis.</p><div class="tegels vier">'
+            f'<a href="https://goedkopertanken.netlify.app/"><span class="ic">{ICON["tank"]}</span>{pijl}<b>Tankwijzer</b><small>Goedkoper tanken in NL, België en Duitsland</small></a>'
+            f'<a href="https://vluchtwijzer.netlify.app/"><span class="ic">{ICON["vlucht"]}</span>{pijl}<b>Vluchtwijzer</b><small>De goedkoopste vluchten vergelijken</small></a>'
+            f'<a href="https://salderingscheck-nl.netlify.app/"><span class="ic">{ICON["zon"]}</span>{pijl}<b>Salderingscheck</b><small>Wat kost het einde van salderen jou?</small></a>'
+            f'<a href="https://euroroadrules.eu/"><span class="ic">{ICON["weg"]}</span>{pijl}<b>EuroRoadRules</b><small>Vignetten, tol en milieuzones in Europa</small></a>'
             '</div>'
             '<h2>Zo werkt het</h2><div class="drie">'
             '<div><b>Kies je vaste last</b><p>Elke gids begint met de bedragen die er nu toe doen.</p></div>'
@@ -439,6 +448,9 @@ else u.textContent='Je komt waarschijnlijk in aanmerking. Hoe lager je inkomen, 
 - [Energie 2027]({BASE}/energie-2027/): salderen stopt 1 januari 2027; energiebelasting gas € 0,7457/m³, stroom € 0,1065/kWh, vermindering € 628,69; netbeheer gemiddeld + € 141.
 - [Internet en mobiel]({BASE}/internet-en-mobiel/): na de contractperiode maximaal 1 maand opzegtermijn; 79% van de internetabonnementen loopt al door na de contractperiode.
 - [Salderingscheck](https://salderingscheck-nl.netlify.app/): rekent uit wat het einde van salderen per jaar kost en of een thuisbatterij loont.
+- [Tankwijzer](https://goedkopertanken.netlify.app/): brandstofprijzen vergelijken in Nederland, België en Duitsland.
+- [Vluchtwijzer](https://vluchtwijzer.netlify.app/): goedkope vluchten vergelijken.
+- [EuroRoadRules](https://euroroadrules.eu/): vignetten, tol en milieuzones in Europa.
 - [Boodschappen vergelijken](https://boodschappenvergelijk.nl/): dagelijkse prijzen van supermarkten.
 """)
     print(f"klaar: {len(PAGES)} pagina's in {OUT}")

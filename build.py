@@ -88,10 +88,10 @@ form.contact label{display:block;font-weight:700;margin:12px 0 4px}form.contact 
 .wijzigt{list-style:none;padding:0;margin:12px 0;display:grid;gap:10px}
 .wijzigt li{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px}
 .wijzigt li b{display:block}.wijzigt .bedrag{float:right;font:700 20px var(--num);margin-left:10px}.wijzigt .op{color:#b42318}.wijzigt .af{color:var(--green)}
-@media(min-width:700px){.tegels{grid-template-columns:repeat(3,minmax(0,1fr))}.tegels.tools{grid-template-columns:repeat(4,minmax(0,1fr))}.drie{grid-template-columns:repeat(3,minmax(0,1fr))}.hero{padding:40px 36px 34px}.wijzigt{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(min-width:700px){.tegels{grid-template-columns:repeat(3,minmax(0,1fr))}.tegels.tien{grid-template-columns:repeat(3,minmax(0,1fr))}.tegels.tools{grid-template-columns:repeat(4,minmax(0,1fr))}.drie{grid-template-columns:repeat(3,minmax(0,1fr))}.hero{padding:40px 36px 34px}.wijzigt{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .partner .ad{margin:0 0 4px;font-size:13px;color:var(--muted)}.partner b{display:block;font-size:18px}.partner p{margin:4px 0 12px}.partner .bron{margin:10px 0 0}.pchips{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}.pchips a{border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-weight:700;font-size:14px;text-decoration:none;color:var(--green-dark);background:var(--green-soft)}.pchips a:hover{border-color:var(--green)}
 .tool{display:flex;gap:14px;align-items:flex-start;border-color:var(--green);background:linear-gradient(135deg,var(--green-soft),var(--surface) 75%)}.tool .ic{flex:none;display:grid;place-items:center;width:48px;height:48px;border-radius:14px;background:var(--tag);color:var(--tag-ink)}.tool p{margin:4px 0 12px}
-@media(max-width:400px){nav.top a.wide{display:none}.logo span{font-size:17px}}
+@media(max-width:640px){header.top .wrap{flex-wrap:wrap;row-gap:4px}nav.top{margin-left:0;width:100%;overflow-x:auto;scrollbar-width:none}nav.top a{white-space:nowrap}}@media(max-width:400px){.logo span{font-size:17px}}
 """
 
 def _svg(d, extra=""):
@@ -122,14 +122,25 @@ LOGO = ('<svg viewBox="0 0 40 40" width="36" height="36" aria-hidden="true"><rec
         '<path d="M10.5 18h11M10.5 22.5h9.5" stroke="#fff" stroke-width="3" stroke-linecap="round"/>'
         '<circle cx="31" cy="9" r="5" fill="var(--tag)" stroke="var(--surface)" stroke-width="2"/></svg>')
 
-# Plekken voor Daisycon-vergelijkers. Code invullen zodra Daisycon de media Bespaarvriend heeft gekeurd.
-WIDGETS = {"energie": "", "simonly": "", "telecom": ""}
+# Daisycon-vergelijkers. Zet GEKEURD op True zodra Daisycon de media Bespaarvriend (449774) heeft gekeurd;
+# tot die tijd vallen kliks terug op een Daisycon-overzicht en tonen we de blokken niet.
+DAISYCON_GEKEURD = False
+DC_MEDIA = 449774
+WIDGETS = {  # naam: (script-slug, css-klasse, extra config)
+    "energie": ("energy-nl", "dc-energy-nl-tool", {}),
+    "simonly": ("sim-only", "dc-sim-only-tool", {"limit": 6, "limitSplit": 6, "showFilters": False}),
+    "telecom": ("all-in-one", "dc-all-in-one-tool", {"limit": 6, "limitSplit": 6, "showFilters": False}),
+    "vakantie": ("vacation", "dc-vacation-tool", {"limit": 6, "limitSplit": 6, "showFilters": False}),
+}
 
 def widget(naam, titel):
-    code = WIDGETS.get(naam, "")
-    if not code:
+    if not DAISYCON_GEKEURD or naam not in WIDGETS:
         return ""
-    return (f'<section class="widget" aria-label="{esc(titel)}"><p class="ad">Advertentie. Sluit je via deze vergelijker iets af, dan krijgt Bespaarvriend een vergoeding. Jij betaalt niets extra.</p>{code}</section>')
+    slug, klasse, extra = WIDGETS[naam]
+    cfg = {"mediaId": DC_MEDIA, "subId": "bespaarvriend-" + naam, "language": "nl", "filter": {}}
+    cfg.update(extra)
+    return (f'<section class="widget" aria-label="{esc(titel)}"><h2>{esc(titel)}</h2><p class="ad">Advertentie. Sluit je via deze vergelijker iets af, dan krijgt Bespaarvriend een vergoeding. Jij betaalt niets extra.</p>'
+            f'<script src="https://daisycon.tools/{slug}/app.js" defer></script><div class="dc-tool {klasse}" data-config=\'{json.dumps(cfg)}\'></div></section>')
 
 from urllib.parse import quote as _q
 def awin(mid, ref, doel=None):
@@ -142,10 +153,10 @@ def partner(url, titel, tekst, knop, artikelen=()):
             f'<a class="btn" href="{url}" rel="sponsored noopener" target="_blank">{knop}{ICON["pijl"]}</a>'
             '<p class="bron">Sluit je via deze link iets af, dan krijgt Bespaarvriend een kleine vergoeding. Jij betaalt niets extra.</p></div>')
 
-NAV = '<nav class="top" aria-label="Hoofdmenu"><a href="/zorgverzekering-2027/">Zorg</a><a href="/energie-2027/">Energie</a><a href="/internet-en-mobiel/">Internet</a><a href="/contact/" class="wide">Contact</a></nav>'
+NAV = '<nav class="top" aria-label="Hoofdmenu"><a href="/zorgverzekering-2027/">Zorg</a><a href="/energie-2027/">Energie</a><a href="/internet-en-mobiel/">Internet</a><a href="/vakantie-en-vliegen/">Vakantie</a><a href="/auto-en-tanken/" class="wide">Auto</a></nav>'
 FOOT = f"""<footer><div class="wrap">
 <p><b>Bespaarvriend</b> helpt je eenvoudig besparen op je vaste lasten. Onafhankelijk uitgelegd, zonder verkooppraatjes. Wij geven geen persoonlijk financieel advies.</p>
-<nav aria-label="Over"><a href="/zorgverzekering-2027/">Zorgverzekering 2027</a><a href="/eigen-risico-2027/">Eigen risico 2027</a><a href="/zorgtoeslag-2027/">Zorgtoeslag 2027</a><a href="/energie-2027/">Energie 2027</a><a href="/internet-en-mobiel/">Internet en mobiel</a><a href="https://allesoporde.netlify.app/">Alles op orde</a><a href="https://bonnenboek.netlify.app/">Bonnenboek</a><a href="https://salderingscheck-nl.netlify.app/">Salderingscheck</a><a href="https://goedkopertanken.netlify.app/">Tankwijzer</a><a href="https://vluchtwijzer.netlify.app/">Vluchtwijzer</a><a href="https://vakantietoppers.netlify.app/">Vakantiewijzer</a><a href="https://euroroadrules.eu/">EuroRoadRules</a><a href="https://foutcodezoeker.nl/">Foutcodezoeker</a><a href="https://boodschappenvergelijk.nl/">Boodschappen vergelijken</a><a href="/over/">Over Bespaarvriend</a><a href="/privacy/">Privacy</a><a href="/contact/">Contact</a></nav>
+<nav aria-label="Over"><a href="/zorgverzekering-2027/">Zorgverzekering 2027</a><a href="/eigen-risico-2027/">Eigen risico 2027</a><a href="/zorgtoeslag-2027/">Zorgtoeslag 2027</a><a href="/energie-2027/">Energie 2027</a><a href="/internet-en-mobiel/">Internet en mobiel</a><a href="/vakantie-en-vliegen/">Vakantie en vliegen</a><a href="/auto-en-tanken/">Auto en tanken</a><a href="/boodschappen/">Boodschappen</a><a href="/administratie/">Administratie</a><a href="https://allesoporde.netlify.app/">Alles op orde</a><a href="https://bonnenboek.netlify.app/">Bonnenboek</a><a href="https://salderingscheck-nl.netlify.app/">Salderingscheck</a><a href="https://goedkopertanken.netlify.app/">Tankwijzer</a><a href="https://vluchtwijzer.netlify.app/">Vluchtwijzer</a><a href="https://vakantietoppers.netlify.app/">Vakantiewijzer</a><a href="https://euroroadrules.eu/">EuroRoadRules</a><a href="https://foutcodezoeker.nl/">Foutcodezoeker</a><a href="https://boodschappenvergelijk.nl/">Boodschappen vergelijken</a><a href="/over/">Over Bespaarvriend</a><a href="/privacy/">Privacy</a><a href="/contact/">Contact</a></nav>
 <p>© {datetime.date.today().year} Bespaarvriend – Erik Beltman. Bijgewerkt op {BIJGEWERKT}.</p></div></footer>"""
 
 
@@ -211,13 +222,13 @@ def bouw():
     shutil.copytree(os.path.join(os.path.dirname(os.path.abspath(__file__)),'static'), OUT, dirs_exist_ok=True)
 
     # ---------- Home ----------
-    faq_h = [("Wat is Bespaarvriend?", "Een gratis site die in gewone taal uitlegt hoe je bespaart op je vaste lasten, zoals je zorgverzekering, energie, internet en boodschappen. Wij verkopen zelf niets."),
+    faq_h = [("Wat is Bespaarvriend?", "Een gratis site die in gewone taal uitlegt hoe je bespaart op je vaste lasten en grote uitgaven, zoals je zorgverzekering, energie, internet, vakantie, auto en boodschappen. Wij verkopen zelf niets."),
              ("Geven jullie persoonlijk advies?", "Nee. We leggen uit hoe het zit en verwijzen naar onafhankelijke vergelijkers en officiële bronnen. De keuze maak je zelf."),
              ("Tot wanneer kan ik overstappen van zorgverzekering?", "Zeg je huidige zorgverzekering uiterlijk 31 december 2026 op. Je hebt daarna tot en met 31 januari 2027 om een nieuwe af te sluiten; die gaat in per 1 januari 2027.")]
     pijl = f'<span class="pijl">{ICON["pijl"]}</span>'
     body = ('<section class="hero"><span class="kicker">Gratis · onafhankelijk · bijgewerkt ' + BIJGEWERKT + '</span>'
             '<h1>Slim besparen op je vaste lasten</h1>'
-            '<p class="lead">Zorgverzekering, energie, internet en boodschappen: we leggen in gewone taal uit waar je geld laat liggen en hoe je het terughaalt. Zonder verkooppraatjes.</p>'
+            '<p class="lead">Zorg, energie, internet, vakantie, auto en boodschappen: we leggen in gewone taal uit waar je geld laat liggen en hoe je het terughaalt. Met gratis vergelijkers en rekenhulpen, zonder verkooppraatjes.</p>'
             f'<div class="knoppen"><a class="btn" href="/zorgverzekering-2027/">Bespaar op je zorgpremie{ICON["pijl"]}</a><a class="btn-line" href="/energie-2027/">Energie 2027</a></div>'
             f'<ul class="vertrouwen"><li>{ICON["check"]}Altijd met bronnen</li><li>{ICON["check"]}Geen cookies of trackers</li><li>{ICON["check"]}Rekenhulpen in je eigen browser</li></ul></section>'
             f'<div class="let"><span class="icl">{ICON["klok"]}</span><b>Overstappen kan nog tot 31 december.</b> Tussen de laagste en hoogste premie voor de basisverzekering zit in 2027 € 649 per jaar, voor dezelfde basiszorg. <a href="/zorgverzekering-2027/">Zo stap je over →</a></div>'
@@ -227,7 +238,10 @@ def bouw():
             f'<a href="/zorgtoeslag-2027/"><span class="ic">{ICON["toeslag"]}</span>{pijl}<b>Zorgtoeslag</b><small>Heb jij recht? Check het</small></a>'
             f'<a href="/energie-2027/"><span class="ic">{ICON["energie"]}</span>{pijl}<b>Energie</b><small>Wat verandert er in 2027</small><span class="nieuw">Nieuw</span></a>'
             f'<a href="/internet-en-mobiel/"><span class="ic">{ICON["internet"]}</span>{pijl}<b>Internet en mobiel</b><small>Stop met te veel betalen</small><span class="nieuw">Nieuw</span></a>'
-            f'<a href="https://boodschappenvergelijk.nl/"><span class="ic">{ICON["boodschappen"]}</span>{pijl}<b>Boodschappen</b><small>12 supermarkten vergelijken</small></a>'
+            f'<a href="/vakantie-en-vliegen/"><span class="ic">{ICON["vlucht"]}</span>{pijl}<b>Vakantie en vliegen</b><small>Goedkoper weg, met vergelijkers</small><span class="nieuw">Nieuw</span></a>'
+            f'<a href="/auto-en-tanken/"><span class="ic">{ICON["tank"]}</span>{pijl}<b>Auto en tanken</b><small>Brandstof en banden</small><span class="nieuw">Nieuw</span></a>'
+            f'<a href="/boodschappen/"><span class="ic">{ICON["boodschappen"]}</span>{pijl}<b>Boodschappen</b><small>Vergelijken en bijhouden</small></a>'
+            f'<a href="/administratie/"><span class="ic">{ICON["map"]}</span>{pijl}<b>Vaste lasten op orde</b><small>In 5 stappen overzicht</small></a>'
             '</div>'
             '<h2>Meer gratis hulpmiddelen</h2><p class="bron" style="margin-top:-4px">Ook gemaakt door Erik, net zo eerlijk en gratis.</p><div class="tegels tools">'
             f'<a href="https://allesoporde.netlify.app/"><span class="ic">{ICON["map"]}</span>{pijl}<b>Alles op orde</b><small>Al je vaste lasten en inkomsten op een rij</small></a>'
@@ -248,7 +262,7 @@ def bouw():
             '<p style="margin-bottom:0">Elke pagina noemt zijn bronnen en de datum waarop hij is bijgewerkt. Zo weet je precies waar je aan toe bent.</p>'
             '<div class="media"><span>Bekend van Hart van Nederland</span><span>RTV Oost</span></div></div>'
             + faq_html(faq_h))
-    page("/", "Bespaarvriend – slim besparen op je vaste lasten", "Gratis en eerlijk uitgelegd: besparen op je zorgverzekering 2027, eigen risico, zorgtoeslag en boodschappen. Met bronnen, rekenhulpen en zonder verkooppraatjes.",
+    page("/", "Bespaarvriend – slim besparen op je vaste lasten", "Gratis en eerlijk uitgelegd: besparen op je zorgverzekering, energie, internet, vakantie, auto en boodschappen. Met bronnen, vergelijkers en rekenhulpen.",
          body, [faq_ld(faq_h), {"@context": "https://schema.org", "@type": "WebSite", "name": "Bespaarvriend", "url": BASE + "/", "inLanguage": "nl-NL"}], prio="1.0")
 
     # ---------- Zorgverzekering 2027 ----------
@@ -430,9 +444,124 @@ else u.textContent='Je komt waarschijnlijk in aanmerking. Hoe lager je inkomen, 
     page("/internet-en-mobiel/", "Internet en mobiel: opzeggen, overstappen en besparen", "79% van de internetabonnementen loopt na de contractperiode door, vaak te duur. Zo zeg je op, stap je over en bespaar je met sim only.",
          body, [cld, faq_ld(faq_i)], prio="0.9")
 
+    # ---------- Vakantie en vliegen ----------
+    def tool(url, ic, naam, tekst):
+        return f'<a class="kaart tool" href="{url}" style="text-decoration:none;color:inherit;margin:0"><span class="ic">{ICON[ic]}</span><span><b>{naam}</b><p style="margin:4px 0 0">{tekst}</p></span></a>'
+    LANDEN = [("Spanje", "spanje"), ("Frankrijk", "frankrijk"), ("Italië", "italie"), ("Portugal", "portugal"), ("Griekenland", "griekenland"), ("Kroatië", "kroatie"), ("Oostenrijk", "oostenrijk")]
+    ESIM = [("Turkije", "turkey"), ("Zwitserland", "switzerland"), ("Engeland", "united-kingdom"), ("Egypte", "egypt"), ("Marokko", "morocco")]
+    ch, cld = crumbs("Vakantie en vliegen", "/vakantie-en-vliegen/")
+    faq_v = [("Wanneer is op vakantie gaan het goedkoopst?", "Buiten de schoolvakanties. Dan zijn vluchten, pakketreizen, vakantieparken en campings meestal een stuk goedkoper. Ben je aan schoolvakanties gebonden, boek dan vroeg en vergelijk ook vertrek vanaf een ander vliegveld."),
+             ("Is een pakketreis goedkoper dan los boeken?", "Soms wel, soms niet. Reken vlucht en hotel ook los uit en vergelijk de totaalprijs, inclusief bagage, transfers en toeristenbelasting. Een pakketreis geeft wel extra zekerheid als er iets misgaat."),
+             ("Kan ik in het buitenland mijn eigen bundel gebruiken?", "In de EU, Noorwegen, IJsland en Liechtenstein bel en internet je tegen dezelfde voorwaarden als thuis. Buiten die landen, zoals in Zwitserland, Turkije of Engeland, kan het flink duurder zijn. Kijk vooraf wat je provider rekent of neem een eSIM met data."),
+             ("Waarom een huurauto met alle verzekeringen?", "Bij een goedkope huurauto zit vaak een hoog eigen risico. Aan de balie wordt dan een dure extra verzekering aangeboden. Een huurprijs waarin de verzekeringen al zitten, is achteraf vaak goedkoper en geeft geen verrassingen.")]
+    body = (ch + f'<div class="paginakop"><span class="ic">{ICON["vlucht"]}</span><h1>Goedkoper op vakantie en vliegen</h1></div>'
+            '<p class="lead">Een vakantie is voor veel mensen de grootste uitgave van het jaar. Met slim vergelijken, flexibele data en een paar trucs houd je meer over.</p>'
+            '<h2>Vergelijk met je eigen apps</h2><div class="tegels" style="grid-template-columns:1fr">'
+            + tool("https://vluchtwijzer.netlify.app/", "vlucht", "Vluchtwijzer", "Vul je reis één keer in en zie direct waar je de goedkoopste vlucht vindt, ook vanaf vliegvelden over de grens.")
+            + tool("https://vakantietoppers.netlify.app/", "koffer", "Vakantiewijzer", "Pakketreizen, hotels, vakantieparken en campings vergelijken in één keer.")
+            + tool("https://euroroadrules.eu/", "weg", "EuroRoadRules", "Met de auto op vakantie? Vignetten, tol en milieuzones per land.")
+            + '</div>'
+            '<h2>Zo bespaar je op je vakantie</h2><ol class="stappen">'
+            '<li><b>Reis buiten de schoolvakanties</b> als dat kan. Dat scheelt vaak het meest.</li>'
+            '<li><b>Vergelijk totaalprijzen.</b> Tel bagage, stoelreservering, transfers en toeristenbelasting mee. Een lage advertentieprijs is niet altijd de goedkoopste reis.</li>'
+            '<li><b>Kijk ook naar andere vliegvelden.</b> Vanaf Weeze, Düsseldorf of Brussel is dezelfde bestemming soms goedkoper.</li>'
+            '<li><b>Reken vlucht en hotel ook los uit.</b> Soms is dat goedkoper dan een pakketreis.</li>'
+            '<li><b>Huur een auto met alle verzekeringen erbij.</b> Dan betaal je aan de balie niets extra.</li>'
+            '<li><b>Regel mobiel internet vooraf</b> als je buiten de EU reist.</li></ol>'
+            + widget("vakantie", "Actuele vakantie-aanbiedingen")
+            + partner(awin(128671, "bespaarvriend-vakantie"), "Huurauto inclusief verzekering", "Een huurauto waarbij alle verzekeringen al in de prijs zitten. Kies het land van je vakantie.", "Bekijk huurauto's",
+                      [(n, awin(128671, "bespaarvriend-vakantie", f"https://www.sunnycars.nl/auto-huren/{sl}/")) for n, sl in LANDEN])
+            + partner(awin(128623, "bespaarvriend-vakantie"), "eSIM voor buiten de EU", "Mobiel internet zonder dure roaming. Je zet de eSIM vooraf op je telefoon en hebt direct data bij aankomst.", "Bekijk eSIM's",
+                      [(n, awin(128623, "bespaarvriend-vakantie", f"https://saily.com/nl/esim-{sl}/")) for n, sl in ESIM])
+            + faq_html(faq_v) +
+            '<p class="bron">Bronnen: <a href="https://europa.eu/youreurope/citizens/consumers/internet-telecoms/mobile-roaming-costs/index_nl.htm" rel="noopener">Your Europe (roamen in de EU)</a>, '
+            '<a href="https://vakantietoppers.netlify.app/gids/goedkoop-op-vakantie-tips.html" rel="noopener">Vakantiewijzer: 10 tips</a>. '
+            f'Bijgewerkt op {BIJGEWERKT}.</p>')
+    page("/vakantie-en-vliegen/", "Goedkoper op vakantie en vliegen: tips en vergelijkers", "Zo ga je goedkoper op vakantie: buiten de schoolvakanties, totaalprijzen vergelijken, vertrekken vanaf een ander vliegveld en een huurauto met alle verzekeringen.",
+         body, [cld, faq_ld(faq_v)], prio="0.8")
+
+    # ---------- Auto en tanken ----------
+    def banden_abm(w, h, d, s): return awin(8671, "bespaarvriend-auto", f"https://www.autobandenmarkt.nl/search?vehicleTypes=PKW&width={w}&profile={h}&size={d}&season={s}&type=tyre")
+    def banden_bnl(w, h, d, s): return awin(12717, "bespaarvriend-auto", f"https://www.banden.nl/banden/auto/{s}/{w}-{h}-{d}/200+201+202")
+    ch, cld = crumbs("Auto en tanken", "/auto-en-tanken/")
+    faq_a = [("Is tanken in België of Duitsland goedkoper?", "Vaak wel. Benzine en diesel zijn in België en Duitsland meestal goedkoper dan in Nederland. Of omrijden loont, hangt af van hoeveel je tankt en hoe ver je moet rijden. Tankwijzer rekent het voor je uit."),
+             ("Scheelt de bandenspanning echt brandstof?", "Ja. Met te zachte banden rij je minder zuinig en slijten je banden sneller. Controleer de spanning ongeveer eens per maand; de juiste waarde staat in het instructieboekje of in de deurstijl."),
+             ("Zomer-, winter- of all-seasonbanden?", "In Nederland zijn winterbanden niet verplicht. Met all-seasonbanden hoef je niet twee keer per jaar te wisselen. Rijd je veel in Duitsland of de Alpen in de winter, kijk dan naar de regels per land."),
+             ("Wat betekent een storingslampje?", "Een brandend lampje of een foutcode betekent niet altijd een dure reparatie. Zoek de code eerst op, zodat je weet wat er aan de hand is voordat je naar de garage gaat.")]
+    MATEN = [("205/55 R16", 205, 55, 16), ("195/65 R15", 195, 65, 15), ("225/45 R17", 225, 45, 17), ("215/55 R17", 215, 55, 17)]
+    body = (ch + f'<div class="paginakop"><span class="ic">{ICON["tank"]}</span><h1>Besparen op je auto en tanken</h1></div>'
+            '<p class="lead">Brandstof, banden en onderhoud: met een paar slimme keuzes rijd je voor minder geld.</p>'
+            '<h2>Je eigen hulpmiddelen</h2><div class="tegels" style="grid-template-columns:1fr">'
+            + tool("https://goedkopertanken.netlify.app/", "tank", "Tankwijzer", "Live brandstofprijzen in Nederland, België en Duitsland, en of omrijden voor jou loont.")
+            + tool("https://foutcodezoeker.nl/", "sleutel", "Foutcodezoeker", "Zoek foutcodes en storingen op voordat je naar de garage gaat.")
+            + tool("https://euroroadrules.eu/", "weg", "EuroRoadRules", "Vignetten, tol en milieuzones in heel Europa.")
+            + '</div>'
+            '<h2>Zo bespaar je op je auto</h2><ol class="stappen">'
+            '<li><b>Vergelijk brandstofprijzen.</b> Het verschil tussen tankstations kan flink oplopen, zeker langs de snelweg.</li>'
+            '<li><b>Tank over de grens</b> als je toch in de buurt bent.</li>'
+            '<li><b>Houd je banden op spanning.</b> Dat is zuiniger en je banden gaan langer mee.</li>'
+            '<li><b>Rijd rustig.</b> Op tijd opschakelen en gelijkmatig rijden scheelt brandstof.</li>'
+            '<li><b>Vergelijk bandenprijzen</b> voordat je bij de garage nieuwe banden laat zetten.</li></ol>'
+            + partner(banden_abm(205, 55, 16, "so"), "Banden kopen", "Kies je bandenmaat en zie direct de prijzen. De maat staat op de zijkant van je band, bijvoorbeeld 205/55 R16.", "Bekijk banden",
+                      [(f"{n} zomer", banden_abm(w, h, d, "so")) for n, w, h, d in MATEN] + [("205/55 R16 winter", banden_abm(205, 55, 16, "wi")), ("205/55 R16 all-season", banden_abm(205, 55, 16, "gan"))])
+            + partner(banden_bnl(205, 55, 16, "zomer-banden"), "Banden vergelijken", "Vergelijk banden van verschillende winkels, ook met montage bij je in de buurt.", "Vergelijk banden",
+                      [(f"{n} zomer", banden_bnl(w, h, d, "zomer-banden")) for n, w, h, d in MATEN] + [("205/55 R16 all-season", banden_bnl(205, 55, 16, "all-season-banden"))])
+            + faq_html(faq_a) +
+            f'<p class="bron">Bijgewerkt op {BIJGEWERKT}.</p>')
+    page("/auto-en-tanken/", "Besparen op je auto: goedkoper tanken en banden", "Zo bespaar je op je auto: brandstofprijzen vergelijken, tanken over de grens, banden op spanning en bandenprijzen vergelijken.",
+         body, [cld, faq_ld(faq_a)], prio="0.8")
+
+    # ---------- Boodschappen ----------
+    ch, cld = crumbs("Boodschappen", "/boodschappen/")
+    faq_b = [("Welke supermarkt is het goedkoopst?", "Dat verschilt per product en per week. Vergelijk daarom de producten die jij echt koopt. Goedkope Boodschappen laat per product zien waar het het goedkoopst is."),
+             ("Zijn huismerken echt goedkoper?", "Meestal wel, en vaak is de kwaliteit vergelijkbaar. Probeer bij producten die je vaak koopt eens het huismerk."),
+             ("Helpt een boodschappenlijstje?", "Ja. Met een lijstje en een weekmenu koop je minder op impuls en gooi je minder weg.")]
+    body = (ch + f'<div class="paginakop"><span class="ic">{ICON["boodschappen"]}</span><h1>Besparen op je boodschappen</h1></div>'
+            '<p class="lead">Boodschappen zijn een van de grootste vaste uitgaven. Met vergelijken en een beetje planning houd je elke maand geld over.</p>'
+            '<h2>Je eigen hulpmiddelen</h2><div class="tegels" style="grid-template-columns:1fr">'
+            + tool("https://boodschappenvergelijk.nl/", "boodschappen", "Goedkope Boodschappen", "Vergelijk de prijzen van 12 supermarkten per product.")
+            + tool("https://bonnenboek.netlify.app/", "bon", "Bonnenboek", "Scan je kassabonnen en zie per maand waar je geld naartoe gaat.")
+            + '</div>'
+            '<h2>Zo bespaar je op je boodschappen</h2><ol class="stappen">'
+            '<li><b>Maak een weekmenu en een lijstje.</b> Je koopt minder op impuls en gooit minder weg.</li>'
+            '<li><b>Vergelijk de producten die je echt koopt.</b> De goedkoopste supermarkt verschilt per product.</li>'
+            '<li><b>Kies vaker het huismerk.</b></li>'
+            '<li><b>Koop aanbiedingen alleen als je het toch nodig hebt.</b> Twee halen, één betalen is geen besparing als je het weggooit.</li>'
+            '<li><b>Houd bij wat je uitgeeft.</b> Wie het ziet, geeft vaak vanzelf minder uit.</li></ol>'
+            + partner(awin(82075, "bespaarvriend-boodschappen"), "Boodschappenbox van de boer", "Verse producten van Nederlandse boeren, thuisbezorgd.", "Bekijk de boxen",
+                      [("Kies je box", awin(82075, "bespaarvriend-boodschappen", "https://www.boerschappen.nl/kies-je-box/")), ("Maaltijdboxen", awin(82075, "bespaarvriend-boodschappen", "https://www.boerschappen.nl/maaltijdboxen/")), ("Specials", awin(82075, "bespaarvriend-boodschappen", "https://www.boerschappen.nl/specials/"))])
+            + partner(awin(8591, "bespaarvriend-boodschappen"), "Maaltijdbox", "Precies genoeg ingrediënten voor je recepten, dus minder weggooien.", "Bekijk de maaltijdbox",
+                      [("Menu van deze week", awin(8591, "bespaarvriend-boodschappen", "https://marleyspoon.nl/menu")), ("Kies je plan", awin(8591, "bespaarvriend-boodschappen", "https://marleyspoon.nl/select-plan"))])
+            + faq_html(faq_b) + f'<p class="bron">Bijgewerkt op {BIJGEWERKT}.</p>')
+    page("/boodschappen/", "Besparen op boodschappen: vergelijken en bijhouden", "Zo bespaar je op je boodschappen: weekmenu, prijzen per product vergelijken, huismerken en bijhouden wat je uitgeeft.",
+         body, [cld, faq_ld(faq_b)], prio="0.8")
+
+    # ---------- Administratie ----------
+    ch, cld = crumbs("Administratie", "/administratie/")
+    faq_d = [("Hoe vaak moet ik mijn vaste lasten nalopen?", "Minstens één keer per jaar. Een goed moment is het einde van het jaar, als je ook je zorgverzekering kunt vergelijken."),
+             ("Welke abonnementen vergeten mensen vaak?", "Streamingdiensten, sportscholen, apps en tijdschriften die je niet meer gebruikt. Kijk je bankafschriften van de afgelopen drie maanden door op terugkerende afschrijvingen."),
+             ("Moet ik toeslagen zelf aanvragen?", "Ja. Toeslagen krijg je niet vanzelf. Check elk jaar of je recht hebt, bijvoorbeeld op zorgtoeslag, en geef wijzigingen in je inkomen op tijd door.")]
+    body = (ch + f'<div class="paginakop"><span class="ic">{ICON["map"]}</span><h1>Je vaste lasten en administratie op orde</h1></div>'
+            '<p class="lead">Wie weet wat er elke maand afgaat, ziet ook waar het goedkoper kan. Zo krijg je in een uurtje overzicht.</p>'
+            '<h2>Je eigen hulpmiddelen</h2><div class="tegels" style="grid-template-columns:1fr">'
+            + tool("https://allesoporde.netlify.app/", "map", "Alles op orde", "Al je vaste lasten en inkomsten op een rij, met einddata van contracten.")
+            + tool("https://salderingscheck-nl.netlify.app/", "zon", "Salderingscheck", "Zonnepanelen? Reken uit wat het einde van salderen in 2027 jou kost.")
+            + tool("https://bonnenboek.netlify.app/", "bon", "Bonnenboek", "Je boodschappen en tankbeurten bijhouden met een foto van de bon.")
+            + '</div>'
+            '<h2>In 5 stappen overzicht</h2><ol class="stappen">'
+            '<li><b>Zet al je vaste lasten op een rij.</b> Huur of hypotheek, energie, zorg, internet, mobiel, verzekeringen en abonnementen.</li>'
+            '<li><b>Zoek de einddatum van elk contract op.</b> Na de looptijd kun je vaak maandelijks opzeggen en overstappen.</li>'
+            '<li><b>Zeg op wat je niet gebruikt.</b> Kijk je bankafschriften door op terugkerende afschrijvingen.</li>'
+            '<li><b>Vergelijk de grote posten.</b> Begin met <a href="/zorgverzekering-2027/">zorg</a>, <a href="/energie-2027/">energie</a> en <a href="/internet-en-mobiel/">internet en mobiel</a>.</li>'
+            '<li><b>Check je toeslagen.</b> Bijvoorbeeld met de <a href="/zorgtoeslag-2027/">zorgtoeslag-check</a>.</li></ol>'
+            + partner(awin(8520, "bespaarvriend-administratie", "https://www.gaslicht.com/energievergelijken"), "Energiecontract vergelijken", "Loopt je energiecontract af? Vergelijk de tarieven van alle grote leveranciers.", "Vergelijk energiecontracten")
+            + faq_html(faq_d) + f'<p class="bron">Bijgewerkt op {BIJGEWERKT}.</p>')
+    page("/administratie/", "Vaste lasten op orde: in 5 stappen overzicht", "Zo krijg je overzicht in je vaste lasten: alles op een rij, einddata van contracten, abonnementen opzeggen, grote posten vergelijken en toeslagen checken.",
+         body, [cld, faq_ld(faq_d)], prio="0.7")
+
     # ---------- Privacy ----------
     ch, cld = crumbs("Privacy", "/privacy/")
-    body = (ch + '<h1>Privacy</h1><div class="kaart"><p style="margin-top:0">Bespaarvriend gebruikt geen cookies, geen advertenties en geen trackers die je volgen.</p>'
+    body = (ch + '<h1>Privacy</h1><div class="kaart"><p style="margin-top:0">Bespaarvriend gebruikt geen cookies en geen trackers die je volgen. Sommige pagina’s hebben partnerlinks; die staan altijd als advertentie gemarkeerd.</p>'
             '<p>De rekenhulpen werken helemaal in je eigen browser: wat je invult, wordt nergens naartoe gestuurd of bewaard.</p>'
             '<p>Stuur je een bericht via de contactpagina, dan bewaren we je bericht (en je naam en e-mailadres als je die invult) alleen om je te kunnen antwoorden. '
             'We delen het met niemand en verwijderen het als het niet meer nodig is.</p><p style="margin-bottom:0">De site draait bij Netlify. Netlify houdt voor de beveiliging korte tijd technische gegevens bij, zoals IP-adressen.</p></div>')

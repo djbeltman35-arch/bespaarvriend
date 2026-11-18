@@ -252,6 +252,7 @@ else u.textContent='Je komt waarschijnlijk in aanmerking. Hoe lager je inkomen, 
     # ---------- Contact (Netlify Forms, geen e-mailadres op de site) ----------
     ch, cld = crumbs("Contact", "/contact/")
     body = (ch + '<h1>Contact</h1><p class="lead">Een vraag, een fout gezien of een tip? Laat het weten.</p>'
+            '<div class="let"><b>Let op:</b> Bespaarvriend heeft geen vergunning voor financieel advies. Vragen over je persoonlijke situatie of over specifieke verzekeringen en financiële producten kunnen en mogen we niet beantwoorden. Daarvoor kun je terecht bij je verzekeraar of een erkend adviseur.</div>'
             '<form class="contact kaart" name="contact" method="POST" action="/bedankt/" data-netlify="true" netlify-honeypot="website">'
             '<input type="hidden" name="form-name" value="contact"><p class="hp"><label>Niet invullen <input name="website"></label></p>'
             '<label for="onderwerp">Onderwerp</label><select id="onderwerp" name="onderwerp" required><option value="">Kies een onderwerp</option><option>Vraag</option><option>Fout op de site</option><option>Tip of idee</option><option>Pers en media</option><option>Samenwerking</option><option>Privacy</option><option>Overig</option></select>'

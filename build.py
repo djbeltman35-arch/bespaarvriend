@@ -74,7 +74,7 @@ form.contact label{display:block;font-weight:700;margin:12px 0 4px}form.contact 
 .vertrouwen li{display:flex;align-items:center;gap:6px}.vertrouwen svg{width:18px;height:18px;color:var(--green)}
 .tegels .ic{display:inline-grid;place-items:center;width:44px;height:44px;border-radius:12px;background:var(--green-soft);color:var(--green-dark);font-size:0}
 .tegels .ic svg{width:24px;height:24px}
-.tegels a{position:relative}.tegels a .pijl{position:absolute;right:14px;top:18px;color:var(--muted)}.tegels a .pijl svg{width:18px;height:18px}
+.tegels a{position:relative}.tegels.tools a:last-child:nth-child(odd){grid-column:span 2}.tegels a .pijl{position:absolute;right:14px;top:18px;color:var(--muted)}.tegels a .pijl svg{width:18px;height:18px}
 .tegels a:hover .pijl{color:var(--green)}
 .tegels .nieuw{position:absolute;right:38px;top:16px;font-size:12px;font-weight:700;background:var(--tag);color:var(--tag-ink);border-radius:999px;padding:2px 8px}
 .let .icl{display:inline-flex;vertical-align:-4px;margin-right:4px;color:var(--tag-ink)}.let .icl svg{width:20px;height:20px}
@@ -88,7 +88,7 @@ form.contact label{display:block;font-weight:700;margin:12px 0 4px}form.contact 
 .wijzigt{list-style:none;padding:0;margin:12px 0;display:grid;gap:10px}
 .wijzigt li{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px}
 .wijzigt li b{display:block}.wijzigt .bedrag{float:right;font:700 20px var(--num);margin-left:10px}.wijzigt .op{color:#b42318}.wijzigt .af{color:var(--green)}
-@media(min-width:700px){.tegels{grid-template-columns:repeat(3,minmax(0,1fr))}.tegels.vier{grid-template-columns:repeat(4,minmax(0,1fr))}.drie{grid-template-columns:repeat(3,minmax(0,1fr))}.hero{padding:40px 36px 34px}.wijzigt{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(min-width:700px){.tegels{grid-template-columns:repeat(3,minmax(0,1fr))}.tegels.tools{grid-template-columns:repeat(4,minmax(0,1fr))}.drie{grid-template-columns:repeat(3,minmax(0,1fr))}.hero{padding:40px 36px 34px}.wijzigt{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .tool{display:flex;gap:14px;align-items:flex-start;border-color:var(--green);background:linear-gradient(135deg,var(--green-soft),var(--surface) 75%)}.tool .ic{flex:none;display:grid;place-items:center;width:48px;height:48px;border-radius:14px;background:var(--tag);color:var(--tag-ink)}.tool p{margin:4px 0 12px}
 @media(max-width:400px){nav.top a.wide{display:none}.logo span{font-size:17px}}
 """
@@ -110,6 +110,10 @@ ICON = {
     "tank": _svg('<path d="M3 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18M2 22h14M7 7h4"/><path d="M15 9h2a2 2 0 0 1 2 2v6a1.5 1.5 0 0 0 3 0V8l-3-3"/>'),
     "vlucht": _svg('<path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/>'),
     "weg": _svg('<path d="M4 22 9 2M20 22 15 2M12 4v3M12 11v3M12 18v3"/>'),
+    "koffer": _svg('<rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M8 11v6M16 11v6"/>'),
+    "sleutel": _svg('<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-7.9 7.9l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 7.9-7.9z"/>'),
+    "map": _svg('<path d="M4 20h16a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1h-7.9a1 1 0 0 1-.8-.4L10.5 5.4A1 1 0 0 0 9.7 5H4a1 1 0 0 0-1 1v13a1 1 0 0 0 1 1Z"/><path d="m9 13 2 2 4-4"/>'),
+    "bon": _svg('<path d="M6 2h12v20l-3-2-3 2-3-2-3 2Z"/><path d="M9 7h6M9 11h6M9 15h3"/>'),
     "zon": _svg('<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>'),
 }
 LOGO = ('<svg viewBox="0 0 40 40" width="36" height="36" aria-hidden="true"><rect width="40" height="40" rx="11" fill="var(--green)"/>'
@@ -129,7 +133,7 @@ def widget(naam, titel):
 NAV = '<nav class="top" aria-label="Hoofdmenu"><a href="/zorgverzekering-2027/">Zorg</a><a href="/energie-2027/">Energie</a><a href="/internet-en-mobiel/">Internet</a><a href="/contact/" class="wide">Contact</a></nav>'
 FOOT = f"""<footer><div class="wrap">
 <p><b>Bespaarvriend</b> helpt je eenvoudig besparen op je vaste lasten. Onafhankelijk uitgelegd, zonder verkooppraatjes. Wij geven geen persoonlijk financieel advies.</p>
-<nav aria-label="Over"><a href="/zorgverzekering-2027/">Zorgverzekering 2027</a><a href="/eigen-risico-2027/">Eigen risico 2027</a><a href="/zorgtoeslag-2027/">Zorgtoeslag 2027</a><a href="/energie-2027/">Energie 2027</a><a href="/internet-en-mobiel/">Internet en mobiel</a><a href="https://salderingscheck-nl.netlify.app/">Salderingscheck</a><a href="https://goedkopertanken.netlify.app/">Tankwijzer</a><a href="https://vluchtwijzer.netlify.app/">Vluchtwijzer</a><a href="https://euroroadrules.eu/">EuroRoadRules</a><a href="https://boodschappenvergelijk.nl/">Boodschappen vergelijken</a><a href="/over/">Over Bespaarvriend</a><a href="/privacy/">Privacy</a><a href="/contact/">Contact</a></nav>
+<nav aria-label="Over"><a href="/zorgverzekering-2027/">Zorgverzekering 2027</a><a href="/eigen-risico-2027/">Eigen risico 2027</a><a href="/zorgtoeslag-2027/">Zorgtoeslag 2027</a><a href="/energie-2027/">Energie 2027</a><a href="/internet-en-mobiel/">Internet en mobiel</a><a href="https://allesoporde.netlify.app/">Alles op orde</a><a href="https://bonnenboek.netlify.app/">Bonnenboek</a><a href="https://salderingscheck-nl.netlify.app/">Salderingscheck</a><a href="https://goedkopertanken.netlify.app/">Tankwijzer</a><a href="https://vluchtwijzer.netlify.app/">Vluchtwijzer</a><a href="https://vakantietoppers.netlify.app/">Vakantiewijzer</a><a href="https://euroroadrules.eu/">EuroRoadRules</a><a href="https://foutcodezoeker.nl/">Foutcodezoeker</a><a href="https://boodschappenvergelijk.nl/">Boodschappen vergelijken</a><a href="/over/">Over Bespaarvriend</a><a href="/privacy/">Privacy</a><a href="/contact/">Contact</a></nav>
 <p>© {datetime.date.today().year} Bespaarvriend – Erik Beltman. Bijgewerkt op {BIJGEWERKT}.</p></div></footer>"""
 
 
@@ -213,11 +217,15 @@ def bouw():
             f'<a href="/internet-en-mobiel/"><span class="ic">{ICON["internet"]}</span>{pijl}<b>Internet en mobiel</b><small>Stop met te veel betalen</small><span class="nieuw">Nieuw</span></a>'
             f'<a href="https://boodschappenvergelijk.nl/"><span class="ic">{ICON["boodschappen"]}</span>{pijl}<b>Boodschappen</b><small>12 supermarkten vergelijken</small></a>'
             '</div>'
-            '<h2>Meer gratis hulpmiddelen</h2><p class="bron" style="margin-top:-4px">Ook gemaakt door Erik, net zo eerlijk en gratis.</p><div class="tegels vier">'
+            '<h2>Meer gratis hulpmiddelen</h2><p class="bron" style="margin-top:-4px">Ook gemaakt door Erik, net zo eerlijk en gratis.</p><div class="tegels tools">'
+            f'<a href="https://allesoporde.netlify.app/"><span class="ic">{ICON["map"]}</span>{pijl}<b>Alles op orde</b><small>Al je vaste lasten en inkomsten op een rij</small></a>'
+            f'<a href="https://bonnenboek.netlify.app/"><span class="ic">{ICON["bon"]}</span>{pijl}<b>Bonnenboek</b><small>Kassabonnen scannen en zien wat je uitgeeft</small></a>'
             f'<a href="https://goedkopertanken.netlify.app/"><span class="ic">{ICON["tank"]}</span>{pijl}<b>Tankwijzer</b><small>Goedkoper tanken in NL, België en Duitsland</small></a>'
             f'<a href="https://vluchtwijzer.netlify.app/"><span class="ic">{ICON["vlucht"]}</span>{pijl}<b>Vluchtwijzer</b><small>De goedkoopste vluchten vergelijken</small></a>'
+            f'<a href="https://vakantietoppers.netlify.app/"><span class="ic">{ICON["koffer"]}</span>{pijl}<b>Vakantiewijzer</b><small>Pakketreizen, hotels en campings vergelijken</small></a>'
             f'<a href="https://salderingscheck-nl.netlify.app/"><span class="ic">{ICON["zon"]}</span>{pijl}<b>Salderingscheck</b><small>Wat kost het einde van salderen jou?</small></a>'
             f'<a href="https://euroroadrules.eu/"><span class="ic">{ICON["weg"]}</span>{pijl}<b>EuroRoadRules</b><small>Vignetten, tol en milieuzones in Europa</small></a>'
+            f'<a href="https://foutcodezoeker.nl/"><span class="ic">{ICON["sleutel"]}</span>{pijl}<b>Foutcodezoeker</b><small>Zelf repareren in plaats van vervangen</small></a>'
             '</div>'
             '<h2>Zo werkt het</h2><div class="drie">'
             '<div><b>Kies je vaste last</b><p>Elke gids begint met de bedragen die er nu toe doen.</p></div>'
@@ -447,10 +455,14 @@ else u.textContent='Je komt waarschijnlijk in aanmerking. Hoe lager je inkomen, 
 - [Zorgtoeslag 2027]({BASE}/zorgtoeslag-2027/): maximaal € 140 per maand (alleenstaand), inkomensgrens ± € 42.950, vermogensgrens € 119.122.
 - [Energie 2027]({BASE}/energie-2027/): salderen stopt 1 januari 2027; energiebelasting gas € 0,7457/m³, stroom € 0,1065/kWh, vermindering € 628,69; netbeheer gemiddeld + € 141.
 - [Internet en mobiel]({BASE}/internet-en-mobiel/): na de contractperiode maximaal 1 maand opzegtermijn; 79% van de internetabonnementen loopt al door na de contractperiode.
+- [Alles op orde](https://allesoporde.netlify.app/): gratis overzicht van je vaste lasten en inkomsten.
+- [Bonnenboek](https://bonnenboek.netlify.app/): gratis app om kassabonnen te scannen en boodschappenuitgaven bij te houden, samen met je huishouden.
 - [Salderingscheck](https://salderingscheck-nl.netlify.app/): rekent uit wat het einde van salderen per jaar kost en of een thuisbatterij loont.
 - [Tankwijzer](https://goedkopertanken.netlify.app/): brandstofprijzen vergelijken in Nederland, België en Duitsland.
 - [Vluchtwijzer](https://vluchtwijzer.netlify.app/): goedkope vluchten vergelijken.
 - [EuroRoadRules](https://euroroadrules.eu/): vignetten, tol en milieuzones in Europa.
+- [Vakantiewijzer](https://vakantietoppers.netlify.app/): pakketreizen, hotels, vakantieparken en campings vergelijken.
+- [Foutcodezoeker](https://foutcodezoeker.nl/): foutcodes en reparatie-uitleg voor apparaten.
 - [Boodschappen vergelijken](https://boodschappenvergelijk.nl/): dagelijkse prijzen van supermarkten.
 """)
     print(f"klaar: {len(PAGES)} pagina's in {OUT}")

@@ -179,7 +179,7 @@ def partner(url, titel, tekst, knop, artikelen=()):
 NAV = '<nav class="top" aria-label="Hoofdmenu"><a href="/zorgverzekering-2027/">Zorg</a><a href="/energie-2027/">Energie</a><a href="/internet-en-mobiel/">Internet</a><a href="/vakantie-en-vliegen/">Vakantie</a><a href="/auto-en-tanken/" class="wide">Auto</a></nav>'
 FOOT = f"""<footer><div class="wrap">
 <p><b>Bespaarvriend</b> helpt je eenvoudig besparen op je vaste lasten. Onafhankelijk uitgelegd, zonder verkooppraatjes. Wij geven geen persoonlijk financieel advies.</p>
-<nav aria-label="Over"><a href="/zorgverzekering-2027/">Zorgverzekering 2027</a><a href="/eigen-risico-2027/">Eigen risico 2027</a><a href="/zorgtoeslag-2027/">Zorgtoeslag 2027</a><a href="/aanvullende-verzekering-2027/">Aanvullende verzekering 2027</a><a href="/tandartsverzekering-2027/">Tandartsverzekering 2027</a><a href="/energie-2027/">Energie 2027</a><a href="/energiecontract-opzeggen/">Energiecontract opzeggen</a><a href="/internet-en-mobiel/">Internet en mobiel</a><a href="/vakantie-en-vliegen/">Vakantie en vliegen</a><a href="/auto-en-tanken/">Auto en tanken</a><a href="/boodschappen/">Boodschappen</a><a href="/administratie/">Administratie</a><a href="https://allesoporde.netlify.app/">Alles op orde</a><a href="https://bonnenboek.netlify.app/">Bonnenboek</a><a href="https://salderingscheck-nl.netlify.app/">Salderingscheck</a><a href="https://goedkopertanken.netlify.app/">Tankwijzer</a><a href="https://vluchtwijzer.netlify.app/">Vluchtwijzer</a><a href="https://vakantietoppers.netlify.app/">Vakantiewijzer</a><a href="https://euroroadrules.eu/">EuroRoadRules</a><a href="https://foutcodezoeker.nl/">Foutcodezoeker</a><a href="https://boodschappenvergelijk.nl/">Boodschappen vergelijken</a><a href="/over/">Over Bespaarvriend</a><a href="/privacy/">Privacy</a><a href="/contact/">Contact</a></nav>
+<nav aria-label="Over"><a href="/zorgverzekering-2027/">Zorgverzekering 2027</a><a href="/eigen-risico-2027/">Eigen risico 2027</a><a href="/zorgtoeslag-2027/">Zorgtoeslag 2027</a><a href="/aanvullende-verzekering-2027/">Aanvullende verzekering 2027</a><a href="/tandartsverzekering-2027/">Tandartsverzekering 2027</a><a href="/energie-2027/">Energie 2027</a><a href="/energiecontract-opzeggen/">Energiecontract opzeggen</a><a href="/zorgverzekering-overstappen/">Zorgverzekering overstappen</a><a href="/fysiotherapie-vergoeding-2027/">Fysiotherapie vergoeding 2027</a><a href="/reisverzekering-doorlopend-of-kortlopend/">Reisverzekering</a><a href="/goedkoop-vliegen/">Goedkoop vliegen</a><a href="/refurbished-telefoon-kopen/">Refurbished telefoon</a><a href="/autoverzekering-besparen/">Autoverzekering besparen</a><a href="/sim-only-overstappen/">Sim only overstappen</a><a href="/internet-en-mobiel/">Internet en mobiel</a><a href="/vakantie-en-vliegen/">Vakantie en vliegen</a><a href="/auto-en-tanken/">Auto en tanken</a><a href="/boodschappen/">Boodschappen</a><a href="/administratie/">Administratie</a><a href="https://allesoporde.netlify.app/">Alles op orde</a><a href="https://bonnenboek.netlify.app/">Bonnenboek</a><a href="https://salderingscheck-nl.netlify.app/">Salderingscheck</a><a href="https://goedkopertanken.netlify.app/">Tankwijzer</a><a href="https://vluchtwijzer.netlify.app/">Vluchtwijzer</a><a href="https://vakantietoppers.netlify.app/">Vakantiewijzer</a><a href="https://euroroadrules.eu/">EuroRoadRules</a><a href="https://foutcodezoeker.nl/">Foutcodezoeker</a><a href="https://boodschappenvergelijk.nl/">Boodschappen vergelijken</a><a href="/over/">Over Bespaarvriend</a><a href="/privacy/">Privacy</a><a href="/contact/">Contact</a></nav>
 <p>© {datetime.date.today().year} Bespaarvriend – Erik Beltman. Bijgewerkt op {BIJGEWERKT}.</p></div></footer>"""
 
 
@@ -249,6 +249,16 @@ DIRECT = [
     (awin(63484, "bespaarvriend-tegel", "https://www.vliegwinkel.nl/"), "vlucht", "Vliegtickets", "Meer dan 800 maatschappijen"),
     (awin(78144, "bespaarvriend-tegel", "https://www.hansemerkur.nl/reisverzekeringen"), "koffer", "Reisverzekering", "Eén reis of het hele jaar"),
 ]
+
+
+def artikel(path, kruim, ic, h1, lead, kern, inhoud, partnerblok, verder, faq, bronnen, title, desc, prio="0.8"):
+    """Standaard bespaarartikel: kop, kerncijfers, inhoud, partner, verder lezen, FAQ en bronnen."""
+    ch, cld = crumbs(kruim, path)
+    k = ('<div class="kerncijfers">' + "".join(f'<div><b>{a}</b><small>{b}</small></div>' for a, b in kern) + '</div>') if kern else ''
+    v = '<h2>Verder lezen</h2><ul class="links">' + "".join(f'<li><a href="{u}">{t}</a></li>' for u, t in verder) + '</ul>'
+    br = '<p class="bron">Bronnen: ' + ", ".join(f'<a href="{u}" rel="noopener">{t}</a>' for u, t in bronnen) + f'. Bijgewerkt op {BIJGEWERKT}.</p>'
+    body = (ch + f'<div class="paginakop"><span class="ic">{ICON[ic]}</span><h1>{h1}</h1></div><p class="lead">{lead}</p>' + k + inhoud + partnerblok + v + faq_html(faq) + br)
+    page(path, title, desc, body, [cld, faq_ld(faq)], prio=prio)
 
 def bouw():
     if os.path.isdir(OUT):
@@ -754,6 +764,167 @@ u.textContent='Zonder verzekering betaal je '+eur(zonder)+'. Met dit pakket beta
     page("/energiecontract-opzeggen/", "Energiecontract opzeggen: opzegtermijn en opzegvergoeding", "Energiecontract opzeggen zonder boete: maximaal 30 dagen opzegtermijn, geen opzegvergoeding bij variabel. Zo bereken je de vergoeding bij een vast contract.",
          body, [cld, faq_ld(faq_o)], prio="0.8")
 
+    # ---------- Tweede reeks artikelen ----------
+    ZV = ZORG_VERGELIJKER
+    artikel("/zorgverzekering-overstappen/", "Zorgverzekering overstappen", "zorg",
+        "Zorgverzekering overstappen voor 2027: zo doe je het",
+        "Overstappen kan nog tot 31 december. Je nieuwe verzekeraar regelt de opzegging meestal voor je. Zo pak je het in 5 stappen aan.",
+        [("31 dec", "laatste dag opzeggen"), ("31 jan", "uiterlijk nieuwe verzekering afsluiten"), ("€ 649", "verschil laagste en hoogste premie per jaar"), ("1 jan", "nieuwe verzekering gaat in")],
+        '<h2>Overstappen in 5 stappen</h2><ol class="stappen">'
+        '<li><b>Bekijk je jaaroverzicht.</b> Welke zorg had je dit jaar en wat kreeg je vergoed? Dan weet je wat je nodig hebt.</li>'
+        '<li><b>Kies natura of restitutie.</b> Een naturapolis is goedkoper, maar bij een zorgverlener zonder contract krijg je soms minder vergoed.</li>'
+        '<li><b>Vergelijk basis en aanvullend samen.</b> De premies van de aanvullende verzekeringen zijn uiterlijk 19 november bekend.</li>'
+        '<li><b>Sluit de nieuwe verzekering af</b> vóór 1 januari. Heb je zelf vóór 31 december opgezegd, dan heb je tot 31 januari de tijd.</li>'
+        '<li><b>Controleer de bevestiging.</b> Meestal zegt je nieuwe verzekeraar je oude polis op. Staat dat er niet, zeg dan zelf op vóór 31 december.</li></ol>'
+        '<div class="let"><b>Let op met een aanvullende verzekering.</b> Voor de basisverzekering word je altijd geaccepteerd. Voor een uitgebreid aanvullend pakket kan een verzekeraar een gezondheidsverklaring vragen. Zeg je oude polis pas op als je zeker bent dat je nieuwe aanvraag is goedgekeurd.</div>'
+        '<h2>Hoeveel kun je besparen?</h2><p>Tussen de laagste en de hoogste premie voor de basisverzekering zit in 2027 € 649 per jaar, voor dezelfde basiszorg. Met z’n tweeën loopt dat op tot bijna € 1.300 per jaar. Kinderen tot 18 jaar zijn gratis meeverzekerd.</p>',
+        ZV,
+        [("/zorgverzekering-2027/", "Zorgverzekering 2027: premies en verschillen"), ("/aanvullende-verzekering-2027/", "Aanvullende verzekering 2027: nodig of niet?"), ("/tandartsverzekering-2027/", "Tandartsverzekering 2027"), ("/eigen-risico-2027/", "Eigen risico 2027")],
+        [("Moet ik mijn oude zorgverzekering zelf opzeggen?", "Meestal niet. De nieuwe verzekeraar zegt je oude verzekering op via de overstapservice. Controleer dit in je bevestiging. Staat het er niet in, zeg dan zelf op vóór 31 december."),
+         ("Tot wanneer kan ik overstappen van zorgverzekering?", "Zeg je huidige verzekering uiterlijk 31 december 2026 op. Sluit daarna uiterlijk 31 januari 2027 een nieuwe af; die gaat met terugwerkende kracht in op 1 januari 2027."),
+         ("Kan ik geweigerd worden bij een nieuwe zorgverzekeraar?", "Voor de basisverzekering niet: iedere verzekeraar moet je accepteren. Voor een aanvullende verzekering kan een verzekeraar soms een gezondheidsverklaring vragen."),
+         ("Moet ik mijn kinderen apart overzetten?", "Kinderen tot 18 jaar zijn gratis meeverzekerd bij een van de ouders. Stap je over, geef je kinderen dan mee op bij je nieuwe verzekeraar.")],
+        [("https://www.overstappen.nl/nieuws/zorgpremies-2027-bekend-alle-polissen-duurder-premiekloof-stijgt-naar-649-euro-per-jaar/", "Overstappen.nl (premies 2027)"), ("https://www.overstappen.nl/zorgverzekering/zorgverzekering-2027/", "Overstappen.nl (data overstappen)"), ("https://www.rabobank.nl/particulieren/verzekering/zorgverzekering/tips-voor-je-zorgverzekering", "Rabobank (aanvullende premies 19 november)")],
+        "Zorgverzekering overstappen 2027: stappenplan en deadlines", "Zorgverzekering overstappen voor 2027: opzeggen vóór 31 december, nieuwe polis uiterlijk 31 januari. Stappenplan, valkuilen en tot € 649 per jaar verschil.", prio="0.9")
+
+    artikel("/fysiotherapie-vergoeding-2027/", "Fysiotherapie vergoeding 2027", "zorg",
+        "Fysiotherapie vergoeding 2027: wat betaal je zelf?",
+        "Voor volwassenen zit fysiotherapie meestal niet in de basisverzekering. Of je een aanvullende verzekering nodig hebt, hangt af van hoe vaak je gaat.",
+        [("21e", "behandeling: vanaf dan basis, bij een chronische aandoening"), ("9", "behandelingen voor kinderen uit de basis (soms 9 extra)"), ("0", "vergoeding uit de basis na een ongeval (volwassenen)"), ("19 nov", "premies aanvullend 2027 bekend")],
+        '<h2>Wat vergoedt de basisverzekering?</h2><table><tr><th>Situatie</th><th>Basisverzekering</th></tr>'
+        '<tr><td>Volwassene, gewone klachten (rug, knie, schouder)</td><td>Geen vergoeding. Alleen via een aanvullende verzekering</td></tr>'
+        '<tr><td>Volwassene met een aandoening op de chronische lijst</td><td>Vanaf de 21e behandeling. De eerste 20 betaal je zelf of via je aanvullende verzekering</td></tr>'
+        '<tr><td>Kind tot 18 jaar</td><td>De eerste 9 behandelingen per aandoening, eventueel nog 9 extra</td></tr>'
+        '<tr><td>Tijdens een ziekenhuisopname</td><td>Valt onder de ziekenhuiszorg</td></tr>'
+        '<tr><td>Na een ongeval (volwassene)</td><td>Geen vergoeding uit de basis</td></tr></table>'
+        '<h2>Loont een aanvullende verzekering met fysio?</h2><p>Eén behandeling kost al snel meer dan een maand premie. Ga je regelmatig, of herstel je van een blessure of operatie, dan kan een pakket met genoeg behandelingen lonen. '
+        'Ga je bijna nooit, dan ben je vaak goedkoper uit als je een losse behandeling zelf betaalt.</p>'
+        '<ul class="links"><li><b>Kijk naar het aantal behandelingen</b> per jaar, niet alleen naar de premie.</li><li><b>Kies een gecontracteerde fysiotherapeut.</b> Bij een therapeut zonder contract krijg je vaak maar een deel vergoed, bijvoorbeeld 75%.</li>'
+        '<li><b>Ongebruikte behandelingen meenemen</b> naar volgend jaar kan bij sommige verzekeraars, als je dezelfde aanvullende verzekering houdt.</li></ul>',
+        ZV,
+        [("/aanvullende-verzekering-2027/", "Aanvullende verzekering 2027: rekenhulp"), ("/zorgverzekering-overstappen/", "Zorgverzekering overstappen: stappenplan"), ("/eigen-risico-2027/", "Eigen risico 2027")],
+        [("Wordt fysiotherapie vergoed uit de basisverzekering in 2027?", "Voor volwassenen alleen bij een aandoening op de lijst met chronische aandoeningen, en dan vanaf de 21e behandeling. Andere fysiotherapie betaal je zelf of via een aanvullende verzekering."),
+         ("Hoeveel fysiotherapie krijgen kinderen vergoed?", "Kinderen tot 18 jaar krijgen de eerste 9 behandelingen per aandoening vergoed uit de basisverzekering, en zo nodig nog 9 extra."),
+         ("Gaat fysiotherapie af van mijn eigen risico?", "Fysiotherapie uit de basisverzekering valt voor volwassenen onder het eigen risico. Vergoeding uit een aanvullende verzekering gaat niet van je eigen risico af."),
+         ("Kan ik ongebruikte fysiobehandelingen meenemen naar 2027?", "Bij sommige verzekeraars wel, als je in 2027 weer een aanvullende verzekering met fysiotherapie hebt. De voorwaarden verschillen per verzekeraar.")],
+        [("https://www.rijksoverheid.nl/onderwerpen/zorgverzekering/vraag-en-antwoord/is-fysiotherapie-opgenomen-in-het-basispakket", "Rijksoverheid"), ("https://www.consumentenbond.nl/zorgverzekering/vergoedingen/fysiotherapie", "Consumentenbond"), ("https://www.overstappen.nl/zorgverzekering/vergoedingen/fysiotherapie-na-een-ongeval/", "Overstappen.nl (na een ongeval)"), ("https://www.zorgwijzer.nl/zorgverzekering-2026/ongebruikte-fysio-meenemen-naar-volgend-jaar-het-kan-bij-deze-verzekeraars", "Zorgwijzer (behandelingen meenemen)")],
+        "Fysiotherapie vergoeding 2027: basis of aanvullend?", "Fysiotherapie 2027: volwassenen krijgen uit de basis alleen vergoeding bij een chronische aandoening, vanaf de 21e behandeling. Kinderen 9 behandelingen. Zo kies je.")
+
+    reis = partner(awin(78144, "bespaarvriend-reis", "https://www.hansemerkur.nl/reisverzekeringen"), "Reisverzekering", "Een reisverzekering voor één reis of het hele jaar, ook voor wintersport en lange reizen.", "Bekijk reisverzekeringen",
+                   [("Doorlopend", awin(78144, "bespaarvriend-reis", "https://www.hansemerkur.nl/reisverzekeringen/doorlopende-reisverzekering")), ("Eén reis", awin(78144, "bespaarvriend-reis", "https://www.hansemerkur.nl/reisverzekeringen/kortlopende-reisverzekering")), ("Wintersport", awin(78144, "bespaarvriend-reis", "https://www.hansemerkur.nl/reisverzekeringen/wintersportverzekering"))])
+    artikel("/reisverzekering-doorlopend-of-kortlopend/", "Doorlopend of kortlopend", "koffer",
+        "Doorlopende of kortlopende reisverzekering: wat is goedkoper?",
+        "Ga je één keer per jaar weg, of vaker? Dat bepaalt grotendeels welke reisverzekering voordeliger is.",
+        [("1×", "per jaar weg: kortlopend vaak voordeliger"), ("16–21", "dagen per jaar: vanaf daar meestal doorlopend"), ("Zelfde", "dekking bij beide soorten"), ("Poliskosten", "betaal je bij kortlopend elke keer")],
+        '<h2>Het verschil</h2><table><tr><th></th><th>Kortlopend</th><th>Doorlopend</th></tr>'
+        '<tr><td>Geldig</td><td>Voor één reis</td><td>Het hele jaar, voor elke reis</td></tr>'
+        '<tr><td>Premie</td><td>Per reis, plus poliskosten</td><td>Per maand of per jaar</td></tr>'
+        '<tr><td>Past bij</td><td>Eén vakantie per jaar, korter dan 2 à 3 weken</td><td>Meerdere reizen of weekendjes weg per jaar</td></tr>'
+        '<tr><td>Opzeggen</td><td>Stopt vanzelf</td><td>Loopt door tot je opzegt</td></tr></table>'
+        '<h2>Heb je wel een reisverzekering nodig?</h2><p>Je zorgverzekering vergoedt spoedeisende zorg in het buitenland, maar meestal tot het Nederlandse tarief. In landen waar zorg duurder is betaal je het verschil zelf. Een terugreis naar Nederland na een ongeluk (repatriëring) vergoedt de zorgverzekering niet. '
+        'Een reisverzekering dekt daarnaast bagage en hulp onderweg.</p>'
+        '<h2>Zo bespaar je op je reisverzekering</h2><ul class="links"><li><b>Voorkom dubbele dekking.</b> Zijn je spullen al via je inboedelverzekering verzekerd? Dan heb je misschien geen bagagedekking nodig.</li>'
+        '<li><b>Kies het juiste gebied.</b> Europa-dekking is goedkoper dan werelddekking.</li>'
+        '<li><b>Wintersport alleen als je gaat.</b> Een wintersportdekking kun je vaak per jaar aan- of uitzetten.</li>'
+        '<li><b>Annulering apart afwegen.</b> Sluit je reis- en annuleringsverzekering tegelijk af bij dezelfde verzekeraar, dan betaal je vaak maar één keer poliskosten.</li></ul>',
+        reis,
+        [("/vakantie-en-vliegen/", "Goedkoper op vakantie en vliegen"), ("/goedkoop-vliegen/", "Goedkoop vliegen: 8 tips")],
+        [("Vanaf hoeveel reisdagen is een doorlopende reisverzekering goedkoper?", "Als richtlijn vanaf ongeveer 16 tot 21 vakantiedagen per jaar. Ga je één keer per jaar korter dan 2 à 3 weken op reis, dan is kortlopend vaak voordeliger."),
+         ("Is de dekking van een kortlopende reisverzekering anders?", "Nee, meestal is de dekking hetzelfde. Het verschil zit in de looptijd en de manier van betalen."),
+         ("Tot wanneer kan ik een kortlopende reisverzekering afsluiten?", "Tot vlak voor vertrek, meestal nog tot de dag voordat je weggaat."),
+         ("Vergoedt mijn zorgverzekering zorg in het buitenland?", "Spoedeisende zorg wel, meestal tot het Nederlandse tarief. Is zorg in het buitenland duurder, of moet je na een ongeluk naar huis worden vervoerd, dan heb je een reisverzekering nodig.")],
+        [("https://www.consumentenbond.nl/reisverzekering/kortlopend-of-doorlopend", "Consumentenbond"), ("https://www.vanbruggen.nl/verzekeringen/reisverzekering-annuleringsverzekering", "Van Bruggen (16–21 dagen)"), ("https://www.unive.nl/reisverzekering/soorten-reisverzekering", "Univé (poliskosten)"), ("https://hellosafe.com/nl/travel-insurance/single-trip", "HelloSafe (zorg in het buitenland)")],
+        "Doorlopende of kortlopende reisverzekering: wat is goedkoper?", "Doorlopend of kortlopend? Eén reis per jaar: vaak kortlopend. Vanaf zo’n 16 tot 21 vakantiedagen per jaar: meestal doorlopend. Plus tips om dubbele dekking te voorkomen.")
+
+    vlieg = partner(awin(63484, "bespaarvriend-vliegen", "https://www.vliegwinkel.nl/"), "Vliegtickets boeken", "Vluchten van meer dan 800 luchtvaartmaatschappijen, ook als vlucht + hotel. Let op bagage en boekingskosten voordat je betaalt.", "Bekijk vliegtickets")
+    artikel("/goedkoop-vliegen/", "Goedkoop vliegen", "vlucht",
+        "Goedkoop vliegen: 8 tips die echt schelen",
+        "De prijs van een vliegticket hangt af van je dag, je vliegveld en wat je allemaal meeneemt. Met deze tips betaal je minder.",
+        [],
+        '<h2>8 tips</h2><ol class="stappen">'
+        '<li><b>Wees flexibel met je datum.</b> Een dag eerder of later vertrekken scheelt vaak meer dan je denkt. Kijk naar een paar dagen rond je gewenste datum.</li>'
+        '<li><b>Vergelijk vliegvelden.</b> Eindhoven, Rotterdam, Brussel, Charleroi, Düsseldorf of Weeze zijn soms goedkoper dan Schiphol. Reken wel de reiskosten en het parkeren mee.</li>'
+        '<li><b>Vermijd de schoolvakanties</b> als dat kan. In de vakantieweken zijn tickets duurder.</li>'
+        '<li><b>Reken met de totaalprijs.</b> Ruimbagage, stoelkeuze en boekingskosten maken een goedkoop ticket soms duurder dan een ander.</li>'
+        '<li><b>Reis met handbagage.</b> Wie alleen handbagage meeneemt, betaalt bij veel maatschappijen het minst.</li>'
+        '<li><b>Boek niet te laat.</b> Voor populaire bestemmingen in het hoogseizoen lopen de prijzen vaak op naarmate de vertrekdatum nadert.</li>'
+        '<li><b>Kijk naar enkele reizen.</b> Heen met de ene en terug met de andere maatschappij is soms goedkoper dan een retour.</li>'
+        '<li><b>Let op extra kosten op de bestemming</b>, zoals een huurauto of mobiel internet buiten de EU. Regel die vooraf.</li></ol>'
+        '<div class="kaart tool"><span class="ic">' + ICON["vlucht"] + '</span><div><b>Vergelijk vluchten met Vluchtwijzer</b><p>Gratis app die vluchten vanaf meerdere vliegvelden tegelijk vergelijkt.</p><a href="https://vluchtwijzer.netlify.app/">Open Vluchtwijzer →</a></div></div>',
+        vlieg,
+        [("/vakantie-en-vliegen/", "Goedkoper op vakantie en vliegen"), ("/reisverzekering-doorlopend-of-kortlopend/", "Doorlopende of kortlopende reisverzekering")],
+        [("Op welke dag is vliegen het goedkoopst?", "Dat verschilt per route. Midden in de week en op minder populaire tijden is vliegen vaak goedkoper dan op vrijdag of zondag. Vergelijk daarom een paar dagen rond je gewenste datum."),
+         ("Is vliegen vanaf Duitsland of België goedkoper?", "Soms wel. Vanaf Düsseldorf, Weeze, Brussel of Charleroi zijn tickets soms goedkoper dan vanaf Schiphol. Reken de reis naar het vliegveld en het parkeren mee voordat je kiest."),
+         ("Waarom is mijn ticket bij het afrekenen duurder?", "Door extra’s zoals ruimbagage, stoelkeuze en boekingskosten. Vergelijk daarom altijd de totaalprijs met de bagage die je echt meeneemt.")],
+        [("https://vluchtwijzer.netlify.app/", "Vluchtwijzer (vluchten vanaf meerdere vliegvelden vergelijken)")],
+        "Goedkoop vliegen: 8 tips om minder te betalen voor je ticket", "Goedkoop vliegen: flexibel met je datum, vliegvelden in België en Duitsland vergelijken, reizen met handbagage en rekenen met de totaalprijs. 8 tips.")
+
+    refurb = partner(awin(112024, "bespaarvriend-refurbished", "https://www.refurbished.nl/"), "Refurbished telefoon met garantie", "Gebruikte telefoons, gecontroleerd en schoongemaakt, met garantie.", "Bekijk refurbished telefoons",
+                     [("iPhone", awin(112024, "bespaarvriend-refurbished", "https://www.refurbished.nl/iphone-13")), ("Samsung", awin(112024, "bespaarvriend-refurbished", "https://www.refurbished.nl/samsung")), ("iPad", awin(112024, "bespaarvriend-refurbished", "https://www.refurbished.nl/ipad"))])
+    artikel("/refurbished-telefoon-kopen/", "Refurbished telefoon kopen", "mobiel",
+        "Refurbished telefoon kopen: hier let je op",
+        "Een refurbished telefoon is gebruikt, nagekeken en schoongemaakt, en kost een stuk minder dan nieuw. Maar 'refurbished' is geen beschermd begrip. Let daarom op deze punten.",
+        [("6 mnd–3 jr", "garantie, verschilt per verkoper"), ("14 dagen", "bedenktijd bij online kopen"), ("Accu", "het onderdeel dat het eerst slijt"), ("Updates", "check tot wanneer het model ze krijgt")],
+        '<h2>Waar let je op?</h2><ul class="links">'
+        '<li><b>Garantie.</b> Die loopt per verkoper uiteen van zo’n 6 maanden tot 3 jaar. Daarnaast heb je altijd recht op de wettelijke garantie: een product moet doen wat je ervan mag verwachten.</li>'
+        '<li><b>De accu.</b> Een goede verkoper vermeldt de conditie van de accu of vervangt hem. Vraag ernaar als het er niet bij staat.</li>'
+        '<li><b>Software-updates.</b> Kijk tot wanneer het model nog updates krijgt. Een goedkoop oud toestel zonder updates is minder veilig.</li>'
+        '<li><b>De staat.</b> Lees wat de verkoper bedoelt met termen als “als nieuw” of “zichtbaar gebruikt”.</li>'
+        '<li><b>De prijs.</b> Vergelijk met de prijs van nieuw. Betaal nooit (bijna) de nieuwprijs voor een refurbished toestel.</li></ul>'
+        '<h2>Refurbished of tweedehands van een particulier?</h2><p>Bij een particulier heb je meestal geen garantie en weet je niet of het toestel gebreken heeft. Bij een refurbished verkoper is het toestel gecontroleerd en heb je garantie en, als je online koopt, 14 dagen bedenktijd.</p>'
+        '<div class="let"><b>Rekenvoorbeeld:</b> een nieuw-toestel-abonnement van € 45 per maand kost in 2 jaar € 1.080. Een refurbished toestel van € 350 plus 24 maanden sim only van € 8 kost samen € 542.</div>',
+        refurb,
+        [("/internet-en-mobiel/", "Internet en mobiel: stop met te veel betalen"), ("/sim-only-overstappen/", "Sim only overstappen met nummerbehoud")],
+        [("Heb ik garantie op een refurbished telefoon?", "Ja. De verkoper geeft meestal een eigen garantie van 6 maanden tot 3 jaar. Daarnaast heb je recht op de wettelijke garantie, die afhangt van wat je redelijkerwijs van het toestel mag verwachten."),
+         ("Mag ik een refurbished telefoon terugsturen?", "Koop je online bij een webshop, dan heb je 14 dagen bedenktijd. Je kunt het toestel dan zonder reden terugsturen."),
+         ("Wat is het verschil tussen refurbished en tweedehands?", "Een refurbished toestel is door een bedrijf gecontroleerd, schoongemaakt en waar nodig gerepareerd, en wordt met garantie verkocht. Een tweedehands toestel van een particulier is dat meestal niet.")],
+        [("https://www.consumentenbond.nl/tablet/kooptips-refurbished", "Consumentenbond (garantie)"), ("https://radar.avrotros.nl/hulp-tips/hulpartikelen/item/nieuwe-telefoon-nodig-zo-bespaar-je-geld/", "Radar (geen wettelijke definitie)"), ("https://www.bnnvara.nl/kassa/artikelen/wat-mag-je-verwachten-van-een-refurbished-artikel", "Kassa (bedenktijd)"), ("https://www.nieuwemobiel.nl/telefoons/keuzehulp/refurbished-of-nieuw", "NieuweMobiel (accu en updates)")],
+        "Refurbished telefoon kopen: garantie, accu en waar je op let", "Refurbished telefoon kopen? Let op garantie (6 maanden tot 3 jaar), de accu, software-updates en de prijs. Met 14 dagen bedenktijd online. Zo koop je slim.")
+
+    auto = partner(awin(8311, "bespaarvriend-autoverzekering", "https://www.unitedconsumers.com/autoverzekering"), "Autoverzekering met korting", "Een autoverzekering met collectieve korting op de premie. Vul je kenteken in en zie direct wat je betaalt.", "Bereken je premie")
+    artikel("/autoverzekering-besparen/", "Autoverzekering besparen", "tank",
+        "Besparen op je autoverzekering: past je dekking nog?",
+        "Veel automobilisten houden te lang vast aan een allriskverzekering voor een auto die steeds minder waard wordt. Met de juiste dekking betaal je vaak flink minder.",
+        [("WA", "wettelijk verplicht"), ("0–6 jr", "auto: allrisk gebruikelijk"), ("6–10 jr", "auto: beperkt casco"), ("10+ jr", "auto: vaak alleen WA")],
+        '<h2>Welke dekking past bij je auto?</h2><table><tr><th>Dekking</th><th>Wat is verzekerd</th><th>Vaak gekozen bij</th></tr>'
+        '<tr><td><b>WA</b></td><td>Schade die je anderen toebrengt</td><td>Auto van 10 jaar of ouder</td></tr>'
+        '<tr><td><b>Beperkt casco (WA+)</b></td><td>Plus onder meer diefstal, brand, storm en ruitschade aan je eigen auto</td><td>Auto van 6 tot 10 jaar</td></tr>'
+        '<tr><td><b>Allrisk</b></td><td>Plus schade aan je eigen auto die je zelf veroorzaakt</td><td>Nieuwe auto tot 6 jaar</td></tr></table>'
+        '<h2>5 manieren om te besparen</h2><ol class="stappen">'
+        '<li><b>Verlaag je dekking als je auto ouder wordt.</b> Kijk elk jaar of de premie nog in verhouding staat tot de waarde van je auto.</li>'
+        '<li><b>Kies een hoger eigen risico</b> bij casco. Bij WA is er geen eigen risico.</li>'
+        '<li><b>Geef je kilometers eerlijk op.</b> Rijd je minder dan vroeger, pas dat dan aan: dat kan de premie verlagen.</li>'
+        '<li><b>Schrap overbodige extra’s</b>, zoals pechhulp als je die al via een ander abonnement hebt.</li>'
+        '<li><b>Vergelijk elk jaar.</b> Let op: bij sommige verzekeraars kun je in het eerste jaar niet zomaar naar een lagere dekking.</li></ol>'
+        '<div class="kaart tool"><span class="ic">' + ICON["tank"] + '</span><div><b>Ook besparen op tanken?</b><p>Tankwijzer vergelijkt brandstofprijzen in Nederland, België en Duitsland.</p><a href="https://goedkopertanken.netlify.app/">Open Tankwijzer →</a></div></div>',
+        auto,
+        [("/auto-en-tanken/", "Auto en tanken: brandstof en banden")],
+        [("Wanneer stap ik over van allrisk naar beperkt casco?", "Als vuistregel bij een auto van ongeveer 6 jaar oud. Bij een auto van 10 jaar of ouder kiezen veel mensen voor alleen WA. Kijk vooral naar de waarde van je auto ten opzichte van de premie."),
+         ("Heeft een WA-verzekering een eigen risico?", "Nee. Een eigen risico geldt alleen bij beperkt casco en allrisk."),
+         ("Kan ik mijn autoverzekering tussentijds wijzigen?", "Vaak wel, maar bij sommige verzekeraars kun je in het eerste jaar niet van allrisk naar een lagere dekking. Kijk in je polisvoorwaarden.")],
+        [("https://www.consumentenbond.nl/autoverzekering/beperkt-casco", "Consumentenbond (dekking per leeftijd auto)"), ("https://www.consumentenbond.nl/autoverzekering/tussentijds-wijzigen", "Consumentenbond (tussentijds wijzigen)"), ("https://www.overstappen.nl/autoverzekering/wijzigen/", "Overstappen.nl (eerste jaar)"), ("https://autorai.nl/autoverzekeringen-vergelijken-5-handige-tips", "AutoRAI (eigen risico)")],
+        "Besparen op je autoverzekering: WA, beperkt casco of allrisk?", "Bespaar op je autoverzekering: tot 6 jaar allrisk, 6 tot 10 jaar beperkt casco, ouder vaak alleen WA. Plus 5 tips: eigen risico, kilometers en overbodige extra’s.")
+
+    sim = partner(awin(8311, "bespaarvriend-simonly", "https://www.unitedconsumers.com/mobiel"), "Sim only met een duidelijke maandprijs", "Sim only zonder kleine lettertjes: één vaste prijs per maand, maandelijks opzegbaar.", "Bekijk sim only")
+    artikel("/sim-only-overstappen/", "Sim only overstappen", "mobiel",
+        "Sim only overstappen met nummerbehoud: zo houd je je 06-nummer",
+        "Overstappen naar een goedkoper sim only-abonnement is makkelijk, en je eigen nummer gaat gewoon mee. Zeg je oude abonnement alleen niet zelf op.",
+        [("120 dagen", "voor einddatum kun je al overstappen"), ("Gratis", "nummerbehoud bij de meeste providers"), ("1 maand", "opzegtermijn na de contractperiode"), ("14 dagen", "bedenktijd bij online afsluiten")],
+        '<h2>Zo stap je over</h2><ol class="stappen">'
+        '<li><b>Kijk wanneer je contract afloopt.</b> Dat staat in je account bij je huidige provider.</li>'
+        '<li><b>Kies een nieuw abonnement.</b> Kijk hoeveel data je echt gebruikt; veel mensen betalen voor een bundel die ze niet halen.</li>'
+        '<li><b>Vraag nummerbehoud aan</b> bij je nieuwe provider. Dat kan bij veel providers al vanaf 120 dagen voor je einddatum.</li>'
+        '<li><b>Zeg niet zelf op.</b> De nieuwe provider regelt de overstap en zegt je oude abonnement op. Zeg je zelf op, dan kun je je nummer kwijtraken.</li>'
+        '<li><b>Wissel van simkaart</b> zodra je oude simkaart geen bereik meer heeft. Je nummer staat dan op je nieuwe simkaart.</li></ol>'
+        '<div class="let"><b>Let op:</b> zit je nog midden in een contract? Dan betaal je bij eerder overstappen vaak de resterende maanden. Wacht dan tot het einde, of reken uit wat het scheelt.</div>',
+        sim,
+        [("/internet-en-mobiel/", "Internet en mobiel: stop met te veel betalen"), ("/refurbished-telefoon-kopen/", "Refurbished telefoon kopen")],
+        [("Kan ik mijn nummer meenemen naar een andere provider?", "Ja, elke mobiele provider biedt nummerbehoud aan, ook als je van prepaid naar sim only gaat. Je vraagt het aan bij je nieuwe provider."),
+         ("Moet ik mijn oude abonnement zelf opzeggen?", "Nee. Bij overstappen met nummerbehoud zegt de nieuwe provider je oude abonnement op. Zeg je zelf op, dan loop je het risico dat je nummer vervalt."),
+         ("Hoe vroeg kan ik overstappen?", "Bij de meeste providers vanaf ongeveer 4 maanden (120 dagen) voor de einddatum van je contract. Het nieuwe abonnement gaat in als het oude afloopt.")],
+        [("https://www.keuze.nl/telefoon-abonnement/informatie/nummerbehoud", "Keuze.nl"), ("https://www.belsimpel.nl/klantenservice/abonnementen/nummerbehoud", "Belsimpel (120 dagen)"), ("https://www.overstappen.nl/overstappen", "Overstappen.nl"), ("https://www.consuwijzer.nl/vergelijken-en-overstappen/telecom/telefoonnummer-meenemen", "ACM ConsuWijzer")],
+        "Sim only overstappen met nummerbehoud: stappenplan", "Sim only overstappen en je 06-nummer houden: vraag nummerbehoud aan bij je nieuwe provider, tot 120 dagen voor je einddatum. Zeg je oude abonnement niet zelf op.")
+
     # ---------- sitemap, robots, llms.txt ----------
     with open(os.path.join(OUT, "sitemap.xml"), "w") as f:
         f.write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
@@ -771,6 +942,13 @@ u.textContent='Zonder verzekering betaal je '+eur(zonder)+'. Met dit pakket beta
 - [Aanvullende verzekering 2027]({BASE}/aanvullende-verzekering-2027/): wanneer een aanvullende verzekering loont, met rekenhulp; premies bekend uiterlijk 19 november.
 - [Tandartsverzekering 2027]({BASE}/tandartsverzekering-2027/): bij 102 van de 110 tandpakketten is de premie hoger dan de vergoeding bij gemiddelde kosten; rekenhulp.
 - [Energiecontract opzeggen]({BASE}/energiecontract-opzeggen/): opzegtermijn maximaal 30 dagen, geen opzegvergoeding bij variabel; vergoeding bij vast hangt af van prijsverschil.
+- [Zorgverzekering overstappen]({BASE}/zorgverzekering-overstappen/): stappenplan; opzeggen vóór 31 december 2026, nieuwe polis uiterlijk 31 januari 2027.
+- [Fysiotherapie vergoeding 2027]({BASE}/fysiotherapie-vergoeding-2027/): volwassenen uit de basis alleen bij chronische aandoening vanaf de 21e behandeling; kinderen 9 (+9) behandelingen.
+- [Reisverzekering doorlopend of kortlopend]({BASE}/reisverzekering-doorlopend-of-kortlopend/): één reis per jaar vaak kortlopend; vanaf ±16–21 reisdagen per jaar doorlopend.
+- [Goedkoop vliegen]({BASE}/goedkoop-vliegen/): 8 tips, o.a. flexibele datum, andere vliegvelden en totaalprijs met bagage.
+- [Refurbished telefoon kopen]({BASE}/refurbished-telefoon-kopen/): garantie 6 maanden tot 3 jaar, wettelijke garantie, 14 dagen bedenktijd, accu en updates.
+- [Autoverzekering besparen]({BASE}/autoverzekering-besparen/): dekking per leeftijd auto (allrisk tot 6 jaar, beperkt casco 6–10, WA 10+).
+- [Sim only overstappen]({BASE}/sim-only-overstappen/): nummerbehoud via nieuwe provider, tot 120 dagen voor einddatum; niet zelf opzeggen.
 - [Internet en mobiel]({BASE}/internet-en-mobiel/): na de contractperiode maximaal 1 maand opzegtermijn; 79% van de internetabonnementen loopt al door na de contractperiode.
 - [Alles op orde](https://allesoporde.netlify.app/): gratis overzicht van je vaste lasten en inkomsten.
 - [Bonnenboek](https://bonnenboek.netlify.app/): gratis app om kassabonnen te scannen en boodschappenuitgaven bij te houden, samen met je huishouden.

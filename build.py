@@ -241,8 +241,8 @@ def partner(url, titel, tekst, knop, artikelen=()):
 NAV = '<nav class="top" aria-label="Hoofdmenu"><a href="/zorgverzekering-2027/">Zorg</a><a href="/energie-2027/">Energie</a><a href="/internet-en-mobiel/">Internet</a><a href="/auto-en-tanken/">Auto</a><span class="nbr" aria-hidden="true"></span><a href="/vakantie-en-vliegen/">Vakantie</a><a href="/goedkoop-vliegen/">Vliegen</a><a href="/salderen-2027/">Saldering</a></nav>'
 FOOT = f"""<footer class="foot"><div class="wrap">
 <p class="free">Bespaarvriend helpt je besparen op je vaste lasten. Gratis en onafhankelijk uitgelegd. Wij geven geen persoonlijk financieel advies.</p>
-<p class="fkop">Zorg</p><nav aria-label="Zorg"><a href="/zorgverzekering-2027/">Zorgverzekering 2027</a><a href="/zorgverzekering-overstappen/">Overstappen</a><a href="/aanvullende-verzekering-2027/">Aanvullende verzekering</a><a href="/tandartsverzekering-2027/">Tandartsverzekering</a><a href="/fysiotherapie-vergoeding-2027/">Fysiotherapie</a><a href="/eigen-risico-2027/">Eigen risico 2027</a><a href="/zorgtoeslag-2027/">Zorgtoeslag 2027</a><a href="/administratie/">Vaste lasten op orde</a></nav>
-<p class="fkop">Energie, internet en mobiel</p><nav aria-label="Energie, internet en mobiel"><a href="/energie-2027/">Energie 2027</a><a href="/salderen-2027/">Einde salderen</a><a href="/energiecontract-opzeggen/">Contract opzeggen</a><a href="/internet-en-mobiel/">Internet en mobiel</a><a href="/sim-only-overstappen/">Sim only overstappen</a><a href="/refurbished-telefoon-kopen/">Refurbished telefoon</a><a href="/boodschappen/">Boodschappen</a></nav>
+<p class="fkop">Zorg</p><nav aria-label="Zorg"><a href="/zorgverzekering-2027/">Zorgverzekering 2027</a><a href="/zorgverzekering-overstappen/">Overstappen</a><a href="/aanvullende-verzekering-2027/">Aanvullende verzekering</a><a href="/tandartsverzekering-2027/">Tandartsverzekering</a><a href="/fysiotherapie-vergoeding-2027/">Fysiotherapie</a><a href="/eigen-risico-2027/">Eigen risico 2027</a><a href="/zorgtoeslag-2027/">Zorgtoeslag 2027</a><a href="/huurtoeslag-2027/">Huurtoeslag 2027</a><a href="/kindgebonden-budget-2027/">Kindgebonden budget 2027</a><a href="/administratie/">Vaste lasten op orde</a></nav>
+<p class="fkop">Energie, internet en mobiel</p><nav aria-label="Energie, internet en mobiel"><a href="/energie-2027/">Energie 2027</a><a href="/salderen-2027/">Einde salderen</a><a href="/energierekening-verlagen/">Energierekening verlagen</a><a href="/energiecontract-opzeggen/">Contract opzeggen</a><a href="/internet-en-mobiel/">Internet en mobiel</a><a href="/sim-only-overstappen/">Sim only overstappen</a><a href="/refurbished-telefoon-kopen/">Refurbished telefoon</a><a href="/boodschappen/">Boodschappen</a></nav>
 <p class="fkop">Reizen en auto</p><nav aria-label="Reizen en auto"><a href="/vakantie-en-vliegen/">Vakantie en vliegen</a><a href="/goedkoop-vliegen/">Goedkoop vliegen</a><a href="/reisverzekering-doorlopend-of-kortlopend/">Reisverzekering</a><a href="/auto-en-tanken/">Auto en tanken</a><a href="/autoverzekering-besparen/">Autoverzekering</a></nav>
 <p class="fkop">Meer gratis hulpmiddelen van Erik</p><nav aria-label="Meer gratis hulpmiddelen van Erik"><a href="https://boodschappenvergelijk.nl/">Boodschappenvergelijk</a><a href="https://goedkopertanken.netlify.app/">Tankwijzer</a><a href="https://vluchtwijzer.netlify.app/">Vluchtwijzer</a><a href="https://vakantietoppers.netlify.app/">Vakantiewijzer</a><a href="https://salderingscheck-nl.netlify.app/">Salderingscheck</a><a href="https://euroroadrules.eu/">EuroRoadRules</a><a href="https://foutcodezoeker.nl/">Foutcodezoeker</a><a href="https://bonnenboek.netlify.app/">Bonnenboek</a><a href="https://allesoporde.netlify.app/">Alles op orde</a></nav>
 <p class="fkop">Over</p><nav aria-label="Over"><a href="/over/">Over Bespaarvriend</a><a href="/contact/">Contact</a><a href="/privacy/">Privacy</a><a href="/gebruiksvoorwaarden/">Gebruiksvoorwaarden</a><a href="/sitemap.xml">Sitemap</a></nav>
@@ -1088,6 +1088,74 @@ u.textContent='Zonder verzekering betaal je '+eur(zonder)+'. Met dit pakket beta
         "Besparen op je autoverzekering: WA, beperkt casco of allrisk?", "Bespaar op je autoverzekering: tot 6 jaar allrisk, 6 tot 10 jaar beperkt casco, ouder vaak alleen WA. Plus 5 tips: eigen risico, kilometers en overbodige extra’s.")
 
     sim = partner(awin(8311, "bespaarvriend-simonly", "https://www.unitedconsumers.com/mobiel"), "Sim only met een duidelijke maandprijs", "Sim only zonder kleine lettertjes: één vaste prijs per maand, maandelijks opzegbaar.", "Bekijk sim only")
+    artikel("/huurtoeslag-2027/", "Huurtoeslag 2027", "sleutel",
+        "Huurtoeslag 2027: wat verandert er en heb jij recht?",
+        "Sinds 2026 is je huur nooit meer te hoog om huurtoeslag te krijgen. In 2027 verandert er weer iets: ook het vermogen van je toeslagpartner telt mee. Zo zie je snel of je recht hebt.",
+        [("Geen", "maximale huur meer als voorwaarde (sinds 2026)"), ("€ 932,93", "huur waarover in 2026 toeslag wordt berekend"), ("1 jan 2027", "vermogen toeslagpartner telt mee"), ("Gratis", "aanvragen via toeslagen.nl")],
+        '<h2>Wat verandert er in 2027?</h2><ul>'
+        '<li><b>Vermogen van je partner telt mee.</b> Vanaf 1 januari 2027 kijkt Dienst Toeslagen ook naar het vermogen van je toeslagpartner. Hebben jullie samen te veel spaargeld of beleggingen, dan vervalt het recht.</li>'
+        '<li><b>De huur is nooit meer te hoog.</b> Sinds 2026 mag je ook bij een hogere huur huurtoeslag aanvragen, zolang je inkomen en vermogen niet te hoog zijn en je in een zelfstandige woning woont. Over het deel boven de huurgrens krijg je geen toeslag.</li>'
+        '<li><b>Nieuwe bedragen.</b> De precieze huurgrens en inkomensgrenzen voor 2027 maakt de overheid eind van het jaar bekend. In 2026 werd de toeslag berekend tot een huur van € 932,93; voor jongeren van 18 tot en met 20 jaar tot € 498,20.</li></ul>'
+        '<h2>Zo regel je het in 4 stappen</h2><ol class="stappen">'
+        '<li><b>Check je vermogen op 1 januari.</b> Heb je op 1 januari te veel vermogen, dan heb je het hele jaar geen recht. Ook niet als het later in het jaar minder wordt.</li>'
+        '<li><b>Doe een proefberekening</b> op toeslagen.nl. Daar vul je je huur, inkomen en huishouden in.</li>'
+        '<li><b>Vraag aan via Mijn toeslagen.</b> Dat kan met DigiD. Je kunt tot 1 september van het jaar erna aanvragen, maar hoe eerder, hoe sneller je geld krijgt.</li>'
+        '<li><b>Geef wijzigingen direct door.</b> Ander inkomen, een nieuwe huisgenoot of een huurverhoging? Geef het snel door, dan hoef je achteraf niets terug te betalen.</li></ol>'
+        '<div class="let"><b>Tip:</b> verdien je net te veel? Kijk dan ook of je recht hebt op <a href="/zorgtoeslag-2027/">zorgtoeslag</a> of <a href="/kindgebonden-budget-2027/">kindgebonden budget</a>. Die hebben andere grenzen.</div>',
+
+        partner(awin(8520, "bespaarvriend-huurtoeslag", "https://www.gaslicht.com/energievergelijken"), "Ook als huurder besparen op energie", "Ook als huurder kies je zelf. Vergelijk energiecontracten met de tarieven voor 2027.", "Vergelijk energiecontracten", [("3 jaar vast", awin(8520, "bespaarvriend-huurtoeslag", "https://www.gaslicht.com/energievergelijken/energiecontract-3-jaar-vast")), ("Dynamisch contract", awin(8520, "bespaarvriend-huurtoeslag", "https://www.gaslicht.com/energievergelijken/dynamisch-energiecontract-vergelijken"))]),
+        [("/zorgtoeslag-2027/", "Zorgtoeslag 2027"), ("/kindgebonden-budget-2027/", "Kindgebonden budget 2027"), ("/administratie/", "Vaste lasten op orde")],
+        [("Is mijn huur te hoog voor huurtoeslag?", "Nee, sinds 2026 niet meer. Je kunt huurtoeslag krijgen bij elke huur, zolang je inkomen en vermogen niet te hoog zijn en je in een zelfstandige woning woont. Over het deel boven de huurgrens krijg je geen toeslag."),
+         ("Telt het vermogen van mijn partner mee?", "Vanaf 1 januari 2027 wel. Dan kijkt Dienst Toeslagen naar het vermogen van jou en je toeslagpartner samen."),
+         ("Wanneer zijn de bedragen voor 2027 bekend?", "De overheid maakt de huurgrens en inkomensgrenzen voor het nieuwe jaar meestal eind november of in december bekend. Wij werken deze pagina dan bij."),
+         ("Waar vraag ik huurtoeslag aan?", "Via Mijn toeslagen op toeslagen.nl, met je DigiD. Aanvragen is gratis.")],
+        [("https://www.rijksoverheid.nl/actueel/nieuws/2025/11/24/meer-mensen-in-aanmerking-huurtoeslag", "Rijksoverheid"), ("https://www.belastingdienst.nl/wps/wcm/connect/nl/huurtoeslag/content/maximaal-vermogen-huurtoeslag", "Belastingdienst (vermogen)"), ("https://aedes.nl/huurbeleid-en-betaalbaarheid/huurbeleid-2027", "Aedes (huurbeleid 2027)")],
+        "Huurtoeslag 2027: wat verandert er en heb jij recht?", "Huurtoeslag 2027: je huur is nooit meer te hoog, en vanaf 1 januari telt ook het vermogen van je partner mee. Zo check je in 4 stappen of je recht hebt.")
+    artikel("/kindgebonden-budget-2027/", "Kindgebonden budget 2027", "toeslag",
+        "Kindgebonden budget 2027: minder bij een inkomen boven € 60.000",
+        "Verdien je samen meer dan zo’n € 60.000? Dan krijg je vanaf 2027 minder kindgebonden budget, of helemaal niets meer. Ook de vermogensgrens gaat flink omlaag. Check het vóór 8 december.",
+        [("12,35%", "afbouw boven het tweede inkomenspunt"), ("€ 61.917", "dat inkomenspunt in 2027"), ("€ 119.122", "vermogensgrens zonder partner"), ("8 dec", "uiterlijk wijzigingen doorgeven")],
+        '<h2>Wat verandert er in 2027?</h2><ul>'
+        '<li><b>Snellere afbouw bij hogere inkomens.</b> Boven een inkomen van € 61.917 gaat er 12,35% van elke extra euro van je kindgebonden budget af, tot het op is. Gezinnen die het raakt, krijgen gemiddeld zo’n € 670 per jaar minder.</li>'
+        '<li><b>Lagere vermogensgrens.</b> Op 1 januari 2027 mag je zonder toeslagpartner maximaal € 119.122 vermogen hebben, met toeslagpartner € 158.748. In 2026 was dat nog € 146.011 en € 184.633.</li>'
+        '<li><b>Kinderbijslag iets hoger.</b> Daar staat tegenover dat de kinderbijslag voor iedereen licht omhoog gaat.</li></ul>'
+        '<h2>Zo voorkom je dat je moet terugbetalen</h2><ol class="stappen">'
+        '<li><b>Tel je vermogen op 1 januari 2027.</b> Spaargeld, beleggingen en een tweede huis tellen mee, min je schulden.</li>'
+        '<li><b>Schat je inkomen voor 2027.</b> Krijg je loonsverhoging of ga je meer werken? Dan kan je budget lager uitvallen.</li>'
+        '<li><b>Pas het aan in Mijn toeslagen</b> op toeslagen.nl, uiterlijk 8 december 2026. Dan klopt je voorschot vanaf januari.</li>'
+        '<li><b>Controleer je beschikking</b> die je eind december krijgt. Klopt er iets niet, geef het dan meteen door.</li></ol>'
+        '<div class="let"><b>Let op:</b> kindgebonden budget hoef je niet apart aan te vragen als je kinderbijslag krijgt. Het wordt automatisch berekend, dus je gegevens moeten wel kloppen.</div>',
+
+        partner(awin(107738, "bespaarvriend-kgb", "https://www.poliswijzer.nl/zorgverzekering"), "Zorgverzekering voor het gezin vergelijken", "Kinderen tot 18 zijn gratis meeverzekerd. Overstappen kan nog tot 31 december.", "Vergelijk zorgverzekeringen"),
+        [("/zorgtoeslag-2027/", "Zorgtoeslag 2027"), ("/huurtoeslag-2027/", "Huurtoeslag 2027"), ("/administratie/", "Vaste lasten op orde")],
+        [("Krijg ik in 2027 minder kindgebonden budget?", "Als jullie inkomen boven ongeveer € 61.917 ligt wel. Daarboven gaat 12,35% van elke extra euro van het budget af, tot het op is."),
+         ("Wat is de vermogensgrens voor 2027?", "€ 119.122 zonder toeslagpartner en € 158.748 met toeslagpartner, gemeten op 1 januari 2027."),
+         ("Moet ik kindgebonden budget aanvragen?", "Meestal niet. Krijg je kinderbijslag, dan berekent Dienst Toeslagen het automatisch. Je moet wel je inkomen en vermogen goed doorgeven."),
+         ("Wat als ik te veel vermogen heb?", "Dan heb je dat hele jaar geen recht. Geef het uiterlijk 8 december 2026 door in Mijn toeslagen, anders moet je het voorschot later terugbetalen.")],
+        [("https://www.rijksoverheid.nl/actueel/nieuws/2025/10/06/internetconsultatie-minder-kindgebonden-budget-voor-hogere-inkomens-in-2027", "Rijksoverheid"), ("https://www.eerstekamer.nl/nonav/behandeling/20260917/nota_van_wijziging_tweede_nota_van/document3/f=/vn0zmz4cg0yw.pdf", "Eerste Kamer (nota van wijziging)"), ("https://www.homefinance.nl/nieuws-blog/2026/deze-ouders-verliezen-in-januari-een-toeslag-waar-ze-jaren-recht-op-hadden-301972/", "HomeFinance")],
+        "Kindgebonden budget 2027: minder bij inkomen boven € 60.000", "Kindgebonden budget 2027: boven € 61.917 inkomen gaat 12,35% af, en de vermogensgrens daalt naar € 119.122. Check het vóór 8 december en voorkom terugbetalen.")
+    artikel("/energierekening-verlagen/", "Energierekening verlagen", "energie",
+        "Energierekening verlagen in 2027: 8 tips die echt schelen",
+        "In 2027 stijgt je energierekening met gemiddeld zo’n € 149, vooral door hogere netbeheerkosten. Met deze tips haal je dat er ruim uit, zonder in de kou te zitten.",
+        [("+ € 149", "gemiddeld duurder in 2027"), ("€ 0,7457", "energiebelasting gas per m³"), ("€ 0,1065", "energiebelasting stroom per kWh"), ("€ 628,69", "vaste korting op je rekening")],
+        '<h2>8 tips om minder te betalen</h2><ol class="stappen">'
+        '<li><b>Vergelijk je contract.</b> Loopt je contract af of heb je een variabel tarief? Overstappen is vaak de grootste besparing in één keer.</li>'
+        '<li><b>Zet de verwarming een graad lager.</b> Eén graad lager scheelt ongeveer 6% gas. Een slimme thermostaat helpt je dat vol te houden.</li>'
+        '<li><b>Korter douchen.</b> Een paar minuten minder per dag scheelt al snel tientallen euro’s gas per jaar. Een waterbesparende douchekop helpt ook.</li>'
+        '<li><b>Dicht de kieren.</b> Tochtstrips en een tochtrol onder de deur zijn goedkoop en houden de warmte binnen.</li>'
+        '<li><b>Radiatorfolie achter de verwarming</b> aan een buitenmuur kaatst de warmte terug de kamer in.</li>'
+        '<li><b>Sluipverbruik eruit.</b> Apparaten op stand-by verbruiken het hele jaar door stroom. Een stekkerdoos met schakelaar lost dat op.</li>'
+        '<li><b>Wassen op 30 graden</b> en de droger laten staan als het kan. Dat scheelt veel stroom.</li>'
+        '<li><b>Pas je termijnbedrag aan.</b> Te hoog betaal je voor niets vooruit, te laag geeft een naheffing. Kijk elk kwartaal even in de app van je leverancier.</li></ol>'
+        '<div class="let"><b>Zonnepanelen?</b> Vanaf 1 januari 2027 stopt het salderen. Lees <a href="/salderen-2027/">wat het einde van salderen voor jou betekent</a>.</div>',
+        widget("energie", "Energie vergelijken") + partner(awin(8520, "bespaarvriend-energierekening", "https://www.gaslicht.com/energievergelijken"), "Energiecontracten vergelijken", "Vergelijk contracten van alle grote leveranciers, met de tarieven voor 2027.", "Vergelijk energiecontracten", [("3 jaar vast", awin(8520, "bespaarvriend-energierekening", "https://www.gaslicht.com/energievergelijken/energiecontract-3-jaar-vast")), ("Dynamisch contract", awin(8520, "bespaarvriend-energierekening", "https://www.gaslicht.com/energievergelijken/dynamisch-energiecontract-vergelijken"))]),
+        [("/energie-2027/", "Energie 2027: alles wat verandert"), ("/salderen-2027/", "Einde salderen 2027"), ("/energiecontract-opzeggen/", "Energiecontract opzeggen")],
+        [("Waarom wordt mijn energierekening duurder in 2027?", "Vooral door hogere netbeheerkosten. De energiebelasting op gas stijgt iets, die op stroom daalt iets. Per saldo betaalt een gemiddeld huishouden ongeveer € 149 per jaar meer."),
+         ("Wat is de vermindering energiebelasting?", "Een vaste korting op je energierekening van € 628,69 in 2027 (inclusief btw). Je leverancier trekt die automatisch af."),
+         ("Wat levert één graad lager op?", "Ongeveer 6% minder gas voor verwarming. Bij een gemiddeld verbruik is dat al snel tientallen euro’s per jaar."),
+         ("Is overstappen de moeite waard?", "Vaak wel, vooral als je contract afloopt of je een duur variabel tarief hebt. Vergelijk op de tarieven voor 2027 en let bij zonnepanelen op de terugleververgoeding.")],
+        [("https://www.keuze.nl/nieuws/energiebelasting-2027-stijgt-toch", "Keuze.nl"), ("https://www.rijksoverheid.nl/onderwerpen/energie-thuis/energierekening-van-huishoudens", "Rijksoverheid"), ("https://www.milieucentraal.nl/energie-besparen/", "Milieu Centraal")],
+        "Energierekening verlagen in 2027: 8 tips die echt schelen", "Je energierekening stijgt in 2027 met zo’n € 149. Met deze 8 tips betaal je minder: contract vergelijken, een graad lager, kieren dichten en sluipverbruik eruit.")
     artikel("/salderen-2027/", "Einde salderen 2027", "zon",
         "Einde salderen in 2027: wat betekent het voor jouw zonnepanelen?",
         "Op 1 januari 2027 stopt de salderingsregeling in één keer. Stroom die je teruglevert, mag je dan niet meer wegstrepen tegen je verbruik. Zo zie je wat het jou kost en wat je eraan kunt doen.",
@@ -1143,6 +1211,9 @@ u.textContent='Zonder verzekering betaal je '+eur(zonder)+'. Met dit pakket beta
 - [Zorgverzekering 2027]({BASE}/zorgverzekering-2027/): gemiddelde premie € 173,13 per maand, laagste premie € 148,40, hoogste € 202,50, verschil € 649 per jaar; overstappen vóór 31 december 2026.
 - [Eigen risico 2027]({BASE}/eigen-risico-2027/): verplicht eigen risico € 400 (2026: € 385), met rekenhulp vrijwillig eigen risico.
 - [Zorgtoeslag 2027]({BASE}/zorgtoeslag-2027/): maximaal € 140 per maand (alleenstaand), inkomensgrens ± € 42.950, vermogensgrens € 119.122.
+- [Huurtoeslag 2027]({BASE}/huurtoeslag-2027/): sinds 2026 geen maximale huur meer als voorwaarde; vanaf 1 januari 2027 telt het vermogen van de toeslagpartner mee.
+- [Kindgebonden budget 2027]({BASE}/kindgebonden-budget-2027/): afbouw 12,35% boven € 61.917 inkomen; vermogensgrens € 119.122 (zonder partner) en € 158.748 (met partner); wijzigingen doorgeven vóór 8 december 2026.
+- [Energierekening verlagen]({BASE}/energierekening-verlagen/): energierekening 2027 gemiddeld € 149 duurder; energiebelasting gas € 0,7457/m³, stroom € 0,1065/kWh, vermindering € 628,69; 8 bespaartips.
 - [Einde salderen 2027]({BASE}/salderen-2027/): salderen stopt in één keer op 1 januari 2027; terugleververgoeding minimaal 50% van de kale leveringsprijs tot 2030; tips en rekenhulp.
 - [Energie 2027]({BASE}/energie-2027/): salderen stopt 1 januari 2027; energiebelasting gas € 0,7457/m³, stroom € 0,1065/kWh, vermindering € 628,69; netbeheer gemiddeld + € 141.
 - [Aanvullende verzekering 2027]({BASE}/aanvullende-verzekering-2027/): wanneer een aanvullende verzekering loont, met rekenhulp; premies 2027 bekend sinds 19 november 2026.

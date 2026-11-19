@@ -6,7 +6,7 @@ import html, json, os, shutil, datetime
 BASE = "https://bespaarvriend.nl"
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "public")
 VANDAAG = datetime.date.today().isoformat()
-BIJGEWERKT = "18 november 2026"
+BIJGEWERKT = "19 november 2026"
 esc = html.escape
 
 CSS = """
@@ -179,7 +179,7 @@ def partner(url, titel, tekst, knop, artikelen=()):
 NAV = '<nav class="top" aria-label="Hoofdmenu"><a href="/zorgverzekering-2027/">Zorg</a><a href="/energie-2027/">Energie</a><a href="/internet-en-mobiel/">Internet</a><a href="/vakantie-en-vliegen/">Vakantie</a><a href="/auto-en-tanken/" class="wide">Auto</a></nav>'
 FOOT = f"""<footer><div class="wrap">
 <p><b>Bespaarvriend</b> helpt je eenvoudig besparen op je vaste lasten. Onafhankelijk uitgelegd, zonder verkooppraatjes. Wij geven geen persoonlijk financieel advies.</p>
-<nav aria-label="Over"><a href="/zorgverzekering-2027/">Zorgverzekering 2027</a><a href="/eigen-risico-2027/">Eigen risico 2027</a><a href="/zorgtoeslag-2027/">Zorgtoeslag 2027</a><a href="/energie-2027/">Energie 2027</a><a href="/internet-en-mobiel/">Internet en mobiel</a><a href="/vakantie-en-vliegen/">Vakantie en vliegen</a><a href="/auto-en-tanken/">Auto en tanken</a><a href="/boodschappen/">Boodschappen</a><a href="/administratie/">Administratie</a><a href="https://allesoporde.netlify.app/">Alles op orde</a><a href="https://bonnenboek.netlify.app/">Bonnenboek</a><a href="https://salderingscheck-nl.netlify.app/">Salderingscheck</a><a href="https://goedkopertanken.netlify.app/">Tankwijzer</a><a href="https://vluchtwijzer.netlify.app/">Vluchtwijzer</a><a href="https://vakantietoppers.netlify.app/">Vakantiewijzer</a><a href="https://euroroadrules.eu/">EuroRoadRules</a><a href="https://foutcodezoeker.nl/">Foutcodezoeker</a><a href="https://boodschappenvergelijk.nl/">Boodschappen vergelijken</a><a href="/over/">Over Bespaarvriend</a><a href="/privacy/">Privacy</a><a href="/contact/">Contact</a></nav>
+<nav aria-label="Over"><a href="/zorgverzekering-2027/">Zorgverzekering 2027</a><a href="/eigen-risico-2027/">Eigen risico 2027</a><a href="/zorgtoeslag-2027/">Zorgtoeslag 2027</a><a href="/aanvullende-verzekering-2027/">Aanvullende verzekering 2027</a><a href="/tandartsverzekering-2027/">Tandartsverzekering 2027</a><a href="/energie-2027/">Energie 2027</a><a href="/energiecontract-opzeggen/">Energiecontract opzeggen</a><a href="/internet-en-mobiel/">Internet en mobiel</a><a href="/vakantie-en-vliegen/">Vakantie en vliegen</a><a href="/auto-en-tanken/">Auto en tanken</a><a href="/boodschappen/">Boodschappen</a><a href="/administratie/">Administratie</a><a href="https://allesoporde.netlify.app/">Alles op orde</a><a href="https://bonnenboek.netlify.app/">Bonnenboek</a><a href="https://salderingscheck-nl.netlify.app/">Salderingscheck</a><a href="https://goedkopertanken.netlify.app/">Tankwijzer</a><a href="https://vluchtwijzer.netlify.app/">Vluchtwijzer</a><a href="https://vakantietoppers.netlify.app/">Vakantiewijzer</a><a href="https://euroroadrules.eu/">EuroRoadRules</a><a href="https://foutcodezoeker.nl/">Foutcodezoeker</a><a href="https://boodschappenvergelijk.nl/">Boodschappen vergelijken</a><a href="/over/">Over Bespaarvriend</a><a href="/privacy/">Privacy</a><a href="/contact/">Contact</a></nav>
 <p>© {datetime.date.today().year} Bespaarvriend – Erik Beltman. Bijgewerkt op {BIJGEWERKT}.</p></div></footer>"""
 
 
@@ -240,6 +240,16 @@ ZORG_VERGELIJKER = partner(awin(107738, "bespaarvriend-zorg", "https://www.polis
     "Vergelijk de premies en vergoedingen van alle zorgverzekeringen in één overzicht. Gratis en zonder verplichtingen.",
     "Vergelijk zorgverzekeringen")
 
+# Tegels bovenaan de startpagina: direct naar goedgekeurde partners (geen namen van adverteerders).
+DIRECT = [
+    (awin(107738, "bespaarvriend-tegel", "https://www.poliswijzer.nl/zorgverzekering"), "zorg", "Zorgverzekering vergelijken", "Overstappen kan tot 31 december"),
+    (awin(8520, "bespaarvriend-tegel", "https://www.gaslicht.com/energievergelijken"), "energie", "Energiecontract vergelijken", "Ook met tarieven voor 2027"),
+    (awin(8311, "bespaarvriend-tegel", "https://www.unitedconsumers.com/internet-en-tv"), "internet", "Internet en tv met korting", "Via een collectief"),
+    (awin(8311, "bespaarvriend-tegel", "https://www.unitedconsumers.com/mobiel"), "mobiel", "Sim only", "Vaste prijs, maandelijks opzegbaar"),
+    (awin(63484, "bespaarvriend-tegel", "https://www.vliegwinkel.nl/"), "vlucht", "Vliegtickets", "Meer dan 800 maatschappijen"),
+    (awin(78144, "bespaarvriend-tegel", "https://www.hansemerkur.nl/reisverzekeringen"), "koffer", "Reisverzekering", "Eén reis of het hele jaar"),
+]
+
 def bouw():
     if os.path.isdir(OUT):
         shutil.rmtree(OUT)
@@ -259,6 +269,9 @@ def bouw():
             '<ol class="stapjes" aria-label="Zo werkt het"><li><span class="n">1</span>Kies</li><li><span class="n">2</span>Vergelijk</li><li><span class="n">3</span>Bespaar</li></ol>'
             f'<div class="knoppen"><a class="btn" href="/zorgverzekering-2027/">Bespaar op je zorgpremie{ICON["pijl"]}</a><a class="btn-line" href="/energie-2027/">Energie 2027</a></div>'
             f'<ul class="vertrouwen"><li>{ICON["check"]}Altijd met bronnen</li><li>{ICON["check"]}Geen cookies of trackers</li><li>{ICON["check"]}Rekenhulpen in je eigen browser</li></ul></section>'
+            '<h2>Direct vergelijken</h2><div class="tegels direct">'
+            + "".join(f'<a href="{u}" rel="sponsored noopener" target="_blank"><span class="ic">{ICON[ic]}</span>{pijl}<b>{n}</b><small>{t}</small></a>' for u, ic, n, t in DIRECT)
+            + '</div><p class="bron" style="margin-top:-6px">Advertentie: deze tegels gaan naar partners. Sluit je iets af, dan krijgt Bespaarvriend een kleine vergoeding. Jij betaalt niets extra.</p>'
             f'<div class="let"><span class="icl">{ICON["klok"]}</span><b>Overstappen kan nog tot 31 december.</b> Tussen de laagste en hoogste premie voor de basisverzekering zit in 2027 € 649 per jaar, voor dezelfde basiszorg. <a href="/zorgverzekering-2027/">Zo stap je over →</a></div>'
             '<h2>Waar wil je op besparen?</h2><div class="tegels">'
             f'<a href="/zorgverzekering-2027/"><span class="ic">{ICON["zorg"]}</span>{pijl}<b>Zorgverzekering</b><small>Premies 2027 en overstappen</small></a>'
@@ -315,7 +328,7 @@ def bouw():
             '<tr><td>Voor wie</td><td>Wie geen vaste voorkeur heeft voor een ziekenhuis of therapeut</td><td>Wie zeker een eigen zorgverlener wil houden</td></tr></table>'
             '<h2>Zorgverzekeringen vergelijken</h2>' + ZORG_VERGELIJKER
             + partner(awin(8311, "bespaarvriend-zorg", "https://www.unitedconsumers.com/zorgverzekering"), "Zorgverzekering met collectieve korting", "Via een groot collectief krijg je korting op de premie, bij bekende verzekeraars. Handig als je al weet welke polis je wilt.", "Bekijk de collectieve korting")
-            + '<h2>Meer besparen op je zorgkosten</h2><ul class="links"><li><a href="/eigen-risico-2027/">Eigen risico 2027: loont een vrijwillig eigen risico?</a></li><li><a href="/zorgtoeslag-2027/">Zorgtoeslag 2027: heb jij recht?</a></li></ul>'
+            + '<h2>Meer besparen op je zorgkosten</h2><ul class="links"><li><a href="/aanvullende-verzekering-2027/">Aanvullende verzekering 2027: nodig of niet?</a></li><li><a href="/tandartsverzekering-2027/">Tandartsverzekering 2027: loont het nog?</a></li><li><a href="/eigen-risico-2027/">Eigen risico 2027: loont een vrijwillig eigen risico?</a></li><li><a href="/zorgtoeslag-2027/">Zorgtoeslag 2027: heb jij recht?</a></li></ul>'
             + faq_html(faq_z) + BRONNEN_ZORG)
     page("/zorgverzekering-2027/", "Zorgverzekering 2027: premies, verschillen en overstappen", "De zorgpremie 2027 is gemiddeld € 173,13 per maand. Laagste premie € 148,40, hoogste € 202,50: € 649 per jaar verschil. Zo stap je vóór 31 december over.",
          body, [cld, faq_ld(faq_z)], prio="0.9")
@@ -618,6 +631,129 @@ else u.textContent='Je komt waarschijnlijk in aanmerking. Hoe lager je inkomen, 
     page("/bedankt/", "Bedankt | Bespaarvriend", "Je bericht is verstuurd.", '<h1>Bedankt!</h1><p class="lead">Je bericht is verstuurd. Heb je je e-mailadres ingevuld, dan krijg je antwoord.</p><p><a class="btn" href="/">Terug naar home</a></p>', noindex=True)
     page("/404.html", "Pagina niet gevonden | Bespaarvriend", "Deze pagina bestaat niet.", '<h1>Pagina niet gevonden</h1><p>Deze pagina bestaat niet (meer). <a href="/">Naar de homepage</a></p>', noindex=True)
 
+    # ---------- Aanvullende verzekering 2027 ----------
+    ch, cld = crumbs("Aanvullende verzekering 2027", "/aanvullende-verzekering-2027/")
+    faq_a = [("Is een aanvullende verzekering verplicht?", "Nee. Alleen de basisverzekering is verplicht. Een aanvullende verzekering kies je zelf, voor zorg die niet of maar deels in het basispakket zit, zoals fysiotherapie, tandarts of een bril."),
+             ("Wanneer zijn de premies van de aanvullende verzekering 2027 bekend?", "Zorgverzekeraars maken de premies van de aanvullende verzekeringen uiterlijk 19 november bekend, een week na de premies van de basisverzekering."),
+             ("Moet mijn aanvullende verzekering bij dezelfde verzekeraar als mijn basisverzekering?", "Meestal wel. Bij veel verzekeraars kun je een aanvullende verzekering alleen afsluiten in combinatie met hun eigen basisverzekering. Kijk dus naar de totaalprijs van basis plus aanvullend."),
+             ("Kan een verzekeraar mij weigeren voor een aanvullende verzekering?", "Voor de basisverzekering niet. Voor een aanvullende verzekering mag een verzekeraar soms een gezondheidsverklaring vragen of je weigeren, vooral bij uitgebreide pakketten."),
+             ("Tot wanneer kan ik overstappen?", "Zeg je huidige verzekering uiterlijk 31 december 2026 op. Je hebt daarna tot en met 31 januari 2027 om een nieuwe af te sluiten; die gaat in per 1 januari 2027.")]
+    reken_a = ('<div class="kaart reken" id="rekenhulp"><h2 style="margin-top:0">Rekenhulp: verdien je je aanvullende verzekering terug?</h2>'
+               '<label for="ap">Premie aanvullende verzekering per maand</label><input id="ap" type="number" inputmode="decimal" min="0" step="0.5" value="25">'
+               '<label for="ak">Wat kreeg je vorig jaar vergoed uit je aanvullende verzekering? (zie je jaaroverzicht)</label><input id="ak" type="number" inputmode="decimal" min="0" step="10" value="150">'
+               '<div class="uit" id="auit" role="status" aria-live="polite"></div>'
+               '<p class="bron">Je jaaroverzicht staat in de app of op de site van je zorgverzekeraar. Dit is een indicatie, geen advies.</p></div>'
+               """<script>
+(function(){var p=document.getElementById('ap'),k=document.getElementById('ak'),u=document.getElementById('auit');
+function n(x){return Math.max(0,parseFloat(String(x.value).replace(',','.'))||0)}
+function eur(x){return '€ '+Math.round(x).toLocaleString('nl-NL')}
+function r(){var jaar=n(p)*12,terug=n(k),s=terug-jaar;
+u.textContent='Je betaalt '+eur(jaar)+' per jaar aan premie. '+(s>=0?('Je kreeg '+eur(s)+' meer terug dan je betaalde: het pakket leverde je vorig jaar geld op.'):('Je betaalde '+eur(-s)+' meer dan je terugkreeg. Kijk of een kleiner pakket of geen aanvullende verzekering beter past.'))}
+p.addEventListener('input',r);k.addEventListener('input',r);r()})();
+</script>""")
+    body = (ch + f'<div class="paginakop"><span class="ic">{ICON["zorg"]}</span><h1>Aanvullende verzekering 2027: heb je het echt nodig?</h1></div>'
+            '<p class="lead">Ruim 80% van de Nederlanders heeft een aanvullende verzekering. Toch betalen veel mensen voor zorg die ze nooit gebruiken.</p>'
+            '<div class="let"><b>Premies 2027 bekend uiterlijk 19 november.</b> Daarna kun je basis en aanvullend samen vergelijken. Overstappen kan tot 31 december.</div>'
+            + reken_a +
+            '<h2>Wanneer is een aanvullende verzekering zinvol?</h2><ul class="links">'
+            '<li><b>Je gaat regelmatig naar de fysiotherapeut.</b> Eén behandeling kost al snel meer dan een maand premie.</li>'
+            '<li><b>Je kind krijgt een beugel.</b> Orthodontie voor kinderen zit niet in de basisverzekering.</li>'
+            '<li><b>Je verwacht een dure behandeling</b>, zoals een kroon of implantaat. Vraag dan eerst een begroting.</li></ul>'
+            '<h2>Wanneer kun je zonder?</h2><p>Ben je gezond, verwacht je weinig zorgkosten en heb je een buffer voor onverwachte rekeningen? Dan is een aanvullende verzekering vaak duurder dan wat je terugkrijgt. '
+            'Bij voorspelbare kosten, zoals een jaarlijkse tandartscontrole, is een pakket eigenlijk een manier van gespreid betalen: je krijgt een deel van je eigen premie terug.</p>'
+            '<h2>Zo kies je in 4 stappen</h2><ol class="stappen">'
+            '<li><b>Pak je jaaroverzicht erbij.</b> Wat kreeg je vorig jaar vergoed, en waarvoor?</li>'
+            '<li><b>Schrap wat je niet gebruikt.</b> Brillen, alternatieve zorg of extra fysio: alleen houden als je het echt nodig hebt.</li>'
+            '<li><b>Vergelijk de totaalprijs.</b> Basis plus aanvullend, want je kunt ze meestal niet los bij verschillende verzekeraars nemen.</li>'
+            '<li><b>Let op wachttijden en gezondheidsverklaringen</b> bij uitgebreide pakketten.</li></ol>'
+            + ZORG_VERGELIJKER +
+            '<h2>Meer over je zorgkosten</h2><ul class="links"><li><a href="/tandartsverzekering-2027/">Tandartsverzekering 2027: loont het nog?</a></li><li><a href="/zorgverzekering-2027/">Zorgverzekering 2027: premies en overstappen</a></li><li><a href="/eigen-risico-2027/">Eigen risico 2027</a></li><li><a href="/zorgtoeslag-2027/">Zorgtoeslag 2027</a></li></ul>'
+            + faq_html(faq_a) +
+            '<p class="bron">Bronnen: <a href="https://www.zorgwijzer.nl/zorgverzekering-2027/zoveel-duurder-wordt-je-zorgverzekering-in-2027-de-optelsom" rel="noopener">Zorgwijzer (aanvullende verzekering 2027)</a>, '
+            '<a href="https://www.rabobank.nl/particulieren/verzekering/zorgverzekering/tips-voor-je-zorgverzekering" rel="noopener">Rabobank (premies aanvullend uiterlijk 19 november)</a>, '
+            '<a href="https://www.overstappen.nl/nieuws/tandarts-3-procent-duurder-in-2027-102-van-de-110-tandpakketten-loont-met-deze-kosten-niet/" rel="noopener">Overstappen.nl</a>. '
+            f'Bijgewerkt op {BIJGEWERKT}.</p>')
+    page("/aanvullende-verzekering-2027/", "Aanvullende verzekering 2027: nodig of niet? Met rekenhulp", "Heb je een aanvullende zorgverzekering echt nodig in 2027? Reken uit of je je premie terugverdient, en lees wanneer je beter zonder kunt.",
+         body, [cld, faq_ld(faq_a)], prio="0.9")
+
+    # ---------- Tandartsverzekering 2027 ----------
+    ch, cld = crumbs("Tandartsverzekering 2027", "/tandartsverzekering-2027/")
+    faq_t = [("Zit de tandarts in de basisverzekering?", "Voor kinderen tot 18 jaar wordt de meeste tandartszorg vergoed, maar niet bijvoorbeeld orthodontie, kronen en bruggen. Voor volwassenen vergoedt de basisverzekering alleen enkele dingen, zoals chirurgische tandheelkunde, röntgenonderzoek en een uitneembaar kunstgebit. Controles en vullingen betaal je zelf of via een tandartsverzekering."),
+             ("Loont een tandartsverzekering in 2027?", "Bij een gezond gebit meestal niet. Uit onderzoek van Overstappen.nl blijkt dat bij 102 van de 110 tandpakketten de premie hoger is dan de vergoeding als je gemiddelde tandartskosten hebt (ongeveer € 175 per jaar)."),
+             ("Wordt de tandarts duurder in 2027?", "Ja. De tandartstarieven stijgen in 2027 met ongeveer 3%. De maximale vergoedingen van de meeste tandpakketten blijven gelijk."),
+             ("Wat als ik een grote behandeling verwacht?", "Vraag je tandarts om een begroting. Zet de verwachte kosten naast de premie, het vergoedingspercentage en de maximale vergoeding van het pakket. Let ook op wachttijden of een maximum in het eerste jaar.")]
+    reken_t = ('<div class="kaart reken" id="rekenhulp"><h2 style="margin-top:0">Rekenhulp: loont een tandartsverzekering voor jou?</h2>'
+               '<label for="tk">Wat betaal je per jaar aan de tandarts? (controles, vullingen, mondhygiënist)</label><input id="tk" type="number" inputmode="decimal" min="0" step="10" value="175">'
+               '<label for="tp">Premie van het tandpakket per maand</label><input id="tp" type="number" inputmode="decimal" min="0" step="0.5" value="15">'
+               '<label for="tv">Vergoedingspercentage</label><select id="tv"><option value="75">75%</option><option value="80">80%</option><option value="100">100%</option></select>'
+               '<label for="tm">Maximale vergoeding per jaar</label><select id="tm"><option value="250">€ 250</option><option value="500">€ 500</option><option value="750">€ 750</option><option value="1000">€ 1.000</option></select>'
+               '<div class="uit" id="tuit" role="status" aria-live="polite"></div>'
+               '<p class="bron">De premie en voorwaarden verschillen per verzekeraar. Dit is een indicatie, geen advies.</p></div>'
+               """<script>
+(function(){var k=document.getElementById('tk'),p=document.getElementById('tp'),v=document.getElementById('tv'),m=document.getElementById('tm'),u=document.getElementById('tuit');
+function n(x){return Math.max(0,parseFloat(String(x.value).replace(',','.'))||0)}
+function eur(x){return '€ '+Math.round(x).toLocaleString('nl-NL')}
+function r(){var kost=n(k),prem=n(p)*12,verg=Math.min(kost*(+v.value)/100,+m.value),met=prem+kost-verg,zonder=kost;
+u.textContent='Zonder verzekering betaal je '+eur(zonder)+'. Met dit pakket betaal je '+eur(met)+' (premie '+eur(prem)+' plus wat je zelf betaalt). '+(met<zonder?('Het pakket scheelt je ongeveer '+eur(zonder-met)+' per jaar.'):('Zonder pakket ben je ongeveer '+eur(met-zonder)+' per jaar goedkoper uit.'))}
+[k,p].forEach(function(e){e.addEventListener('input',r)});[v,m].forEach(function(e){e.addEventListener('change',r)});r()})();
+</script>""")
+    body = (ch + f'<div class="paginakop"><span class="ic">{ICON["zorg"]}</span><h1>Tandartsverzekering 2027: loont het nog?</h1></div>'
+            '<p class="lead">De tandarts wordt in 2027 ongeveer 3% duurder, maar de vergoedingen van de meeste tandpakketten blijven gelijk. Voor veel mensen kost een tandartsverzekering meer dan hij oplevert.</p>'
+            '<div class="kerncijfers"><div><b>102 van 110</b><small>tandpakketten: premie hoger dan vergoeding*</small></div><div><b>± € 175</b><small>gemiddelde tandartskosten per jaar</small></div>'
+            '<div><b>+ 3%</b><small>tandartstarieven 2027</small></div><div><b>31 dec</b><small>laatste dag overstappen</small></div></div>'
+            '<p class="bron">* Bij gemiddelde tandartskosten. Bron: Overstappen.nl, november 2026.</p>'
+            + reken_t +
+            '<h2>Wanneer is een tandartsverzekering wél zinvol?</h2><ul class="links">'
+            '<li>Je verwacht een <b>grote behandeling</b>, zoals een kroon, brug of implantaat. Vraag eerst een begroting aan je tandarts.</li>'
+            '<li>Je kind heeft <b>orthodontie</b> nodig. Die zit niet in de basisverzekering.</li>'
+            '<li>Je hebt een <b>gevoelig gebit</b> en elk jaar hoge kosten.</li></ul>'
+            '<h2>Wanneer kun je beter zonder?</h2><p>Ben je per jaar zo’n € 100 tot € 150 kwijt aan controles? Dan betaal je met een standaard tandpakket al snel evenveel of meer aan premie dan je terugkrijgt. '
+            'Zet het geld van de premie dan liever opzij voor de tandarts. Bij kinderen tot 18 jaar zit de meeste tandartszorg al in de basisverzekering.</p>'
+            '<h2>Waar let je op bij een tandpakket?</h2><ul class="links"><li><b>Vergoedingspercentage:</b> 75% of 100% van de kosten.</li><li><b>Maximale vergoeding</b> per jaar.</li><li><b>Welke behandelingen</b> vallen eronder: niet elk pakket vergoedt kronen en bruggen.</li><li><b>Wachttijd of maximum</b> in het eerste jaar.</li></ul>'
+            + ZORG_VERGELIJKER +
+            '<h2>Meer over je zorgkosten</h2><ul class="links"><li><a href="/aanvullende-verzekering-2027/">Aanvullende verzekering 2027: nodig of niet?</a></li><li><a href="/zorgverzekering-2027/">Zorgverzekering 2027: premies en overstappen</a></li><li><a href="/eigen-risico-2027/">Eigen risico 2027</a></li></ul>'
+            + faq_html(faq_t) +
+            '<p class="bron">Bronnen: <a href="https://www.overstappen.nl/nieuws/tandarts-3-procent-duurder-in-2027-102-van-de-110-tandpakketten-loont-met-deze-kosten-niet/" rel="noopener">Overstappen.nl (tandpakketten 2027)</a>, '
+            '<a href="https://www.consumentenbond.nl/zorgverzekering/vergoedingen/tandarts" rel="noopener">Consumentenbond (tandarts in de basisverzekering)</a>, '
+            '<a href="https://www.zorgwijzer.nl/vergoeding/tandarts" rel="noopener">Zorgwijzer (vergoeding kinderen)</a>, '
+            '<a href="https://www.bnnvara.nl/kassa/artikelen/sluit-je-wel-of-geen-aanvullende-tandartsverzekering-af-voor-2026-maak-in-vijf-stappen-de-keuze" rel="noopener">Kassa</a>. '
+            f'Bijgewerkt op {BIJGEWERKT}.</p>')
+    page("/tandartsverzekering-2027/", "Tandartsverzekering 2027: loont het nog? Met rekenhulp", "Bij 102 van de 110 tandpakketten is de premie hoger dan de vergoeding bij gemiddelde kosten. Reken uit of een tandartsverzekering in 2027 voor jou loont.",
+         body, [cld, faq_ld(faq_t)], prio="0.9")
+
+    # ---------- Energiecontract opzeggen ----------
+    ch, cld = crumbs("Energiecontract opzeggen", "/energiecontract-opzeggen/")
+    faq_o = [("Moet ik mijn energiecontract zelf opzeggen als ik overstap?", "Nee. Stap je over naar een andere leverancier, dan regelt je nieuwe leverancier de overstap en zegt hij je oude contract op. Zelf opzeggen moet je alleen als je bijvoorbeeld emigreert."),
+             ("Hoe lang is de opzegtermijn van een energiecontract?", "Maximaal 30 dagen, voor elk type contract. Steeds meer leveranciers hanteren een kortere opzegtermijn, bijvoorbeeld 5 dagen."),
+             ("Betaal ik een boete als ik een variabel contract opzeg?", "Nee. Een contract voor onbepaalde tijd, zoals een variabel contract, kun je altijd zonder opzegvergoeding opzeggen."),
+             ("Hoe hoog is de opzegvergoeding bij een vast contract?", "Die hangt af van hoeveel energie je nog zou verbruiken tot het einde van je contract en van het prijsverschil tussen jouw tarief en het huidige tarief voor hetzelfde contract. Is energie sindsdien duurder geworden, dan betaal je niets. Vraag je leverancier om een schatting; die moet hij geven en uitleggen."),
+             ("Mijn vaste contract is van vóór de zomer van 2023. Welke regels gelden dan?", "Voor vaste contracten van vóór de nieuwe regels uit de zomer van 2023 geldt nog een vast bedrag per aansluiting, afhankelijk van hoe lang je contract nog loopt: € 50 bij minder dan 1,5 jaar, oplopend tot € 125 bij meer dan 2,5 jaar. Stroom en gas tellen apart.")]
+    body = (ch + f'<div class="paginakop"><span class="ic">{ICON["energie"]}</span><h1>Energiecontract opzeggen: zo voorkom je een boete</h1></div>'
+            '<p class="lead">Overstappen van energieleverancier kan veel schelen. Maar bij een vast contract kan te vroeg stoppen geld kosten. Zo weet je vooraf waar je aan toe bent.</p>'
+            '<div class="kerncijfers"><div><b>30 dagen</b><small>maximale opzegtermijn</small></div><div><b>€ 0</b><small>opzegvergoeding bij een variabel contract</small></div>'
+            '<div><b>Vast</b><small>contract: vergoeding hangt af van prijsverschil</small></div><div><b>1 jan</b><small>2026: nieuwe Energiewet</small></div></div>'
+            '<h2>Welk contract heb je?</h2><table><tr><th>Contract</th><th>Opzeggen</th></tr>'
+            '<tr><td><b>Variabel</b> (onbepaalde tijd)</td><td>Altijd, zonder opzegvergoeding, met een opzegtermijn van maximaal 30 dagen</td></tr>'
+            '<tr><td><b>Dynamisch</b></td><td>Meestal net als variabel: zonder opzegvergoeding</td></tr>'
+            '<tr><td><b>Vast</b>, voor de einddatum</td><td>Er kan een opzegvergoeding gelden, afhankelijk van het prijsverschil en je resterende verbruik</td></tr>'
+            '<tr><td><b>Vast</b>, na de einddatum</td><td>Je contract loopt meestal door als variabel contract. Dan kun je zonder opzegvergoeding weg</td></tr></table>'
+            '<h2>Zo stap je over zonder verrassingen</h2><ol class="stappen">'
+            '<li><b>Kijk in je contract</b> wat voor contract je hebt en wanneer het afloopt.</li>'
+            '<li><b>Heb je een vast contract?</b> Vraag je leverancier om een schatting van de opzegvergoeding. Die moet hij geven en uitleggen.</li>'
+            '<li><b>Vergelijk</b> de besparing bij een nieuw contract met die opzegvergoeding.</li>'
+            '<li><b>Sluit het nieuwe contract af.</b> Je nieuwe leverancier zegt je oude contract voor je op.</li></ol>'
+            '<div class="let"><b>Let op:</b> past je leverancier zijn voorwaarden aan, bijvoorbeeld door de nieuwe Energiewet? Dan mag je vaak zonder opzegvergoeding overstappen. Lees de brief of e-mail daarover goed.</div>'
+            + partner(awin(8520, "bespaarvriend-opzeggen", "https://www.gaslicht.com/energievergelijken"), "Energiecontracten vergelijken", "Vergelijk contracten van alle grote leveranciers. Bij de productvoorwaarden zie je ook de opzegtermijn.", "Vergelijk energiecontracten", [("Variabel en dynamisch", awin(8520, "bespaarvriend-opzeggen", "https://www.gaslicht.com/energievergelijken/dynamisch-energiecontract-vergelijken")), ("3 jaar vast", awin(8520, "bespaarvriend-opzeggen", "https://www.gaslicht.com/energievergelijken/energiecontract-3-jaar-vast"))]) +
+            '<h2>Meer over energie</h2><ul class="links"><li><a href="/energie-2027/">Energie 2027: einde salderen en energiebelasting</a></li><li><a href="https://salderingscheck-nl.netlify.app/">Salderingscheck: wat kost het einde van salderen jou?</a></li></ul>'
+            + faq_html(faq_o) +
+            '<p class="bron">Bronnen: <a href="https://www.acm.nl/nl/publicaties/acm-publiceert-nieuwe-regels-voor-opzeggen-vaste-energiecontracten" rel="noopener">ACM (regels opzegvergoeding)</a>, '
+            '<a href="https://www.gaslicht.com/nieuws/overstappen-zonder-boete" rel="noopener">Gaslicht.com (opzegtermijn)</a>, '
+            '<a href="https://www.anwb.nl/huis/energie/opzegboete-energie" rel="noopener">ANWB (oude vaste bedragen)</a>, '
+            '<a href="https://www.keuze.nl/nieuws/energie-boetevrij-opzeggen-of-nieuwe-voorwaarden-accepteren-dit-kun-je-doen" rel="noopener">Keuze.nl (Energiewet 2026)</a>. '
+            f'Bijgewerkt op {BIJGEWERKT}.</p>')
+    page("/energiecontract-opzeggen/", "Energiecontract opzeggen: opzegtermijn en opzegvergoeding", "Energiecontract opzeggen zonder boete: maximaal 30 dagen opzegtermijn, geen opzegvergoeding bij variabel. Zo bereken je de vergoeding bij een vast contract.",
+         body, [cld, faq_ld(faq_o)], prio="0.8")
+
     # ---------- sitemap, robots, llms.txt ----------
     with open(os.path.join(OUT, "sitemap.xml"), "w") as f:
         f.write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
@@ -632,6 +768,9 @@ else u.textContent='Je komt waarschijnlijk in aanmerking. Hoe lager je inkomen, 
 - [Eigen risico 2027]({BASE}/eigen-risico-2027/): verplicht eigen risico € 400 (2026: € 385), met rekenhulp vrijwillig eigen risico.
 - [Zorgtoeslag 2027]({BASE}/zorgtoeslag-2027/): maximaal € 140 per maand (alleenstaand), inkomensgrens ± € 42.950, vermogensgrens € 119.122.
 - [Energie 2027]({BASE}/energie-2027/): salderen stopt 1 januari 2027; energiebelasting gas € 0,7457/m³, stroom € 0,1065/kWh, vermindering € 628,69; netbeheer gemiddeld + € 141.
+- [Aanvullende verzekering 2027]({BASE}/aanvullende-verzekering-2027/): wanneer een aanvullende verzekering loont, met rekenhulp; premies bekend uiterlijk 19 november.
+- [Tandartsverzekering 2027]({BASE}/tandartsverzekering-2027/): bij 102 van de 110 tandpakketten is de premie hoger dan de vergoeding bij gemiddelde kosten; rekenhulp.
+- [Energiecontract opzeggen]({BASE}/energiecontract-opzeggen/): opzegtermijn maximaal 30 dagen, geen opzegvergoeding bij variabel; vergoeding bij vast hangt af van prijsverschil.
 - [Internet en mobiel]({BASE}/internet-en-mobiel/): na de contractperiode maximaal 1 maand opzegtermijn; 79% van de internetabonnementen loopt al door na de contractperiode.
 - [Alles op orde](https://allesoporde.netlify.app/): gratis overzicht van je vaste lasten en inkomsten.
 - [Bonnenboek](https://bonnenboek.netlify.app/): gratis app om kassabonnen te scannen en boodschappenuitgaven bij te houden, samen met je huishouden.

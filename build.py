@@ -211,11 +211,11 @@ def page(path, title, desc, body, ld=(), noindex=False, prio="0.8"):
 {'<meta name="e0d5a73bd035a1c" content="277030417ea9ada19f69ae08c41fb74b">' if path == "/" else ''}
 <meta property="og:type" content="website"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc)}"><meta property="og:url" content="{BASE}{path}"><meta property="og:locale" content="nl_NL"><meta property="og:image" content="{BASE}/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta property="og:site_name" content="Bespaarvriend">
 <link rel="preload" href="/fonts/atkinson-hyperlegible-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#0e7c4a"><script src="/installeer.js" defer></script>
 <style>{CSS}</style>
 {''.join('<script type="application/ld+json">' + json.dumps(x, ensure_ascii=False) + '</script>' for x in lds)}
 </head><body><header class="top"><div class="wrap"><a class="logo" href="/" aria-label="Bespaarvriend, naar de startpagina">{LOGO}<span>Bespaarvriend</span></a>{NAV}</div></header>
-<main class="wrap">{body}</main>{FOOT}</body></html>"""
+<main class="wrap">{body}</main>{FOOT}<script>if("serviceWorker" in navigator)navigator.serviceWorker.register("/sw.js").catch(function(){{}})</script></body></html>"""
     doc = doc.replace("€ ", "€\u00a0").replace("+ €", "+\u00a0€")
     if path.endswith("/"):
         d = os.path.join(OUT, path.strip("/")); os.makedirs(d, exist_ok=True); fn = os.path.join(d, "index.html")
@@ -245,6 +245,8 @@ def bouw():
         shutil.rmtree(OUT)
     os.makedirs(OUT)
     shutil.copytree(os.path.join(os.path.dirname(os.path.abspath(__file__)),'static'), OUT, dirs_exist_ok=True)
+    import time as _t
+    _sw=os.path.join(OUT,'sw.js'); _swt=open(_sw).read(); open(_sw,'w').write(_swt.replace('__BOUW__', _t.strftime('%Y%m%d%H%M%S')))
 
     # ---------- Home ----------
     faq_h = [("Wat is Bespaarvriend?", "Een gratis site die in gewone taal uitlegt hoe je bespaart op je vaste lasten en grote uitgaven, zoals je zorgverzekering, energie, internet, vakantie, auto en boodschappen. Wij verkopen zelf niets."),

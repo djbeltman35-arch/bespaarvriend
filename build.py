@@ -232,11 +232,13 @@ BRONNEN_ZORG = ('<p class="bron">Bronnen: <a href="https://www.overstappen.nl/ni
                 '<a href="https://www.rabobank.nl/particulieren/verzekering/zorgverzekering/zorgverzekering-2027" rel="noopener">Rabobank (eigen risico en data)</a>. '
                 f'Bijgewerkt op {BIJGEWERKT}.</p>')
 
-VERGELIJKERS = ('<ul class="links"><li><a href="https://www.zorgwijzer.nl/" rel="noopener">Zorgwijzer</a> – alle polissen en premies op een rij</li>'
-                '<li><a href="https://www.independer.nl/zorgverzekering/" rel="noopener">Independer</a> – vergelijken met je eigen wensen</li>'
-                '<li><a href="https://www.consumentenbond.nl/zorgverzekering" rel="noopener">Consumentenbond</a> – onafhankelijke vergelijker (deels voor leden)</li></ul>'
-                '<p class="bron">Wij krijgen niets voor deze links. Komt dat ooit wel, dan staat het er duidelijk bij.</p>')
 
+# Zorgvergelijker (Awin 107738). Voorwaarden: alleen naar de landingspagina linken (geen formulier- of resultatenpagina),
+# geen merknamen van de vergelijker of verzekeraars, geen iframes/pop-ups. Provisie alleen op zorgoverstappers.
+ZORG_VERGELIJKER = partner(awin(107738, "bespaarvriend-zorg", "https://www.poliswijzer.nl/zorgverzekering"),
+    "Alle zorgverzekeringen van 2027 naast elkaar",
+    "Vergelijk de premies en vergoedingen van alle zorgverzekeringen in één overzicht. Gratis en zonder verplichtingen.",
+    "Vergelijk zorgverzekeringen")
 
 def bouw():
     if os.path.isdir(OUT):
@@ -309,7 +311,7 @@ def bouw():
             '<tr><td>Premie</td><td>Lager</td><td>Hoger</td></tr><tr><td>Zorgverlener met contract</td><td>Volledig vergoed</td><td>Volledig vergoed</td></tr>'
             '<tr><td>Zorgverlener zonder contract</td><td>Vaak deels vergoed</td><td>Meestal volledig (tot marktconform tarief)</td></tr>'
             '<tr><td>Voor wie</td><td>Wie geen vaste voorkeur heeft voor een ziekenhuis of therapeut</td><td>Wie zeker een eigen zorgverlener wil houden</td></tr></table>'
-            '<h2>Onafhankelijk vergelijken</h2>' + VERGELIJKERS
+            '<h2>Zorgverzekeringen vergelijken</h2>' + ZORG_VERGELIJKER
             + partner(awin(8311, "bespaarvriend-zorg", "https://www.unitedconsumers.com/zorgverzekering"), "Zorgverzekering met collectieve korting", "Via een groot collectief krijg je korting op de premie, bij bekende verzekeraars. Handig als je al weet welke polis je wilt.", "Bekijk de collectieve korting")
             + '<h2>Meer besparen op je zorgkosten</h2><ul class="links"><li><a href="/eigen-risico-2027/">Eigen risico 2027: loont een vrijwillig eigen risico?</a></li><li><a href="/zorgtoeslag-2027/">Zorgtoeslag 2027: heb jij recht?</a></li></ul>'
             + faq_html(faq_z) + BRONNEN_ZORG)
@@ -342,7 +344,7 @@ k.addEventListener('input',r);c.addEventListener('change',r);r()})();
             '<h2>Wanneer betaal je eigen risico?</h2><p>Je betaalt eigen risico voor zorg uit de basisverzekering, zoals ziekenhuiszorg, medicijnen en bloedonderzoek. '
             'Een bezoek aan de huisarts valt erbuiten, en kinderen onder de 18 hebben geen eigen risico.</p>'
             '<h2>Tip: krap bij kas? Spreid je betaling</h2><p>Weet je dat je je eigen risico toch opmaakt, bijvoorbeeld door vaste medicijnen? Bij veel verzekeraars kun je het dan in termijnen betalen. Zo krijg je geen grote rekening in één keer.</p>'
-            + faq_html(faq_e) + BRONNEN_ZORG)
+            + ZORG_VERGELIJKER + faq_html(faq_e) + BRONNEN_ZORG)
     page("/eigen-risico-2027/", "Eigen risico 2027 is € 400: rekenhulp vrijwillig eigen risico", "Het eigen risico is in 2027 € 400 (was € 385). Reken uit of een hoger vrijwillig eigen risico voor jou loont, en wat er buiten het eigen risico valt.",
          body, [cld, faq_ld(faq_e)], prio="0.9")
 

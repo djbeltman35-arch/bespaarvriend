@@ -364,6 +364,7 @@ def page(path, title, desc, body, ld=(), noindex=False, prio="0.8"):
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#0e7c4a"><script src="/installeer.js" defer></script>
 <style>{CSS}</style>
 {''.join('<script type="application/ld+json">' + json.dumps(x, ensure_ascii=False) + '</script>' for x in lds)}
+<script data-goatcounter="https://bespaarvriend.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head><body><header class="top"><div class="wrap"><a class="logo" href="/" aria-label="Bespaarvriend, naar de startpagina">{LOGO}<span>Bespaarvriend</span></a>{NAV}</div></header>
 <main class="wrap">{body}</main>{FOOT}<script>if("serviceWorker" in navigator)navigator.serviceWorker.register("/sw.js").catch(function(){{}})</script></body></html>"""
     doc = doc.replace("€ ", "€\u00a0").replace("+ €", "+\u00a0€")

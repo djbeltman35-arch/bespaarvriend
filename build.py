@@ -150,7 +150,7 @@ form.contact label{display:block;font-weight:700;margin:12px 0 4px}form.contact 
 .intro .bekend a:not(.b){background:none!important;color:#fff!important;padding:0!important;font-weight:800;text-decoration:underline}
 .intro .bekend a.b{text-decoration:none;background:#ffd43b;color:#1e2a22;padding:2px 8px;border-radius:999px;font-weight:800;white-space:nowrap}
 .intro{text-align:center}.intro .kort,.intro .bekend{margin-left:auto!important;margin-right:auto!important}
-.intro .kort{font-weight:700;max-width:none!important}.intro .bekend{font-size:11px!important;line-height:1.8!important;opacity:.95}.intro .bekend a.b{padding:1px 7px!important}.intro h1{font-size:clamp(22px,7.3vw,48px)!important;white-space:nowrap;letter-spacing:-.02em!important;line-height:1.05!important;text-shadow:0 2px 0 #08502f,0 4px 14px rgba(0,0,0,.35)}
+h2:has(+ .tegels),h2:has(+ .bron + .tegels),h2:has(+ .bron + .tegels)+.bron{text-align:center}.intro .kort{font-weight:700;max-width:none!important}.intro .bekend{font-size:11px!important;line-height:1.8!important;opacity:.95}.intro .bekend a.b{padding:1px 7px!important}.intro h1{font-size:clamp(22px,7.3vw,48px)!important;white-space:nowrap;letter-spacing:-.02em!important;line-height:1.05!important;text-shadow:0 2px 0 #08502f,0 4px 14px rgba(0,0,0,.35)}
 @media(min-width:700px){.intro{padding:18px 24px!important}.intro .euro{font-size:170px!important;right:20px!important}.intro .bekend{max-width:none}}
 .tegels .tegel a.uitleg{padding:5px 12px!important;font-size:13px!important;line-height:1.3}
 .tegels b{font-size:17px!important;overflow-wrap:anywhere;hyphens:auto}
@@ -440,7 +440,6 @@ def bouw():
             '<a class="b" href="https://www.hartvannederland.nl/advies-en-tips/kopen-besparen/videos/goedkoop-boodschappen-doen-erik-bouwt-vergelijker" target="_blank" rel="noopener">Hart van Nederland</a> '
             '<a class="b" href="https://www.oost.nl/nieuws/3720144/rijssenaar-erik-beltman-rekent-af-met-dure-boodschappen-in-vergelijkingswebsite" target="_blank" rel="noopener">RTV Oost</a></p>'
             '</section>' + direct +
-            f'<div class="let"><span class="icl">{ICON["klok"]}</span><b>Overstappen kan nog tot 31 december.</b> Tussen de laagste en hoogste premie voor de basisverzekering zit in 2027 € 649 per jaar, voor dezelfde basiszorg. <a href="/zorgverzekering-2027/">Zo stap je over →</a></div>'
             '<h2>Waar wil je op besparen?</h2><div class="tegels">'
             f'<a href="/zorgverzekering-2027/"><span class="ic">{ICON["zorg"]}</span>{pijl}<b>Zorgverzekering</b><small>Premies 2027 en overstappen</small></a>'
             f'<a href="/eigen-risico-2027/"><span class="ic">{ICON["risico"]}</span>{pijl}<b>Eigen risico</b><small>€ 400 in 2027, met rekenhulp</small></a>'

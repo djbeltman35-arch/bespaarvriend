@@ -286,6 +286,7 @@ def bouw():
             '<tr><td>Zorgverlener zonder contract</td><td>Vaak deels vergoed</td><td>Meestal volledig (tot marktconform tarief)</td></tr>'
             '<tr><td>Voor wie</td><td>Wie geen vaste voorkeur heeft voor een ziekenhuis of therapeut</td><td>Wie zeker een eigen zorgverlener wil houden</td></tr></table>'
             '<h2>Onafhankelijk vergelijken</h2>' + VERGELIJKERS
+            + partner(awin(8311, "bespaarvriend-zorg", "https://www.unitedconsumers.com/zorgverzekering"), "Zorgverzekering met collectieve korting", "Via een groot collectief krijg je korting op de premie, bij bekende verzekeraars. Handig als je al weet welke polis je wilt.", "Bekijk de collectieve korting")
             + '<h2>Meer besparen op je zorgkosten</h2><ul class="links"><li><a href="/eigen-risico-2027/">Eigen risico 2027: loont een vrijwillig eigen risico?</a></li><li><a href="/zorgtoeslag-2027/">Zorgtoeslag 2027: heb jij recht?</a></li></ul>'
             + faq_html(faq_z) + BRONNEN_ZORG)
     page("/zorgverzekering-2027/", "Zorgverzekering 2027: premies, verschillen en overstappen", "De zorgpremie 2027 is gemiddeld € 173,13 per maand. Laagste premie € 148,40, hoogste € 202,50: € 649 per jaar verschil. Zo stap je vóór 31 december over.",
@@ -427,6 +428,7 @@ else u.textContent='Je komt waarschijnlijk in aanmerking. Hoe lager je inkomen, 
             '<li><b>Vraag je huidige provider om een beter aanbod.</b> Wie belt en zegt te willen overstappen, krijgt vaak een lagere prijs aangeboden.</li>'
             '<li><b>Stap over met de overstapservice.</b> Je nieuwe provider zegt je oude abonnement voor je op. Je kunt dit tot vier maanden voor het einde van je contract al regelen.</li></ol>'
             + widget("telecom", "Internet vergelijken") +
+            partner(awin(8311, "bespaarvriend-internet", "https://www.unitedconsumers.com/internet-en-tv"), "Internet en tv met korting", "Een internet- en tv-abonnement met extra korting via een collectief, bij de bekende providers.", "Bekijk internet en tv", [("Alleen internet", awin(8311, "bespaarvriend-internet", "https://www.unitedconsumers.com/internet-en-tv/internet")), ("Internet en tv", awin(8311, "bespaarvriend-internet", "https://www.unitedconsumers.com/internet-en-tv/televisie"))]) +
             f'<h2>Mobiel</h2><div class="paginakop" style="margin-top:0"><span class="ic">{ICON["mobiel"]}</span><p style="margin:0">Werkt je telefoon nog goed? Dan is sim only bijna altijd de goedkoopste keuze.</p></div>'
             '<div class="let"><b>Rekenvoorbeeld:</b> een nieuw-toestel-abonnement van € 45 per maand kost in 2 jaar € 1.080. Een refurbished toestel van € 350 plus 24 maanden sim only van € 8 kost € 542. Dat scheelt € 538.</div>'
             + partner(awin(112024, "bespaarvriend-mobiel", "https://www.refurbished.nl/"), "Refurbished telefoon met garantie", "Gebruikte telefoons, gecontroleerd en schoongemaakt, met garantie.", "Bekijk refurbished telefoons", [("iPhone 13", awin(112024, "bespaarvriend-mobiel", "https://www.refurbished.nl/iphone-13")), ("iPhone 14", awin(112024, "bespaarvriend-mobiel", "https://www.refurbished.nl/iphone-14")), ("iPhone 15", awin(112024, "bespaarvriend-mobiel", "https://www.refurbished.nl/iphone-15")), ("Samsung", awin(112024, "bespaarvriend-mobiel", "https://www.refurbished.nl/samsung")), ("iPad", awin(112024, "bespaarvriend-mobiel", "https://www.refurbished.nl/ipad"))]) +
@@ -434,6 +436,7 @@ else u.textContent='Je komt waarschijnlijk in aanmerking. Hoe lager je inkomen, 
             '<li>Maandelijks opzegbaar kost vaak € 1 tot € 4 per maand meer dan een jaarcontract.</li>'
             '<li>Reken met de gemiddelde prijs over de hele looptijd, niet met de actieprijs.</li></ul>'
             + widget("simonly", "Sim only vergelijken")
+            + partner(awin(8311, "bespaarvriend-mobiel", "https://www.unitedconsumers.com/mobiel"), "Sim only met een duidelijke maandprijs", "Sim only zonder kleine lettertjes: één vaste prijs per maand, maandelijks opzegbaar.", "Bekijk sim only")
             + faq_html(faq_i) +
             '<p class="bron">Bronnen: <a href="https://www.acm.nl/nl/publicaties/acm-telecomaanbieders-moeten-consumenten-duidelijker-en-transparanter-voorlichten-over-vast-internet" rel="noopener">ACM (vast internet)</a>, '
             '<a href="https://nos.nl/l/2601599" rel="noopener">NOS</a>, '
@@ -473,6 +476,7 @@ else u.textContent='Je komt waarschijnlijk in aanmerking. Hoe lager je inkomen, 
                       [(n, awin(128671, "bespaarvriend-vakantie", f"https://www.sunnycars.nl/auto-huren/{sl}/")) for n, sl in LANDEN])
             + partner(awin(128623, "bespaarvriend-vakantie"), "eSIM voor buiten de EU", "Mobiel internet zonder dure roaming. Je zet de eSIM vooraf op je telefoon en hebt direct data bij aankomst.", "Bekijk eSIM's",
                       [(n, awin(128623, "bespaarvriend-vakantie", f"https://saily.com/nl/esim-{sl}/")) for n, sl in ESIM])
+            + partner(awin(78144, "bespaarvriend-vakantie", "https://www.hansemerkur.nl/reisverzekeringen"), "Reisverzekering", "Een reisverzekering voor één reis of het hele jaar, ook voor wintersport en lange reizen.", "Bekijk reisverzekeringen", [("Doorlopend", awin(78144, "bespaarvriend-vakantie", "https://www.hansemerkur.nl/reisverzekeringen/doorlopende-reisverzekering")), ("Eén reis", awin(78144, "bespaarvriend-vakantie", "https://www.hansemerkur.nl/reisverzekeringen/kortlopende-reisverzekering")), ("Wintersport", awin(78144, "bespaarvriend-vakantie", "https://www.hansemerkur.nl/reisverzekeringen/wintersportverzekering")), ("Lang op reis", awin(78144, "bespaarvriend-vakantie", "https://www.hansemerkur.nl/lang-op-reisverzekeringen"))])
             + faq_html(faq_v) +
             '<p class="bron">Bronnen: <a href="https://europa.eu/youreurope/citizens/consumers/internet-telecoms/mobile-roaming-costs/index_nl.htm" rel="noopener">Your Europe (roamen in de EU)</a>, '
             '<a href="https://vakantietoppers.netlify.app/gids/goedkoop-op-vakantie-tips.html" rel="noopener">Vakantiewijzer: 10 tips</a>. '
@@ -506,6 +510,8 @@ else u.textContent='Je komt waarschijnlijk in aanmerking. Hoe lager je inkomen, 
                       [(f"{n} zomer", banden_abm(w, h, d, "so")) for n, w, h, d in MATEN] + [("205/55 R16 winter", banden_abm(205, 55, 16, "wi")), ("205/55 R16 all-season", banden_abm(205, 55, 16, "gan"))])
             + partner(banden_bnl(205, 55, 16, "zomer-banden"), "Banden vergelijken", "Vergelijk banden van verschillende winkels, ook met montage bij je in de buurt.", "Vergelijk banden",
                       [(f"{n} zomer", banden_bnl(w, h, d, "zomer-banden")) for n, w, h, d in MATEN] + [("205/55 R16 all-season", banden_bnl(205, 55, 16, "all-season-banden"))])
+            + partner(awin(8311, "bespaarvriend-auto", "https://www.unitedconsumers.com/autoverzekering"), "Autoverzekering met korting", "Een autoverzekering met collectieve korting op de premie. Vul je kenteken in en zie direct wat je betaalt.", "Bereken je premie")
+            + partner(awin(8311, "bespaarvriend-auto", "https://www.unitedconsumers.com/tanken"), "Korting op elke tankbeurt", "Met een tankpas van een collectief krijg je korting per liter bij veel tankstations in Nederland.", "Bekijk de tankkorting")
             + faq_html(faq_a) +
             f'<p class="bron">Bijgewerkt op {BIJGEWERKT}.</p>')
     page("/auto-en-tanken/", "Besparen op je auto: goedkoper tanken en banden", "Zo bespaar je op je auto: brandstofprijzen vergelijken, tanken over de grens, banden op spanning en bandenprijzen vergelijken.",

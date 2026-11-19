@@ -133,6 +133,15 @@ form.contact label{display:block;font-weight:700;margin:12px 0 4px}form.contact 
 .intro .bekend span{color:#cfe9da;margin-right:2px}
 .intro .bekend a{text-decoration:none;background:#ffd43b;color:#1e2a22;padding:4px 10px;border-radius:999px;font-weight:800}
 @media(min-width:700px){.intro{padding:34px 34px 30px}.intro .euro{font-size:300px;right:10px}}
+.tegels>a,.tegels>.tegel{border:3px solid #0e7c4a!important;box-shadow:0 6px 0 #08502f,0 14px 24px rgba(8,80,47,.22)!important;background:#fff!important}
+.tegels>a:hover,.tegels>.tegel:hover{box-shadow:0 8px 0 #08502f,0 18px 28px rgba(8,80,47,.28)!important}
+.tegels>a:active,.tegels>.tegel:active{transform:translateY(4px);box-shadow:0 2px 0 #08502f!important}
+.tegels{gap:16px!important}
+.tegels .ic{width:52px!important;height:52px!important}.tegels .ic svg{width:28px!important;height:28px!important}
+.tegels b{font-size:19px!important;color:#10261a}
+.tegels a .pijl{width:30px;height:30px;border-radius:50%;background:#ffd43b;color:#1e2a22!important;display:grid;place-items:center;top:14px!important;right:12px!important}
+.tegels a .pijl svg{width:18px;height:18px}
+@media (prefers-color-scheme:dark){.tegels>a,.tegels>.tegel{background:#1a221c!important}.tegels b{color:#e9efe8}}
 .kaart.partner,.kaart.tool{border:2px solid var(--green)!important;border-radius:16px!important;box-shadow:0 3px 0 rgba(8,80,47,.28),0 8px 18px rgba(0,0,0,.08)}
 @media(max-width:640px){header.top .wrap{flex-wrap:nowrap!important;gap:6px}nav.top{width:auto!important;margin-left:auto!important}.logo span{display:none}nav.top{overflow-x:auto;scrollbar-width:none;flex-wrap:nowrap}nav.top::-webkit-scrollbar{display:none}nav.top a{white-space:nowrap}}
 /* gbstijl:end */
@@ -300,7 +309,7 @@ def bouw():
             return f'<a href="{u}" rel="sponsored noopener" target="_blank">{hoofd}</a>'
         return f'<div class="tegel"><a class="hoofd" href="{u}" rel="sponsored noopener" target="_blank">{hoofd}</a><a class="uitleg" href="{uitleg[0]}">{uitleg[1]}</a></div>'
     UITLEG = {"zorg": ("/zorgverzekering-2027/", "Uitleg: zorgverzekering 2027 →"), "energie": ("/energie-2027/", "Uitleg: energie 2027 →")}
-    direct = ('<h2 class="direct-kop">Direct vergelijken</h2><div class="tegels direct">'
+    direct = ('<div class="tegels direct" style="margin-top:20px" aria-label="Direct vergelijken">'
               + "".join(_tegel(u, ic, n, t, UITLEG.get(ic)) for u, ic, n, t in DIRECT)
               + '</div><p class="bron" style="margin-top:-6px">Advertentie: deze tegels gaan naar partners. Sluit je iets af, dan krijgt Bespaarvriend een kleine vergoeding. Jij betaalt niets extra.</p>')
     body = ('<section class="intro"><span class="euro" aria-hidden="true">€</span>'

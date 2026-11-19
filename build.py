@@ -150,6 +150,23 @@ form.contact label{display:block;font-weight:700;margin:12px 0 4px}form.contact 
 .intro .bekend a:not(.b){background:none!important;color:#fff!important;padding:0!important;font-weight:800;text-decoration:underline}
 .intro .bekend a.b{text-decoration:none;background:#ffd43b;color:#1e2a22;padding:2px 8px;border-radius:999px;font-weight:800;white-space:nowrap}
 @media(min-width:700px){.intro{padding:18px 24px!important}.intro .euro{font-size:170px!important;right:20px!important}.intro .bekend{max-width:none}}
+.tegels .tegel a.uitleg{padding:5px 12px!important;font-size:13px!important;line-height:1.3}
+.tegels b{font-size:17px!important;overflow-wrap:anywhere;hyphens:auto}
+@media(min-width:420px){.tegels b{font-size:19px!important}}
+@media(max-width:420px){nav.top a{font-size:13.5px!important;padding:7px 4px!important}}
+.foot .wrap{display:grid;gap:4px}
+.foot .free{text-align:center;color:var(--muted);font-size:14px;font-weight:400;margin:0 auto 6px;max-width:52ch}
+.foot .fkop{text-align:center;font-weight:800;color:var(--ink);font-size:13px;text-transform:uppercase;letter-spacing:.06em;margin:14px 0 2px}
+.foot nav{display:grid!important;grid-template-columns:1fr 1fr;gap:0!important;max-width:520px;margin:0 auto!important;width:100%;border-top:1px solid var(--line)}
+.foot nav a{display:block;text-align:center;padding:8px 6px;font-weight:600;font-size:14px;line-height:1.3;text-decoration:none;color:var(--green-dark);border-bottom:1px solid var(--line)}
+.foot nav a:nth-child(even){border-left:1px solid var(--line)}
+.foot nav a:hover{text-decoration:underline}
+.foot nav a:last-child:nth-child(odd){grid-column:1/-1;border-left:0}
+.foot .small{text-align:center;color:var(--muted);font-size:13px;margin:12px 0 0}
+.foot .small.copy{margin-top:2px}
+.foot .small a{color:var(--green-dark);font-weight:600}
+.partners-top{margin:14px 0 22px}.partners-top .tegels{margin:0 0 10px}.partners-top .plbl{margin:10px 0 4px;font-weight:700;font-size:14px}
+.tegels.direct>a:only-child{grid-column:1/-1}
 .kaart.partner,.kaart.tool{border:2px solid var(--green)!important;border-radius:16px!important;box-shadow:0 3px 0 rgba(8,80,47,.28),0 8px 18px rgba(0,0,0,.08)}
 @media(max-width:640px){header.top .wrap{flex-wrap:nowrap!important;gap:6px}nav.top{width:auto!important;margin-left:auto!important}.logo span{display:none}nav.top{overflow-x:auto;scrollbar-width:none;flex-wrap:nowrap}nav.top::-webkit-scrollbar{display:none}nav.top a{white-space:nowrap}}
 /* gbstijl:end */
@@ -214,11 +231,15 @@ def partner(url, titel, tekst, knop, artikelen=()):
             f'<a class="btn" href="{url}" rel="sponsored noopener" target="_blank">{knop}{ICON["pijl"]}</a>'
             '<p class="bron">Sluit je via deze link iets af, dan krijgt Bespaarvriend een kleine vergoeding. Jij betaalt niets extra.</p></div>')
 
-NAV = '<nav class="top" aria-label="Hoofdmenu"><a href="/zorgverzekering-2027/">Zorg</a><a href="/energie-2027/">Energie</a><a href="/internet-en-mobiel/">Internet</a><a href="/vakantie-en-vliegen/">Vakantie</a><a href="/auto-en-tanken/" class="wide">Auto</a></nav>'
-FOOT = f"""<footer><div class="wrap">
-<p><b>Bespaarvriend</b> helpt je eenvoudig besparen op je vaste lasten. Onafhankelijk uitgelegd, zonder verkooppraatjes. Wij geven geen persoonlijk financieel advies.</p>
-<nav aria-label="Over"><a href="/zorgverzekering-2027/">Zorgverzekering 2027</a><a href="/eigen-risico-2027/">Eigen risico 2027</a><a href="/zorgtoeslag-2027/">Zorgtoeslag 2027</a><a href="/aanvullende-verzekering-2027/">Aanvullende verzekering 2027</a><a href="/tandartsverzekering-2027/">Tandartsverzekering 2027</a><a href="/energie-2027/">Energie 2027</a><a href="/energiecontract-opzeggen/">Energiecontract opzeggen</a><a href="/zorgverzekering-overstappen/">Zorgverzekering overstappen</a><a href="/fysiotherapie-vergoeding-2027/">Fysiotherapie vergoeding 2027</a><a href="/reisverzekering-doorlopend-of-kortlopend/">Reisverzekering</a><a href="/goedkoop-vliegen/">Goedkoop vliegen</a><a href="/refurbished-telefoon-kopen/">Refurbished telefoon</a><a href="/autoverzekering-besparen/">Autoverzekering besparen</a><a href="/sim-only-overstappen/">Sim only overstappen</a><a href="/internet-en-mobiel/">Internet en mobiel</a><a href="/vakantie-en-vliegen/">Vakantie en vliegen</a><a href="/auto-en-tanken/">Auto en tanken</a><a href="/boodschappen/">Boodschappen</a><a href="/administratie/">Administratie</a><a href="https://allesoporde.netlify.app/">Alles op orde</a><a href="https://bonnenboek.netlify.app/">Bonnenboek</a><a href="https://salderingscheck-nl.netlify.app/">Salderingscheck</a><a href="https://goedkopertanken.netlify.app/">Tankwijzer</a><a href="https://vluchtwijzer.netlify.app/">Vluchtwijzer</a><a href="https://vakantietoppers.netlify.app/">Vakantiewijzer</a><a href="https://euroroadrules.eu/">EuroRoadRules</a><a href="https://foutcodezoeker.nl/">Foutcodezoeker</a><a href="https://boodschappenvergelijk.nl/">Boodschappen vergelijken</a><a href="/over/">Over Bespaarvriend</a><a href="/privacy/">Privacy</a><a href="/contact/">Contact</a></nav>
-<p>© {datetime.date.today().year} Bespaarvriend – Erik Beltman. Bijgewerkt op {BIJGEWERKT}.</p></div></footer>"""
+NAV = '<nav class="top" aria-label="Hoofdmenu"><a href="/zorgverzekering-2027/">Zorg</a><a href="/energie-2027/">Energie</a><a href="/internet-en-mobiel/">Internet</a><a href="/vakantie-en-vliegen/">Vakantie</a><a href="/goedkoop-vliegen/">Vliegen</a><a href="/auto-en-tanken/" class="wide">Auto</a></nav>'
+FOOT = f"""<footer class="foot"><div class="wrap">
+<p class="free">Bespaarvriend helpt je besparen op je vaste lasten. Gratis en onafhankelijk uitgelegd. Wij geven geen persoonlijk financieel advies.</p>
+<p class="fkop">Zorg</p><nav aria-label="Zorg"><a href="/zorgverzekering-2027/">Zorgverzekering 2027</a><a href="/zorgverzekering-overstappen/">Overstappen</a><a href="/aanvullende-verzekering-2027/">Aanvullende verzekering</a><a href="/tandartsverzekering-2027/">Tandartsverzekering</a><a href="/fysiotherapie-vergoeding-2027/">Fysiotherapie</a><a href="/eigen-risico-2027/">Eigen risico 2027</a><a href="/zorgtoeslag-2027/">Zorgtoeslag 2027</a><a href="/administratie/">Vaste lasten op orde</a></nav>
+<p class="fkop">Energie, internet en mobiel</p><nav aria-label="Energie, internet en mobiel"><a href="/energie-2027/">Energie 2027</a><a href="/energiecontract-opzeggen/">Contract opzeggen</a><a href="/internet-en-mobiel/">Internet en mobiel</a><a href="/sim-only-overstappen/">Sim only overstappen</a><a href="/refurbished-telefoon-kopen/">Refurbished telefoon</a><a href="/boodschappen/">Boodschappen</a></nav>
+<p class="fkop">Reizen en auto</p><nav aria-label="Reizen en auto"><a href="/vakantie-en-vliegen/">Vakantie en vliegen</a><a href="/goedkoop-vliegen/">Goedkoop vliegen</a><a href="/reisverzekering-doorlopend-of-kortlopend/">Reisverzekering</a><a href="/auto-en-tanken/">Auto en tanken</a><a href="/autoverzekering-besparen/">Autoverzekering</a></nav>
+<p class="fkop">Meer gratis hulpmiddelen van Erik</p><nav aria-label="Meer gratis hulpmiddelen van Erik"><a href="https://boodschappenvergelijk.nl/">Boodschappenvergelijk</a><a href="https://goedkopertanken.netlify.app/">Tankwijzer</a><a href="https://vluchtwijzer.netlify.app/">Vluchtwijzer</a><a href="https://vakantietoppers.netlify.app/">Vakantiewijzer</a><a href="https://salderingscheck-nl.netlify.app/">Salderingscheck</a><a href="https://euroroadrules.eu/">EuroRoadRules</a><a href="https://foutcodezoeker.nl/">Foutcodezoeker</a><a href="https://bonnenboek.netlify.app/">Bonnenboek</a><a href="https://allesoporde.netlify.app/">Alles op orde</a></nav>
+<p class="fkop">Over</p><nav aria-label="Over"><a href="/over/">Over Bespaarvriend</a><a href="/contact/">Contact</a><a href="/privacy/">Privacy</a><a href="/gebruiksvoorwaarden/">Gebruiksvoorwaarden</a><a href="/sitemap.xml">Sitemap</a></nav>
+<p class="small">Gemaakt door Erik, de maker van <a href="https://boodschappenvergelijk.nl/?bron=bespaarvriend">Boodschappenvergelijk.nl</a>. Bijgewerkt op {BIJGEWERKT}.</p><p class="small copy">© {datetime.date.today().year} Bespaarvriend – Erik Beltman. Alle rechten voorbehouden. <a href="/gebruiksvoorwaarden/">Auteursrecht en gebruiksvoorwaarden</a></p></div></footer>"""
 
 
 def faq_html(faq):
@@ -240,7 +261,96 @@ def crumbs(naam, path):
 PAGES = []
 
 
+
+import re as _re
+def _blokken_naar_boven(body):
+    """Zet betaalde blokken (partners en vergelijkers) bovenaan, direct na de titel en de inleiding."""
+    gevonden = []
+    def pak(start_tag, s):
+        uit = ""
+        while True:
+            i = s.find(start_tag)
+            if i < 0:
+                return s, uit
+            tag = start_tag.split()[0][1:]
+            diepte, j = 0, i
+            pat = _re.compile(r'<(/?)' + tag + r'\b[^>]*>')
+            for m in pat.finditer(s, i):
+                diepte += -1 if m.group(1) else 1
+                if diepte == 0:
+                    j = m.end(); break
+            blok = s[i:j]
+            # losse kop direct ervoor (zonder tekst ertussen) gaat mee weg
+            voor = s[:i]
+            mk = _re.search(r'<h2>[^<]*</h2>\s*$', voor)
+            if mk:
+                voor = voor[:mk.start()]
+            gevonden.append(blok)
+            s = voor + s[j:]
+    for t in ('<section class="widget"', '<div class="kaart partner"'):
+        body, _ = pak(t, body)
+    if not gevonden:
+        return body
+    top = _als_tegels(gevonden)
+    m = _re.search(r'<p class="lead">.*?</p>', body, _re.S)
+    if m:
+        return body[:m.end()] + top + body[m.end():]
+    m = _re.search(r'</h1>(</div>)?', body)
+    return body[:m.end()] + top + body[m.end():] if m else top + body
+
+
+_KORT = {
+    "Alle zorgverzekeringen van 2027 naast elkaar": ("Zorgverzekering vergelijken", "Alle polissen van 2027"),
+    "Zorgverzekering met collectieve korting": ("Zorgverzekering met korting", "Via een collectief"),
+    "Autoverzekering met korting": ("Autoverzekering met korting", "Premie direct berekend"),
+    "Banden kopen": ("Banden kopen", "Prijs per bandenmaat"),
+    "Banden vergelijken": ("Banden vergelijken", "Ook met montage"),
+    "Boodschappenbox van de boer": ("Box van de boer", "Vers, thuisbezorgd"),
+    "Energiecontract vergelijken": ("Energiecontract vergelijken", "Alle grote leveranciers"),
+    "Energiecontracten vergelijken": ("Energiecontract vergelijken", "Alle grote leveranciers"),
+    "Huurauto inclusief verzekering": ("Huurauto", "Alle verzekeringen inbegrepen"),
+    "Internet en tv met korting": ("Internet en tv", "Met korting via een collectief"),
+    "Korting op elke tankbeurt": ("Tankkorting", "Korting per liter"),
+    "Maaltijdbox": ("Maaltijdbox", "Minder weggooien"),
+    "Refurbished telefoon met garantie": ("Refurbished telefoon", "Met garantie"),
+    "Reisverzekering": ("Reisverzekering", "Eén reis of het hele jaar"),
+    "Sim only met een duidelijke maandprijs": ("Sim only", "Vaste prijs per maand"),
+    "Snellere wifi in huis": ("Snellere wifi", "Router of mesh"),
+    "Vliegtickets boeken": ("Vliegtickets", "800+ maatschappijen"),
+    "eSIM voor buiten de EU": ("eSIM", "Internet buiten de EU"),
+}
+
+def _icoon_voor(t):
+    t = t.lower()
+    for woorden, ic in ((("zorg", "tand"), "zorg"), (("energie", "stroom", "gas"), "energie"), (("wifi", "router", "internet", "tv"), "internet"),
+                        (("telefoon", "sim", "esim", "mobiel"), "mobiel"), (("vlieg",), "vlucht"), (("reis",), "koffer"),
+                        (("huurauto", "auto", "band", "tank"), "tank"), (("boodschap", "maaltijd", "boer"), "boodschappen")):
+        if any(w in t for w in woorden):
+            return ic
+    return "check"
+
+def _als_tegels(blokken):
+    """Zet partnerblokken om naar tegels in de stijl van de startpagina, met keuzelinks eronder."""
+    pijl = f'<span class="pijl">{ICON["pijl"]}</span>'
+    tegels, extra, rest = [], [], []
+    for b in blokken:
+        if 'class="kaart partner"' not in b:
+            rest.append(b); continue
+        titel = _re.search(r'<b>(.*?)</b>', b, _re.S).group(1)
+        tekst = _re.search(r'</b><p>(.*?)</p>', b, _re.S).group(1)
+        url = _re.search(r'<a class="btn" href="([^"]+)"', b).group(1)
+        naam, kort = _KORT.get(titel, (titel, _re.split(r'(?<=[.!?])\s', tekst)[0][:40]))
+        tegels.append(f'<a href="{url}" rel="sponsored noopener" target="_blank"><span class="ic">{ICON[_icoon_voor(titel)]}</span>{pijl}<b>{naam}</b><small>{kort}</small></a>')
+        chips = _re.search(r'<div class="pchips">(.*?)</div>', b, _re.S)
+        if chips:
+            extra.append(f'<p class="plbl">{_KORT.get(titel, (titel,))[0]}:</p><div class="pchips">{chips.group(1)}</div>')
+    uit = '<div class="partners-top"><div class="tegels direct">' + "".join(tegels) + '</div>' + "".join(extra)
+    uit += '<p class="bron" style="margin-top:6px">Advertentie: deze tegels gaan naar partners. Sluit je iets af, dan krijgt Bespaarvriend een kleine vergoeding. Jij betaalt niets extra.</p></div>'
+    return uit + "".join(rest)
+
 def page(path, title, desc, body, ld=(), noindex=False, prio="0.8"):
+    if path != "/":
+        body = _blokken_naar_boven(body)
     lds = [{"@context": "https://schema.org", "@type": "WebPage", "name": title, "url": BASE + path, "description": desc, "inLanguage": "nl-NL",
             "dateModified": VANDAAG, "publisher": {"@type": "Organization", "name": "Bespaarvriend", "url": BASE}}] + list(ld)
     doc = f"""<!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -316,7 +426,7 @@ def bouw():
         if not uitleg:
             return f'<a href="{u}" rel="sponsored noopener" target="_blank">{hoofd}</a>'
         return f'<div class="tegel"><a class="hoofd" href="{u}" rel="sponsored noopener" target="_blank">{hoofd}</a><a class="uitleg" href="{uitleg[0]}">{uitleg[1]}</a></div>'
-    UITLEG = {"zorg": ("/zorgverzekering-2027/", "Uitleg: zorgverzekering 2027 →"), "energie": ("/energie-2027/", "Uitleg: energie 2027 →")}
+    UITLEG = {"zorg": ("/zorgverzekering-2027/", "Uitleg →"), "energie": ("/energie-2027/", "Uitleg →")}
     direct = ('<div class="tegels direct" style="margin-top:20px" aria-label="Direct vergelijken">'
               + "".join(_tegel(u, ic, n, t, UITLEG.get(ic)) for u, ic, n, t in DIRECT)
               + '</div><p class="bron" style="margin-top:-6px">Advertentie: deze tegels gaan naar partners. Sluit je iets af, dan krijgt Bespaarvriend een kleine vergoeding. Jij betaalt niets extra.</p>')
@@ -670,6 +780,23 @@ else u.textContent='Je komt waarschijnlijk in aanmerking. Hoe lager je inkomen, 
             '<p>Stuur je een bericht via de contactpagina, dan bewaren we je bericht (en je naam en e-mailadres als je die invult) alleen om je te kunnen antwoorden. '
             'We delen het met niemand en verwijderen het als het niet meer nodig is.</p><p style="margin-bottom:0">De site draait bij Netlify. Netlify houdt voor de beveiliging korte tijd technische gegevens bij, zoals IP-adressen.</p></div>')
     page("/privacy/", "Privacy | Bespaarvriend", "Bespaarvriend gebruikt geen cookies en geen trackers. Rekenhulpen werken in je eigen browser.", body, [cld], prio="0.2")
+
+    # ---------- Auteursrecht en gebruiksvoorwaarden ----------
+    ch, cld = crumbs("Gebruiksvoorwaarden", "/gebruiksvoorwaarden/")
+    body = (ch + '<h1>Auteursrecht en gebruiksvoorwaarden</h1><p class="lead">Kort gezegd: citeren mag met bronvermelding en een link. Overnemen of hergebruiken alleen met toestemming. Bespaarvriend geeft uitleg, geen persoonlijk financieel advies.</p>'
+            '<div class="kaart"><h2 style="margin-top:0">Auteursrecht</h2><p>Alle inhoud van deze website (teksten, rekenhulpen, overzichten, ontwerp en broncode) is beschermd door het auteursrecht en/of het databankenrecht. '
+            'Niets mag zonder voorafgaande schriftelijke toestemming worden verveelvoudigd, openbaar gemaakt of hergebruikt, ook niet geautomatiseerd (scrapen). Citeren mag met bronvermelding en een link naar deze website.</p>'
+            f'<p style="margin-bottom:0">© {datetime.date.today().year} Bespaarvriend – Erik Beltman. Alle rechten voorbehouden.</p></div>'
+            '<h2>Toestemming vragen</h2><p>Wil je iets van deze site gebruiken of overnemen? Vraag het eerst via de <a href="/contact/">contactpagina</a>. Je krijgt zo snel mogelijk antwoord.</p>'
+            '<h2>Geen persoonlijk financieel advies</h2><p>Bespaarvriend legt in gewone taal uit hoe regels, premies en tarieven werken, met bronnen. Dat is algemene informatie, geen persoonlijk advies over een financieel product. '
+            'Bespaarvriend heeft geen vergunning van de AFM en bemiddelt niet in verzekeringen of andere financiële producten. Twijfel je over je eigen situatie? Vraag dan advies aan een onafhankelijk adviseur.</p>'
+            '<h2>Partnerlinks en advertenties</h2><p>Sommige tegels en blokken gaan naar partners. Die staan altijd gemarkeerd als advertentie. Sluit je via zo’n link iets af, dan krijgt Bespaarvriend een kleine vergoeding van de partner. Jij betaalt daarvoor niets extra. '
+            'Partners hebben geen invloed op de uitleg op deze site. Op de site van de partner gelden de voorwaarden en het privacybeleid van die partner.</p>'
+            '<h2>Rekenhulpen</h2><p>De rekenhulpen geven een indicatie op basis van wat je zelf invult. De uitkomst is geen garantie en geen advies. Wat je invult, blijft in je eigen browser.</p>'
+            '<h2>Geen garantie</h2><p>We doen ons best om alles juist en actueel te houden en vermelden steeds onze bronnen. Toch kunnen bedragen, regels of voorwaarden veranderen of kan er een fout in staan. '
+            'De voorwaarden van je verzekeraar, leverancier of de overheid zijn altijd leidend. Aan de informatie op deze site kun je geen rechten ontlenen. Bespaarvriend is niet aansprakelijk voor schade door het gebruik van deze site of van sites waar we naar linken.</p>'
+            '<h2>Links naar deze site</h2><p>Links naar Bespaarvriend zijn welkom, ook zonder toestemming.</p>')
+    page("/gebruiksvoorwaarden/", "Auteursrecht en gebruiksvoorwaarden | Bespaarvriend", "Alle inhoud van Bespaarvriend is beschermd door het auteursrecht en het databankenrecht. Citeren mag met bronvermelding en een link. Geen persoonlijk financieel advies.", body, [cld], prio="0.2")
 
     # ---------- Contact (Netlify Forms, geen e-mailadres op de site) ----------
     ch, cld = crumbs("Contact", "/contact/")

@@ -351,6 +351,7 @@ def _als_tegels(blokken):
     return uit + "".join(rest)
 
 def page(path, title, desc, body, ld=(), noindex=False, prio="0.8"):
+    body = _re.sub(r'<table><tr><th></th>.*?</table>', lambda m: _re.sub(r'<tr><td>(.*?)</td>', r'<tr><th scope="row">\1</th>', m.group(0)).replace('<tr><th scope="row"></th>', '<tr><td></td>', 1), body, flags=_re.S)
     if path != "/":
         body = _blokken_naar_boven(body)
     lds = [{"@context": "https://schema.org", "@type": "WebPage", "name": title, "url": BASE + path, "description": desc, "inLanguage": "nl-NL",
@@ -360,11 +361,11 @@ def page(path, title, desc, body, ld=(), noindex=False, prio="0.8"):
 {'<meta name="robots" content="noindex">' if noindex else ''}<meta name="theme-color" content="#0e7c4a">
 {'<meta name="e0d5a73bd035a1c" content="277030417ea9ada19f69ae08c41fb74b">' if path == "/" else ''}
 <meta property="og:type" content="website"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc)}"><meta property="og:url" content="{BASE}{path}"><meta property="og:locale" content="nl_NL"><meta property="og:image" content="{BASE}/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta property="og:site_name" content="Bespaarvriend">
-<link rel="preload" href="/fonts/atkinson-hyperlegible-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/atkinson-hyperlegible-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/atkinson-hyperlegible-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#0e7c4a"><script src="/installeer.js" defer></script>
 <style>{CSS}</style>
 {''.join('<script type="application/ld+json">' + json.dumps(x, ensure_ascii=False) + '</script>' for x in lds)}
-<script data-goatcounter="https://bespaarvriend.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script data-goatcounter="https://bespaarvriend.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </head><body><header class="top"><div class="wrap"><a class="logo" href="/" aria-label="Bespaarvriend, naar de startpagina">{LOGO}<span>Bespaarvriend</span></a>{NAV}</div></header>
 <main class="wrap">{body}</main>{FOOT}<script>if("serviceWorker" in navigator)navigator.serviceWorker.register("/sw.js").catch(function(){{}})</script></body></html>"""
     doc = doc.replace("€ ", "€\u00a0").replace("+ €", "+\u00a0€")
@@ -777,11 +778,12 @@ else u.textContent='Je komt waarschijnlijk in aanmerking. Hoe lager je inkomen, 
 
     # ---------- Privacy ----------
     ch, cld = crumbs("Privacy", "/privacy/")
-    body = (ch + '<h1>Privacy</h1><div class="kaart"><p style="margin-top:0">Bespaarvriend gebruikt geen cookies en geen trackers die je volgen. Sommige pagina’s hebben partnerlinks; die staan altijd als advertentie gemarkeerd.</p>'
+    body = (ch + '<h1>Privacy</h1><div class="kaart"><p style="margin-top:0">Bespaarvriend gebruikt geen cookies en geen trackers die je volgen. Sommige pagina’s hebben partnerlinks; die staan altijd als advertentie gemarkeerd. Klik je op zo’n link, dan gelden op de site van de partner hun eigen privacy- en cookieregels.</p>'
+            '<p>Om te zien hoeveel mensen de site bezoeken, gebruiken we GoatCounter. Dat telt alleen paginabezoeken, zonder cookies en zonder je IP-adres op te slaan. We kunnen jou daarmee niet volgen of herkennen.</p>'
             '<p>De rekenhulpen werken helemaal in je eigen browser: wat je invult, wordt nergens naartoe gestuurd of bewaard.</p>'
             '<p>Stuur je een bericht via de contactpagina, dan bewaren we je bericht (en je naam en e-mailadres als je die invult) alleen om je te kunnen antwoorden. '
             'We delen het met niemand en verwijderen het als het niet meer nodig is.</p><p style="margin-bottom:0">De site draait bij Netlify. Netlify houdt voor de beveiliging korte tijd technische gegevens bij, zoals IP-adressen.</p></div>')
-    page("/privacy/", "Privacy | Bespaarvriend", "Bespaarvriend gebruikt geen cookies en geen trackers. Rekenhulpen werken in je eigen browser.", body, [cld], prio="0.2")
+    page("/privacy/", "Privacy | Bespaarvriend", "Bespaarvriend gebruikt geen cookies en geen trackers die je volgen. Rekenhulpen werken in je eigen browser.", body, [cld], prio="0.2")
 
     # ---------- Auteursrecht en gebruiksvoorwaarden ----------
     ch, cld = crumbs("Gebruiksvoorwaarden", "/gebruiksvoorwaarden/")
@@ -818,7 +820,7 @@ else u.textContent='Je komt waarschijnlijk in aanmerking. Hoe lager je inkomen, 
     # ---------- Aanvullende verzekering 2027 ----------
     ch, cld = crumbs("Aanvullende verzekering 2027", "/aanvullende-verzekering-2027/")
     faq_a = [("Is een aanvullende verzekering verplicht?", "Nee. Alleen de basisverzekering is verplicht. Een aanvullende verzekering kies je zelf, voor zorg die niet of maar deels in het basispakket zit, zoals fysiotherapie, tandarts of een bril."),
-             ("Wanneer zijn de premies van de aanvullende verzekering 2027 bekend?", "Zorgverzekeraars maken de premies van de aanvullende verzekeringen uiterlijk 19 november bekend, een week na de premies van de basisverzekering."),
+             ("Wanneer zijn de premies van de aanvullende verzekering 2027 bekend?", "Zorgverzekeraars maken de premies van de aanvullende verzekeringen sinds 19 november 2026 bekend, een week na de premies van de basisverzekering. Je kunt basis en aanvullend nu samen vergelijken."),
              ("Moet mijn aanvullende verzekering bij dezelfde verzekeraar als mijn basisverzekering?", "Meestal wel. Bij veel verzekeraars kun je een aanvullende verzekering alleen afsluiten in combinatie met hun eigen basisverzekering. Kijk dus naar de totaalprijs van basis plus aanvullend."),
              ("Kan een verzekeraar mij weigeren voor een aanvullende verzekering?", "Voor de basisverzekering niet. Voor een aanvullende verzekering mag een verzekeraar soms een gezondheidsverklaring vragen of je weigeren, vooral bij uitgebreide pakketten."),
              ("Tot wanneer kan ik overstappen?", "Zeg je huidige verzekering uiterlijk 31 december 2026 op. Je hebt daarna tot en met 31 januari 2027 om een nieuwe af te sluiten; die gaat in per 1 januari 2027.")]
@@ -837,7 +839,7 @@ p.addEventListener('input',r);k.addEventListener('input',r);r()})();
 </script>""")
     body = (ch + f'<div class="paginakop"><span class="ic">{ICON["zorg"]}</span><h1>Aanvullende verzekering 2027: heb je het echt nodig?</h1></div>'
             '<p class="lead">Ruim 80% van de Nederlanders heeft een aanvullende verzekering. Toch betalen veel mensen voor zorg die ze nooit gebruiken.</p>'
-            '<div class="let"><b>Premies 2027 bekend uiterlijk 19 november.</b> Daarna kun je basis en aanvullend samen vergelijken. Overstappen kan tot 31 december.</div>'
+            '<div class="let"><b>De premies voor 2027 zijn bekend.</b> Je kunt basis en aanvullend nu samen vergelijken. Overstappen kan tot 31 december.</div>'
             + reken_a +
             '<h2>Wanneer is een aanvullende verzekering zinvol?</h2><ul class="links">'
             '<li><b>Je gaat regelmatig naar de fysiotherapeut.</b> Eén behandeling kost al snel meer dan een maand premie.</li>'
@@ -947,7 +949,7 @@ u.textContent='Zonder verzekering betaal je '+eur(zonder)+'. Met dit pakket beta
         '<h2>Overstappen in 5 stappen</h2><ol class="stappen">'
         '<li><b>Bekijk je jaaroverzicht.</b> Welke zorg had je dit jaar en wat kreeg je vergoed? Dan weet je wat je nodig hebt.</li>'
         '<li><b>Kies natura of restitutie.</b> Een naturapolis is goedkoper, maar bij een zorgverlener zonder contract krijg je soms minder vergoed.</li>'
-        '<li><b>Vergelijk basis en aanvullend samen.</b> De premies van de aanvullende verzekeringen zijn uiterlijk 19 november bekend.</li>'
+        '<li><b>Vergelijk basis en aanvullend samen.</b> De premies van de aanvullende verzekeringen voor 2027 zijn bekend.</li>'
         '<li><b>Sluit de nieuwe verzekering af</b> vóór 1 januari. Heb je zelf vóór 31 december opgezegd, dan heb je tot 31 januari de tijd.</li>'
         '<li><b>Controleer de bevestiging.</b> Meestal zegt je nieuwe verzekeraar je oude polis op. Staat dat er niet, zeg dan zelf op vóór 31 december.</li></ol>'
         '<div class="let"><b>Let op met een aanvullende verzekering.</b> Voor de basisverzekering word je altijd geaccepteerd. Voor een uitgebreid aanvullend pakket kan een verzekeraar een gezondheidsverklaring vragen. Zeg je oude polis pas op als je zeker bent dat je nieuwe aanvraag is goedgekeurd.</div>'
@@ -1113,7 +1115,7 @@ u.textContent='Zonder verzekering betaal je '+eur(zonder)+'. Met dit pakket beta
 - [Eigen risico 2027]({BASE}/eigen-risico-2027/): verplicht eigen risico € 400 (2026: € 385), met rekenhulp vrijwillig eigen risico.
 - [Zorgtoeslag 2027]({BASE}/zorgtoeslag-2027/): maximaal € 140 per maand (alleenstaand), inkomensgrens ± € 42.950, vermogensgrens € 119.122.
 - [Energie 2027]({BASE}/energie-2027/): salderen stopt 1 januari 2027; energiebelasting gas € 0,7457/m³, stroom € 0,1065/kWh, vermindering € 628,69; netbeheer gemiddeld + € 141.
-- [Aanvullende verzekering 2027]({BASE}/aanvullende-verzekering-2027/): wanneer een aanvullende verzekering loont, met rekenhulp; premies bekend uiterlijk 19 november.
+- [Aanvullende verzekering 2027]({BASE}/aanvullende-verzekering-2027/): wanneer een aanvullende verzekering loont, met rekenhulp; premies 2027 bekend sinds 19 november 2026.
 - [Tandartsverzekering 2027]({BASE}/tandartsverzekering-2027/): bij 102 van de 110 tandpakketten is de premie hoger dan de vergoeding bij gemiddelde kosten; rekenhulp.
 - [Energiecontract opzeggen]({BASE}/energiecontract-opzeggen/): opzegtermijn maximaal 30 dagen, geen opzegvergoeding bij variabel; vergoeding bij vast hangt af van prijsverschil.
 - [Zorgverzekering overstappen]({BASE}/zorgverzekering-overstappen/): stappenplan; opzeggen vóór 31 december 2026, nieuwe polis uiterlijk 31 januari 2027.

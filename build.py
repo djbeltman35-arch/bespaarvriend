@@ -142,6 +142,14 @@ form.contact label{display:block;font-weight:700;margin:12px 0 4px}form.contact 
 .tegels a .pijl{width:30px;height:30px;border-radius:50%;background:#ffd43b;color:#1e2a22!important;display:grid;place-items:center;top:14px!important;right:12px!important}
 .tegels a .pijl svg{width:18px;height:18px}
 @media (prefers-color-scheme:dark){.tegels>a,.tegels>.tegel{background:#1a221c!important}.tegels b{color:#e9efe8}}
+.intro{padding:12px 16px 12px!important;margin:10px 0 2px!important;border-radius:16px!important;box-shadow:0 3px 0 #08502f,0 8px 16px rgba(8,80,47,.2)!important}
+.intro .euro{font-size:120px!important;right:-6px!important;opacity:.2!important}
+.intro h1{font-size:clamp(21px,5.8vw,32px)!important;max-width:none!important;margin:0 0 2px!important}
+.intro .kort{font-size:14px!important;margin:0 0 6px!important;max-width:30ch!important}
+.intro .bekend{display:block!important;font-size:12.5px!important;line-height:1.9;color:#e6f5ec;max-width:34ch}
+.intro .bekend a:not(.b){background:none!important;color:#fff!important;padding:0!important;font-weight:800;text-decoration:underline}
+.intro .bekend a.b{text-decoration:none;background:#ffd43b;color:#1e2a22;padding:2px 8px;border-radius:999px;font-weight:800;white-space:nowrap}
+@media(min-width:700px){.intro{padding:18px 24px!important}.intro .euro{font-size:170px!important;right:20px!important}.intro .bekend{max-width:none}}
 .kaart.partner,.kaart.tool{border:2px solid var(--green)!important;border-radius:16px!important;box-shadow:0 3px 0 rgba(8,80,47,.28),0 8px 18px rgba(0,0,0,.08)}
 @media(max-width:640px){header.top .wrap{flex-wrap:nowrap!important;gap:6px}nav.top{width:auto!important;margin-left:auto!important}.logo span{display:none}nav.top{overflow-x:auto;scrollbar-width:none;flex-wrap:nowrap}nav.top::-webkit-scrollbar{display:none}nav.top a{white-space:nowrap}}
 /* gbstijl:end */
@@ -313,11 +321,11 @@ def bouw():
               + "".join(_tegel(u, ic, n, t, UITLEG.get(ic)) for u, ic, n, t in DIRECT)
               + '</div><p class="bron" style="margin-top:-6px">Advertentie: deze tegels gaan naar partners. Sluit je iets af, dan krijgt Bespaarvriend een kleine vergoeding. Jij betaalt niets extra.</p>')
     body = ('<section class="intro"><span class="euro" aria-hidden="true">€</span>'
-            '<p class="pill">Gratis · Onafhankelijk · Geen cookies</p>'
             '<h1>Besparen op je vaste lasten</h1>'
-            '<p class="kort">Vergelijk zorg, energie, internet en meer in één tik. Met uitleg in gewone taal en altijd met bronnen.</p>'
-            '<p class="maker2">Van de maker van <a href="https://boodschappenvergelijk.nl/?bron=bespaarvriend">Boodschappenvergelijk.nl</a></p>'
-            '<p class="bekend"><span>Bekend van</span><a href="https://www.hartvannederland.nl/advies-en-tips/kopen-besparen/videos/goedkoop-boodschappen-doen-erik-bouwt-vergelijker" target="_blank" rel="noopener">Hart van Nederland</a><a href="https://www.oost.nl/nieuws/3720144/rijssenaar-erik-beltman-rekent-af-met-dure-boodschappen-in-vergelijkingswebsite" target="_blank" rel="noopener">RTV Oost</a></p>'
+            '<p class="kort">Gratis en onafhankelijk vergelijken, met uitleg in gewone taal.</p>'
+            '<p class="bekend">Van de maker van <a href="https://boodschappenvergelijk.nl/?bron=bespaarvriend">Boodschappenvergelijk.nl</a> · bekend van '
+            '<a class="b" href="https://www.hartvannederland.nl/advies-en-tips/kopen-besparen/videos/goedkoop-boodschappen-doen-erik-bouwt-vergelijker" target="_blank" rel="noopener">Hart van Nederland</a> '
+            '<a class="b" href="https://www.oost.nl/nieuws/3720144/rijssenaar-erik-beltman-rekent-af-met-dure-boodschappen-in-vergelijkingswebsite" target="_blank" rel="noopener">RTV Oost</a></p>'
             '</section>' + direct +
             f'<div class="let"><span class="icl">{ICON["klok"]}</span><b>Overstappen kan nog tot 31 december.</b> Tussen de laagste en hoogste premie voor de basisverzekering zit in 2027 € 649 per jaar, voor dezelfde basiszorg. <a href="/zorgverzekering-2027/">Zo stap je over →</a></div>'
             '<h2>Waar wil je op besparen?</h2><div class="tegels">'

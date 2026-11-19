@@ -120,7 +120,19 @@ form.contact label{display:block;font-weight:700;margin:12px 0 4px}form.contact 
 .tegels .tegel a{border:0!important;border-radius:0!important;box-shadow:none!important}
 .tegels .tegel a.hoofd{flex:1;display:block;padding:16px 14px;text-decoration:none;color:var(--ink);position:relative;background:none}
 .tegels .tegel a.uitleg{display:block;padding:10px 14px;font-size:14px;font-weight:700;background:var(--green-soft);color:var(--green-dark);border-top:1px solid var(--line)!important;text-decoration:underline}
-.direct-kop{margin-top:6px}
+.direct-kop{margin-top:22px}
+.intro{position:relative;overflow:hidden;margin:14px 0 4px;padding:22px 20px 20px;border-radius:22px;color:#fff;background:radial-gradient(120% 140% at 100% 0%,#17a061 0%,#0e7c4a 45%,#0a5a35 100%);box-shadow:0 4px 0 #08502f,0 12px 26px rgba(8,80,47,.25)}
+.intro .euro{position:absolute;right:-18px;top:50%;transform:translateY(-50%) rotate(-12deg);font:800 210px/1 "Barlow Condensed",system-ui,sans-serif;color:#ffd43b;opacity:.22;pointer-events:none;text-shadow:0 0 40px rgba(255,212,59,.35)}
+.intro>*{position:relative}
+.intro .pill{display:inline-block;margin:0 0 10px;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.16);font-size:13px;font-weight:700;letter-spacing:.01em}
+.intro h1{color:#fff;margin:0 0 6px;font-size:clamp(28px,7.4vw,44px);line-height:1.05;max-width:13ch}
+.intro .kort{margin:0 0 14px;font-size:16px;line-height:1.45;max-width:34ch;color:#e6f5ec}
+.intro .maker2{margin:0 0 8px;font-size:14px;color:#e6f5ec}
+.intro a{color:#fff;font-weight:700;text-decoration:underline;text-decoration-color:rgba(255,255,255,.5);text-underline-offset:3px}
+.intro .bekend{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0;font-size:13px}
+.intro .bekend span{color:#cfe9da;margin-right:2px}
+.intro .bekend a{text-decoration:none;background:#ffd43b;color:#1e2a22;padding:4px 10px;border-radius:999px;font-weight:800}
+@media(min-width:700px){.intro{padding:34px 34px 30px}.intro .euro{font-size:300px;right:10px}}
 .kaart.partner,.kaart.tool{border:2px solid var(--green)!important;border-radius:16px!important;box-shadow:0 3px 0 rgba(8,80,47,.28),0 8px 18px rgba(0,0,0,.08)}
 @media(max-width:640px){header.top .wrap{flex-wrap:nowrap!important;gap:6px}nav.top{width:auto!important;margin-left:auto!important}.logo span{display:none}nav.top{overflow-x:auto;scrollbar-width:none;flex-wrap:nowrap}nav.top::-webkit-scrollbar{display:none}nav.top a{white-space:nowrap}}
 /* gbstijl:end */
@@ -291,12 +303,13 @@ def bouw():
     direct = ('<h2 class="direct-kop">Direct vergelijken</h2><div class="tegels direct">'
               + "".join(_tegel(u, ic, n, t, UITLEG.get(ic)) for u, ic, n, t in DIRECT)
               + '</div><p class="bron" style="margin-top:-6px">Advertentie: deze tegels gaan naar partners. Sluit je iets af, dan krijgt Bespaarvriend een kleine vergoeding. Jij betaalt niets extra.</p>')
-    body = (direct + '<section class="hero"><p class="maker">Van de maker van <a href="https://boodschappenvergelijk.nl/?bron=bespaarvriend">Boodschappenvergelijk.nl</a>, bekend van <a href="https://www.hartvannederland.nl/advies-en-tips/kopen-besparen/videos/goedkoop-boodschappen-doen-erik-bouwt-vergelijker" target="_blank" rel="noopener">Hart van Nederland</a> en <a href="https://www.oost.nl/nieuws/3720144/rijssenaar-erik-beltman-rekent-af-met-dure-boodschappen-in-vergelijkingswebsite" target="_blank" rel="noopener">RTV Oost</a></p>'
+    body = ('<section class="intro"><span class="euro" aria-hidden="true">€</span>'
+            '<p class="pill">Gratis · Onafhankelijk · Geen cookies</p>'
             '<h1>Besparen op je vaste lasten</h1>'
-            '<p class="lead">Gratis en onafhankelijk uitgelegd</p>'
-            '<ol class="stapjes" aria-label="Zo werkt het"><li><span class="n">1</span>Kies</li><li><span class="n">2</span>Vergelijk</li><li><span class="n">3</span>Bespaar</li></ol>'
-            f'<div class="knoppen"><a class="btn" href="/zorgverzekering-2027/">Bespaar op je zorgpremie{ICON["pijl"]}</a><a class="btn-line" href="/energie-2027/">Energie 2027</a></div>'
-            f'<ul class="vertrouwen"><li>{ICON["check"]}Altijd met bronnen</li><li>{ICON["check"]}Geen cookies of trackers</li><li>{ICON["check"]}Rekenhulpen in je eigen browser</li></ul></section>'
+            '<p class="kort">Vergelijk zorg, energie, internet en meer in één tik. Met uitleg in gewone taal en altijd met bronnen.</p>'
+            '<p class="maker2">Van de maker van <a href="https://boodschappenvergelijk.nl/?bron=bespaarvriend">Boodschappenvergelijk.nl</a></p>'
+            '<p class="bekend"><span>Bekend van</span><a href="https://www.hartvannederland.nl/advies-en-tips/kopen-besparen/videos/goedkoop-boodschappen-doen-erik-bouwt-vergelijker" target="_blank" rel="noopener">Hart van Nederland</a><a href="https://www.oost.nl/nieuws/3720144/rijssenaar-erik-beltman-rekent-af-met-dure-boodschappen-in-vergelijkingswebsite" target="_blank" rel="noopener">RTV Oost</a></p>'
+            '</section>' + direct +
             f'<div class="let"><span class="icl">{ICON["klok"]}</span><b>Overstappen kan nog tot 31 december.</b> Tussen de laagste en hoogste premie voor de basisverzekering zit in 2027 € 649 per jaar, voor dezelfde basiszorg. <a href="/zorgverzekering-2027/">Zo stap je over →</a></div>'
             '<h2>Waar wil je op besparen?</h2><div class="tegels">'
             f'<a href="/zorgverzekering-2027/"><span class="ic">{ICON["zorg"]}</span>{pijl}<b>Zorgverzekering</b><small>Premies 2027 en overstappen</small></a>'

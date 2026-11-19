@@ -92,6 +92,29 @@ form.contact label{display:block;font-weight:700;margin:12px 0 4px}form.contact 
 .partner .ad{margin:0 0 4px;font-size:13px;color:var(--muted)}.partner b{display:block;font-size:18px}.partner p{margin:4px 0 12px}.partner .bron{margin:10px 0 0}.pchips{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}.pchips a{border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-weight:700;font-size:14px;text-decoration:none;color:var(--green-dark);background:var(--green-soft)}.pchips a:hover{border-color:var(--green)}
 .tool{display:flex;gap:14px;align-items:flex-start;border-color:var(--green);background:linear-gradient(135deg,var(--green-soft),var(--surface) 75%)}.tool .ic{flex:none;display:grid;place-items:center;width:48px;height:48px;border-radius:14px;background:var(--tag);color:var(--tag-ink)}.tool p{margin:4px 0 12px}
 @media(max-width:640px){header.top .wrap{flex-wrap:wrap;row-gap:4px}nav.top{margin-left:0;width:100%;overflow-x:auto;scrollbar-width:none}nav.top a{white-space:nowrap}}@media(max-width:400px){.logo span{font-size:17px}}
+
+/* gbstijl:start */
+:root{--r:4px}
+.hero{background:none!important;border:0!important;border-radius:0!important;padding:18px 0 6px!important;margin:0!important;text-align:center;overflow:visible!important}
+.hero:after{display:none!important}
+.hero h1{max-width:none!important;margin:0 0 4px!important;font-size:clamp(24px,6.6vw,42px)!important;letter-spacing:-.015em}
+.hero .lead{max-width:none!important;color:var(--muted);font-size:16px;margin:0 auto 4px}
+.maker{font-size:13px;color:var(--muted);margin:0 0 6px}
+.maker a{color:var(--ink);font-weight:700;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px}
+.hero .knoppen{justify-content:center;display:flex;gap:8px;flex-wrap:nowrap}.hero .knoppen a{padding:11px 14px!important;font-size:15px!important;white-space:nowrap}
+.hero .vertrouwen{justify-content:center;display:flex;flex-wrap:wrap;gap:2px 12px;padding:0;margin:10px 0 0;font-size:13px}.hero .vertrouwen li{display:flex;align-items:center;gap:4px}.hero .vertrouwen svg{width:15px;height:15px}
+.stapjes{list-style:none;display:flex;margin:14px auto 12px;padding:0;max-width:640px;background:var(--surface);border:1px solid var(--line)}
+.stapjes li{flex:1;display:flex;align-items:center;justify-content:center;gap:7px;padding:10px 4px;font-size:14px;font-weight:700;border-left:1px solid var(--line)}
+.stapjes li:first-child{border-left:0}
+.stapjes .n{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-size:13px;background:#f5c400;color:#1e2a22;flex:none}
+.btn{background:linear-gradient(180deg,#17a061 0%,#0e7c4a 55%,#0b6a3f 100%)!important;color:#fff!important;border-radius:10px!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.28),0 3px 0 #08502f,0 5px 10px rgba(8,80,47,.28)!important}
+.btn:active{transform:translateY(2px)}
+.btn-line{border-radius:10px!important}
+.tegels{gap:0!important;border:1px solid var(--line);background:var(--surface)}
+.tegels a{border:0!important;border-radius:0!important;border-right:1px solid var(--line)!important;border-bottom:1px solid var(--line)!important}
+.tegels .ic{border-radius:50%!important}
+@media(max-width:640px){header.top .wrap{flex-wrap:nowrap!important;gap:6px}nav.top{width:auto!important;margin-left:auto!important}.logo span{display:none}nav.top{overflow-x:auto;scrollbar-width:none;flex-wrap:nowrap}nav.top::-webkit-scrollbar{display:none}nav.top a{white-space:nowrap}}
+/* gbstijl:end */
 """
 
 def _svg(d, extra=""):
@@ -226,9 +249,10 @@ def bouw():
              ("Geven jullie persoonlijk advies?", "Nee. We leggen uit hoe het zit en verwijzen naar onafhankelijke vergelijkers en officiële bronnen. De keuze maak je zelf."),
              ("Tot wanneer kan ik overstappen van zorgverzekering?", "Zeg je huidige zorgverzekering uiterlijk 31 december 2026 op. Je hebt daarna tot en met 31 januari 2027 om een nieuwe af te sluiten; die gaat in per 1 januari 2027.")]
     pijl = f'<span class="pijl">{ICON["pijl"]}</span>'
-    body = ('<section class="hero"><span class="kicker">Gratis · onafhankelijk · bijgewerkt ' + BIJGEWERKT + '</span>'
-            '<h1>Slim besparen op je vaste lasten</h1>'
-            '<p class="lead">Zorg, energie, internet, vakantie, auto en boodschappen: we leggen in gewone taal uit waar je geld laat liggen en hoe je het terughaalt. Met gratis vergelijkers en rekenhulpen, zonder verkooppraatjes.</p>'
+    body = ('<section class="hero"><p class="maker">Van de maker van <a href="https://boodschappenvergelijk.nl/?bron=bespaarvriend">Boodschappenvergelijk.nl</a>, bekend van <a href="https://www.hartvannederland.nl/advies-en-tips/kopen-besparen/videos/goedkoop-boodschappen-doen-erik-bouwt-vergelijker" target="_blank" rel="noopener">Hart van Nederland</a> en <a href="https://www.oost.nl/nieuws/3720144/rijssenaar-erik-beltman-rekent-af-met-dure-boodschappen-in-vergelijkingswebsite" target="_blank" rel="noopener">RTV Oost</a></p>'
+            '<h1>Besparen op je vaste lasten</h1>'
+            '<p class="lead">Gratis en onafhankelijk uitgelegd</p>'
+            '<ol class="stapjes" aria-label="Zo werkt het"><li><span class="n">1</span>Kies</li><li><span class="n">2</span>Vergelijk</li><li><span class="n">3</span>Bespaar</li></ol>'
             f'<div class="knoppen"><a class="btn" href="/zorgverzekering-2027/">Bespaar op je zorgpremie{ICON["pijl"]}</a><a class="btn-line" href="/energie-2027/">Energie 2027</a></div>'
             f'<ul class="vertrouwen"><li>{ICON["check"]}Altijd met bronnen</li><li>{ICON["check"]}Geen cookies of trackers</li><li>{ICON["check"]}Rekenhulpen in je eigen browser</li></ul></section>'
             f'<div class="let"><span class="icl">{ICON["klok"]}</span><b>Overstappen kan nog tot 31 december.</b> Tussen de laagste en hoogste premie voor de basisverzekering zit in 2027 € 649 per jaar, voor dezelfde basiszorg. <a href="/zorgverzekering-2027/">Zo stap je over →</a></div>'

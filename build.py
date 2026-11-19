@@ -241,8 +241,8 @@ def partner(url, titel, tekst, knop, artikelen=()):
 NAV = '<nav class="top" aria-label="Hoofdmenu"><a href="/zorgverzekering-2027/">Zorg</a><a href="/energie-2027/">Energie</a><a href="/internet-en-mobiel/">Internet</a><a href="/auto-en-tanken/">Auto</a><span class="nbr" aria-hidden="true"></span><a href="/vakantie-en-vliegen/">Vakantie</a><a href="/goedkoop-vliegen/">Vliegen</a><a href="/salderen-2027/">Saldering</a></nav>'
 FOOT = f"""<footer class="foot"><div class="wrap">
 <p class="free">Bespaarvriend helpt je besparen op je vaste lasten. Gratis en onafhankelijk uitgelegd. Wij geven geen persoonlijk financieel advies.</p>
-<p class="fkop">Zorg</p><nav aria-label="Zorg"><a href="/zorgverzekering-2027/">Zorgverzekering 2027</a><a href="/zorgverzekering-overstappen/">Overstappen</a><a href="/aanvullende-verzekering-2027/">Aanvullende verzekering</a><a href="/tandartsverzekering-2027/">Tandartsverzekering</a><a href="/fysiotherapie-vergoeding-2027/">Fysiotherapie</a><a href="/eigen-risico-2027/">Eigen risico 2027</a><a href="/zorgtoeslag-2027/">Zorgtoeslag 2027</a><a href="/huurtoeslag-2027/">Huurtoeslag 2027</a><a href="/kindgebonden-budget-2027/">Kindgebonden budget 2027</a><a href="/administratie/">Vaste lasten op orde</a></nav>
-<p class="fkop">Energie, internet en mobiel</p><nav aria-label="Energie, internet en mobiel"><a href="/energie-2027/">Energie 2027</a><a href="/salderen-2027/">Einde salderen</a><a href="/energierekening-verlagen/">Energierekening verlagen</a><a href="/energiecontract-opzeggen/">Contract opzeggen</a><a href="/internet-en-mobiel/">Internet en mobiel</a><a href="/sim-only-overstappen/">Sim only overstappen</a><a href="/refurbished-telefoon-kopen/">Refurbished telefoon</a><a href="/boodschappen/">Boodschappen</a></nav>
+<p class="fkop">Zorg</p><nav aria-label="Zorg"><a href="/zorgverzekering-2027/">Zorgverzekering 2027</a><a href="/zorgverzekering-overstappen/">Overstappen</a><a href="/aanvullende-verzekering-2027/">Aanvullende verzekering</a><a href="/tandartsverzekering-2027/">Tandartsverzekering</a><a href="/fysiotherapie-vergoeding-2027/">Fysiotherapie</a><a href="/eigen-risico-2027/">Eigen risico 2027</a><a href="/zorgtoeslag-2027/">Zorgtoeslag 2027</a><a href="/huurtoeslag-2027/">Huurtoeslag 2027</a><a href="/huurverhoging-2027/">Huurverhoging 2027</a><a href="/kindgebonden-budget-2027/">Kindgebonden budget 2027</a><a href="/kinderbijslag-2027/">Kinderbijslag 2027</a><a href="/belastingaangifte-tips/">Belastingaangifte tips</a><a href="/administratie/">Vaste lasten op orde</a></nav>
+<p class="fkop">Energie, internet en mobiel</p><nav aria-label="Energie, internet en mobiel"><a href="/energie-2027/">Energie 2027</a><a href="/salderen-2027/">Einde salderen</a><a href="/energierekening-verlagen/">Energierekening verlagen</a><a href="/abonnementen-opzeggen/">Abonnementen opzeggen</a><a href="/goedkoop-boodschappen-doen/">Goedkoop boodschappen doen</a><a href="/energiecontract-opzeggen/">Contract opzeggen</a><a href="/internet-en-mobiel/">Internet en mobiel</a><a href="/sim-only-overstappen/">Sim only overstappen</a><a href="/refurbished-telefoon-kopen/">Refurbished telefoon</a><a href="/boodschappen/">Boodschappen</a></nav>
 <p class="fkop">Reizen en auto</p><nav aria-label="Reizen en auto"><a href="/vakantie-en-vliegen/">Vakantie en vliegen</a><a href="/goedkoop-vliegen/">Goedkoop vliegen</a><a href="/reisverzekering-doorlopend-of-kortlopend/">Reisverzekering</a><a href="/auto-en-tanken/">Auto en tanken</a><a href="/autoverzekering-besparen/">Autoverzekering</a></nav>
 <p class="fkop">Meer gratis hulpmiddelen van Erik</p><nav aria-label="Meer gratis hulpmiddelen van Erik"><a href="https://boodschappenvergelijk.nl/">Boodschappenvergelijk</a><a href="https://goedkopertanken.netlify.app/">Tankwijzer</a><a href="https://vluchtwijzer.netlify.app/">Vluchtwijzer</a><a href="https://vakantietoppers.netlify.app/">Vakantiewijzer</a><a href="https://salderingscheck-nl.netlify.app/">Salderingscheck</a><a href="https://euroroadrules.eu/">EuroRoadRules</a><a href="https://foutcodezoeker.nl/">Foutcodezoeker</a><a href="https://bonnenboek.netlify.app/">Bonnenboek</a><a href="https://allesoporde.netlify.app/">Alles op orde</a></nav>
 <p class="fkop">Over</p><nav aria-label="Over"><a href="/over/">Over Bespaarvriend</a><a href="/contact/">Contact</a><a href="/privacy/">Privacy</a><a href="/gebruiksvoorwaarden/">Gebruiksvoorwaarden</a><a href="/sitemap.xml">Sitemap</a></nav>
@@ -1088,6 +1088,120 @@ u.textContent='Zonder verzekering betaal je '+eur(zonder)+'. Met dit pakket beta
         "Besparen op je autoverzekering: WA, beperkt casco of allrisk?", "Bespaar op je autoverzekering: tot 6 jaar allrisk, 6 tot 10 jaar beperkt casco, ouder vaak alleen WA. Plus 5 tips: eigen risico, kilometers en overbodige extra’s.")
 
     sim = partner(awin(8311, "bespaarvriend-simonly", "https://www.unitedconsumers.com/mobiel"), "Sim only met een duidelijke maandprijs", "Sim only zonder kleine lettertjes: één vaste prijs per maand, maandelijks opzegbaar.", "Bekijk sim only")
+    artikel("/belastingaangifte-tips/", "Belastingaangifte tips", "bon",
+        "Belastingaangifte: zo haal je alles terug waar je recht op hebt",
+        "Veel mensen laten bij hun aangifte geld liggen, omdat ze aftrekposten vergeten. Met deze checklist mis je niets, en heb je je teruggave zo snel mogelijk binnen.",
+        [("1 maart", "aangifte doen kan vanaf"), ("1 mei", "uiterste datum, of vraag uitstel"), ("Vóór 1 april", "insturen = meestal bericht vóór 1 juli"), ("5 jaar", "terug kun je een vergeten aftrek nog regelen")],
+        '<h2>Zo pak je het aan</h2><ol class="stappen">'
+        '<li><b>Begin vroeg.</b> Vanaf 1 maart kun je aangifte doen. Stuur je hem vóór 1 april in, dan krijg je meestal vóór 1 juli bericht en je geld snel daarna.</li>'
+        '<li><b>Controleer de vooraf ingevulde gegevens.</b> Loon, bankrekeningen en WOZ-waarde staan er al in, maar ze kloppen niet altijd. Vergelijk ze met je jaaropgaven.</li>'
+        '<li><b>Loop de aftrekposten na.</b> Zie het lijstje hieronder. Die vult de Belastingdienst niet voor je in.</li>'
+        '<li><b>Verdeel slim met je fiscale partner.</b> Zet aftrekposten zoals hypotheekrente bij de partner met het hoogste inkomen. Dat levert vaak meer op.</li>'
+        '<li><b>Niet op tijd klaar?</b> Vraag vóór 1 mei uitstel aan via Mijn Belastingdienst. Dan heb je tot 1 september.</li></ol>'
+        '<h2>Aftrekposten die vaak vergeten worden</h2><ul>'
+        '<li><b>Specifieke zorgkosten</b> die je zelf betaalde, zoals bepaalde hulpmiddelen, dieetkosten op voorschrift en extra reiskosten voor ziekenbezoek.</li>'
+        '<li><b>Giften</b> aan goede doelen met een ANBI-status, boven een drempel. Periodieke giften (vastgelegd voor 5 jaar) zijn zonder drempel aftrekbaar.</li>'
+        '<li><b>Hypotheekrente en afsluitkosten</b>, zoals advies- en notariskosten in het jaar dat je een huis kocht.</li>'
+        '<li><b>Lijfrentepremie</b> als je een pensioentekort hebt, bijvoorbeeld als zzp’er.</li>'
+        '</ul>'
+        '<div class="let"><b>Iets vergeten?</b> Je kunt een aftrekpost tot 5 jaar terug alsnog opgeven via een verzoek om ambtshalve vermindering.</div>',
+        '',
+        [("/zorgtoeslag-2027/", "Zorgtoeslag 2027"), ("/huurtoeslag-2027/", "Huurtoeslag 2027"), ("/administratie/", "Vaste lasten op orde")],
+        [("Wanneer moet ik aangifte doen?", "Tussen 1 maart en 1 mei. Lukt dat niet, vraag dan vóór 1 mei uitstel aan; je krijgt dan tot 1 september."),
+         ("Moet ik aangifte doen als ik geen brief kreeg?", "Alleen als je moet bijbetalen boven een klein drempelbedrag. Maar vaak krijg je juist geld terug, dus invullen loont meestal."),
+         ("Wanneer krijg ik mijn geld terug?", "Doe je vóór 1 april aangifte, dan krijg je meestal vóór 1 juli bericht. Daarna volgt de uitbetaling binnen een paar dagen."),
+         ("Kan ik een vergeten aftrekpost later nog opgeven?", "Ja, tot 5 jaar terug, met een verzoek om ambtshalve vermindering bij de Belastingdienst.")],
+        [("https://www.consumentenbond.nl/belastingaangifte/checklist-belastingaangifte-doen", "Consumentenbond"), ("https://bieb.knab.nl/inkomsten-uitgaven/aangifte-inkomstenbelasting-wat-je-moet-weten", "Knab"), ("https://www.raisin.com/nl-nl/sparen/wanneer-belasting-terug/", "Raisin")],
+        "Belastingaangifte tips: aftrekposten die je niet wilt missen", "Haal alles terug bij je belastingaangifte: begin vóór 1 april, controleer de vooraf ingevulde gegevens en vergeet zorgkosten, giften en afsluitkosten niet.")
+    artikel("/kinderbijslag-2027/", "Kinderbijslag 2027", "toeslag",
+        "Kinderbijslag 2027: bedragen, betaaldata en wat er verandert",
+        "Kinderbijslag krijg je voor elk kind tot 18 jaar, ongeacht je inkomen. In 2027 gaat het bedrag licht omhoog. Hier zie je wat je krijgt en wanneer het op je rekening staat.",
+        [("€ 298,40", "per kwartaal voor 0–5 jaar (sinds 1 juli 2026)"), ("4x", "per jaar, achteraf betaald"), ("2 jan 2027", "betaling over het 4e kwartaal 2026"), ("18 jaar", "tot die leeftijd krijg je het")],
+        '<h2>Hoeveel krijg je?</h2><p>Het bedrag hangt af van de leeftijd van je kind op de eerste dag van het kwartaal. In het eerste halfjaar van 2026 was het per kind per kwartaal:</p>'
+        '<table><tr><th>Leeftijd kind</th><th>Per kwartaal</th><th>Per jaar</th></tr><tr><td>0 t/m 5 jaar</td><td>€ 295,07</td><td>€ 1.180,28</td></tr><tr><td>6 t/m 11 jaar</td><td>€ 358,30</td><td>€ 1.433,20</td></tr><tr><td>12 t/m 17 jaar</td><td>€ 421,53</td><td>€ 1.686,12</td></tr></table>'
+        '<p>Sinds 1 juli 2026 zijn de bedragen iets hoger; voor een kind tot 6 jaar is dat € 298,40 per kwartaal. Het kabinet verhoogt de kinderbijslag in 2027 licht. De nieuwe bedragen maakt de SVB eind december bekend.</p>'
+        '<h2>Wat verandert er in 2027?</h2><ul>'
+        '<li><b>Kinderbijslag iets omhoog</b> voor alle ouders, om meer zekerheid te geven.</li>'
+        '<li><b>Kindgebonden budget omlaag</b> voor gezinnen met een inkomen boven ongeveer € 61.917. Lees <a href="/kindgebonden-budget-2027/">wat dat voor jou betekent</a>.</li>'
+        '<li><b>Nieuwe kindregeling</b> pas later: het kabinet wil kinderbijslag en kindgebonden budget rond 2030 samenvoegen.</li></ul>'
+        '<div class="let"><b>Let op:</b> de kinderbijslag stopt in het kwartaal nadat je kind 18 wordt. Gaat je kind eerder studeren met studiefinanciering, dan stopt hij ook eerder.</div>',
+        '',
+        [("/kindgebonden-budget-2027/", "Kindgebonden budget 2027"), ("/zorgtoeslag-2027/", "Zorgtoeslag 2027"), ("/administratie/", "Vaste lasten op orde")],
+        [("Hoeveel kinderbijslag krijg ik in 2027?", "Iets meer dan in 2026. De precieze bedragen maakt de SVB eind december bekend. In 2026 was het € 295,07 tot € 421,53 per kwartaal, afhankelijk van de leeftijd."),
+         ("Wanneer wordt de kinderbijslag betaald?", "Elk kwartaal achteraf: begin januari, april, juli en oktober. De betaling over het vierde kwartaal van 2026 komt op 2 januari 2027."),
+         ("Hangt kinderbijslag af van mijn inkomen?", "Nee, iedereen krijgt hetzelfde bedrag per kind. Het kindgebonden budget hangt wel af van je inkomen."),
+         ("Moet ik kinderbijslag aanvragen?", "Na de geboorte van je kind stuurt de SVB je meestal vanzelf een formulier. Aanvragen kan ook via mijn.svb.nl.")],
+        [("https://rekenmachinepro.nl/blog/kinderbijslag-uitbetaaldata-2026/", "Rekenmachinepro"), ("https://www.welingelichtekringen.nl/economie/kinderbijslag-nederland-vlaanderen-duitsland", "Welingelichte Kringen"), ("https://www.eerstekamer.nl/nonav/behandeling/20260917/nota_van_wijziging_tweede_nota_van/document3/f=/vn0zmz4cg0yw.pdf", "Eerste Kamer"), ("https://www.oudersvannu.nl/baby/veiligheid/kinderbijslag-hier-heb-je-recht-op", "Ouders van Nu")],
+        "Kinderbijslag 2027: bedragen, betaaldata en wijzigingen", "Kinderbijslag 2027: bedragen per leeftijd, betaaldata per kwartaal en wat er verandert. De betaling over het 4e kwartaal van 2026 komt op 2 januari 2027.")
+    artikel("/huurverhoging-2027/", "Huurverhoging 2027", "sleutel",
+        "Huurverhoging 2027: hoeveel mag je verhuurder vragen?",
+        "Je huur mag één keer per jaar omhoog, maar niet onbeperkt. Hoeveel hangt af van het soort woning. Zo check je of je huurverhoging klopt, en wat je doet als hij te hoog is.",
+        [("4,1%", "max. sociale huur (1 juli 2026 – 1 juli 2027)"), ("6,1%", "max. middenhuur in 2026"), ("4,4%", "max. vrije sector in 2026"), ("2 mnd", "vooraf moet je het voorstel krijgen")],
+        '<h2>Hoeveel mag je huur omhoog?</h2><table><tr><th>Soort woning</th><th>Maximum</th><th>Ingang</th></tr>'
+        '<tr><td>Sociale huur</td><td>4,1% (of € 25 bij huur onder € 350)</td><td>1 juli 2026 tot 1 juli 2027</td></tr>'
+        '<tr><td>Middenhuur</td><td>6,1%</td><td>1 januari 2026 tot 1 januari 2027</td></tr>'
+        '<tr><td>Vrije sector</td><td>4,4%</td><td>1 januari 2026 tot 1 januari 2027</td></tr></table>'
+        '<p>De maxima voor sociale huur vanaf 1 juli 2027 maakt de overheid in december bekend. Bij middenhuur en vrije sector gelden nieuwe maxima vanaf 1 januari 2027. Staat er in je contract een lager percentage? Dan geldt dat lagere percentage.</p>'
+        '<h2>Zo check je je huurverhoging</h2><ol class="stappen">'
+        '<li><b>Kijk welk soort woning je hebt.</b> Sociale huur, middenhuur of vrije sector: dat staat in je contract of vraag je aan je verhuurder.</li>'
+        '<li><b>Reken het percentage uit.</b> Nieuwe huur min oude huur, gedeeld door de oude huur. Is het hoger dan het maximum, dan klopt het niet.</li>'
+        '<li><b>Let op de termijn.</b> Bij sociale huur moet je het voorstel minstens 2 maanden voor de ingangsdatum krijgen.</li>'
+        '<li><b>Te hoog? Maak bezwaar.</b> Doe dat schriftelijk bij je verhuurder, vóór de ingangsdatum. Komen jullie er niet uit, dan kun je naar de Huurcommissie.</li></ol>'
+        '<div class="let"><b>Tip:</b> kijk meteen of je recht hebt op <a href="/huurtoeslag-2027/">huurtoeslag</a>. Sinds 2026 is je huur daar nooit meer te hoog voor.</div>',
+        partner(awin(8520, "bespaarvriend-huurverhoging", "https://www.gaslicht.com/energievergelijken"), "Bespaar op je woonlasten", "Hogere huur? Haal het terug op energie. Vergelijk energiecontracten met de tarieven voor 2027.", "Vergelijk energiecontracten"),
+        [("/huurtoeslag-2027/", "Huurtoeslag 2027"), ("/energierekening-verlagen/", "Energierekening verlagen")],
+        [("Hoeveel mag mijn sociale huur omhoog?", "Van 1 juli 2026 tot 1 juli 2027 maximaal 4,1%, of € 25 als je huur lager is dan € 350. Bij een hoger inkomen mag de verhuurder soms meer vragen."),
+         ("Hoeveel mag de huur in de vrije sector omhoog?", "In 2026 maximaal 4,4%. Het maximum voor 2027 wordt eind 2026 bekendgemaakt. Staat er een lager percentage in je contract, dan geldt dat."),
+         ("Wat als mijn huurverhoging te hoog is?", "Maak schriftelijk bezwaar bij je verhuurder, vóór de ingangsdatum. Lost dat niets op, dan kun je de Huurcommissie inschakelen."),
+         ("Hoe vaak mag de huur omhoog?", "Eén keer per jaar. Bij sociale huur meestal op 1 juli.")],
+        [("https://www.rijksoverheid.nl/onderwerpen/veranderingen/nieuws/2025/12/15/maximale-huurverhoging-2026-in-sociale-sector-41-middenhuur-61-en-vrije-sector-44", "Rijksoverheid"), ("https://www.volkshuisvestingnederland.nl/onderwerpen/huren-en-wonen/passende-huur/jaarlijkse-huurverhoging", "Volkshuisvesting Nederland"), ("https://aedes.nl/huurbeleid-en-betaalbaarheid/huurbeleid-2027", "Aedes"), ("https://www.cbs.nl/nl-nl/nieuws/2026/36/woninghuur-stijgt-gemiddeld-met-4-4-procent/maximaal-toegestane-reguliere-huurverhoging", "CBS")],
+        "Huurverhoging 2027: hoeveel mag je verhuurder vragen?", "Huurverhoging: maximaal 4,1% bij sociale huur, 6,1% bij middenhuur en 4,4% in de vrije sector. Zo check je je huurverhoging en maak je bezwaar als hij te hoog is.")
+    artikel("/abonnementen-opzeggen/", "Abonnementen opzeggen", "check",
+        "Abonnementen opzeggen: zo stop je makkelijk en betaal je niet te veel",
+        "De meeste mensen hebben meer dan tien abonnementen. Vaak loopt er eentje door die je niet meer gebruikt. Dit zijn je rechten, en zo zeg je zonder gedoe op.",
+        [("1 maand", "maximale opzegtermijn na de eerste periode"), ("Online", "afgesloten = ook online opzeggen"), ("3 mnd", "max. verlenging bij kranten en tijdschriften"), ("Bewijs", "vraag altijd een bevestiging")],
+        '<h2>Je rechten op een rij</h2><ul>'
+        '<li><b>Na de eerste periode maandelijks opzegbaar.</b> Een abonnement mag automatisch doorlopen, maar dan moet je het daarna op elk moment kunnen opzeggen, met hoogstens 1 maand opzegtermijn.</li>'
+        '<li><b>Zelfde manier als afsluiten.</b> Heb je online afgesloten, dan moet je ook online kunnen opzeggen, bijvoorbeeld per e-mail of via je account.</li>'
+        '<li><b>Kranten en tijdschriften:</b> na de eerste periode mogen ze telkens verlengen voor maximaal 3 maanden, of voor onbepaalde tijd met 1 maand opzegtermijn.</li>'
+        '<li><b>Internet, tv en mobiel:</b> na je contractperiode (meestal 1 of 2 jaar) zeg je op met hoogstens 1 maand opzegtermijn, die direct ingaat.</li></ul>'
+        '<h2>Zo ruim je op in 4 stappen</h2><ol class="stappen">'
+        '<li><b>Maak een lijstje.</b> Loop je bankafschriften van de laatste 3 maanden door en schrijf elke vaste afschrijving op. Handig: de gratis app <a href="https://allesoporde.netlify.app/">Alles op orde</a>.</li>'
+        '<li><b>Streep door wat je niet gebruikt.</b> Denk aan de sportschool, een tweede streamingdienst, een app-abonnement of een krant die je niet leest.</li>'
+        '<li><b>Zeg op en bewaar het bewijs.</b> Vraag altijd een bevestiging per mail of brief.</li>'
+        '<li><b>Check het na een maand</b> op je bankafschrift. Wordt er nog afgeschreven, dan kun je een incasso binnen 8 weken laten terugboeken.</li></ol>'
+        '<div class="let"><b>Tip:</b> streamingdiensten kun je om de beurt nemen. Eén maand de ene, dan een maand de andere. Dat scheelt al snel € 100 per jaar.</div>',
+        sim,
+        [("/internet-en-mobiel/", "Internet en mobiel: stop met te veel betalen"), ("/sim-only-overstappen/", "Sim only overstappen"), ("/energiecontract-opzeggen/", "Energiecontract opzeggen")],
+        [("Hoe lang is de opzegtermijn van een abonnement?", "Na de eerste contractperiode hoogstens 1 maand. Je kunt dan op elk moment opzeggen."),
+         ("Mag een bedrijf mij dwingen te bellen om op te zeggen?", "Nee. Heb je online afgesloten, dan moet je ook online kunnen opzeggen."),
+         ("Kan ik een lopend contract eerder stoppen?", "Meestal niet zonder kosten. Soms betaal je een opzegvergoeding voor de resterende maanden. Vragen kan altijd."),
+         ("Er wordt na opzeggen nog geld afgeschreven, wat nu?", "Laat de incasso binnen 8 weken terugboeken via je bank en stuur het bedrijf je opzegbevestiging.")],
+        [("https://www.acm.nl/nl/onderwerpen/consumentenrecht/prijzen-en-overeenkomsten/regels-voor-het-verlengen-en-opzeggen-van-abonnementen/", "ACM"), ("https://www.consumentenbond.nl/juridisch-advies/opzeggen-abonnement", "Consumentenbond"), ("https://www.rijksoverheid.nl/vraag-en-antwoord/bescherming-van-consumenten/mogen-abonnementen-stilzwijgend-verlengd-worden", "Rijksoverheid")],
+        "Abonnementen opzeggen: je rechten en zo stop je makkelijk", "Abonnementen opzeggen: na de eerste periode maandelijks opzegbaar met max. 1 maand opzegtermijn, en online afgesloten is online opzeggen. Zo ruim je op.")
+    artikel("/goedkoop-boodschappen-doen/", "Goedkoop boodschappen doen", "boodschappen",
+        "Goedkoop boodschappen doen: 10 tips die elke week schelen",
+        "Boodschappen zijn voor veel huishoudens de grootste uitgave na huur en energie. Met deze 10 tips houd je elke week geld over, zonder dat je minder lekker eet.",
+        [("12", "supermarkten vergeleken op Boodschappenvergelijk.nl"), ("Elke dag", "nieuwe prijzen"), ("Huismerk", "vaak de grootste besparing"), ("Gratis", "en zonder account")],
+        '<h2>10 tips om minder uit te geven</h2><ol class="stappen">'
+        '<li><b>Vergelijk je lijstje.</b> Op <a href="https://boodschappenvergelijk.nl/?bron=bespaarvriend">Boodschappenvergelijk.nl</a> zie je in één keer bij welke supermarkt jouw boodschappen het goedkoopst zijn.</li>'
+        '<li><b>Kies vaker het huismerk.</b> Voor basisproducten als melk, pasta, rijst en schoonmaakmiddel is het verschil met een A-merk vaak groot.</li>'
+        '<li><b>Plan je week.</b> Met een weekmenu koop je alleen wat je nodig hebt en gooi je minder weg.</li>'
+        '<li><b>Kijk naar de prijs per kilo of liter,</b> niet naar de prijs per pak. Een grote verpakking is niet altijd voordeliger.</li>'
+        '<li><b>Gebruik aanbiedingen slim.</b> Sla houdbare producten in als ze in de aanbieding zijn, maar koop niet wat je anders nooit zou kopen.</li>'
+        '<li><b>Ga niet met honger.</b> Dan koop je meer, en vaker iets ongezonds.</li>'
+        '<li><b>Koop seizoensgroente.</b> Wat nu groeit is goedkoper en lekkerder. Diepvriesgroente is een goed en voordelig alternatief.</li>'
+        '<li><b>Kook een keer extra</b> en vries een portie in. Zo voorkom je een dure afhaalavond.</li>'
+        '<li><b>Let op de onderste schappen.</b> De duurste producten staan vaak op ooghoogte.</li>'
+        '<li><b>Houd bij wat je uitgeeft.</b> Met de gratis app <a href="https://bonnenboek.netlify.app/">Bonnenboek</a> scan je je kassabonnen en zie je waar je geld heen gaat.</li></ol>',
+        '',
+        [("/boodschappen/", "Besparen op boodschappen"), ("/abonnementen-opzeggen/", "Abonnementen opzeggen"), ("/energierekening-verlagen/", "Energierekening verlagen")],
+        [("Welke supermarkt is het goedkoopst?", "Dat verschilt per boodschappenlijstje en per week, door aanbiedingen. Vergelijk je eigen lijstje op Boodschappenvergelijk.nl."),
+         ("Zijn huismerken echt goedkoper?", "Meestal wel, en vaak scheelt het veel. De kwaliteit is bij basisproducten vaak vergelijkbaar."),
+         ("Loont het om bij meerdere supermarkten te halen?", "Soms, als ze dicht bij elkaar liggen. Voor de meeste mensen levert één goedkope supermarkt kiezen het meest op met het minste gedoe."),
+         ("Hoe houd ik mijn boodschappenuitgaven bij?", "Scan je kassabonnen met een app als Bonnenboek. Dan zie je per week en per maand wat je uitgeeft.")],
+        [("https://boodschappenvergelijk.nl/", "Boodschappenvergelijk.nl"), ("https://www.nibud.nl/onderwerpen/uitgaven/kosten-boodschappen/", "Nibud")],
+        "Goedkoop boodschappen doen: 10 tips die elke week schelen", "Goedkoop boodschappen doen met 10 tips: vergelijk je lijstje bij 12 supermarkten, kies vaker het huismerk, plan je week en let op de prijs per kilo.")
     artikel("/huurtoeslag-2027/", "Huurtoeslag 2027", "sleutel",
         "Huurtoeslag 2027: wat verandert er en heb jij recht?",
         "Sinds 2026 is je huur nooit meer te hoog om huurtoeslag te krijgen. In 2027 verandert er weer iets: ook het vermogen van je toeslagpartner telt mee. Zo zie je snel of je recht hebt.",
@@ -1211,7 +1325,7 @@ u.textContent='Zonder verzekering betaal je '+eur(zonder)+'. Met dit pakket beta
 - [Zorgverzekering 2027]({BASE}/zorgverzekering-2027/): gemiddelde premie € 173,13 per maand, laagste premie € 148,40, hoogste € 202,50, verschil € 649 per jaar; overstappen vóór 31 december 2026.
 - [Eigen risico 2027]({BASE}/eigen-risico-2027/): verplicht eigen risico € 400 (2026: € 385), met rekenhulp vrijwillig eigen risico.
 - [Zorgtoeslag 2027]({BASE}/zorgtoeslag-2027/): maximaal € 140 per maand (alleenstaand), inkomensgrens ± € 42.950, vermogensgrens € 119.122.
-- [Huurtoeslag 2027]({BASE}/huurtoeslag-2027/): sinds 2026 geen maximale huur meer als voorwaarde; vanaf 1 januari 2027 telt het vermogen van de toeslagpartner mee.
+- [Belastingaangifte tips]({BASE}/belastingaangifte-tips/): aangifte 1 maart tot 1 mei (uitstel tot 1 september); vóór 1 april insturen geeft meestal bericht vóór 1 juli; vergeten aftrek tot 5 jaar terug.\n- [Kinderbijslag 2027]({BASE}/kinderbijslag-2027/): bedragen per leeftijd, betaling per kwartaal achteraf; Q4 2026 op 2 januari 2027; licht hoger in 2027.\n- [Huurverhoging 2027]({BASE}/huurverhoging-2027/): max. 4,1% sociale huur (1-7-2026 tot 1-7-2027), 6,1% middenhuur en 4,4% vrije sector (2026).\n- [Abonnementen opzeggen]({BASE}/abonnementen-opzeggen/): na de eerste periode max. 1 maand opzegtermijn; online afgesloten is online opzeggen.\n- [Goedkoop boodschappen doen]({BASE}/goedkoop-boodschappen-doen/): 10 tips, met vergelijking van 12 supermarkten op boodschappenvergelijk.nl.\n- [Huurtoeslag 2027]({BASE}/huurtoeslag-2027/): sinds 2026 geen maximale huur meer als voorwaarde; vanaf 1 januari 2027 telt het vermogen van de toeslagpartner mee.
 - [Kindgebonden budget 2027]({BASE}/kindgebonden-budget-2027/): afbouw 12,35% boven € 61.917 inkomen; vermogensgrens € 119.122 (zonder partner) en € 158.748 (met partner); wijzigingen doorgeven vóór 8 december 2026.
 - [Energierekening verlagen]({BASE}/energierekening-verlagen/): energierekening 2027 gemiddeld € 149 duurder; energiebelasting gas € 0,7457/m³, stroom € 0,1065/kWh, vermindering € 628,69; 8 bespaartips.
 - [Einde salderen 2027]({BASE}/salderen-2027/): salderen stopt in één keer op 1 januari 2027; terugleververgoeding minimaal 50% van de kale leveringsprijs tot 2030; tips en rekenhulp.

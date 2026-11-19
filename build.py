@@ -150,7 +150,7 @@ form.contact label{display:block;font-weight:700;margin:12px 0 4px}form.contact 
 .intro .bekend a:not(.b){background:none!important;color:#fff!important;padding:0!important;font-weight:800;text-decoration:underline}
 .intro .bekend a.b{text-decoration:none;background:#ffd43b;color:#1e2a22;padding:2px 8px;border-radius:999px;font-weight:800;white-space:nowrap}
 .intro{text-align:center}.intro .kort,.intro .bekend{margin-left:auto!important;margin-right:auto!important}
-h2:has(+ .tegels),h2:has(+ .bron + .tegels),h2:has(+ .bron + .tegels)+.bron{text-align:center}.intro .kort{font-weight:700;max-width:none!important}.intro .bekend{font-size:11px!important;line-height:1.8!important;opacity:.95}.intro .bekend a.b{padding:1px 7px!important}.intro h1{font-size:clamp(22px,7.3vw,48px)!important;white-space:nowrap;letter-spacing:-.02em!important;line-height:1.05!important;text-shadow:0 2px 0 #08502f,0 4px 14px rgba(0,0,0,.35)}
+h2:has(+ .tegels),h2:has(+ .bron + .tegels),h2:has(+ .bron + .tegels)+.bron{text-align:center}.partners-top .keuzes{margin:16px 0 4px;padding:6px 14px 4px;background:#fff;border:3px solid var(--green,#0e7c4a);border-radius:18px;box-shadow:0 4px 0 #08502f}.partners-top .keuzes .pchips:last-child{margin-bottom:8px}@media(max-width:640px){header.top .wrap{gap:8px!important}.logo svg{width:34px!important;height:34px!important}nav.top{display:flex!important;flex:1;justify-content:space-between;gap:0!important;overflow:visible!important;margin-left:4px!important}header.top nav.top a{padding:6px 1px!important;font-size:clamp(11px,3.25vw,15px)!important;letter-spacing:-.01em;white-space:nowrap}}.tegels small strong{font-weight:800;color:var(--ink,#1e2a22)}.intro .kort{font-weight:700;max-width:none!important}.intro .bekend{font-size:11px!important;line-height:1.8!important;opacity:.95}.intro .bekend a.b{padding:1px 7px!important}.intro h1{font-size:clamp(22px,7.3vw,48px)!important;white-space:nowrap;letter-spacing:-.02em!important;line-height:1.05!important;text-shadow:0 2px 0 #08502f,0 4px 14px rgba(0,0,0,.35)}
 @media(min-width:700px){.intro{padding:18px 24px!important}.intro .euro{font-size:170px!important;right:20px!important}.intro .bekend{max-width:none}}
 .tegels .tegel a.uitleg{padding:5px 12px!important;font-size:13px!important;line-height:1.3}
 .tegels b{font-size:17px!important;overflow-wrap:anywhere;hyphens:auto}
@@ -233,7 +233,7 @@ def partner(url, titel, tekst, knop, artikelen=()):
             f'<a class="btn" href="{url}" rel="sponsored noopener" target="_blank">{knop}{ICON["pijl"]}</a>'
             '<p class="bron">Sluit je via deze link iets af, dan krijgt Bespaarvriend een kleine vergoeding. Jij betaalt niets extra.</p></div>')
 
-NAV = '<nav class="top" aria-label="Hoofdmenu"><a href="/zorgverzekering-2027/">Zorg</a><a href="/energie-2027/">Energie</a><a href="/internet-en-mobiel/">Internet</a><a href="/vakantie-en-vliegen/">Vakantie</a><a href="/goedkoop-vliegen/">Vliegen</a><a href="/auto-en-tanken/" class="wide">Auto</a></nav>'
+NAV = '<nav class="top" aria-label="Hoofdmenu"><a href="/zorgverzekering-2027/">Zorg</a><a href="/energie-2027/">Energie</a><a href="/internet-en-mobiel/">Internet</a><a href="/auto-en-tanken/">Auto</a><a href="/vakantie-en-vliegen/">Vakantie</a><a href="/goedkoop-vliegen/">Vliegen</a></nav>'
 FOOT = f"""<footer class="foot"><div class="wrap">
 <p class="free">Bespaarvriend helpt je besparen op je vaste lasten. Gratis en onafhankelijk uitgelegd. Wij geven geen persoonlijk financieel advies.</p>
 <p class="fkop">Zorg</p><nav aria-label="Zorg"><a href="/zorgverzekering-2027/">Zorgverzekering 2027</a><a href="/zorgverzekering-overstappen/">Overstappen</a><a href="/aanvullende-verzekering-2027/">Aanvullende verzekering</a><a href="/tandartsverzekering-2027/">Tandartsverzekering</a><a href="/fysiotherapie-vergoeding-2027/">Fysiotherapie</a><a href="/eigen-risico-2027/">Eigen risico 2027</a><a href="/zorgtoeslag-2027/">Zorgtoeslag 2027</a><a href="/administratie/">Vaste lasten op orde</a></nav>
@@ -346,7 +346,7 @@ def _als_tegels(blokken):
         chips = _re.search(r'<div class="pchips">(.*?)</div>', b, _re.S)
         if chips:
             extra.append(f'<p class="plbl">{_KORT.get(titel, (titel,))[0]}:</p><div class="pchips">{chips.group(1)}</div>')
-    uit = '<div class="partners-top"><div class="tegels direct">' + "".join(tegels) + '</div>' + "".join(extra)
+    uit = '<div class="partners-top"><div class="tegels direct">' + "".join(tegels) + '</div>' + (('<div class="keuzes">' + "".join(extra) + '</div>') if extra else '')
     uit += '<p class="bron" style="margin-top:6px">Advertentie: deze tegels gaan naar partners. Sluit je iets af, dan krijgt Bespaarvriend een kleine vergoeding. Jij betaalt niets extra.</p></div>'
     return uit + "".join(rest)
 
@@ -393,7 +393,7 @@ ZORG_VERGELIJKER = partner(awin(107738, "bespaarvriend-zorg", "https://www.polis
 
 # Tegels bovenaan de startpagina: direct naar goedgekeurde partners (geen namen van adverteerders).
 DIRECT = [
-    (awin(107738, "bespaarvriend-tegel", "https://www.poliswijzer.nl/zorgverzekering"), "zorg", "Zorgverzekering vergelijken", "Overstappen kan tot 31 december"),
+    (awin(107738, "bespaarvriend-tegel", "https://www.poliswijzer.nl/zorgverzekering"), "zorg", "Zorgverzekering vergelijken", "Overstappen kan <strong>tot 31 december</strong>"),
     (awin(8520, "bespaarvriend-tegel", "https://www.gaslicht.com/energievergelijken"), "energie", "Energiecontract vergelijken", "Ook met tarieven voor 2027"),
     (awin(8311, "bespaarvriend-tegel", "https://www.unitedconsumers.com/internet-en-tv"), "internet", "Internet en tv met korting", "Via een collectief"),
     (awin(8311, "bespaarvriend-tegel", "https://www.unitedconsumers.com/mobiel"), "mobiel", "Sim only", "Vaste prijs, maandelijks opzegbaar"),

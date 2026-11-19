@@ -155,7 +155,7 @@ header.top nav.top a{color:#0e7c4a!important;font-weight:700;text-decoration:non
 @media(min-width:641px){nav.top{gap:6px!important}header.top nav.top a{min-width:96px;text-align:center;padding:5px 10px!important}}
 .logo svg{filter:drop-shadow(0 5px 0 #08502f) drop-shadow(0 14px 16px rgba(8,80,47,.55)) drop-shadow(0 0 1px rgba(255,255,255,.6));transform:translateY(-4px) scale(1.14);transition:transform .15s}.logo:active svg{transform:translateY(0) scale(1.04)}
 header.top nav.top a:active{transform:translateY(1px);box-shadow:none!important}
-header.top nav.top a[aria-current],header.top nav.top a.actief{background:linear-gradient(180deg,#ffd43b,#f2c12e)!important;color:#1e2a22!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 3px 0 #b8901a!important}.agenda{list-style:none;padding:0;margin:0 0 8px;display:grid;gap:8px}.agenda li{display:grid;grid-template-columns:64px 1fr auto;gap:10px;align-items:center;background:#fff;border:3px solid #0e7c4a;border-radius:14px;padding:10px 12px;box-shadow:0 3px 0 #08502f}.agenda li b{background:#ffd43b;color:#1e2a22;border-radius:8px;text-align:center;padding:4px 2px;font-size:14px;white-space:nowrap}.agenda li span{font-weight:600;font-size:15px;line-height:1.3}.agenda li a{font-weight:700;font-size:14px;color:#0e7c4a;white-space:nowrap}.tegels small strong{font-weight:800;color:var(--ink,#1e2a22)}.intro .kort{font-weight:700;max-width:none!important}.intro .bekend{font-size:11px!important;line-height:1.8!important;opacity:.95}.intro .bekend a.b{padding:1px 7px!important}.intro h1{font-size:clamp(22px,7.3vw,48px)!important;white-space:nowrap;letter-spacing:-.02em!important;line-height:1.05!important;text-shadow:0 2px 0 #08502f,0 4px 14px rgba(0,0,0,.35)}
+header.top nav.top a[aria-current],header.top nav.top a.actief{background:linear-gradient(180deg,#ffd43b,#f2c12e)!important;color:#1e2a22!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 3px 0 #b8901a!important}.agenda{list-style:none;padding:0;margin:0 0 8px;display:grid;gap:8px}.agenda li{display:grid;grid-template-columns:64px 1fr auto;gap:10px;align-items:center;background:#fff;border:3px solid #0e7c4a;border-radius:14px;padding:10px 12px;box-shadow:0 3px 0 #08502f}.agenda li b{background:#ffd43b;color:#1e2a22;border-radius:8px;text-align:center;padding:4px 2px;font-size:14px;white-space:nowrap}.agenda li span{font-weight:600;font-size:15px;line-height:1.3}.agenda li a{font-weight:700;font-size:14px;color:#0e7c4a;white-space:nowrap}.agenda li{grid-template-columns:64px 1fr auto!important}.ag-acties{display:flex;flex-direction:column;align-items:flex-end;gap:4px}.ag-add{position:relative}.ag-add summary{list-style:none;cursor:pointer;font-weight:700;font-size:13px;color:#0e7c4a;white-space:nowrap;background:#e7f4ec;border-radius:999px;padding:3px 9px}.ag-add summary::-webkit-details-marker{display:none}.ag-add[open]>a{display:block;margin-top:6px;font-size:14px;font-weight:700;color:#0e7c4a;white-space:nowrap;text-align:right}.ag-alles{text-align:center;margin:10px 0 4px;font-size:15px}.ag-alles a{font-weight:700;color:#0e7c4a}.ag-alles small{color:var(--muted)}.tegels small strong{font-weight:800;color:var(--ink,#1e2a22)}.intro .kort{font-weight:700;max-width:none!important}.intro .bekend{font-size:11px!important;line-height:1.8!important;opacity:.95}.intro .bekend a.b{padding:1px 7px!important}.intro h1{font-size:clamp(22px,7.3vw,48px)!important;white-space:nowrap;letter-spacing:-.02em!important;line-height:1.05!important;text-shadow:0 2px 0 #08502f,0 4px 14px rgba(0,0,0,.35)}
 @media(min-width:700px){.intro{padding:18px 24px!important}.intro .euro{font-size:170px!important;right:20px!important}.intro .bekend{max-width:none}}
 .tegels .tegel a.uitleg{padding:5px 12px!important;font-size:13px!important;line-height:1.3}
 .tegels b{font-size:17px!important;overflow-wrap:anywhere;hyphens:auto}
@@ -417,6 +417,56 @@ def artikel(path, kruim, ic, h1, lead, kern, inhoud, partnerblok, verder, faq, b
     body = (ch + f'<div class="paginakop"><span class="ic">{ICON[ic]}</span><h1>{h1}</h1></div><p class="lead">{lead}</p>' + k + inhoud + partnerblok + v + faq_html(faq) + br)
     page(path, title, desc, body, [cld, faq_ld(faq)], prio=prio)
 
+
+# ---------- Agenda: "Deze data niet missen" (homepage) + .ics-bestanden ----------
+AGENDA = [
+    ("2026-12-08", "vermogen", "Vermogen doorgeven voor zorgtoeslag en kindgebonden budget", "/kindgebonden-budget-2027/", "Geef je vermogen op 1 januari 2027 uiterlijk vandaag door in Mijn toeslagen, anders moet je later terugbetalen."),
+    ("2026-12-16", "eerste-kamer", "Eerste Kamer stemt over de belastingen van 2027", "/belastingen-2027/", "Dan is duidelijk welke belastingplannen voor 2027 doorgaan."),
+    ("2026-12-31", "zorg", "Laatste dag om je zorgverzekering op te zeggen", "/zorgverzekering-overstappen/", "Zeg vandaag op en sluit uiterlijk 31 januari een nieuwe verzekering af."),
+    ("2026-12-31", "isde", "Warmtepomp kopen voor het hogere ISDE-bedrag", "/isde-subsidie-2027/", "Koop je lucht-waterwarmtepomp uiterlijk vandaag voor het hogere subsidiebedrag (overgangsregeling)."),
+    ("2027-01-01", "salderen", "Salderen stopt voor zonnepanelen", "/salderen-2027/", "Vanaf vandaag wordt teruggeleverde stroom apart afgerekend."),
+    ("2027-01-01", "camper", "Camper alleen nog half tarief met RDW-code SA", "/wegenbelasting-2027/", "Check met de RDW-kentekencheck of je camper als categorie M met code SA staat geregistreerd."),
+    ("2027-01-04", "noodfonds", "Noodfonds Energie gaat open", "/noodfonds-energie-2027/", "Aanvragen kan van 4 januari tot en met 7 mei 2027: € 120 tot € 1.800 steun."),
+    ("2027-03-01", "aangifte", "Belastingaangifte doen kan weer", "/belastingaangifte-tips/", "Doe je aangifte vóór 1 april, dan heb je je geld meestal vóór 1 juli."),
+]
+_MND = ["jan", "feb", "mrt", "apr", "mei", "jun", "jul", "aug", "sep", "okt", "nov", "dec"]
+def _agenda_items():
+    vandaag = datetime.date.today().isoformat()
+    return sorted([a for a in AGENDA if a[0] >= vandaag], key=lambda a: a[0])
+def _gcal(d, titel, tekst, url):
+    from urllib.parse import quote
+    d0 = d.replace("-", ""); d1 = (datetime.date.fromisoformat(d) + datetime.timedelta(days=1)).isoformat().replace("-", "")
+    return ("https://calendar.google.com/calendar/render?action=TEMPLATE&text=" + quote(titel) + "&dates=" + d0 + "/" + d1
+            + "&details=" + quote(tekst + " Meer uitleg: " + BASE + url))
+def agenda_html():
+    rij = []
+    for d, sid, titel, url, tekst in _agenda_items():
+        dd = datetime.date.fromisoformat(d)
+        rij.append(f'<li><b>{dd.day} {_MND[dd.month-1]}</b><span>{titel}</span><span class="ag-acties"><a href="{url}">Lees meer</a>'
+                   f'<details class="ag-add"><summary>📅 In agenda</summary><a href="{esc(_gcal(d, titel, tekst, url))}" target="_blank" rel="noopener">Google Agenda</a>'
+                   f'<a href="/agenda/{sid}.ics" download>iPhone / Outlook</a></details></span></li>')
+    abon = BASE.replace("https://", "webcal://") + "/agenda/bespaarvriend.ics"
+    from urllib.parse import quote as _q
+    return ('<ol class="agenda">' + "".join(rij) + '</ol>'
+            '<p class="ag-alles">📅 <b>Alle data automatisch in je agenda?</b> '
+            f'<a href="https://calendar.google.com/calendar/r?cid={_q(abon, safe="")}" target="_blank" rel="noopener">Google Agenda</a> · '
+            f'<a href="{abon}">iPhone / Outlook</a><br><small>Nieuwe data komen er vanzelf bij.</small></p>')
+def _ics_event(d, sid, titel, url, tekst):
+    d0 = d.replace("-", ""); d1 = (datetime.date.fromisoformat(d) + datetime.timedelta(days=1)).isoformat().replace("-", "")
+    def e(x): return x.replace("\\", "\\\\").replace(",", "\\,").replace(";", "\\;")
+    return ("BEGIN:VEVENT\r\nUID:" + sid + "-" + d0 + "@bespaarvriend.nl\r\nDTSTAMP:" + datetime.datetime.utcnow().strftime("%Y%m%dT%H%M%SZ")
+            + "\r\nDTSTART;VALUE=DATE:" + d0 + "\r\nDTEND;VALUE=DATE:" + d1 + "\r\nSUMMARY:" + e(titel)
+            + "\r\nDESCRIPTION:" + e(tekst + " Meer uitleg: " + BASE + url) + "\r\nURL:" + BASE + url
+            + "\r\nBEGIN:VALARM\r\nACTION:DISPLAY\r\nDESCRIPTION:" + e(titel) + "\r\nTRIGGER:-P1D\r\nEND:VALARM\r\nEND:VEVENT\r\n")
+def schrijf_agenda():
+    os.makedirs(os.path.join(OUT, "agenda"), exist_ok=True)
+    kop = "BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//Bespaarvriend//NL\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\n"
+    alles = kop + "X-WR-CALNAME:Bespaarvriend: data niet missen\r\nX-WR-TIMEZONE:Europe/Amsterdam\r\nREFRESH-INTERVAL;VALUE=DURATION:P1D\r\n"
+    for a in AGENDA:
+        ev = _ics_event(*a); alles += ev
+        open(os.path.join(OUT, "agenda", a[1] + ".ics"), "w", newline="").write(kop + ev + "END:VCALENDAR\r\n")
+    open(os.path.join(OUT, "agenda", "bespaarvriend.ics"), "w", newline="").write(alles + "END:VCALENDAR\r\n")
+
 def bouw():
     if os.path.isdir(OUT):
         shutil.rmtree(OUT)
@@ -466,15 +516,7 @@ def bouw():
             f'<a href="/isde-subsidie-2027/"><span class="ic">{ICON["zon"]}</span>{pijl}<b>ISDE subsidie</b><small>Isolatie en warmtepomp</small><span class="nieuw">Nieuw</span></a>'
             f'<a href="/belastingaangifte-tips/"><span class="ic">{ICON["bon"]}</span>{pijl}<b>Belasting terug</b><small>Aftrekposten niet vergeten</small><span class="nieuw">Nieuw</span></a>'
             '</div>'
-            '<h2>Deze data niet missen</h2><ol class="agenda">'
-            '<li><b>8 dec</b><span>Vermogen doorgeven voor zorgtoeslag en kindgebonden budget</span><a href="/kindgebonden-budget-2027/">Lees meer</a></li>'
-            '<li><b>31 dec</b><span>Laatste dag om je zorgverzekering op te zeggen</span><a href="/zorgverzekering-overstappen/">Lees meer</a></li>'
-            '<li><b>31 dec</b><span>Warmtepomp kopen voor het hogere ISDE-bedrag</span><a href="/isde-subsidie-2027/">Lees meer</a></li>'
-            '<li><b>1 jan</b><span>Salderen stopt voor zonnepanelen</span><a href="/salderen-2027/">Lees meer</a></li>'
-            '<li><b>1 jan</b><span>Camper alleen nog half tarief met RDW-code SA</span><a href="/wegenbelasting-2027/">Lees meer</a></li>'
-            '<li><b>16 dec</b><span>Eerste Kamer stemt over de belastingen van 2027</span><a href="/belastingen-2027/">Lees meer</a></li>'
-            '<li><b>4 jan</b><span>Noodfonds Energie gaat open</span><a href="/noodfonds-energie-2027/">Lees meer</a></li>'
-            '<li><b>1 mrt</b><span>Belastingaangifte doen kan weer</span><a href="/belastingaangifte-tips/">Lees meer</a></li></ol>'
+            '<h2>Deze data niet missen</h2>' + agenda_html() + ''
             '<h2>Meer gratis hulpmiddelen</h2><p class="bron" style="margin-top:-4px">Ook gemaakt door Erik, net zo eerlijk en gratis.</p><div class="tegels tools">'
             f'<a href="https://allesoporde.netlify.app/"><span class="ic">{ICON["map"]}</span>{pijl}<b>Alles op orde</b><small>Al je vaste lasten en inkomsten op een rij</small></a>'
             f'<a href="https://bonnenboek.netlify.app/"><span class="ic">{ICON["bon"]}</span>{pijl}<b>Bonnenboek</b><small>Kassabonnen scannen en zien wat je uitgeeft</small></a>'
@@ -1470,6 +1512,7 @@ u.textContent='Zonder verzekering betaal je '+eur(zonder)+'. Met dit pakket beta
         [("https://www.keuze.nl/telefoon-abonnement/informatie/nummerbehoud", "Keuze.nl"), ("https://www.belsimpel.nl/klantenservice/abonnementen/nummerbehoud", "Belsimpel (120 dagen)"), ("https://www.overstappen.nl/overstappen", "Overstappen.nl"), ("https://www.consuwijzer.nl/vergelijken-en-overstappen/telecom/telefoonnummer-meenemen", "ACM ConsuWijzer")],
         "Sim only overstappen met nummerbehoud: stappenplan", "Sim only overstappen en je 06-nummer houden: vraag nummerbehoud aan bij je nieuwe provider, tot 120 dagen voor je einddatum. Zeg je oude abonnement niet zelf op.")
 
+    schrijf_agenda()
     # ---------- sitemap, robots, llms.txt ----------
     with open(os.path.join(OUT, "sitemap.xml"), "w") as f:
         f.write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'

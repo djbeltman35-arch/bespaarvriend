@@ -20,3 +20,9 @@
   for = "/icons/*"
   [headers.values]
     Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+  for = "/agenda/*"
+  [headers.values]
+    Content-Type = "text/calendar; charset=utf-8"
+    Cache-Control = "public, max-age=3600"

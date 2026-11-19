@@ -363,7 +363,7 @@ def page(path, title, desc, body, ld=(), noindex=False, prio="0.8"):
             "dateModified": VANDAAG, "publisher": {"@type": "Organization", "name": "Bespaarvriend", "url": BASE}}] + list(ld)
     doc = f"""<!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{esc(title)}</title><meta name="description" content="{esc(desc)}"><link rel="canonical" href="{BASE}{path}">
-{'<meta name="robots" content="noindex">' if noindex else ''}<meta name="theme-color" content="#0e7c4a">
+{'<meta name="robots" content="noindex">' if noindex else ''}<meta name="theme-color" content="#0e7c4a"><meta name="google-site-verification" content="Isum4B2AiTVAS9A4twzJT8GNjJFXqbZ6UT36pKaBPHE">
 {'<meta name="e0d5a73bd035a1c" content="277030417ea9ada19f69ae08c41fb74b">' if path == "/" else ''}
 <meta property="og:type" content="website"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc)}"><meta property="og:url" content="{BASE}{path}"><meta property="og:locale" content="nl_NL"><meta property="og:image" content="{BASE}/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta property="og:site_name" content="Bespaarvriend">
 <link rel="preload" href="/fonts/atkinson-hyperlegible-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/atkinson-hyperlegible-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>

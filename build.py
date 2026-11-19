@@ -127,7 +127,7 @@ LOGO = ('<svg viewBox="0 0 40 40" width="36" height="36" aria-hidden="true"><rec
 DAISYCON_GEKEURD = False
 DC_MEDIA = 449774
 WIDGETS = {  # naam: (script-slug, css-klasse, extra config)
-    "energie": ("energy-nl", "dc-energy-nl-tool", {}),
+    "energie": ("energy-nl", "dc-energy-tool", {}),
     "simonly": ("sim-only", "dc-sim-only-tool", {"limit": 6, "limitSplit": 6, "showFilters": False}),
     "telecom": ("all-in-one", "dc-all-in-one-tool", {"limit": 6, "limitSplit": 6, "showFilters": False}),
     "vakantie": ("vacation", "dc-vacation-tool", {"limit": 6, "limitSplit": 6, "showFilters": False}),

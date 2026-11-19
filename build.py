@@ -110,9 +110,18 @@ form.contact label{display:block;font-weight:700;margin:12px 0 4px}form.contact 
 .btn{background:linear-gradient(180deg,#17a061 0%,#0e7c4a 55%,#0b6a3f 100%)!important;color:#fff!important;border-radius:10px!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.28),0 3px 0 #08502f,0 5px 10px rgba(8,80,47,.28)!important}
 .btn:active{transform:translateY(2px)}
 .btn-line{border-radius:10px!important}
-.tegels{gap:0!important;border:1px solid var(--line);background:var(--surface)}
-.tegels a{border:0!important;border-radius:0!important;border-right:1px solid var(--line)!important;border-bottom:1px solid var(--line)!important}
-.tegels .ic{border-radius:50%!important}
+.tegels{gap:12px!important;border:0;background:none}
+.tegels>a,.tegels>.tegel{background:var(--surface);border:2px solid var(--green)!important;border-radius:16px!important;box-shadow:0 3px 0 rgba(8,80,47,.28),0 8px 18px rgba(0,0,0,.08);transition:transform .12s,box-shadow .12s}
+.tegels>a:hover,.tegels>.tegel:hover{transform:translateY(-2px);box-shadow:0 5px 0 rgba(8,80,47,.28),0 12px 22px rgba(0,0,0,.12)}
+.tegels>a:active,.tegels>.tegel:active{transform:translateY(2px);box-shadow:0 1px 0 rgba(8,80,47,.28)}
+.tegels .ic{border-radius:50%!important;background:var(--green)!important;color:#fff!important}
+.tegels b{font-size:18px!important}
+.tegels>.tegel{display:flex;flex-direction:column;overflow:hidden;padding:0}
+.tegels .tegel a{border:0!important;border-radius:0!important;box-shadow:none!important}
+.tegels .tegel a.hoofd{flex:1;display:block;padding:16px 14px;text-decoration:none;color:var(--ink);position:relative;background:none}
+.tegels .tegel a.uitleg{display:block;padding:10px 14px;font-size:14px;font-weight:700;background:var(--green-soft);color:var(--green-dark);border-top:1px solid var(--line)!important;text-decoration:underline}
+.direct-kop{margin-top:6px}
+.kaart.partner,.kaart.tool{border:2px solid var(--green)!important;border-radius:16px!important;box-shadow:0 3px 0 rgba(8,80,47,.28),0 8px 18px rgba(0,0,0,.08)}
 @media(max-width:640px){header.top .wrap{flex-wrap:nowrap!important;gap:6px}nav.top{width:auto!important;margin-left:auto!important}.logo span{display:none}nav.top{overflow-x:auto;scrollbar-width:none;flex-wrap:nowrap}nav.top::-webkit-scrollbar{display:none}nav.top a{white-space:nowrap}}
 /* gbstijl:end */
 """
@@ -273,15 +282,21 @@ def bouw():
              ("Geven jullie persoonlijk advies?", "Nee. We leggen uit hoe het zit en verwijzen naar onafhankelijke vergelijkers en officiële bronnen. De keuze maak je zelf."),
              ("Tot wanneer kan ik overstappen van zorgverzekering?", "Zeg je huidige zorgverzekering uiterlijk 31 december 2026 op. Je hebt daarna tot en met 31 januari 2027 om een nieuwe af te sluiten; die gaat in per 1 januari 2027.")]
     pijl = f'<span class="pijl">{ICON["pijl"]}</span>'
-    body = ('<section class="hero"><p class="maker">Van de maker van <a href="https://boodschappenvergelijk.nl/?bron=bespaarvriend">Boodschappenvergelijk.nl</a>, bekend van <a href="https://www.hartvannederland.nl/advies-en-tips/kopen-besparen/videos/goedkoop-boodschappen-doen-erik-bouwt-vergelijker" target="_blank" rel="noopener">Hart van Nederland</a> en <a href="https://www.oost.nl/nieuws/3720144/rijssenaar-erik-beltman-rekent-af-met-dure-boodschappen-in-vergelijkingswebsite" target="_blank" rel="noopener">RTV Oost</a></p>'
+    def _tegel(u, ic, n, t, uitleg=None):
+        hoofd = f'<span class="ic">{ICON[ic]}</span>{pijl}<b>{n}</b><small>{t}</small>'
+        if not uitleg:
+            return f'<a href="{u}" rel="sponsored noopener" target="_blank">{hoofd}</a>'
+        return f'<div class="tegel"><a class="hoofd" href="{u}" rel="sponsored noopener" target="_blank">{hoofd}</a><a class="uitleg" href="{uitleg[0]}">{uitleg[1]}</a></div>'
+    UITLEG = {"zorg": ("/zorgverzekering-2027/", "Uitleg: zorgverzekering 2027 →"), "energie": ("/energie-2027/", "Uitleg: energie 2027 →")}
+    direct = ('<h2 class="direct-kop">Direct vergelijken</h2><div class="tegels direct">'
+              + "".join(_tegel(u, ic, n, t, UITLEG.get(ic)) for u, ic, n, t in DIRECT)
+              + '</div><p class="bron" style="margin-top:-6px">Advertentie: deze tegels gaan naar partners. Sluit je iets af, dan krijgt Bespaarvriend een kleine vergoeding. Jij betaalt niets extra.</p>')
+    body = (direct + '<section class="hero"><p class="maker">Van de maker van <a href="https://boodschappenvergelijk.nl/?bron=bespaarvriend">Boodschappenvergelijk.nl</a>, bekend van <a href="https://www.hartvannederland.nl/advies-en-tips/kopen-besparen/videos/goedkoop-boodschappen-doen-erik-bouwt-vergelijker" target="_blank" rel="noopener">Hart van Nederland</a> en <a href="https://www.oost.nl/nieuws/3720144/rijssenaar-erik-beltman-rekent-af-met-dure-boodschappen-in-vergelijkingswebsite" target="_blank" rel="noopener">RTV Oost</a></p>'
             '<h1>Besparen op je vaste lasten</h1>'
             '<p class="lead">Gratis en onafhankelijk uitgelegd</p>'
             '<ol class="stapjes" aria-label="Zo werkt het"><li><span class="n">1</span>Kies</li><li><span class="n">2</span>Vergelijk</li><li><span class="n">3</span>Bespaar</li></ol>'
             f'<div class="knoppen"><a class="btn" href="/zorgverzekering-2027/">Bespaar op je zorgpremie{ICON["pijl"]}</a><a class="btn-line" href="/energie-2027/">Energie 2027</a></div>'
             f'<ul class="vertrouwen"><li>{ICON["check"]}Altijd met bronnen</li><li>{ICON["check"]}Geen cookies of trackers</li><li>{ICON["check"]}Rekenhulpen in je eigen browser</li></ul></section>'
-            '<h2>Direct vergelijken</h2><div class="tegels direct">'
-            + "".join(f'<a href="{u}" rel="sponsored noopener" target="_blank"><span class="ic">{ICON[ic]}</span>{pijl}<b>{n}</b><small>{t}</small></a>' for u, ic, n, t in DIRECT)
-            + '</div><p class="bron" style="margin-top:-6px">Advertentie: deze tegels gaan naar partners. Sluit je iets af, dan krijgt Bespaarvriend een kleine vergoeding. Jij betaalt niets extra.</p>'
             f'<div class="let"><span class="icl">{ICON["klok"]}</span><b>Overstappen kan nog tot 31 december.</b> Tussen de laagste en hoogste premie voor de basisverzekering zit in 2027 € 649 per jaar, voor dezelfde basiszorg. <a href="/zorgverzekering-2027/">Zo stap je over →</a></div>'
             '<h2>Waar wil je op besparen?</h2><div class="tegels">'
             f'<a href="/zorgverzekering-2027/"><span class="ic">{ICON["zorg"]}</span>{pijl}<b>Zorgverzekering</b><small>Premies 2027 en overstappen</small></a>'

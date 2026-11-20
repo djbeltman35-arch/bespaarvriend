@@ -54,6 +54,7 @@ td.r,th.r{text-align:right;white-space:nowrap;font-family:var(--num);font-size:1
 .reken .uit{margin-top:14px;padding:14px;background:var(--green-soft);border-radius:12px;font-weight:700;min-height:1em}
 .bron{font-size:14px;color:var(--muted)}.links li{margin:4px 0}
 html{scroll-behavior:smooth}.plbl{scroll-margin-top:90px}.plbl:target{background:#fff3bf;border-radius:8px;padding:2px 8px;margin-left:-8px}.plbl:target+.pchips a{border:2px solid #ffd43b!important}
+.widget{overflow:hidden}@media(max-width:440px){.widget [class*="__product__wrapper"]{grid-template-columns:minmax(0,1fr) auto!important}.widget [class*="__product__logo"] img{max-width:96px!important;height:auto}.widget [class*="__price__title"]{white-space:nowrap!important;font-size:13px!important}}.widget [class*="__price__big"]{font-size:clamp(20px,6.5vw,30px)!important}.widget [class*="__product__specification"]{display:flex!important;flex-wrap:wrap!important;gap:10px 18px}.widget [class*="__product__specification"]>*{flex:1 1 90px}.widget .dc-tool,.widget .dc-tool *{min-width:0!important;max-width:100%!important;box-sizing:border-box}.widget [class*="__product__title"],.widget [class*="__product__price"]{white-space:normal!important}
 .widget{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:12px;margin:14px 0;min-height:200px}
 .ad{font-size:13px;color:var(--muted);margin:0 0 6px}
 footer{margin-top:40px;background:var(--surface);border-top:1px solid var(--line);padding:24px 0 30px;font-size:15px;color:var(--muted)}

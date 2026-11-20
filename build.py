@@ -54,7 +54,7 @@ td.r,th.r{text-align:right;white-space:nowrap;font-family:var(--num);font-size:1
 .reken .uit{margin-top:14px;padding:14px;background:var(--green-soft);border-radius:12px;font-weight:700;min-height:1em}
 .bron{font-size:14px;color:var(--muted)}.links li{margin:4px 0}
 html{scroll-behavior:smooth}.plbl{scroll-margin-top:90px}.plbl:target{background:#fff3bf;border-radius:8px;padding:2px 8px;margin-left:-8px}.plbl:target+.pchips a{border:2px solid #ffd43b!important}
-.tegels>.tegel.met-keuze{grid-column:1/-1}.tegels .tegel .hoofd{display:block;padding:16px 14px 8px;position:relative;color:var(--ink)}.tegels .tchips{margin:0;padding:0 14px 14px}.tegels .tegel .tchips a{border:1px solid #a9d6bb!important;border-radius:999px!important;background:var(--green-soft)!important}
+.tegels>.tegel.met-keuze{grid-column:1/-1;scroll-margin-top:90px}.tegels>.tegel.met-keuze:target{border-color:#ffd43b!important;box-shadow:0 0 0 4px rgba(255,212,59,.5)!important}.tegels .tegel .hoofd{display:block;padding:16px 14px 8px;position:relative;color:var(--ink)}.tegels .tchips{margin:0;padding:0 14px 14px}.tegels .tegel .tchips a{border:1px solid #a9d6bb!important;border-radius:999px!important;background:var(--green-soft)!important}
 .widget{overflow:hidden}@media(max-width:440px){.widget [class*="__product__wrapper"]{grid-template-columns:minmax(0,1fr) auto!important}.widget [class*="__product__logo"] img{max-width:96px!important;height:auto}.widget [class*="__price__title"]{white-space:nowrap!important;font-size:13px!important}}.widget [class*="__price__big"]{font-size:clamp(20px,6.5vw,30px)!important}.widget [class*="__product__specification"]{display:flex!important;flex-wrap:wrap!important;gap:10px 18px}.widget [class*="__product__specification"]>*{flex:1 1 90px}.widget .dc-tool,.widget .dc-tool *{min-width:0!important;max-width:100%!important;box-sizing:border-box}.widget [class*="__product__title"],.widget [class*="__product__price"]{white-space:normal!important}
 .widget{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:12px;margin:14px 0;min-height:200px}
 .ad{font-size:13px;color:var(--muted);margin:0 0 6px}
@@ -217,6 +217,7 @@ DC_MEDIA = 449774
 WIDGETS = {  # naam: (script-slug, css-klasse, extra config)
     "energie": ("energy-nl", "dc-energy-tool", {}),
     "simonly": ("sim-only", "dc-sim-only-tool", {"limit": 3, "limitSplit": 3, "showFilters": False}),
+    "budgetmobiel": ("sim-only", "dc-sim-only-tool", {"limit": 3, "limitSplit": 3, "showFilters": False, "filter": {"provider": {"value": ["2"]}}}),
     "telecom": ("all-in-one", "dc-all-in-one-tool", {"limit": 3, "limitSplit": 3, "showFilters": False}),
     "vakantie": ("vacation", "dc-vacation-tool", {"limit": 3, "limitSplit": 3, "showFilters": False}),
 }
@@ -227,7 +228,7 @@ def widget(naam, titel):
     slug, klasse, extra = WIDGETS[naam]
     cfg = {"mediaId": DC_MEDIA, "subId": "bespaarvriend-" + naam, "language": "nl", "filter": {}}
     cfg.update(extra)
-    return (f'<section class="widget" aria-label="{esc(titel)}"><h2>{esc(titel)}</h2><p class="ad">Advertentie. Sluit je via deze vergelijker iets af, dan krijgt Bespaarvriend een vergoeding. Jij betaalt niets extra.</p>'
+    return (f'<section class="widget" id="w-{naam}" aria-label="{esc(titel)}"><h2>{esc(titel)}</h2><p class="ad">Advertentie. Sluit je via deze vergelijker iets af, dan krijgt Bespaarvriend een vergoeding. Jij betaalt niets extra.</p>'
             f'<script src="https://daisycon.tools/{slug}/app.js" defer></script><div class="dc-tool {klasse}" data-config=\'{json.dumps(cfg)}\'></div></section>')
 
 from urllib.parse import quote as _q
@@ -235,7 +236,7 @@ def awin(mid, ref, doel=None):
     u = f"https://www.awin1.com/cread.php?awinmid={mid}&amp;awinaffid=3152283&amp;clickref={ref}"
     return u + (f"&amp;ued={_q(doel, safe='')}" if doel else "")
 def partner(url, titel, tekst, knop, artikelen=()):
-    chips = ''.join(f'<a href="{u}" rel="sponsored noopener" target="_blank">{esc(t)}</a>' for t, u in artikelen)
+    chips = ''.join((f'<a href="{u}">{esc(t)}</a>' if u.startswith('#') else f'<a href="{u}" rel="sponsored noopener" target="_blank">{esc(t)}</a>') for t, u in artikelen)
     return (f'<div class="kaart partner"><p class="ad">Advertentie</p><b>{titel}</b><p>{tekst}</p>'
             + (f'<div class="pchips">{chips}</div>' if chips else '') +
             f'<a class="btn" href="{url}" rel="sponsored noopener" target="_blank">{knop}{ICON["pijl"]}</a>'
@@ -363,7 +364,8 @@ def _als_tegels(blokken):
                 kop = f'<div class="hoofd">{ic}<b>{naam}</b><small>{kort}</small></div>'
             else:
                 kop = f'<a class="hoofd" href="{url}" rel="sponsored noopener" target="_blank">{ic}{pijl}<b>{naam}</b><small>{kort}</small></a>'
-            tegels.append(f'<div class="tegel met-keuze">{kop}<div class="pchips tchips">{chips.group(1)}</div></div>')
+            anker = "kies-" + _re.sub(r'[^a-z0-9]+', '-', titel.lower()).strip('-')
+            tegels.append(f'<div class="tegel met-keuze" id="{anker}">{kop}<div class="pchips tchips">{chips.group(1)}</div></div>')
         else:
             tegels.append(f'<a href="{url}" rel="sponsored noopener" target="_blank">{ic}{pijl}<b>{naam}</b><small>{kort}</small></a>')
     tegels = [t for t in tegels if not t.startswith('<div')] + [t for t in tegels if t.startswith('<div')]
@@ -419,8 +421,8 @@ ZORG_VERGELIJKER = partner(awin(107738, "bespaarvriend-zorg", "https://www.polis
 DIRECT = [
     (awin(107738, "bespaarvriend-tegel", "https://www.poliswijzer.nl/zorgverzekering"), "zorg", "Zorgverzekering vergelijken", "Overstappen kan <strong>tot 31 december</strong>"),
     (awin(8520, "bespaarvriend-tegel", "https://www.gaslicht.com/energievergelijken"), "energie", "Energiecontract vergelijken", "Ook met tarieven voor 2027"),
-    (awin(8311, "bespaarvriend-tegel", "https://www.unitedconsumers.com/internet-en-tv"), "internet", "Internet en tv met korting", "Via een collectief"),
-    (awin(8311, "bespaarvriend-tegel", "https://www.unitedconsumers.com/mobiel"), "mobiel", "Sim only", "Vaste prijs, maandelijks opzegbaar"),
+    ("/internet-en-mobiel/#kies-internet-en-tv", "internet", "Internet vergelijken", "Glasvezel, internet en tv"),
+    ("/internet-en-mobiel/#kies-telefoon-met-abonnement", "mobiel", "Mobiel abonnement vergelijken", "Sim only of met telefoon"),
     (awin(63484, "bespaarvriend-tegel", "https://www.vliegwinkel.nl/"), "vlucht", "Vliegtickets", "Meer dan 800 maatschappijen"),
     (awin(78144, "bespaarvriend-tegel", "https://www.hansemerkur.nl/reisverzekeringen"), "koffer", "Reisverzekering", "Eén reis of het hele jaar"),
 ]
@@ -501,6 +503,8 @@ def bouw():
     def _tegel(u, ic, n, t, uitleg=None):
         hoofd = f'<span class="ic">{ICON[ic]}</span>{pijl}<b>{n}</b><small>{t}</small>'
         if not uitleg:
+            if u.startswith("/"):  # eigen pagina met providerkeuze
+                return f'<a href="{u}">{hoofd}</a>'
             return f'<a href="{u}" rel="sponsored noopener" target="_blank">{hoofd}</a>'
         return f'<div class="tegel"><a class="hoofd" href="{u}" rel="sponsored noopener" target="_blank">{hoofd}</a><a class="uitleg" href="{uitleg[0]}">{uitleg[1]}</a></div>'
     UITLEG = {"zorg": ("/zorgverzekering-2027/", "Uitleg →"), "energie": ("/energie-2027/", "Uitleg →")}
@@ -714,13 +718,13 @@ else u.textContent='Je komt waarschijnlijk in aanmerking. Hoe lager je inkomen, 
             '<div><b>± 5 mln</b><small>huishoudens laten geld liggen met een slapend contract</small></div>'
             '<div><b>1 maand</b><small>maximale opzegtermijn na je contract</small></div>'
             '<div><b>€ 7,50</b><small>sim only met 10 GB kan al voor ongeveer dit per maand</small></div></div>'
-            + widget("simonly", "Mobiel abonnement vergelijken") +
+            +
             '<h2>Internet thuis</h2><ol class="stappen">'
             '<li><b>Zoek je einddatum op.</b> In je account of op je factuur staat wanneer je minimale looptijd afloopt. Daarna ben je maandelijks opzegbaar.</li>'
             '<li><b>Check welke snelheid je echt nodig hebt.</b> Voor streamen en thuiswerken met een paar mensen is vaak een lager pakket genoeg.</li>'
             '<li><b>Vraag je huidige provider om een beter aanbod.</b> Wie belt en zegt te willen overstappen, krijgt vaak een lagere prijs aangeboden.</li>'
             '<li><b>Stap over met de overstapservice.</b> Je nieuwe provider zegt je oude abonnement voor je op. Je kunt dit tot vier maanden voor het einde van je contract al regelen.</li></ol>'
-            + widget("telecom", "Internet vergelijken") +
+            + widget("telecom", "Internet vergelijken") + widget("budgetmobiel", "Voordelige sim only") +
             partner(awin(8400, "bespaarvriend-internettv", "https://www.odido.nl/internet-en-tv"), "Internet en tv", "Internet en tv samen bij verschillende providers.", "Bekijk internet en tv", [("Odido", awin(8400, "bespaarvriend-internettv", "https://www.odido.nl/internet-en-tv")), ("UnitedConsumers", awin(8311, "bespaarvriend-internettv", "https://www.unitedconsumers.com/internet-en-tv/televisie"))]) +
             partner(awin(8400, "bespaarvriend-internet", "https://www.odido.nl/internet/aanbiedingen"), "Glasvezel en internet thuis", "Snel internet thuis bij verschillende providers.", "Bekijk internet thuis", [("Odido", awin(8400, "bespaarvriend-internet", "https://www.odido.nl/internet/aanbiedingen")), ("Simpel", awin(129565, "bespaarvriend-internet", "https://www.simpel.nl/internet/product/zelf-samenstellen"))]) +
             partner(awin(120541, "bespaarvriend-internet"), "Snellere wifi in huis", "Trage wifi ligt vaak aan je router, niet aan je abonnement. Een nieuwe router of mesh-systeem helpt vaak beter dan een duurder abonnement.", "Bekijk routers en mesh-wifi") +
@@ -732,7 +736,7 @@ else u.textContent='Je komt waarschijnlijk in aanmerking. Hoe lager je inkomen, 
             '<li>Maandelijks opzegbaar kost vaak € 1 tot € 4 per maand meer dan een jaarcontract.</li>'
             '<li>Reken met de gemiddelde prijs over de hele looptijd, niet met de actieprijs.</li></ul>'
             + partner(awin(8389, "bespaarvriend-toestel", "https://www.odido.nl/shop/alle-telefoons"), "Telefoon met abonnement", "Een nieuwe telefoon met abonnement, betaald per maand.", "Bekijk telefoons", [("Odido", awin(8389, "bespaarvriend-toestel", "https://www.odido.nl/shop/alle-telefoons")), ("Ben", awin(8313, "bespaarvriend-toestel", "https://www.ben.nl/telefoons"))])
-            + partner(awin(8313, "bespaarvriend-simonly", "https://www.ben.nl/sim-only"), "Sim only", "Sim only bij verschillende providers: kies zelf je bundel en looptijd.", "Bekijk sim only", [("Ben", awin(8313, "bespaarvriend-simonly", "https://www.ben.nl/sim-only")), ("Odido", awin(8389, "bespaarvriend-simonly", "https://www.odido.nl/mobiel-abonnement/sim-only")), ("Simpel", awin(8424, "bespaarvriend-simonly", "https://www.simpel.nl/sim-only")), ("UnitedConsumers", awin(8311, "bespaarvriend-simonly", "https://www.unitedconsumers.com/mobiel")), ("Lycamobile", "https://bdt9.net/c/?si=19078&amp;li=1819944&amp;wi=449774&amp;ws=bespaarvriend-simonly&amp;dl=nl%2Fsim-only%2F")])
+            + partner(awin(8313, "bespaarvriend-simonly", "https://www.ben.nl/sim-only"), "Sim only", "Sim only bij verschillende providers: kies zelf je bundel en looptijd.", "Bekijk sim only", [("Ben", awin(8313, "bespaarvriend-simonly", "https://www.ben.nl/sim-only")), ("Odido", awin(8389, "bespaarvriend-simonly", "https://www.odido.nl/mobiel-abonnement/sim-only")), ("Simpel", awin(8424, "bespaarvriend-simonly", "https://www.simpel.nl/sim-only")), ("UnitedConsumers", awin(8311, "bespaarvriend-simonly", "https://www.unitedconsumers.com/mobiel")), ("Lycamobile", "https://bdt9.net/c/?si=19078&amp;li=1819944&amp;wi=449774&amp;ws=bespaarvriend-simonly&amp;dl=nl%2Fsim-only%2F"), ("Budget Thuis", "#w-budgetmobiel")])
             + faq_html(faq_i) +
             '<p class="bron">Bronnen: <a href="https://www.acm.nl/nl/publicaties/acm-telecomaanbieders-moeten-consumenten-duidelijker-en-transparanter-voorlichten-over-vast-internet" rel="noopener">ACM (vast internet)</a>, '
             '<a href="https://nos.nl/l/2601599" rel="noopener">NOS</a>, '
@@ -1168,7 +1172,7 @@ u.textContent='Zonder verzekering betaal je '+eur(zonder)+'. Met dit pakket beta
         [("https://www.consumentenbond.nl/autoverzekering/beperkt-casco", "Consumentenbond (dekking per leeftijd auto)"), ("https://www.consumentenbond.nl/autoverzekering/tussentijds-wijzigen", "Consumentenbond (tussentijds wijzigen)"), ("https://www.overstappen.nl/autoverzekering/wijzigen/", "Overstappen.nl (eerste jaar)"), ("https://autorai.nl/autoverzekeringen-vergelijken-5-handige-tips", "AutoRAI (eigen risico)")],
         "Besparen op je autoverzekering: WA, beperkt casco of allrisk?", "Bespaar op je autoverzekering: tot 6 jaar allrisk, 6 tot 10 jaar beperkt casco, ouder vaak alleen WA. Plus 5 tips: eigen risico, kilometers en overbodige extra’s.")
 
-    sim = widget("simonly", "Sim only vergelijken") + partner(awin(8313, "bespaarvriend-simonly", "https://www.ben.nl/sim-only"), "Sim only", "Sim only bij verschillende providers: kies zelf je bundel en looptijd.", "Bekijk sim only", [("Ben", awin(8313, "bespaarvriend-simonly", "https://www.ben.nl/sim-only")), ("Odido", awin(8389, "bespaarvriend-simonly", "https://www.odido.nl/mobiel-abonnement/sim-only")), ("Simpel", awin(8424, "bespaarvriend-simonly", "https://www.simpel.nl/sim-only")), ("UnitedConsumers", awin(8311, "bespaarvriend-simonly", "https://www.unitedconsumers.com/mobiel")), ("Lycamobile", "https://bdt9.net/c/?si=19078&amp;li=1819944&amp;wi=449774&amp;ws=bespaarvriend-simonly&amp;dl=nl%2Fsim-only%2F")])
+    sim = widget("budgetmobiel", "Voordelige sim only") + partner(awin(8313, "bespaarvriend-simonly", "https://www.ben.nl/sim-only"), "Sim only", "Sim only bij verschillende providers: kies zelf je bundel en looptijd.", "Bekijk sim only", [("Ben", awin(8313, "bespaarvriend-simonly", "https://www.ben.nl/sim-only")), ("Odido", awin(8389, "bespaarvriend-simonly", "https://www.odido.nl/mobiel-abonnement/sim-only")), ("Simpel", awin(8424, "bespaarvriend-simonly", "https://www.simpel.nl/sim-only")), ("UnitedConsumers", awin(8311, "bespaarvriend-simonly", "https://www.unitedconsumers.com/mobiel")), ("Lycamobile", "https://bdt9.net/c/?si=19078&amp;li=1819944&amp;wi=449774&amp;ws=bespaarvriend-simonly&amp;dl=nl%2Fsim-only%2F"), ("Budget Thuis", "#w-budgetmobiel")])
     artikel("/belastingen-2027/", "Belastingen 2027", "bon",
         "Belastingen 2027: wat verandert er voor jou? Simpel uitgelegd",
         "Elk jaar veranderen er belastingen. Hier lees je in gewone woorden wat er in 2027 verandert voor je geld, je auto en je vakantie. En wat al zeker is, en wat nog niet.",

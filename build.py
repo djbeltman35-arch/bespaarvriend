@@ -54,6 +54,7 @@ td.r,th.r{text-align:right;white-space:nowrap;font-family:var(--num);font-size:1
 .reken .uit{margin-top:14px;padding:14px;background:var(--green-soft);border-radius:12px;font-weight:700;min-height:1em}
 .bron{font-size:14px;color:var(--muted)}.links li{margin:4px 0}
 html{scroll-behavior:smooth}.plbl{scroll-margin-top:90px}.plbl:target{background:#fff3bf;border-radius:8px;padding:2px 8px;margin-left:-8px}.plbl:target+.pchips a{border:2px solid #ffd43b!important}
+.tegels>.tegel.met-keuze{grid-column:1/-1}.tegels .tegel .hoofd{display:block;padding:16px 14px 8px;position:relative;color:var(--ink)}.tegels .tchips{margin:0;padding:0 14px 14px}.tegels .tegel .tchips a{border:1px solid #a9d6bb!important;border-radius:999px!important;background:var(--green-soft)!important}
 .widget{overflow:hidden}@media(max-width:440px){.widget [class*="__product__wrapper"]{grid-template-columns:minmax(0,1fr) auto!important}.widget [class*="__product__logo"] img{max-width:96px!important;height:auto}.widget [class*="__price__title"]{white-space:nowrap!important;font-size:13px!important}}.widget [class*="__price__big"]{font-size:clamp(20px,6.5vw,30px)!important}.widget [class*="__product__specification"]{display:flex!important;flex-wrap:wrap!important;gap:10px 18px}.widget [class*="__product__specification"]>*{flex:1 1 90px}.widget .dc-tool,.widget .dc-tool *{min-width:0!important;max-width:100%!important;box-sizing:border-box}.widget [class*="__product__title"],.widget [class*="__product__price"]{white-space:normal!important}
 .widget{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:12px;margin:14px 0;min-height:200px}
 .ad{font-size:13px;color:var(--muted);margin:0 0 6px}
@@ -325,7 +326,7 @@ _KORT = {
     "Simpel internet thuis": ("Simpel internet", "Vaste lage prijs"),
     "Korting op elke tankbeurt": ("Tankkorting", "Korting per liter"),
     "Maaltijdbox": ("Maaltijdbox", "Minder weggooien"),
-    "Refurbished telefoon met garantie": ("Refurbished telefoon", "Met garantie"),
+    "Refurbished telefoon met garantie": ("Refurbished telefoons/iPads", "Met garantie"),
     "Reisverzekering": ("Reisverzekering", "Eén reis of het hele jaar"),
     "Sim only met een duidelijke maandprijs": ("Sim only", "Vaste prijs per maand"),
     "Snellere wifi in huis": ("Snellere wifi", "Router of mesh"),
@@ -356,14 +357,16 @@ def _als_tegels(blokken):
         url = _re.search(r'<a class="btn" href="([^"]+)"', b).group(1)
         naam, kort = _KORT.get(titel, (titel, _re.split(r'(?<=[.!?])\s', tekst)[0][:40]))
         chips = _re.search(r'<div class="pchips">(.*?)</div>', b, _re.S)
-        kies = titel in _KIES and chips
-        anker = "kies-" + _re.sub(r'[^a-z0-9]+', '-', titel.lower()).strip('-')
-        if kies:  # meerdere aanbieders: tegel laat eerst de keuze zien
-            tegels.append(f'<a href="#{anker}"><span class="ic">{ICON[_icoon_voor(titel)]}</span>{pijl}<b>{naam}</b><small>{kort}</small></a>')
+        ic = f'<span class="ic">{ICON[_icoon_voor(titel)]}</span>'
+        if chips:  # keuzes staan op de tegel zelf
+            if titel in _KIES:  # meerdere aanbieders: kop is geen link, kies onderaan
+                kop = f'<div class="hoofd">{ic}<b>{naam}</b><small>{kort}</small></div>'
+            else:
+                kop = f'<a class="hoofd" href="{url}" rel="sponsored noopener" target="_blank">{ic}{pijl}<b>{naam}</b><small>{kort}</small></a>'
+            tegels.append(f'<div class="tegel met-keuze">{kop}<div class="pchips tchips">{chips.group(1)}</div></div>')
         else:
-            tegels.append(f'<a href="{url}" rel="sponsored noopener" target="_blank"><span class="ic">{ICON[_icoon_voor(titel)]}</span>{pijl}<b>{naam}</b><small>{kort}</small></a>')
-        if chips:
-            extra.append(f'<p class="plbl" id="{anker}">{_KORT.get(titel, (titel,))[0]}:</p><div class="pchips">{chips.group(1)}</div>')
+            tegels.append(f'<a href="{url}" rel="sponsored noopener" target="_blank">{ic}{pijl}<b>{naam}</b><small>{kort}</small></a>')
+    tegels = [t for t in tegels if not t.startswith('<div')] + [t for t in tegels if t.startswith('<div')]
     uit = '<div class="partners-top"><div class="tegels direct">' + "".join(tegels) + '</div>' + (('<div class="keuzes">' + "".join(extra) + '</div>') if extra else '')
     uit += '<p class="bron" style="margin-top:6px">Advertentie: deze tegels gaan naar partners. Sluit je iets af, dan krijgt Bespaarvriend een kleine vergoeding. Jij betaalt niets extra.</p></div>'
     return uit + "".join(rest)

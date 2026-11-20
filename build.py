@@ -160,7 +160,7 @@ header.top nav.top a[aria-current],header.top nav.top a.actief{background:linear
 .tegels .tegel a.uitleg{padding:5px 12px!important;font-size:13px!important;line-height:1.3}
 .tegels b{font-size:17px!important;overflow-wrap:anywhere;hyphens:auto}
 @media(min-width:420px){.tegels b{font-size:19px!important}}
-@media(max-width:420px){nav.top a{font-size:13.5px!important;padding:7px 4px!important}}
+@media(max-width:420px){nav.top a{font-size:13.5px!important;padding:7px 4px!important}}@media(max-width:480px){header.top nav.top a{font-size:13px!important;padding:6px 5px!important}}
 .foot .wrap{display:grid;gap:4px}
 .foot .free{text-align:center;color:var(--muted);font-size:14px;font-weight:400;margin:0 auto 6px;max-width:52ch}
 .foot .fkop{text-align:center;font-weight:800;color:var(--ink);font-size:13px;text-transform:uppercase;letter-spacing:.06em;margin:14px 0 2px}
@@ -209,13 +209,13 @@ LOGO = ('<svg viewBox="0 0 40 40" width="36" height="36" aria-hidden="true"><rec
 
 # Daisycon-vergelijkers. Zet GEKEURD op True zodra Daisycon de media Bespaarvriend (449774) heeft gekeurd;
 # tot die tijd vallen kliks terug op een Daisycon-overzicht en tonen we de blokken niet.
-DAISYCON_GEKEURD = False
+DAISYCON_GEKEURD = True
 DC_MEDIA = 449774
 WIDGETS = {  # naam: (script-slug, css-klasse, extra config)
     "energie": ("energy-nl", "dc-energy-tool", {}),
-    "simonly": ("sim-only", "dc-sim-only-tool", {"limit": 6, "limitSplit": 6, "showFilters": False}),
-    "telecom": ("all-in-one", "dc-all-in-one-tool", {"limit": 6, "limitSplit": 6, "showFilters": False}),
-    "vakantie": ("vacation", "dc-vacation-tool", {"limit": 6, "limitSplit": 6, "showFilters": False}),
+    "simonly": ("sim-only", "dc-sim-only-tool", {"limit": 3, "limitSplit": 3, "showFilters": False}),
+    "telecom": ("all-in-one", "dc-all-in-one-tool", {"limit": 3, "limitSplit": 3, "showFilters": False}),
+    "vakantie": ("vacation", "dc-vacation-tool", {"limit": 3, "limitSplit": 3, "showFilters": False}),
 }
 
 def widget(naam, titel):
@@ -238,7 +238,7 @@ def partner(url, titel, tekst, knop, artikelen=()):
             f'<a class="btn" href="{url}" rel="sponsored noopener" target="_blank">{knop}{ICON["pijl"]}</a>'
             '<p class="bron">Sluit je via deze link iets af, dan krijgt Bespaarvriend een kleine vergoeding. Jij betaalt niets extra.</p></div>')
 
-NAV = '<nav class="top" aria-label="Hoofdmenu"><a href="/zorgverzekering-2027/">Zorg</a><a href="/energie-2027/">Energie</a><a href="/internet-en-mobiel/">Internet</a><a href="/auto-en-tanken/">Auto</a><span class="nbr" aria-hidden="true"></span><a href="/vakantie-en-vliegen/">Vakantie</a><a href="/goedkoop-vliegen/">Vliegen</a><a href="/salderen-2027/">Saldering</a></nav>'
+NAV = '<nav class="top" aria-label="Hoofdmenu"><a href="/zorgverzekering-2027/">Zorg</a><a href="/energie-2027/">Energie</a><a href="/internet-en-mobiel/">Internet/Mobiel</a><span class="nbr" aria-hidden="true"></span><a href="/auto-en-tanken/">Auto</a><a href="/vakantie-en-vliegen/">Vakantie</a><a href="/goedkoop-vliegen/">Vliegen</a><a href="/salderen-2027/">Saldering</a></nav>'
 FOOT = f"""<footer class="foot"><div class="wrap">
 <p class="free">Bespaarvriend helpt je besparen op je vaste lasten. Gratis en onafhankelijk uitgelegd. Wij geven geen persoonlijk financieel advies.</p>
 <p class="fkop">Zorg</p><nav aria-label="Zorg"><a href="/zorgverzekering-2027/">Zorgverzekering 2027</a><a href="/zorgverzekering-overstappen/">Overstappen</a><a href="/aanvullende-verzekering-2027/">Aanvullende verzekering</a><a href="/tandartsverzekering-2027/">Tandartsverzekering</a><a href="/fysiotherapie-vergoeding-2027/">Fysiotherapie</a><a href="/eigen-risico-2027/">Eigen risico 2027</a><a href="/zorgtoeslag-2027/">Zorgtoeslag 2027</a><a href="/huurtoeslag-2027/">Huurtoeslag 2027</a><a href="/huurverhoging-2027/">Huurverhoging 2027</a><a href="/kindgebonden-budget-2027/">Kindgebonden budget 2027</a><a href="/kinderbijslag-2027/">Kinderbijslag 2027</a><a href="/kinderopvangtoeslag-2027/">Kinderopvangtoeslag 2027</a><a href="/belastingen-2027/">Belastingen 2027</a><a href="/belastingaangifte-tips/">Belastingaangifte tips</a><a href="/administratie/">Vaste lasten op orde</a></nav>
@@ -696,6 +696,7 @@ else u.textContent='Je komt waarschijnlijk in aanmerking. Hoe lager je inkomen, 
             '<div><b>± 5 mln</b><small>huishoudens laten geld liggen met een slapend contract</small></div>'
             '<div><b>1 maand</b><small>maximale opzegtermijn na je contract</small></div>'
             '<div><b>€ 7,50</b><small>sim only met 10 GB kan al voor ongeveer dit per maand</small></div></div>'
+            + widget("simonly", "Mobiel abonnement vergelijken") +
             '<h2>Internet thuis</h2><ol class="stappen">'
             '<li><b>Zoek je einddatum op.</b> In je account of op je factuur staat wanneer je minimale looptijd afloopt. Daarna ben je maandelijks opzegbaar.</li>'
             '<li><b>Check welke snelheid je echt nodig hebt.</b> Voor streamen en thuiswerken met een paar mensen is vaak een lager pakket genoeg.</li>'
@@ -704,13 +705,13 @@ else u.textContent='Je komt waarschijnlijk in aanmerking. Hoe lager je inkomen, 
             + widget("telecom", "Internet vergelijken") +
             partner(awin(8311, "bespaarvriend-internet", "https://www.unitedconsumers.com/internet-en-tv"), "Internet en tv met korting", "Een internet- en tv-abonnement met extra korting via een collectief, bij de bekende providers.", "Bekijk internet en tv", [("Alleen internet", awin(8311, "bespaarvriend-internet", "https://www.unitedconsumers.com/internet-en-tv/internet")), ("Internet en tv", awin(8311, "bespaarvriend-internet", "https://www.unitedconsumers.com/internet-en-tv/televisie"))]) +
             partner(awin(120541, "bespaarvriend-internet"), "Snellere wifi in huis", "Trage wifi ligt vaak aan je router, niet aan je abonnement. Een nieuwe router of mesh-systeem helpt vaak beter dan een duurder abonnement.", "Bekijk routers en mesh-wifi") +
-            f'<h2>Mobiel</h2><div class="paginakop" style="margin-top:0"><span class="ic">{ICON["mobiel"]}</span><p style="margin:0">Werkt je telefoon nog goed? Dan is sim only bijna altijd de goedkoopste keuze.</p></div>'
+            f'<h2 id="mobiel">Mobiel</h2><div class="paginakop" style="margin-top:0"><span class="ic">{ICON["mobiel"]}</span><p style="margin:0">Werkt je telefoon nog goed? Dan is sim only bijna altijd de goedkoopste keuze.</p></div>'
+            +
             '<div class="let"><b>Rekenvoorbeeld:</b> een nieuw-toestel-abonnement van € 45 per maand kost in 2 jaar € 1.080. Een refurbished toestel van € 350 plus 24 maanden sim only van € 8 kost € 542. Dat scheelt € 538.</div>'
             + partner(awin(112024, "bespaarvriend-mobiel", "https://www.refurbished.nl/"), "Refurbished telefoon met garantie", "Gebruikte telefoons, gecontroleerd en schoongemaakt, met garantie.", "Bekijk refurbished telefoons", [("iPhone 13", awin(112024, "bespaarvriend-mobiel", "https://www.refurbished.nl/iphone-13")), ("iPhone 14", awin(112024, "bespaarvriend-mobiel", "https://www.refurbished.nl/iphone-14")), ("iPhone 15", awin(112024, "bespaarvriend-mobiel", "https://www.refurbished.nl/iphone-15")), ("Samsung", awin(112024, "bespaarvriend-mobiel", "https://www.refurbished.nl/samsung")), ("iPad", awin(112024, "bespaarvriend-mobiel", "https://www.refurbished.nl/ipad"))]) +
             '<ul class="links"><li>Kijk in je account hoeveel data je echt gebruikt. Veel mensen betalen voor een bundel die ze niet halen.</li>'
             '<li>Maandelijks opzegbaar kost vaak € 1 tot € 4 per maand meer dan een jaarcontract.</li>'
             '<li>Reken met de gemiddelde prijs over de hele looptijd, niet met de actieprijs.</li></ul>'
-            + widget("simonly", "Sim only vergelijken")
             + partner(awin(8311, "bespaarvriend-mobiel", "https://www.unitedconsumers.com/mobiel"), "Sim only met een duidelijke maandprijs", "Sim only zonder kleine lettertjes: één vaste prijs per maand, maandelijks opzegbaar.", "Bekijk sim only")
             + faq_html(faq_i) +
             '<p class="bron">Bronnen: <a href="https://www.acm.nl/nl/publicaties/acm-telecomaanbieders-moeten-consumenten-duidelijker-en-transparanter-voorlichten-over-vast-internet" rel="noopener">ACM (vast internet)</a>, '

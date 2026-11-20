@@ -322,8 +322,8 @@ _KORT = {
     "Internet en tv met korting": ("Internet en tv", "Met korting via een collectief"),
     "Telefoon met abonnement": ("Telefoon met abonnement", "Kies je provider"),
     "Sim only": ("Sim only", "Kies je provider"),
-    "Glasvezel en internet thuis": ("Glasvezel thuis", "Ook met tv en mobiel"),
-    "Simpel internet thuis": ("Simpel internet", "Vaste lage prijs"),
+    "Glasvezel en internet thuis": ("Glasvezel thuis", "Kies je provider"),
+    "Internet en tv": ("Internet en tv", "Kies je provider"),
     "Korting op elke tankbeurt": ("Tankkorting", "Korting per liter"),
     "Maaltijdbox": ("Maaltijdbox", "Minder weggooien"),
     "Refurbished telefoon met garantie": ("Refurbished telefoons/iPads", "Met garantie"),
@@ -343,7 +343,7 @@ def _icoon_voor(t):
             return ic
     return "check"
 
-_KIES = {"Telefoon met abonnement", "Sim only"}  # tegels die eerst de providerkeuze tonen
+_KIES = {"Telefoon met abonnement", "Sim only", "Glasvezel en internet thuis", "Internet en tv"}  # tegels die eerst de providerkeuze tonen
 
 def _als_tegels(blokken):
     """Zet partnerblokken om naar tegels in de stijl van de startpagina, met keuzelinks eronder."""
@@ -369,6 +369,8 @@ def _als_tegels(blokken):
     tegels = [t for t in tegels if not t.startswith('<div')] + [t for t in tegels if t.startswith('<div')]
     uit = '<div class="partners-top"><div class="tegels direct">' + "".join(tegels) + '</div>' + (('<div class="keuzes">' + "".join(extra) + '</div>') if extra else '')
     uit += '<p class="bron" style="margin-top:6px">Advertentie: deze tegels gaan naar partners. Sluit je iets af, dan krijgt Bespaarvriend een kleine vergoeding. Jij betaalt niets extra.</p></div>'
+    if any("dc-energy-tool" in r for r in rest):  # energiepagina's: eerst de vergelijker, dan de tegels
+        return "".join(rest) + uit
     return uit + "".join(rest)
 
 def page(path, title, desc, body, ld=(), noindex=False, prio="0.8"):
@@ -719,9 +721,8 @@ else u.textContent='Je komt waarschijnlijk in aanmerking. Hoe lager je inkomen, 
             '<li><b>Vraag je huidige provider om een beter aanbod.</b> Wie belt en zegt te willen overstappen, krijgt vaak een lagere prijs aangeboden.</li>'
             '<li><b>Stap over met de overstapservice.</b> Je nieuwe provider zegt je oude abonnement voor je op. Je kunt dit tot vier maanden voor het einde van je contract al regelen.</li></ol>'
             + widget("telecom", "Internet vergelijken") +
-            partner(awin(8311, "bespaarvriend-internet", "https://www.unitedconsumers.com/internet-en-tv"), "Internet en tv met korting", "Een internet- en tv-abonnement met extra korting via een collectief, bij de bekende providers.", "Bekijk internet en tv", [("Alleen internet", awin(8311, "bespaarvriend-internet", "https://www.unitedconsumers.com/internet-en-tv/internet")), ("Internet en tv", awin(8311, "bespaarvriend-internet", "https://www.unitedconsumers.com/internet-en-tv/televisie"))]) +
-            partner(awin(8400, "bespaarvriend-internet", "https://www.odido.nl/internet/aanbiedingen"), "Glasvezel en internet thuis", "Snel internet thuis, los of samen met tv en mobiel voor extra voordeel.", "Bekijk internet thuis") +
-            partner(awin(129565, "bespaarvriend-internet", "https://www.simpel.nl/internet/product/zelf-samenstellen"), "Simpel internet thuis", "Internet zonder poespas: een vaste lage prijs per maand.", "Bekijk internet thuis") +
+            partner(awin(8400, "bespaarvriend-internettv", "https://www.odido.nl/internet-en-tv"), "Internet en tv", "Internet en tv samen bij verschillende providers.", "Bekijk internet en tv", [("Odido", awin(8400, "bespaarvriend-internettv", "https://www.odido.nl/internet-en-tv")), ("UnitedConsumers", awin(8311, "bespaarvriend-internettv", "https://www.unitedconsumers.com/internet-en-tv/televisie"))]) +
+            partner(awin(8400, "bespaarvriend-internet", "https://www.odido.nl/internet/aanbiedingen"), "Glasvezel en internet thuis", "Snel internet thuis bij verschillende providers.", "Bekijk internet thuis", [("Odido", awin(8400, "bespaarvriend-internet", "https://www.odido.nl/internet/aanbiedingen")), ("Simpel", awin(129565, "bespaarvriend-internet", "https://www.simpel.nl/internet/product/zelf-samenstellen"))]) +
             partner(awin(120541, "bespaarvriend-internet"), "Snellere wifi in huis", "Trage wifi ligt vaak aan je router, niet aan je abonnement. Een nieuwe router of mesh-systeem helpt vaak beter dan een duurder abonnement.", "Bekijk routers en mesh-wifi") +
             f'<h2 id="mobiel">Mobiel</h2><div class="paginakop" style="margin-top:0"><span class="ic">{ICON["mobiel"]}</span><p style="margin:0">Werkt je telefoon nog goed? Dan is sim only bijna altijd de goedkoopste keuze.</p></div>'
             +

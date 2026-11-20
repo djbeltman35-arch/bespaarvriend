@@ -53,6 +53,7 @@ td.r,th.r{text-align:right;white-space:nowrap;font-family:var(--num);font-size:1
 .reken label{display:block;font-weight:700;margin:12px 0 4px}.reken input,.reken select{width:100%;padding:11px 12px;font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:12px}
 .reken .uit{margin-top:14px;padding:14px;background:var(--green-soft);border-radius:12px;font-weight:700;min-height:1em}
 .bron{font-size:14px;color:var(--muted)}.links li{margin:4px 0}
+html{scroll-behavior:smooth}.plbl{scroll-margin-top:90px}.plbl:target{background:#fff3bf;border-radius:8px;padding:2px 8px;margin-left:-8px}.plbl:target+.pchips a{border:2px solid #ffd43b!important}
 .widget{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:12px;margin:14px 0;min-height:200px}
 .ad{font-size:13px;color:var(--muted);margin:0 0 6px}
 footer{margin-top:40px;background:var(--surface);border-top:1px solid var(--line);padding:24px 0 30px;font-size:15px;color:var(--muted)}
@@ -340,6 +341,8 @@ def _icoon_voor(t):
             return ic
     return "check"
 
+_KIES = {"Telefoon met abonnement", "Sim only"}  # tegels die eerst de providerkeuze tonen
+
 def _als_tegels(blokken):
     """Zet partnerblokken om naar tegels in de stijl van de startpagina, met keuzelinks eronder."""
     pijl = f'<span class="pijl">{ICON["pijl"]}</span>'
@@ -351,10 +354,15 @@ def _als_tegels(blokken):
         tekst = _re.search(r'</b><p>(.*?)</p>', b, _re.S).group(1)
         url = _re.search(r'<a class="btn" href="([^"]+)"', b).group(1)
         naam, kort = _KORT.get(titel, (titel, _re.split(r'(?<=[.!?])\s', tekst)[0][:40]))
-        tegels.append(f'<a href="{url}" rel="sponsored noopener" target="_blank"><span class="ic">{ICON[_icoon_voor(titel)]}</span>{pijl}<b>{naam}</b><small>{kort}</small></a>')
         chips = _re.search(r'<div class="pchips">(.*?)</div>', b, _re.S)
+        kies = titel in _KIES and chips
+        anker = "kies-" + _re.sub(r'[^a-z0-9]+', '-', titel.lower()).strip('-')
+        if kies:  # meerdere aanbieders: tegel laat eerst de keuze zien
+            tegels.append(f'<a href="#{anker}"><span class="ic">{ICON[_icoon_voor(titel)]}</span>{pijl}<b>{naam}</b><small>{kort}</small></a>')
+        else:
+            tegels.append(f'<a href="{url}" rel="sponsored noopener" target="_blank"><span class="ic">{ICON[_icoon_voor(titel)]}</span>{pijl}<b>{naam}</b><small>{kort}</small></a>')
         if chips:
-            extra.append(f'<p class="plbl">{_KORT.get(titel, (titel,))[0]}:</p><div class="pchips">{chips.group(1)}</div>')
+            extra.append(f'<p class="plbl" id="{anker}">{_KORT.get(titel, (titel,))[0]}:</p><div class="pchips">{chips.group(1)}</div>')
     uit = '<div class="partners-top"><div class="tegels direct">' + "".join(tegels) + '</div>' + (('<div class="keuzes">' + "".join(extra) + '</div>') if extra else '')
     uit += '<p class="bron" style="margin-top:6px">Advertentie: deze tegels gaan naar partners. Sluit je iets af, dan krijgt Bespaarvriend een kleine vergoeding. Jij betaalt niets extra.</p></div>'
     return uit + "".join(rest)

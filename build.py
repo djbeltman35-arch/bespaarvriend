@@ -311,6 +311,8 @@ def _blokken_naar_boven(body):
 
 
 _KORT = {
+    "Zorgverzekering kiezen met hulp": ("Zorgverzekering kiezen", "Hulp bij je keuze"),
+    "Autoverzekeringen vergelijken": ("Autoverzekering vergelijken", "Veel verzekeraars"),
     "Alle zorgverzekeringen van 2027 naast elkaar": ("Zorgverzekering vergelijken", "Alle polissen van 2027"),
     "Zorgverzekering met collectieve korting": ("Zorgverzekering met korting", "Via een collectief"),
     "Autoverzekering met korting": ("Autoverzekering met korting", "Premie direct berekend"),
@@ -419,6 +421,11 @@ ZORG_VERGELIJKER = partner(awin(107738, "bespaarvriend-zorg", "https://www.polis
     "Alle zorgverzekeringen van 2027 naast elkaar",
     "Vergelijk de premies en vergoedingen van alle zorgverzekeringen in één overzicht. Gratis en zonder verplichtingen.",
     "Vergelijk zorgverzekeringen")
+# Tweede zorgvergelijker (Awin 8601, aangesloten nov 2026): alleen de standaard landingspagina.
+ZORG_VERGELIJKER += partner(awin(8601, "bespaarvriend-zorg2"),
+    "Zorgverzekering kiezen met hulp",
+    "Vergelijk polissen en aanvullende pakketten op wat jij belangrijk vindt, en stap direct over. Gratis.",
+    "Bekijk de vergelijking")
 
 # Tegels bovenaan de startpagina: direct naar goedgekeurde partners (geen namen van adverteerders).
 DIRECT = [
@@ -1151,7 +1158,7 @@ u.textContent='Zonder verzekering betaal je '+eur(zonder)+'. Met dit pakket beta
         [("https://www.consumentenbond.nl/tablet/kooptips-refurbished", "Consumentenbond (garantie)"), ("https://radar.avrotros.nl/hulp-tips/hulpartikelen/item/nieuwe-telefoon-nodig-zo-bespaar-je-geld/", "Radar (geen wettelijke definitie)"), ("https://www.bnnvara.nl/kassa/artikelen/wat-mag-je-verwachten-van-een-refurbished-artikel", "Kassa (bedenktijd)"), ("https://www.nieuwemobiel.nl/telefoons/keuzehulp/refurbished-of-nieuw", "NieuweMobiel (accu en updates)")],
         "Refurbished telefoon kopen: garantie, accu en waar je op let", "Refurbished telefoon kopen? Let op garantie (6 maanden tot 3 jaar), de accu, software-updates en de prijs. Met 14 dagen bedenktijd online. Zo koop je slim.")
 
-    auto = partner(awin(8311, "bespaarvriend-autoverzekering", "https://www.unitedconsumers.com/autoverzekering"), "Autoverzekering met korting", "Een autoverzekering met collectieve korting op de premie. Vul je kenteken in en zie direct wat je betaalt.", "Bereken je premie")
+    auto = partner(awin(8311, "bespaarvriend-autoverzekering", "https://www.unitedconsumers.com/autoverzekering"), "Autoverzekering met korting", "Een autoverzekering met collectieve korting op de premie. Vul je kenteken in en zie direct wat je betaalt.", "Bereken je premie") + partner(awin(8599, "bespaarvriend-autoverzekering2"), "Autoverzekeringen vergelijken", "Vergelijk de premies van veel autoverzekeraars naast elkaar, met de dekking die bij jouw auto past.", "Vergelijk autoverzekeringen")
     artikel("/autoverzekering-besparen/", "Autoverzekering besparen", "tank",
         "Besparen op je autoverzekering: past je dekking nog?",
         "Veel automobilisten houden te lang vast aan een allriskverzekering voor een auto die steeds minder waard wordt. Met de juiste dekking betaal je vaak flink minder.",

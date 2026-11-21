@@ -1,0 +1,26 @@
+# Elektronica-vergelijker (bespaarvriend.nl/elektronica/)
+
+Prijsvergelijker voor witgoed, tv/audio, computers, telefoons enz. bij Nederlandse webwinkels, prijs mét en zónder verzendkosten. Alleen losse producten.
+Wordt gebouwd door `../build.py` (Bespaarvriend) via `scripts/build.py` met SITE_BASIS=/elektronica.
+
+## Bestanden
+- `raw/catalogus.txt` – productlijst: `cat|naam|coolblue prijs|coolblue id|zoekterm|verplichte tokens|-uitsluitwoorden`
+- `raw/<winkel>.txt` – opgehaalde aanbiedingen, records `k|prijs|beschikbaarheid|verkoper|verzend|url-pad|naam`, gescheiden door ` ## ` of nieuwe regels. `k` = regelnummer (0-based, zonder commentaarregels) in catalogus.txt.
+- `raw/specs.txt`, `raw/specs2.txt` – specificaties van Coolblue per Coolblue-ID.
+- `data/config.json` – groepen, categorieën, subcategorieën, winkels (+ verzendtekst), vaste pagina's.
+- `scripts/samenstellen.py` – valideert matches (typenummer/tokens, prijsplausibiliteit, minimaal 2 winkels) → `data/prijzen.json`. Nieuwe winkel: toevoegen aan BASIS, EIGEN, de bestandenlijst en verzendregel in dit script én aan `winkels` in config.json.
+- `scripts/build.py` – genereert de pagina's. `PARTNERS` (advertentietegels per categorie) en `winkellink()` (partnerlinks per winkel; bol via site-ID 1562371).
+- `tools/m.js` – matcher die in Chrome op de site van een winkel draait (zie hieronder). Gehost op https://elektrovergelijk.netlify.app/tools/m.js (CORS *).
+
+## Prijzen ophalen (Claude in Chrome)
+1. Open de winkel in een tab. Zet `window.__S={search:'<zoek-URL met {q}>', link:'<regex voor productlinks>', wait:600, pricesel:'<css, optioneel>', eigen:'<regex eigen prijs, optioneel>'}`.
+2. Laad m.js: `fetch('https://elektrovergelijk.netlify.app/tools/m.js').then(r=>r.text()).then(s=>(new Function(s))())`. `window.__ITEMS` in m.js moet dezelfde volgorde hebben als catalogus.txt (q=zoekterm, i=verplichte tokens, x=uitsluitwoorden). Na het uitbreiden van de catalogus m.js opnieuw genereren en (optioneel) op elektrovergelijk deployen, of __ITEMS zelf in de pagina zetten vóór het laden.
+3. Voortgang: `window.__st`; resultaat: `window.__res[k]` met prijs, naam, url. Dump in delen (uitvoer wordt afgekapt; geen querystrings in de uitvoer) en zet om naar `raw/<winkel>.txt`.
+4. Prijzen komen uit JSON-LD `offers.price`. Controleer altijd op de productnaam (varianten!). BCC is grotendeels zelf een vergelijker: alleen de eigen prijs ("€ X Bestel bij BCC") telt.
+5. `python3 scripts/samenstellen.py` en daarna vanuit de repo-root `python3 build.py`.
+
+## Verzendregels
+Coolblue 0 · MediaMarkt gratis vanaf € 50 (onder € 50 niet opgenomen) · bol € 2,99 onder € 25 als bol zelf verkoopt, anders 0 · Amazon € 2,99 onder € 20 · Alternate per product uit JSON-LD shippingRate · Azerty uit JSON-LD (excl. btw → ×1,21) · Mobiel.nl losse telefoon gratis.
+
+## Bekend
+Wehkamp geeft 429 (bot-bescherming). Megekko, Expert en EP renderen zoekresultaten in de browser (fetch+DOMParser werkt niet; pagina zelf openen).

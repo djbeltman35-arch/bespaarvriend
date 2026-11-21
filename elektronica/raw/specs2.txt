@@ -1,0 +1,141 @@
+171765|Aansturing=Laser;Aantal knoppen=5;Maximale dots per inch (DPI)=3200 dpi;Geschikt voor gaming=Nee;Type verbinding=Draadloos
+638405|Toetsenbordindeling=QWERTY;Geografische toetsenbordindeling=US layout;Verlicht toetsenbord=Nee;Mechanische toetsen=Nee;Type verbinding=Bedraad
+802383|Plaatsing apparaat=Vrijstaand;Type oven / magnetron=Solo magnetron;Hoogte=30 cm;Breedte=53,9 cm;Diepte=39,9 cm;Uitschakelbaar draaiplateau=Nee
+818079|Hoogte=27,5 cm;Breedte=48,9 cm;Diepte=37,4 cm;Uitschakelbaar draaiplateau=Nee
+820146|Model muis=Standaard;Aansturing=Optisch;Aantal knoppen=11;Type ergonomie=Niet ergonomisch;Maximale dots per inch (DPI)=25600 dpi;Geschikt voor gaming=Ja;Type verbinding=Bedraad
+826219|Type koffiezetapparaat=Volautomatische espressomachine;Type koffie/vulling=Gemalen koffie, Koffiebonen;Inhoud waterreservoir=1,8 l;Aantal kopjes per zetbeurt=2
+830655|Type koffiezetapparaat=Pistonmachine;Type koffie/vulling=Gemalen koffie;Inhoud waterreservoir=1,9 l;Aantal kopjes per zetbeurt=2
+855808|Type koffiezetapparaat=Pistonmachine;Type koffie/vulling=Gemalen koffie, Koffiebonen;Inhoud waterreservoir=2 l;Aantal kopjes per zetbeurt=2
+857806|Totale opslagcapaciteit=1 TB;Type SSD=2,5 inch SATA;Maximale leessnelheid=540 MB/s;Maximale schrijfsnelheid=500 MB/s
+866681|Type koffiezetapparaat=Volautomatische espressomachine;Type koffie/vulling=Gemalen koffie, Koffiebonen;Inhoud waterreservoir=1,8 l;Aantal kopjes per zetbeurt=2
+876227|Type koffiezetapparaat=Volautomatische espressomachine;Type koffie/vulling=Gemalen koffie, Koffiebonen;Inhoud waterreservoir=1,8 l;Aantal kopjes per zetbeurt=2
+891435|Diepte=10 cm;Losse subwoofer=Nee;Aantal audio kanalen=3;Dolby Atmos=Virtual Dolby Atmos;HDMI-aansluiting=Ja
+891759|Toetsenbordindeling=QWERTY;Geografische toetsenbordindeling=US layout;Verlicht toetsenbord=Ja;Mechanische toetsen=Nee
+895125|Schermdiagonaal=34 inch;Helderheid=300 cd/m2;Contrastverhouding=3000
+896310|Type koffiezetapparaat=Volautomatische espressomachine;Type koffie/vulling=Gemalen koffie, Koffiebonen;Inhoud waterreservoir=1,8 l;Aantal kopjes per zetbeurt=2
+898326|Breedte=59,2 cm;Diepte=52,2 cm;Inbouw nisbreedte=56 cm;Aantal kookstanden=17
+900127|Breedte=59,2 cm;Diepte=52,2 cm;Inbouw nisbreedte=56 cm;Aantal kookstanden=17
+903752|Scheerkop=Roterende scheerkop;Geschikt voor gevoelige huid=Ja;Bruikbaar onder de douche=Ja;Display=Ja
+904564|Type stofzuiger=Steelstofzuiger;Volume opvang=0,3 l;Maximaal geluidsniveau=82 dB;Dweilfunctie=Nee;Maximale accu/batterijduur=40 min;Accuduur op hoogste stand=10 min
+905648|Noise cancelling=Ja;Gewicht in gram=250 g;Bluetooth-versie=5.2;Multipoint pairing=Ja
+912542|Aantal standen=7;Poetsdruksensor=Ja;Compatibel met smartphone / apps=Ja;Aantal meegeleverde opzetborstels=2
+913729|Met heatsink=Nee;Formaat M.2 SSD=22x80
+913731|Met heatsink=Nee;Formaat M.2 SSD=22x80
+914329|Schermdiagonaal=27 inch;Helderheid=400 cd/m2;Contrastverhouding=1200
+924436|Type inkt=Inktflessen;Verbruikskosten van één pagina=2 eurocent;Fotoprinter=Nee
+925258|Scheerkop=Roterende scheerkop;Geschikt voor gevoelige huid=Ja;Bruikbaar onder de douche=Ja;Display=Ja
+927268|Plaatsing apparaat=Vrijstaand;Model koelkast/vriezer=Koel-vriescombinatie;Netto inhoud=387 l;Breedte=59,5 cm;Diepte=65,8 cm
+930335|Volledig draadloze oordopjes=Ja;Waterdichtheid=Spatwaterdicht;Bluetooth-versie=5.3;Multipoint pairing=Ja
+930939|Toetsenbordindeling=QWERTY;Geografische toetsenbordindeling=US International layout;Verlicht toetsenbord=Ja;Mechanische toetsen=Nee
+934199|Type stofzuiger=Steelstofzuiger;Volume opvang=0,77 l;Maximaal geluidsniveau=75 dB;Dweilfunctie=Nee;Maximale accu/batterijduur=60 min;Accuduur op hoogste stand=8 min
+934200|Type stofzuiger=Steelstofzuiger;Volume opvang=0,38 l;Maximaal geluidsniveau=73 dB;Dweilfunctie=Nee;Maximale accu/batterijduur=60 min;Accuduur op hoogste stand=8 min
+934385|Breedte=59 cm;Diepte=52 cm;Inbouw nisbreedte=56 cm;Aantal kookstanden=9
+934400|Noise cancelling=Ja;Gewicht in gram=256 g;Bluetooth-versie=5.3;Multipoint pairing=Ja
+934930|Type speaker=Bluetooth speaker, Wifi speaker;Wifi ingebouwd=Ja;Multiroom audio=Ja;Gewicht=3 kg
+935247|Type koffiezetapparaat=Volautomatische espressomachine;Type koffie/vulling=Gemalen koffie, Koffiebonen;Inhoud waterreservoir=1,8 l;Aantal kopjes per zetbeurt=2
+935447|Type stofzuiger=Steelstofzuiger;Volume opvang=0,6 l;Maximaal geluidsniveau=80 dB;Dweilfunctie=Ja;Maximale accu/batterijduur=80 min;Accuduur op hoogste stand=30 min
+935853|Condensafvoer=Opvang in reservoir, Via waterafvoer;Aantal programma's=14
+935854|Condensafvoer=Opvang in reservoir, Via waterafvoer;Aantal programma's=14
+935877|Scheerkop=Roterende scheerkop;Geschikt voor gevoelige huid=Ja;Bruikbaar onder de douche=Ja;Display=Nee
+936061|Model muis=Standaard;Aansturing=Optisch;Aantal knoppen=5;Type ergonomie=Niet ergonomisch;Maximale dots per inch (DPI)=44000 dpi;Geschikt voor gaming=Ja;Type verbinding=Draadloos
+936776|Type stofzuiger=Steelstofzuiger;Volume opvang=0,5 l;Maximaal geluidsniveau=80 dB;Dweilfunctie=Ja;Maximale accu/batterijduur=60 min;Accuduur op hoogste stand=15 min
+936926|Plaatsing apparaat=Vrijstaand;Aantal couverts=14;Bestekvoorziening=Lade;Hoogte=84,5 cm
+937098|Plaatsing apparaat=Inbouw;Type vaatwasser=Volledig geïntegreerd;Droogtechniek=Zeoliet (extra droge vaat);Maximaal geluidsniveau=40 dB;Aantal couverts=14;Bestekvoorziening=Lade
+943089|Inhoud=9 l;Laadvermogen=1,5 kg;Maximum temperatuur=200 °C
+944160|Besturingssysteem=Garmin OS;Kastgrootte=43 mm;Gewicht=39 g
+946902|Plaatsing apparaat=Vrijstaand;Model koelkast/vriezer=Tafelmodel;Netto inhoud=107 l;Anti-ijsvorming=Low Frost (2x per jaar ontdooien);Maximaal geluidsniveau=36 dB;Hoogte=85 cm;Breedte=55 cm
+947001|Type wasmachine=Voorlader;Vulgewicht=9 kg;Toerental centrifugeren=1400 rpm;Geluidsniveau centrifugeren=72 dB;Wifi ingebouwd=Ja
+947263|Zuigkracht=8000 Pa;Dweilfunctie=Ja;Dweil lift=Ja;Reinigingsstation=Ja;Maximale hoogte drempel=2 cm
+947367|Inhoud=6,2 l;Laadvermogen=0,8 kg;Maximum temperatuur=200 °C
+948017|Totale opslagcapaciteit=2 TB;Type SSD=M.2 NVMe (PCIe);Maximale leessnelheid=7400 MB/s;Maximale schrijfsnelheid=6500 MB/s;Met heatsink=Nee
+948054|Noise cancelling=Ja;Gewicht in gram=315 g;Bluetooth-versie=5.4;Multipoint pairing=Ja
+948249|Hoogte=33 cm;Breedte=52,3 cm;Diepte=51,5 cm;Uitschakelbaar draaiplateau=Ja
+948480|Type speaker=Bluetooth speaker;Wifi ingebouwd=Ja;Multiroom audio=Ja;Gewicht=0,42 kg
+948625|Type inkt=Toners;Verbruikskosten van één pagina=4 eurocent;Fotoprinter=Nee
+952058|Breedte=59,2 cm;Diepte=52,2 cm;Inbouw nisbreedte=56 cm;Aantal kookstanden=17
+952363|Volledig draadloze oordopjes=Ja;Waterdichtheid=Spatwaterdicht;Bluetooth-versie=5.3;Multipoint pairing=Ja
+953307|Aantal standen=1;Poetsdruksensor=Ja;Compatibel met smartphone / apps=Nee;Aantal meegeleverde opzetborstels=1
+953311|Aantal standen=3;Poetsdruksensor=Ja;Compatibel met smartphone / apps=Ja;Aantal meegeleverde opzetborstels=1
+953959|Type speaker=Bluetooth speaker;Wifi ingebouwd=Nee;Multiroom audio=Nee;Gewicht=0,59 kg
+954609|Inhoud=7,2 l;Laadvermogen=1,4 kg;Maximum temperatuur=200 °C
+954647|Diepte=11,05 cm;Losse subwoofer=Nee;Aantal audio kanalen=9;Dolby Atmos=True Dolby Atmos;HDMI-aansluiting=Ja
+954985|Inhoud=71 l;Geschikt voor IKEA keukens=Ja
+955214|Type koffiezetapparaat=Volautomatische espressomachine;Type koffie/vulling=Koffiebonen;Inhoud waterreservoir=1,7 l;Melkopschuimmethode=Melkopschuimer;Aantal kopjes per zetbeurt=2
+956278|Type speaker=Bluetooth speaker, Netwerkspeler, Wifi speaker;Formaat draadloze speaker=Groot (25-40 cm);Multiroom audio=Nee;Gewicht=4,25 kg
+956756|Aansturing=Laser;Maximale dots per inch (DPI)=1300 dpi;Geschikt voor gaming=Nee
+956761|Toetsenbordindeling=QWERTY;Geografische toetsenbordindeling=NL layout;Fysieke toetsenbordindeling=ISO;Verlicht toetsenbord=Nee;Mechanische toetsen=Nee;Type verbinding=Draadloos
+957240|Type stofzuiger=Steelstofzuiger;Volume opvang=0,8 l;Maximaal geluidsniveau=86 dB;Dweilfunctie=Nee;Maximale accu/batterijduur=60 min;Accuduur op hoogste stand=3 min
+958105|Type inkt=Toners;Verbruikskosten van één pagina=4 eurocent;Fotoprinter=Nee
+958176|Plaatsing apparaat=Inbouw;Aantal couverts=14;Bestekvoorziening=Lade
+959369|Inhoud=9 l;Laadvermogen=1,4 kg;Maximum temperatuur=200 °C
+959385|Zuigkracht=20000 Pa;Dweilfunctie=Ja;Dweil lift=Ja;Reinigingsstation=Ja;Maximale hoogte drempel=6 cm
+959642|Plaatsing apparaat=Inbouw;Aantal couverts=14;Bestekvoorziening=Lade
+959643|Plaatsing apparaat=Inbouw;Aantal couverts=13;Bestekvoorziening=Mand
+959805|Condensafvoer=Opvang in reservoir, Via waterafvoer;Aantal programma's=15
+959850|Totale opslagcapaciteit=256 GB;Schermtype=LCD;Schermdiagonaal=7,9 inch;Beeldresolutie (TV)=1080p, 1440p, 4K;Opslag uitbreidbaar tot=2 TB
+959873|Type speaker=Bluetooth speaker;Formaat draadloze speaker=Compact (10-20 cm);Wifi ingebouwd=Nee;Gewicht=0,56 kg
+959880|Type speaker=Bluetooth speaker;Formaat draadloze speaker=Middelgroot (20-25 cm);Wifi ingebouwd=Nee;Gewicht=0,99 kg
+960308|Besturingssysteem=iOS;Introductiejaar=2025;Beveiligingsupdates tot=Augustus 2032
+960489|Schermdiagonaal=11 inch;Pixel-dichtheid=264 ppi;Helderheid=500 cd/m2
+960857|Inhoud=72 l;Geschikt voor IKEA keukens=Ja
+961313|Schermdiagonaal=10,9 inch;Pixel-dichtheid=249 ppi;Helderheid=600 cd/m2
+961427|Aantal standen=3;Poetsdruksensor=Ja;Compatibel met smartphone / apps=Nee;Aantal meegeleverde opzetborstels=1
+961458|Met heatsink=Nee;Formaat M.2 SSD=22x80
+961842|Diepte=11 cm;Losse subwoofer=Ja;Aantal audio kanalen=3;Dolby Atmos=True Dolby Atmos;HDMI-aansluiting=Ja
+962722|Noise cancelling=Ja;Gewicht in gram=254 g;Bluetooth-versie=5.3;Multipoint pairing=Ja
+963445|Diepte=12 cm;Losse subwoofer=Ja;Aantal audio kanalen=3;Dolby Atmos=True Dolby Atmos;HDMI-aansluiting=Ja
+963467|Local dimming=Ja;Type HDR=HDR10, HDR10+, HLG;Bluetooth=Ja
+964286|Plaatsing apparaat=Vrijstaand;Aantal couverts=14;Bestekvoorziening=Lade;Hoogte=84,5 cm
+964847|Besturingssysteem=Android;Introductiejaar=2025;Beveiligingsupdates tot=Juni 2033
+965472|Volledig draadloze oordopjes=Ja;Waterdichtheid=Waterdicht;Bluetooth-versie=5.3;Multipoint pairing=Ja
+965916|Condensafvoer=Opvang in reservoir, Via waterafvoer;Aantal programma's=18
+966440|Besturingssysteem=Wear OS;Kastgrootte=40 mm;Gewicht=30,1 g
+966444|Besturingssysteem=Wear OS;Kastgrootte=46 mm;Gewicht=63,5 g
+966970|Aantal standen=5;Poetsdruksensor=Ja;Compatibel met smartphone / apps=Ja;Aantal meegeleverde opzetborstels=2
+967400|Condensafvoer=Opvang in reservoir, Via waterafvoer;Aantal programma's=15
+967934|Type inkt=Cartridges;Verbruikskosten van één pagina=1 eurocent;Fotoprinter=Nee
+968169|Scheerkop=Scheerblad;Geschikt voor gevoelige huid=Ja;Bruikbaar onder de douche=Ja;Display=Ja
+968191|Volledig draadloze oordopjes=Ja;Waterdichtheid=Spatwaterdicht;Bluetooth-versie=5.4;Multipoint pairing=Nee
+968614|Type stofzuiger=Steelstofzuiger;Volume opvang=0,5 l;Maximaal geluidsniveau=78 dB;Dweilfunctie=Nee;Maximale accu/batterijduur=60 min;Accuduur op hoogste stand=3 min
+968677|Noise cancelling=Ja;Gewicht in gram=252 g;Bluetooth-versie=5.4;Multipoint pairing=Ja
+968961|Besturingssysteem=iOS;Introductiejaar=2025;Beveiligingsupdates tot=Februari 2033
+969148|Model muis=Standaard;Aansturing=Optisch;Aantal knoppen=8;Maximale dots per inch (DPI)=8000 dpi;Geschikt voor gaming=Nee
+969421|Volledig draadloze oordopjes=Ja;Waterdichtheid=Spatwaterdicht;Bluetooth-versie=5.3;Multipoint pairing=Ja
+969443|Besturingssysteem=iOS;Introductiejaar=2025;Beveiligingsupdates tot=Februari 2033
+969451|Besturingssysteem=iOS;Introductiejaar=2025;Beveiligingsupdates tot=Februari 2033
+969788|Schermdiagonaal=26,5 inch;Helderheid=275 cd/m2
+969830|Besturingssysteem=Garmin OS;Kastgrootte=45 mm;Gewicht=56 g
+969987|Type inkt=Inktflessen;Verbruikskosten van één pagina=1 eurocent;Fotoprinter=Ja
+970002|Schermdiagonaal=11 inch;Pixel-dichtheid=207 ppi;Helderheid=480 cd/m2
+970149|Model muis=Standaard;Aansturing=Optisch;Aantal knoppen=7;Maximale dots per inch (DPI)=8000 dpi;Geschikt voor gaming=Nee
+970780|Schermdiagonaal=34 inch;Helderheid=300 cd/m2;Contrastverhouding=1000
+971072|Schermdiagonaal=13 inch;Pixel-dichtheid=264 ppi;Helderheid=1000 cd/m2
+972802|Schermdiagonaal=32 inch;Helderheid=450 cd/m2
+973154|Schermdiagonaal=27 inch;Helderheid=400 cd/m2
+973550|Plaatsing apparaat=Vrijstaand;Model koelkast/vriezer=Koel-vriescombinatie;Maximaal geluidsniveau=29 dB;Hoogte=186 cm;Breedte=59,5 cm;Netto inhoud=333 l
+974538|Aantal standen=2;Poetsdruksensor=Ja;Compatibel met smartphone / apps=Nee;Aantal meegeleverde opzetborstels=1;Poetstechniek tandenborstel=Sonisch
+975173|Zuigkracht=36000 Pa;Dweilfunctie=Ja;Dweil lift=Ja;Reinigingsstation=Ja;Maximale hoogte drempel=8,8 cm
+975197|Volledig draadloze oordopjes=Ja;Waterdichtheid=Spatwaterdicht;Bluetooth-versie=5.3;Multipoint pairing=Ja
+975453|Besturingssysteem=Android;Introductiejaar=2026;Beveiligingsupdates tot=Februari 2033
+975462|Besturingssysteem=Android;Introductiejaar=2026;Beveiligingsupdates tot=Februari 2033
+975598|Volledig draadloze oordopjes=Ja;Waterdichtheid=Waterdicht;Bluetooth-versie=5.4;Multipoint pairing=Ja
+976201|Besturingssysteem=Garmin OS;Kastgrootte=46 mm;Gewicht=47 g
+976281|Scheerkop=Scheerblad;Geschikt voor gevoelige huid=Ja;Bruikbaar onder de douche=Ja;Display=Ja
+976531|Besturingssysteem=Android;Introductiejaar=2026;Beveiligingsupdates tot=Maart 2032
+976545|Besturingssysteem=Android;Introductiejaar=2026;Beveiligingsupdates tot=Maart 2032
+976619|Zuigkracht=30000 Pa;Dweilfunctie=Ja;Dweil lift=Ja;Reinigingsstation=Ja;Maximale hoogte drempel=2,2 cm
+976708|Schermdiagonaal=11 inch;Pixel-dichtheid=264 ppi;Helderheid=500 cd/m2
+976809|Type speaker=Bluetooth speaker;Formaat draadloze speaker=Compact (10-20 cm);Wifi ingebouwd=Nee;Gewicht=0,23 kg
+976851|Paneeltype=IPS paneel;Verversingssnelheid=60 Hz;Helderheid=500 cd/m2;Processor kernen=Deca core (10)
+976873|Paneeltype=IPS paneel;Verversingssnelheid=60 Hz;Helderheid=500 cd/m2;Processor kernen=Deca core (10)
+977430|Noise cancelling=Ja;Gewicht in gram=384,8 g;Bluetooth-versie=5.0;Multipoint pairing=Ja
+977596|Local dimming=Nee;Type HDR=Dolby Vision, HDR10, HLG;Bluetooth=Ja
+977599|Local dimming=Nee;Type HDR=Dolby Vision, HDR10, HLG;Bluetooth=Ja
+978460|Local dimming=Ja;Type HDR=Dolby Vision, HDR10, HDR10+;Bluetooth=Ja
+979219|Schermdiagonaal=13 inch;Pixel-dichtheid=318 ppi;Helderheid=800 cd/m2
+980000|Diepte=13,8 cm;Losse subwoofer=Ja;Aantal audio kanalen=11;Dolby Atmos=True Dolby Atmos;HDMI-aansluiting=Ja
+981124|Plaatsing apparaat=Vrijstaand;Model koelkast/vriezer=Amerikaans;Breedte=91,2 cm;Netto inhoud=634 l
+986121|Besturingssysteem=iOS;Introductiejaar=2026;Beveiligingsupdates tot=September 2032
+986122|Besturingssysteem=iOS;Introductiejaar=2026;Beveiligingsupdates tot=September 2032
+986163|Besturingssysteem=WatchOS;Kastgrootte=49 mm;Gewicht=63 g
+986183|Besturingssysteem=WatchOS;Kastgrootte=42 mm;Gewicht=32,2 g

@@ -1,0 +1,188 @@
+# cat|naam|coolblue prijs|coolblue id|zoekterm|verplichte tokens (spatie gescheiden, kleine letters)
+smartphones|Apple iPhone 17 256GB Zwart|1039|968961|iphone 17 256gb zwart|iphone 17 256 zwart|-pro -max -refurb -air
+smartphones|Apple iPhone 17 Pro 256GB Blauw|1279|969443|iphone 17 pro 256gb blauw|iphone 17 pro 256 blauw|-max -refurb
+smartphones|Apple iPhone 17 Pro Max 256GB Blauw|1299|969451|iphone 17 pro max 256gb blauw|iphone 17 pro max 256 blauw|-refurb
+smartphones|Apple iPhone 18 Pro 256GB Zwart|1429|986122|iphone 18 pro 256gb zwart|iphone 18 pro 256 zwart|-max -refurb
+smartphones|Apple iPhone 18 Pro Max 256GB Zwart|1629|986121|iphone 18 pro max 256gb zwart|iphone 18 pro max 256 zwart|-refurb
+smartphones|Apple iPhone 16e 128GB Zwart|699|960308|iphone 16e 128gb zwart|iphone 16e 128 zwart|-refurb
+smartphones|Samsung Galaxy S26 256GB Zwart|799|975453|galaxy s26 256gb zwart|galaxy s26 256 zwart|-plus -ultra -s26+ -refurb -fe
+smartphones|Samsung Galaxy S26 Plus 256GB Zwart|949|975462|galaxy s26 plus 256gb zwart|galaxy s26 256 zwart plus|-ultra -refurb
+smartphones|Samsung Galaxy A57 256GB Grijs|429|976545|galaxy a57 256gb|galaxy a57 256|-refurb
+smartphones|Samsung Galaxy A37 128GB Zwart|289|976531|galaxy a37 128gb zwart|galaxy a37 128 zwart|-refurb
+smartphones|Fairphone 6 256GB Groen|519|964847|fairphone 6 256gb|fairphone 6 256|-refurb
+tablets|Apple iPad (2025) 11 inch 128GB Wifi Zilver|449|960489|ipad 2025 11 inch 128gb wifi zilver|ipad 128 zilver|-air -pro -mini -cellular -5g -refurb -2022
+tablets|Apple iPad Air (2026) 11 inch 128GB Wifi Grijs|766|976708|ipad air 2026 11 inch 128gb|ipad air 11 128|-13 -cellular -5g -refurb -m2 -m3
+tablets|Apple iPad Pro (2025) 13 inch 256GB Wifi Zwart|1479|971072|ipad pro 13 inch 256gb|ipad pro 13 256|-cellular -5g -refurb -nano
+tablets|Apple iPad mini 8 (2026) 128GB Wifi|759|988189|ipad mini 8 128gb|ipad mini 128|-cellular -5g -refurb -a17
+tablets|Samsung Galaxy Tab A11 Plus 128GB Wifi Grijs|209|970002|galaxy tab a11 plus 128gb|tab a11 128|-5g -lte
+tablets|Samsung Galaxy Tab S10 FE 128GB Wifi Zilver|449|961313|galaxy tab s10 fe 128gb|tab s10 fe 128|-5g -lte -plus -+
+tablets|Lenovo Idea Tab Pro Gen 2 13 inch 256GB|429|979219|lenovo idea tab pro gen 2 13|idea tab pro 13|-
+laptops|Apple MacBook Air 13 inch (2026) M5 16GB/512GB|1319|976851|macbook air 13 m5 16gb 512gb|macbook air 13 m5 512|-15 -refurb
+laptops|Apple MacBook Air 15 inch (2026) M5 16GB/512GB|1599|976873|macbook air 15 m5 16gb 512gb|macbook air 15 m5 512|-13 -refurb
+laptops|Samsung Galaxy Book6 NP740VJK-KG3NL|599|986828|NP740VJK-KG3NL|np740vjk|
+laptops|Lenovo IdeaPad Slim 3 15ABR8 82XM01DPMH|649|981918|82XM01DPMH|82xm01dpmh|
+laptops|HP OmniBook 3 16-bw0970nd|769|978921|16-bw0970nd|bw0970nd|
+laptops|HP Pavilion SE 15-fd2972nd|799|974938|15-fd2972nd|fd2972nd|
+laptops|HP VICTUS 15-fa2975nd|1199|963110|15-fa2975nd|fa2975nd|
+laptops|Lenovo LOQ 17IRX10 83JH00D0MH|1449|975272|83JH00D0MH|83jh00d0mh|
+laptops|Acer Aspire Lite AL15-54P-57CG|639|977832|AL15-54P-57CG|54p-57cg|
+televisies|LG OLED evo 55" C6 (2026)|1399|977597|LG OLED55C6|55c6|
+televisies|LG OLED evo 65" C6 (2026)|1799|977596|LG OLED65C6|65c6|
+televisies|LG OLED 55" B6 (2026)|899|977603|LG OLED55B6|55b6|
+televisies|LG OLED evo 42" C6 (2026)|999|977599|LG OLED42C6|42c6|
+televisies|Samsung OLED 55" S90H (2026)|1299|978725|Samsung QE55S90H|55s90h|
+televisies|Samsung OLED 65" S90H (2026)|1699|978726|Samsung QE65S90H|65s90h|
+televisies|Samsung Mini-led 55" M83H (2026)|599|978763|Samsung 55M83H|55m83h|
+televisies|Samsung Mini-led 65" M83H (2026)|799|978764|Samsung 65M83H|65m83h|
+televisies|Samsung 43" Neo QLED QN90F (2025)|689|963467|Samsung QE43QN90F|43qn90f|
+televisies|Sony Bravia 6 55" OLED (2026)|1199|983703|Sony Bravia 6 55 OLED|bravia 6 55|-65 -48
+televisies|TCL QD Mini-led 55" C69K Pro (2026)|599|978460|TCL 55C69K|55c69k|
+koptelefoons|Sony WH-1000XM6 Zwart|319|962722|Sony WH-1000XM6 zwart|wh-1000xm6|-refurb
+koptelefoons|Sony WH-1000XM5 Zwart|259|905648|Sony WH-1000XM5 zwart|wh-1000xm5|-refurb
+koptelefoons|Bose QuietComfort Ultra Headphones (2e gen) Zwart|329|968677|Bose QuietComfort Ultra Headphones 2e gen|quietcomfort ultra headphones|-earbuds -refurb
+koptelefoons|Bose QuietComfort Headphones Zwart|189|936048|Bose QuietComfort Headphones zwart|quietcomfort headphones|-ultra -earbuds -refurb
+koptelefoons|Sonos Ace Zwart|199|948054|Sonos Ace zwart|sonos ace|-ultra -refurb
+koptelefoons|JBL Live 770NC Zwart|75|934400|JBL Live 770NC|770nc|
+koptelefoons|Apple AirPods Max 2|509|977430|AirPods Max 2|airpods max|-refurb
+oordopjes|Apple AirPods Pro 3|211|969421|AirPods Pro 3|airpods pro 3|-refurb
+oordopjes|Apple AirPods 5|137|986177|AirPods 5|airpods 5|-pro -refurb -draadloze -wireless
+oordopjes|Sony WF-1000XM5 Zwart|169|930335|Sony WF-1000XM5 zwart|wf-1000xm5|-refurb
+oordopjes|Sony WF-1000XM6 Zwart|229|975197|Sony WF-1000XM6 zwart|wf-1000xm6|-refurb
+oordopjes|Samsung Galaxy Buds4 Pro Zwart|169|975598|Galaxy Buds4 Pro|buds4 pro|-refurb
+oordopjes|Samsung Galaxy Buds3 FE Zwart|79|968191|Galaxy Buds3 FE|buds3 fe|-refurb
+oordopjes|Bose QuietComfort Ultra Earbuds (2e gen)|199|965472|Bose QuietComfort Ultra Earbuds 2e gen|quietcomfort ultra earbuds|-refurb
+oordopjes|Shokz OpenRun Pro 2 Zwart|149|952363|Shokz OpenRun Pro 2|openrun pro 2|-mini
+speakers|JBL Flip 7 Zwart|106|959873|JBL Flip 7 zwart|flip 7|
+speakers|JBL Charge 6 Zwart|139|959880|JBL Charge 6 zwart|charge 6|
+speakers|JBL Go 5|45.99|976809|JBL Go 5|jbl go 5|
+speakers|Sonos Roam 2 Zwart|159|948480|Sonos Roam 2 zwart|roam 2|
+speakers|Sonos Move 2 Zwart|399|934930|Sonos Move 2 zwart|move 2|
+speakers|Bose SoundLink Flex (2nd Gen) Zwart|99|953959|Bose SoundLink Flex 2nd gen|soundlink flex|-max -plus
+speakers|Marshall Stanmore III Zwart|249|956278|Marshall Stanmore III|stanmore iii|
+soundbars|Sonos Arc Ultra Zwart|849|954647|Sonos Arc Ultra zwart|arc ultra|
+soundbars|Sonos Beam Gen2 Zwart|349|891435|Sonos Beam Gen 2 zwart|beam|-ultra
+soundbars|Samsung HW-Q990H (2026)|999|980000|Samsung HW-Q990H|q990h|
+soundbars|Samsung HW-QS700F (2025)|349|963445|Samsung HW-QS700F|qs700f|
+soundbars|Sony Bravia Theatre Bar 6|329|961842|Sony Bravia Theatre Bar 6|theatre bar 6|
+spelcomputers|Nintendo Switch 2|479|959850|Nintendo Switch 2|switch 2|-mario -zelda -pokemon -pokémon -bundel -bundle -kirby -donkey -sports -hoes -case -controller
+spelcomputers|PlayStation 5 Slim Digital Edition|825|941836|PlayStation 5 Slim Digital|playstation 5 digital|-pro -bundel -oplaad -controller
+spelcomputers|PlayStation 5 Slim Disc Edition|857|941835|PlayStation 5 Slim Disc|playstation 5 disc|-pro -digital -bundel -controller -drive
+smartwatches|Apple Watch Series 12 42mm|399|986183|Apple Watch Series 12 42mm|watch series 12 42|-cellular -refurb
+smartwatches|Apple Watch Ultra 4 49mm|859|986163|Apple Watch Ultra 4|watch ultra 4|-refurb
+smartwatches|Samsung Galaxy Watch 8 40mm|199|966440|Galaxy Watch 8 40mm|watch 8 40|-classic -lte -4g
+smartwatches|Samsung Galaxy Watch 8 Classic 46mm|299|966444|Galaxy Watch 8 Classic 46mm|watch 8 classic|-lte -4g
+smartwatches|Garmin Venu 4 45 mm Zwart|399|969830|Garmin Venu 4 45mm|venu 4|-41
+smartwatches|Garmin Forerunner 265 Zwart|269|976201|Garmin Forerunner 265|forerunner 265|-265s
+smartwatches|Garmin Forerunner 165 Zwart|179|944160|Garmin Forerunner 165|forerunner 165|-music
+monitoren|LG UltraWide 34U650A-B|349|970780|34U650A|34u650a|
+monitoren|AOC U32G4U|349|972802|AOC U32G4U|u32g4u|
+monitoren|LG 27UP850K-W|249|914329|27UP850K|27up850k|
+monitoren|Philips 346E2CUAE|219|895125|346E2CUAE|346e2cuae|
+monitoren|Samsung Odyssey OLED G9 G91SD|789|955947|LS49DG912SUXEN|ls49dg912|
+monitoren|LG UltraGear 27GX704A-B|329|969788|27GX704A|27gx704a|
+monitoren|AOC Q27G4ZDR OLED|319|973154|Q27G4ZDR|q27g4zdr|
+muizen|Logitech MX Master 3S|69|970149|Logitech MX Master 3S|mx master 3s|-combo
+muizen|Logitech MX Master 4|99|969148|Logitech MX Master 4|mx master 4|
+muizen|Logitech G502 HERO|29.99|820146|Logitech G502 HERO|g502 hero|-x -lightspeed
+muizen|Logitech G PRO X Superlight 2|87|936061|Logitech G PRO X Superlight 2|superlight 2|-dex -strike
+muizen|Logitech M705|26.99|171765|Logitech M705|m705|
+muizen|Apple Magic Mouse (2024)|86|956756|Apple Magic Mouse|magic mouse|-refurb
+toetsenborden|Logitech MX Keys S|107|930939|Logitech MX Keys S|mx keys s|-mini -combo -mac
+toetsenborden|Logitech MX Keys Mini|69|891759|Logitech MX Keys Mini|mx keys mini|-mac
+toetsenborden|Apple Magic Keyboard met Touch ID|167|956761|Apple Magic Keyboard Touch ID|magic keyboard touch id|-numeriek -numeric -ipad
+toetsenborden|Logitech K120|19.99|638405|Logitech K120|k120|
+ssd|Samsung 990 Pro 2TB|378|913731|Samsung 990 Pro 2TB|990 pro 2tb|-heatsink -koellichaam
+ssd|Samsung 990 Pro 1TB|234|913729|Samsung 990 Pro 1TB|990 pro 1tb|-heatsink -koellichaam
+ssd|Samsung 9100 Pro 1TB|209|961458|Samsung 9100 Pro 1TB|9100 pro 1tb|-heatsink -koellichaam
+ssd|Samsung 870 EVO 1TB|340|876121|Samsung 870 EVO 1TB|870 evo 1tb|
+ssd|Crucial BX500 1TB|194|857806|Crucial BX500 1TB|bx500 1tb|
+ssd|Lexar NM790 2TB|355|948017|Lexar NM790 2TB|nm790 2tb|
+printers|HP Color LaserJet Pro 3302fdw|299|948625|HP Color LaserJet 3302fdw|3302fdw|
+printers|HP LaserJet M207dw|89|958105|HP LaserJet M207dw|m207dw|
+printers|HP Smart Tank 5105|139|924436|HP Smart Tank 5105|smart tank 5105|
+printers|Canon PIXMA TS7550i|75|967934|Canon PIXMA TS7550i|ts7550i|
+printers|Epson EcoTank ET-2950|239|969987|Epson EcoTank ET-2950|et-2950|
+printers|Epson EcoTank ET-2910|159|981743|Epson EcoTank ET-2910|et-2910|
+wasmachines|Bosch WGG244FLNL i-DOS|779|945890|Bosch WGG244FLNL|wgg244flnl|
+wasmachines|Bosch WGG244ZONL Iron Assist|699|945891|Bosch WGG244ZONL|wgg244zonl|
+wasmachines|Bosch WAN2827CNL|499|972635|Bosch WAN2827CNL|wan2827cnl|
+wasmachines|AEG LR86CB86 PowerCare|649|914294|AEG LR86CB86|lr86cb86|
+wasmachines|AEG LF62CB86 ProSense|499|967584|AEG LF62CB86|lf62cb86|
+wasmachines|Samsung WW11DB7B34GBU3|649|946999|Samsung WW11DB7B34GBU3|ww11db7b34gb|
+wasmachines|Samsung WW90DG6U85LK|529|947001|Samsung WW90DG6U85LK|ww90dg6u85lk|
+wasmachines|Samsung WW90CGC04AAE|489|936324|Samsung WW90CGC04AAE|ww90cgc04aae|
+wasmachines|Miele WEC 388 WCS|1049|960036|Miele WEC 388 WCS|wec 388|
+wasmachines|Siemens WG44G2ZBNL|569|945883|Siemens WG44G2ZBNL|wg44g2zbnl|
+wasdrogers|Bosch WQG245D5NL|809|935853|Bosch WQG245D5NL|wqg245d5nl|
+wasdrogers|Samsung DV90DB7845GBU3|849|965916|Samsung DV90DB7845GBU3|dv90db7845gb|
+wasdrogers|Samsung DV80DG52B0AEEN|549|980261|Samsung DV80DG52B0AE|dv80dg52b0ae|
+wasdrogers|AEG TR86CBC86 AbsoluteCare|649|928665|AEG TR86CBC86|tr86cbc86|
+wasdrogers|Bosch WTH8520CNL|579|959805|Bosch WTH8520CNL|wth8520cnl|
+wasdrogers|Beko BM3T3824BC|499|967400|Beko BM3T3824BC|bm3t3824bc|
+wasdrogers|Siemens WQ45G2D5NL|829|935854|Siemens WQ45G2D5NL|wq45g2d5nl|
+koelkasten|Samsung RB38C7B6AB1/EF|899|927268|Samsung RB38C7B6AB1|rb38c7b6ab1|
+koelkasten|Samsung RB34C605CB1/EF|599|927233|Samsung RB34C605CB1|rb34c605cb1|
+koelkasten|Bosch KGN392LAG|1049|964079|Bosch KGN392LAG|kgn392lag|
+koelkasten|Samsung RS70F66KBTEF|1599|981124|Samsung RS70F66KBT|rs70f66kbt|
+koelkasten|LG GBBS312AEV|849|973550|LG GBBS312AEV|gbbs312aev|
+koelkasten|Beko B3RCNO256W|500|975427|Beko B3RCNO256W|b3rcno256w|
+vriezers|Bosch GSN58AWCP|899|943872|Bosch GSN58AWCP|gsn58awcp|
+vriezers|Liebherr Fc 1404-20|574|946902|Liebherr Fc 1404|fc 1404|
+vaatwassers|Bosch SMV4EVX08E|579|958176|Bosch SMV4EVX08E|smv4evx08e|
+vaatwassers|Bosch SMV6ZCX13E|769|937098|Bosch SMV6ZCX13E|smv6zcx13e|
+vaatwassers|Bosch SMV4EAX23N|579|959643|Bosch SMV4EAX23N|smv4eax23n|
+vaatwassers|Siemens SN65ZX16CE|769|959642|Siemens SN65ZX16CE|sn65zx16ce|
+vaatwassers|Siemens SN23EC03ME|649|936926|Siemens SN23EC03ME|sn23ec03me|
+vaatwassers|Bosch SMS4EMW06E|649|964286|Bosch SMS4EMW06E|sms4emw06e|
+vaatwassers|AEG GI6200B2SO|599|983373|AEG GI6200B2SO|gi6200b2so|
+magnetrons|Samsung MS23K3513AK|140|818079|Samsung MS23K3513AK|ms23k3513ak|
+magnetrons|Whirlpool MWP 301 B|119|802383|Whirlpool MWP 301 B|mwp 301|
+magnetrons|Samsung MC28H5015AW|195|450254|Samsung MC28H5015AW|mc28h5015aw|
+magnetrons|Samsung MC32DG7646KKE1|344|948249|Samsung MC32DG7646KK|mc32dg7646kk|
+ovens|Bosch HBA514BS3|429|954985|Bosch HBA514BS3|hba514bs3|
+ovens|AEG OU5PB40WSM|479|960857|AEG OU5PB40WSM|ou5pb40wsm|
+kookplaten|Bosch PKF611BB2E|279|898326|Bosch PKF611BB2E|pkf611bb2e|
+kookplaten|Bosch PUG61RAA5D|311|900127|Bosch PUG61RAA5D|pug61raa5d|
+kookplaten|AEG IBS64200CB|279|934385|AEG IBS64200CB|ibs64200cb|
+kookplaten|Bosch PIE61RBB5E|394|952058|Bosch PIE61RBB5E|pie61rbb5e|
+steelstofzuigers|Dyson V8 Cyclone|249|968614|Dyson V8 Cyclone|v8 cyclone|-fluffy
+steelstofzuigers|Dyson V12 Detect Slim Absolute|399|934200|Dyson V12 Detect Slim Absolute|v12 detect slim absolute|
+steelstofzuigers|Dyson V15 Detect Absolute|499|934199|Dyson V15 Detect Absolute|v15 detect absolute|-submarine
+steelstofzuigers|Bosch Unlimited 7 BCS711A|219|904564|Bosch BCS711A|bcs711|
+steelstofzuigers|Philips 3000 Series XC3133/01|199|936776|Philips XC3133|xc3133|
+steelstofzuigers|Philips 7000 Series Aqua XC7057/01|289|935447|Philips XC7057|xc7057|
+steelstofzuigers|Samsung Jet 75E Turbo|299|957240|Samsung Jet 75E Turbo|jet 75e|
+robotstofzuigers|Roborock Saros 20X|779|975173|Roborock Saros 20X|saros 20x|
+robotstofzuigers|Roborock Qrevo Edge 2 Pro|549|975174|Roborock Qrevo Edge 2 Pro|qrevo edge 2 pro|
+robotstofzuigers|Dreame L50s Pro Ultra|499|976619|Dreame L50s Pro Ultra|l50s pro ultra|
+robotstofzuigers|Dreame X50 Ultra Complete|599|959385|Dreame X50 Ultra Complete|x50 ultra complete|
+robotstofzuigers|Ecovacs Deebot T50 Omni Gen 3|299|978085|Ecovacs T50 Omni Gen 3|t50 omni|
+robotstofzuigers|eufy C20 Omni|329|956854|eufy C20 Omni|c20 omni|
+robotstofzuigers|eufy X10 Pro Omni|379|947263|eufy X10 Pro Omni|x10 pro omni|
+airfryers|Philips Airfryer XXL 3000 NA342/00|118|954609|Philips NA342/00|na342|
+airfryers|Philips Airfryer XL NA231/00|75|947367|Philips NA231/00|na231|
+airfryers|Philips Airfryer 3000 Dual Basket NA352/00|109|943089|Philips NA352/00|na352|
+airfryers|Philips Airfryer 5000 Dual Basket NA555/00|179|959369|Philips NA555/00|na555|
+airfryers|Ninja DualZone XL DZ901EU|149|979081|Ninja DZ901EU|dz901|
+airfryers|Ninja AF500EU|169|942046|Ninja AF500EU|af500|
+airfryers|Tefal Easy Fry Dual XXL EY9428|125|955170|Tefal EY9428|ey9428|
+koffie|De'Longhi Magnifica S ECAM21.117.B|259|826219|DeLonghi ECAM21.117.B|ecam21.117|
+koffie|Philips 2200 EP2224/10|239|876227|Philips EP2224/10|ep2224|
+koffie|Philips 2300 EP2331/10 LatteGo|359|935247|Philips EP2331/10|ep2331|
+koffie|Philips 5400 EP5447/90 LatteGo|419|866681|Philips EP5447/90|ep5447|
+koffie|De'Longhi Magnifica EVO ECAM290.81.TB|380|896310|DeLonghi ECAM290.81.TB|ecam290.81|
+koffie|Sage the Barista Express|479|855808|Sage Barista Express|barista express|-neo -impress -touch
+koffie|Sage the Bambino Plus|419|830655|Sage Bambino Plus|bambino plus|
+koffie|Krups Sensation Milk M50 EA9129|379|955214|Krups EA9129|ea9129|
+tandenborstels|Oral-B iO 2|39.99|961427|Oral-B iO 2|io 2|-duo -3 -5 -6 -9
+tandenborstels|Oral-B iO 6N Zwart|109|966970|Oral-B iO 6N zwart|io 6|-duo
+tandenborstels|Oral-B iO 9N Zwart|185|912542|Oral-B iO 9|io 9|-duo
+tandenborstels|Philips Sonicare 6500 HX7411/02|89|953311|Philips HX7411/02|hx7411|
+tandenborstels|Philips Sonicare 5300 HX7101/02|63|953307|Philips HX7101/02|hx7101|
+tandenborstels|Philips Sonicare 4100 HX4041|49.99|974538|Philips HX4041|hx4041|
+scheerapparaten|Philips Shaver Series 7000 S7882/55|109|925258|Philips S7882/55|s7882|
+scheerapparaten|Philips Shaver Series 5000 S5466/17|55|903752|Philips S5466/17|s5466|
+scheerapparaten|Philips OneBlade/3000X X3052/00|57|935877|Philips X3052/00|x3052|
+scheerapparaten|Braun Series 9 Pro+ 9615s|235|968216|Braun Series 9 Pro+ 9615s|9615s|
+scheerapparaten|Braun Series 5 52-A1000s|94|968169|Braun 52-A1000s|52-a1000s|
+scheerapparaten|Braun Series 7 72-G7865cc|179|976281|Braun 72-G7865cc|72-g7865|

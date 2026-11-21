@@ -1,0 +1,40 @@
+0|884|OutOfStock|ALTERNATE|0|/Apple/iPhone-17e-smartphone/html/product/100191893|iPhone 17e smartphone
+1|1354|OutOfStock|ALTERNATE|0|/Apple/iPhone-17-Pro-smartphone/html/product/100156989|iPhone 17 Pro smartphone
+2|1659|OutOfStock|ALTERNATE|0|/Apple/iPhone-18-Pro-Max-smartphone/html/product/100220551|iPhone 18 Pro Max smartphone
+4|1659|OutOfStock|ALTERNATE|0|/Apple/iPhone-18-Pro-Max-smartphone/html/product/100220548|iPhone 18 Pro Max smartphone
+8|499|InStock|ALTERNATE|6.95|/Samsung/Galaxy-A57-smartphone/html/product/100197797|Galaxy A57 smartphone
+10|599|OutOfStock|ALTERNATE|0|/Fairphone/-Gen-6-smartphone/html/product/100121396|(Gen. 6) smartphone
+12|824|InStock|ALTERNATE|0|/Apple/iPad-Air-11-inch-tablet/html/product/100191953|iPad Air 11" tablet
+13|1659|InStock|ALTERNATE|6.95|/Apple/iPad-Pro-13-inch-tablet/html/product/100164584|iPad Pro 13" tablet
+18|1354|InStock|ALTERNATE|0|/Apple/MacBook-Air-13-inch-2026-laptop/html/product/1947238|MacBook Air 13" (2026) laptop
+19|1654|InStock|ALTERNATE|0|/Apple/MacBook-Air-15-inch-2026-laptop/html/product/1947247|MacBook Air 15" (2026) laptop
+36|999|OutOfStock|ALTERNATE|0|/Sony/Bravia-3-II-K-55XR32M2-55-inch-4K-Ultra-HD-LED-tv/html/product/1949862|Bravia 3 II K-55XR32M2 55" 4K Ultra HD LED tv
+44|559|InStock|ALTERNATE|6.95|/Apple/AirPods-Max-2-over-ear-headset/html/product/100194386|AirPods Max 2 over-ear headset
+51|189|OutOfStock|ALTERNATE|6.95|/Bose/QuietComfort-Ultra-Earbuds-headset/html/product/1935917|QuietComfort Ultra Earbuds headset
+52|149|InStock|ALTERNATE|0|/Shokz/OpenRun-Pro-2-bone-conduction-headset/html/product/100074098|OpenRun Pro 2 bone conduction headset
+65|509|InStock|ALTERNATE|0|/Nintendo/Switch-2-handheld-game-console/html/product/100219920|Switch 2 handheld game console
+66|719|OutOfStock|ALTERNATE|0|/Sony-Interactive-Entertainment/PlayStation-5-Slim-Digital-Edition-game-console/html/product/100155464|PlayStation 5 Slim Digital Edition game console
+75|349|InStock|ALTERNATE|0|/LG/UltraWide-34U650A-B-34-inch-curved-monitor/html/product/1943517|UltraWide 34U650A-B 34" curved monitor
+76|349|InStock|ALTERNATE|0|/AOC/U32G4U-31-5-inch-4K-Ultra-HD-gaming-monitor/html/product/1945286|U32G4U 31.5" 4K Ultra HD gaming monitor
+77|249|InStock|ALTERNATE|0|/LG/UltraFine-27UP850K-W-27-inch-4K-Ultra-HD-monitor/html/product/100109389|UltraFine 27UP850K-W 27" 4K Ultra HD monitor
+78|219|InStock|ALTERNATE|0|/Philips/346E2CUAE-00-34-inch-Curved-UltraWide-monitor/html/product/1761278|346E2CUAE/00 34" Curved UltraWide monitor
+80|329|InStock|ALTERNATE|0|/LG/UltraGear-OLED-27GX704A-B-27-inch-gaming-monitor/html/product/1944193|UltraGear OLED 27GX704A-B 27" gaming monitor
+81|319|InStock|ALTERNATE|0|/AOC/Q27G4ZDR-26-5-inch-gaming-monitor/html/product/1945285|Q27G4ZDR 26.5" gaming monitor
+82|84.99|InStock|ALTERNATE|6.95|/Logitech/MX-Master-3S-muis/html/product/1949695|MX Master 3S muis
+83|119|InStock|ALTERNATE|0|/Logitech/MX-Master-4-muis/html/product/100162078|MX Master 4 muis
+84|39.99|InStock|ALTERNATE|6.95|/Logitech-G/G502-HERO-High-Performance-Gaming-Mouse/html/product/1479074|G502 HERO High Performance Gaming Mouse
+85|129.9|InStock|ALTERNATE|6.95|/Logitech-G/PRO-X-SUPERLIGHT-2-Wireless-gaming-muis/html/product/100011140|PRO X SUPERLIGHT 2 Wireless gaming muis
+86|28.99|InStock|ALTERNATE|6.95|/Logitech/M705-Wireless-Marathon-Mouse/html/product/1680948|M705 Wireless Marathon Mouse
+87|84.99|InStock|ALTERNATE|6.95|/Apple/Magic-Mouse/html/product/100094977|Magic Mouse
+88|112.9|InStock|ALTERNATE|6.95|/Logitech/MX-Keys-S-Plus-Advanced-Wireless-Illuminated-Keyboard/html/product/1919837|MX Keys S Plus Advanced Wireless Illuminated Keyboard
+89|99|InStock|ALTERNATE|6.95|/Logitech/MX-Keys-Mini-Minimalist-Wireless-Illuminated-Keyboard/html/product/1779556|MX Keys Mini Minimalist Wireless Illuminated Keyboard
+90|157.9|InStock|ALTERNATE|6.95|/Apple/Magic-Keyboard-met-Touch-ID/html/product/1934161|Magic Keyboard met Touch ID
+91|9.99|InStock|ALTERNATE|6.95|/Logitech/Keyboard-K120-for-business/html/product/576272|Keyboard K120 for business
+92|449|InStock|ALTERNATE|0|/Samsung/990-PRO-2-TB-SSD/html/product/1864243|990 PRO 2 TB SSD
+93|228.9|InStock|ALTERNATE|0|/Samsung/990-PRO-1-TB-SSD/html/product/1864239|990 PRO 1 TB SSD
+94|209|InStock|ALTERNATE|0|/Samsung/9100-PRO-1-TB-SSD/html/product/100118126|9100 PRO 1 TB SSD
+95|349|InStock|ALTERNATE|0|/Samsung/870-EVO-1-TB-SSD/html/product/1706403|870 EVO 1 TB SSD
+97|349|InStock|ALTERNATE|0|/Lexar/NM790-2-TB-SSD/html/product/1916729|NM790 2 TB SSD
+101|89|InStock|ALTERNATE|0|/Canon/PIXMA-TS7550i-all-in-one-inkjetprinter/html/product/100163697|PIXMA TS7550i all-in-one inkjetprinter
+102|269|InStock|ALTERNATE|0|/Epson/EcoTank-ET-2950-all-in-one-inkjetprinter/html/product/100151046|EcoTank ET-2950 all-in-one inkjetprinter
+177|17.99|InStock|ALTERNATE|6.95|/Oral-B/Oral-B-iO-Ultimate-Clean-opzetborstel/html/product/1656642|Oral-B iO Ultimate Clean opzetborstel

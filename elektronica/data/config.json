@@ -1,0 +1,689 @@
+{
+ "groepen": [
+  {
+   "slug": "tv-en-audio",
+   "naam": "TV en audio",
+   "ico": "📺",
+   "tekst": "Televisies, soundbars, koptelefoons, oordopjes en speakers"
+  },
+  {
+   "slug": "computers-en-laptops",
+   "naam": "Computers en laptops",
+   "ico": "💻",
+   "tekst": "Laptops, monitoren, muizen, toetsenborden, SSD's en printers"
+  },
+  {
+   "slug": "telefonie-en-tablets",
+   "naam": "Telefonie en tablets",
+   "ico": "📱",
+   "tekst": "Smartphones, tablets en smartwatches"
+  },
+  {
+   "slug": "gaming",
+   "naam": "Gaming",
+   "ico": "🎮",
+   "tekst": "Spelcomputers"
+  },
+  {
+   "slug": "witgoed",
+   "naam": "Witgoed",
+   "ico": "🧺",
+   "tekst": "Wasmachines, drogers, koelkasten, vriezers en vaatwassers"
+  },
+  {
+   "slug": "keuken",
+   "naam": "Keuken",
+   "ico": "🍳",
+   "tekst": "Ovens, kookplaten, magnetrons, koffiemachines en airfryers"
+  },
+  {
+   "slug": "huishouden",
+   "naam": "Huishouden",
+   "ico": "🧹",
+   "tekst": "Steelstofzuigers en robotstofzuigers"
+  },
+  {
+   "slug": "persoonlijke-verzorging",
+   "naam": "Persoonlijke verzorging",
+   "ico": "🪥",
+   "tekst": "Elektrische tandenborstels en scheerapparaten"
+  }
+ ],
+ "categorieen": {
+  "smartphones": {
+   "naam": "Smartphones",
+   "groep": "telefonie-en-tablets"
+  },
+  "tablets": {
+   "naam": "Tablets",
+   "groep": "telefonie-en-tablets"
+  },
+  "smartwatches": {
+   "naam": "Smartwatches",
+   "groep": "telefonie-en-tablets"
+  },
+  "laptops": {
+   "naam": "Laptops",
+   "groep": "computers-en-laptops"
+  },
+  "monitoren": {
+   "naam": "Monitoren",
+   "groep": "computers-en-laptops"
+  },
+  "muizen": {
+   "naam": "Muizen",
+   "groep": "computers-en-laptops"
+  },
+  "toetsenborden": {
+   "naam": "Toetsenborden",
+   "groep": "computers-en-laptops"
+  },
+  "ssd": {
+   "naam": "SSD's",
+   "groep": "computers-en-laptops"
+  },
+  "printers": {
+   "naam": "Printers",
+   "groep": "computers-en-laptops"
+  },
+  "televisies": {
+   "naam": "Televisies",
+   "groep": "tv-en-audio"
+  },
+  "soundbars": {
+   "naam": "Soundbars",
+   "groep": "tv-en-audio"
+  },
+  "koptelefoons": {
+   "naam": "Koptelefoons",
+   "groep": "tv-en-audio"
+  },
+  "oordopjes": {
+   "naam": "Oordopjes",
+   "groep": "tv-en-audio"
+  },
+  "speakers": {
+   "naam": "Bluetooth-speakers",
+   "groep": "tv-en-audio"
+  },
+  "spelcomputers": {
+   "naam": "Spelcomputers",
+   "groep": "gaming"
+  },
+  "wasmachines": {
+   "naam": "Wasmachines",
+   "groep": "witgoed"
+  },
+  "wasdrogers": {
+   "naam": "Wasdrogers",
+   "groep": "witgoed"
+  },
+  "koelkasten": {
+   "naam": "Koelkasten",
+   "groep": "witgoed"
+  },
+  "vriezers": {
+   "naam": "Vriezers",
+   "groep": "witgoed"
+  },
+  "vaatwassers": {
+   "naam": "Vaatwassers",
+   "groep": "witgoed"
+  },
+  "ovens": {
+   "naam": "Ovens",
+   "groep": "keuken"
+  },
+  "kookplaten": {
+   "naam": "Kookplaten",
+   "groep": "keuken"
+  },
+  "magnetrons": {
+   "naam": "Magnetrons",
+   "groep": "keuken"
+  },
+  "steelstofzuigers": {
+   "naam": "Steelstofzuigers",
+   "groep": "huishouden"
+  },
+  "robotstofzuigers": {
+   "naam": "Robotstofzuigers",
+   "groep": "huishouden"
+  },
+  "airfryers": {
+   "naam": "Airfryers",
+   "groep": "keuken"
+  },
+  "koffie": {
+   "naam": "Koffiemachines",
+   "groep": "keuken"
+  },
+  "tandenborstels": {
+   "naam": "Elektrische tandenborstels",
+   "groep": "persoonlijke-verzorging"
+  },
+  "scheerapparaten": {
+   "naam": "Scheerapparaten",
+   "groep": "persoonlijke-verzorging"
+  }
+ },
+ "winkels": {
+  "coolblue": {
+   "naam": "Coolblue",
+   "url": "https://www.coolblue.nl",
+   "verzendtekst": "Gratis bezorging. Een gekozen dagdeel of tijdvak kost extra (niet meegeteld)."
+  },
+  "mediamarkt": {
+   "naam": "MediaMarkt",
+   "url": "https://www.mediamarkt.nl",
+   "verzendtekst": "Gratis bezorging vanaf € 50. Producten onder € 50 vergelijken we (nog) niet bij MediaMarkt, omdat de verzendkosten pas bij het afrekenen blijken."
+  },
+  "bol": {
+   "naam": "bol",
+   "url": "https://www.bol.com",
+   "verzendtekst": "Gratis vanaf € 25; daaronder € 2,99 als bol zelf verkoopt. Bij andere verkopers via bol zitten de verzendkosten al in de prijs."
+  },
+  "amazon": {
+   "naam": "Amazon.nl",
+   "url": "https://www.amazon.nl",
+   "verzendtekst": "Gratis vanaf € 20 als Amazon verkoopt en verzendt; daaronder € 2,99. Andere verkopers via Amazon kunnen eigen verzendkosten rekenen."
+  },
+  "alternate": {
+   "naam": "Alternate",
+   "url": "https://www.alternate.nl",
+   "verzendtekst": "Verzendkosten verschillen per product; we nemen het bedrag over dat Alternate op de productpagina noemt."
+  },
+  "azerty": {
+   "naam": "Azerty",
+   "url": "https://azerty.nl",
+   "verzendtekst": "Verzendkosten verschillen per product; we nemen het bedrag over dat Azerty op de productpagina noemt (vaak gratis, anders € 5,95)."
+  },
+  "mobiel": {
+   "naam": "Mobiel.nl",
+   "url": "https://www.mobiel.nl",
+   "verzendtekst": "Losse telefoons worden gratis bezorgd (avond- of zondaglevering kost extra, niet meegeteld)."
+  },
+  "bcc": {
+   "naam": "BCC",
+   "url": "https://www.bcc.nl",
+   "verzendtekst": "We tellen alleen producten die BCC zelf verkoopt; verzendkosten volgens de productpagina."
+  }
+ },
+ "paginas": [
+  [
+   "/zo-vergelijken-wij/",
+   "Zo vergelijken wij",
+   "<p>{SITE} zoekt voor populaire elektronica de prijs op bij Nederlandse webwinkels waar je het product online kunt bestellen. We vergelijken alleen losse producten, geen bundels of abonnementen.</p><h2>Prijs plus verzendkosten</h2><p>Voor elk product tonen we de prijs en de verzendkosten voor één stuk, thuisbezorgd in Nederland. Standaard sorteren we op het totaal. Met de schakelaar <b>Inclusief verzendkosten</b> zie je alleen de kale prijs.</p><h2>Hetzelfde product</h2><p>We vergelijken op typenummer, opslag en uitvoering, zodat je appels met appels vergelijkt. Een andere kleur kan soms een paar euro schelen; controleer de uitvoering altijd bij de winkel.</p><h2>Andere verkopers</h2><p>Bij bol, Amazon en MediaMarkt verkopen ook andere bedrijven. Als het product niet door de winkel zelf wordt verkocht, zie je wie de verkoper is.</p><h2>Actualiteit</h2><p>Prijzen veranderen vaak. Onderaan elke pagina staat wanneer de prijzen zijn bijgewerkt. De prijs bij de winkel is altijd leidend.</p><h2>Onafhankelijk</h2><p>Winkels betalen niet om hoger in de lijst te komen. De goedkoopste staat bovenaan, punt.</p><h2>Hoe verdienen we geld?</h2><p>Bij een deel van de winkels krijgt Bespaarvriend een kleine vergoeding als je via onze link iets koopt. Jij betaalt daar niets extra voor. De volgorde van de prijzen verandert daar niet door: de goedkoopste aanbieding inclusief verzendkosten staat altijd bovenaan.</p>"
+  ],
+  [
+   "/over/",
+   "Over deze site",
+   "<p>{SITE} is gemaakt door Erik Beltman uit Rijssen, ook de maker van boodschappenvergelijk.nl. Het doel is simpel: helpen geld te besparen in deze dure tijd, door in één oogopslag te laten zien waar elektronica het goedkoopst is, verzendkosten inbegrepen.</p>"
+  ],
+  [
+   "/contact/",
+   "Contact",
+   "<p>Klopt er een prijs niet, of mis je een winkel of product? Laat het weten.</p>{CONTACT}"
+  ],
+  [
+   "/privacy/",
+   "Privacy",
+   "<p>{SITE} plaatst geen tracking- of advertentiecookies en verzamelt geen persoonsgegevens. Als je de site installeert als app, bewaart je browser een kopie van de pagina's zodat ze sneller laden. Je keuze voor de schakelaar Inclusief verzendkosten wordt alleen in je eigen browser bewaard.</p><p>Klik je door naar een webwinkel, dan gelden daar de privacyregels van die winkel.</p><p>Sommige links naar winkels zijn partnerlinks. Klik je daarop, dan kan de winkel of het partnernetwerk op zijn eigen site een cookie plaatsen om je aankoop aan ons toe te schrijven.</p>"
+  ],
+  [
+   "/gebruiksvoorwaarden/",
+   "Gebruiksvoorwaarden",
+   "<p>De informatie op {SITE} is met zorg samengesteld, maar prijzen, voorraad en verzendkosten kunnen veranderen. Aan de getoonde informatie kun je geen rechten ontlenen; de prijs en voorwaarden van de webwinkel zijn altijd leidend.</p><p>© Erik Beltman. Alle rechten voorbehouden. Het is niet toegestaan de inhoud van deze site, waaronder de prijsoverzichten, zonder schriftelijke toestemming te kopiëren, te publiceren of automatisch uit te lezen (scrapen), ook niet voor het trainen van AI-systemen.</p><p>Merknamen en productnamen zijn eigendom van hun respectieve eigenaren.</p>"
+  ]
+ ],
+ "subcategorieen": {
+  "smartphones": [
+   [
+    "iphone",
+    "Apple iPhone",
+    [
+     "iphone"
+    ]
+   ],
+   [
+    "samsung-galaxy",
+    "Samsung Galaxy",
+    [
+     "galaxy"
+    ]
+   ],
+   [
+    "duurzame-smartphones",
+    "Duurzame smartphones",
+    [
+     "fairphone"
+    ]
+   ],
+   [
+    "budget-smartphones",
+    "Smartphones tot € 500",
+    [
+     "@max500"
+    ]
+   ]
+  ],
+  "tablets": [
+   [
+    "ipad",
+    "Apple iPad",
+    [
+     "ipad"
+    ]
+   ],
+   [
+    "android-tablets",
+    "Android-tablets",
+    [
+     "galaxy tab",
+     "lenovo"
+    ]
+   ]
+  ],
+  "laptops": [
+   [
+    "macbook",
+    "MacBook",
+    [
+     "macbook"
+    ]
+   ]
+  ],
+  "televisies": [
+   [
+    "oled-tv",
+    "OLED-tv's",
+    [
+     "oled"
+    ]
+   ],
+   [
+    "qled-mini-led-tv",
+    "QLED en Mini-led",
+    [
+     "qled",
+     "mini-led"
+    ]
+   ]
+  ],
+  "koptelefoons": [
+   [
+    "noise-cancelling-koptelefoons",
+    "Noise cancelling",
+    [
+     "wh-1000",
+     "quietcomfort",
+     "sonos ace",
+     "770nc",
+     "airpods max"
+    ]
+   ]
+  ],
+  "oordopjes": [
+   [
+    "airpods",
+    "AirPods",
+    [
+     "airpods"
+    ]
+   ],
+   [
+    "noise-cancelling-oordopjes",
+    "Noise cancelling oordopjes",
+    [
+     "wf-1000",
+     "buds4 pro",
+     "quietcomfort",
+     "airpods pro"
+    ]
+   ],
+   [
+    "sport-oordopjes",
+    "Sportoordopjes",
+    [
+     "openrun"
+    ]
+   ]
+  ],
+  "speakers": [
+   [
+    "jbl-speakers",
+    "JBL",
+    [
+     "jbl"
+    ]
+   ],
+   [
+    "sonos-speakers",
+    "Sonos",
+    [
+     "sonos"
+    ]
+   ],
+   [
+    "thuisspeakers",
+    "Thuisspeakers",
+    [
+     "stanmore"
+    ]
+   ]
+  ],
+  "soundbars": [
+   [
+    "dolby-atmos-soundbars",
+    "Dolby Atmos",
+    [
+     "arc ultra",
+     "beam",
+     "q990h",
+     "qs700f"
+    ]
+   ]
+  ],
+  "smartwatches": [
+   [
+    "apple-watch",
+    "Apple Watch",
+    [
+     "apple watch"
+    ]
+   ],
+   [
+    "galaxy-watch",
+    "Samsung Galaxy Watch",
+    [
+     "galaxy watch"
+    ]
+   ],
+   [
+    "sporthorloges",
+    "Sporthorloges (Garmin)",
+    [
+     "garmin"
+    ]
+   ]
+  ],
+  "monitoren": [
+   [
+    "ultrawide-monitoren",
+    "Ultrawide",
+    [
+     "ultrawide",
+     "346e2"
+    ]
+   ],
+   [
+    "4k-monitoren",
+    "4K-monitoren",
+    [
+     "u32g4u",
+     "27up850"
+    ]
+   ],
+   [
+    "gaming-monitoren",
+    "Gaming en OLED",
+    [
+     "ultragear",
+     "q27g4zdr"
+    ]
+   ]
+  ],
+  "muizen": [
+   [
+    "ergonomische-muizen",
+    "Ergonomisch en kantoor",
+    [
+     "mx master",
+     "m705",
+     "magic mouse"
+    ]
+   ],
+   [
+    "gaming-muizen",
+    "Gamingmuizen",
+    [
+     "g502",
+     "superlight"
+    ]
+   ]
+  ],
+  "toetsenborden": [
+   [
+    "draadloze-toetsenborden",
+    "Draadloos",
+    [
+     "mx keys",
+     "magic keyboard"
+    ]
+   ],
+   [
+    "bedrade-toetsenborden",
+    "Bedraad",
+    [
+     "k120"
+    ]
+   ]
+  ],
+  "ssd": [
+   [
+    "nvme-ssd",
+    "NVMe M.2",
+    [
+     "990 pro",
+     "9100",
+     "nm790"
+    ]
+   ],
+   [
+    "sata-ssd",
+    "SATA 2,5 inch",
+    [
+     "870 evo",
+     "bx500"
+    ]
+   ]
+  ],
+  "printers": [
+   [
+    "laserprinters",
+    "Laserprinters",
+    [
+     "laserjet"
+    ]
+   ],
+   [
+    "inkttankprinters",
+    "Inkttank (goedkoop printen)",
+    [
+     "smart tank",
+     "ecotank"
+    ]
+   ],
+   [
+    "inkjetprinters",
+    "Inkjet",
+    [
+     "pixma"
+    ]
+   ]
+  ],
+  "wasdrogers": [
+   [
+    "warmtepompdrogers",
+    "Warmtepompdrogers",
+    [
+     "@alles"
+    ]
+   ]
+  ],
+  "koelkasten": [
+   [
+    "koel-vriescombinaties",
+    "Koel-vriescombinaties",
+    [
+     "rb38",
+     "gbbs"
+    ]
+   ],
+   [
+    "amerikaanse-koelkasten",
+    "Amerikaanse koelkasten",
+    [
+     "rs70"
+    ]
+   ]
+  ],
+  "vaatwassers": [
+   [
+    "inbouw-vaatwassers",
+    "Inbouw",
+    [
+     "smv",
+     "sn65"
+    ]
+   ],
+   [
+    "vrijstaande-vaatwassers",
+    "Vrijstaand",
+    [
+     "sms4",
+     "sn23"
+    ]
+   ]
+  ],
+  "kookplaten": [
+   [
+    "inductiekookplaten",
+    "Inductie",
+    [
+     "pug61",
+     "ibs64",
+     "pie61"
+    ]
+   ],
+   [
+    "keramische-kookplaten",
+    "Keramisch",
+    [
+     "pkf611"
+    ]
+   ]
+  ],
+  "steelstofzuigers": [
+   [
+    "dyson",
+    "Dyson",
+    [
+     "dyson"
+    ]
+   ],
+   [
+    "steelstofzuigers-met-dweilfunctie",
+    "Met dweilfunctie",
+    [
+     "xc3133",
+     "xc7057"
+    ]
+   ],
+   [
+    "steelstofzuigers-tot-250",
+    "Tot € 250",
+    [
+     "@max250"
+    ]
+   ]
+  ],
+  "robotstofzuigers": [
+   [
+    "robotstofzuigers-met-dweilfunctie",
+    "Met dweilfunctie en station",
+    [
+     "@alles"
+    ]
+   ]
+  ],
+  "airfryers": [
+   [
+    "dubbele-airfryers",
+    "Dubbele airfryers",
+    [
+     "dual"
+    ]
+   ],
+   [
+    "enkele-airfryers",
+    "Eén mand",
+    [
+     "na342",
+     "na231"
+    ]
+   ]
+  ],
+  "koffie": [
+   [
+    "volautomatische-espressomachines",
+    "Volautomaat (bonen)",
+    [
+     "magnifica",
+     "ep2224",
+     "ep2331",
+     "ep5447",
+     "krups"
+    ]
+   ],
+   [
+    "pistonmachines",
+    "Pistonmachines",
+    [
+     "sage"
+    ]
+   ],
+   [
+    "lattego",
+    "Met melksysteem",
+    [
+     "lattego",
+     "evo",
+     "milk"
+    ]
+   ]
+  ],
+  "tandenborstels": [
+   [
+    "oral-b",
+    "Oral-B",
+    [
+     "oral-b"
+    ]
+   ],
+   [
+    "philips-sonicare",
+    "Philips Sonicare",
+    [
+     "sonicare"
+    ]
+   ]
+  ],
+  "scheerapparaten": [
+   [
+    "philips-scheerapparaten",
+    "Philips",
+    [
+     "philips"
+    ]
+   ],
+   [
+    "braun-scheerapparaten",
+    "Braun",
+    [
+     "braun"
+    ]
+   ]
+  ]
+ }
+}

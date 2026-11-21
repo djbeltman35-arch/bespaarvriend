@@ -4,49 +4,55 @@
    "slug": "tv-en-audio",
    "naam": "TV en audio",
    "ico": "📺",
-   "tekst": "Televisies, soundbars, koptelefoons, oordopjes en speakers"
+   "tekst": "Televisies, soundbars, koptelefoons, oordopjes, speakers, beamers en platenspelers"
   },
   {
    "slug": "computers-en-laptops",
    "naam": "Computers en laptops",
    "ico": "💻",
-   "tekst": "Laptops, monitoren, muizen, toetsenborden, SSD's en printers"
+   "tekst": "Laptops, desktops, monitoren, muizen, toetsenborden, opslag, routers en webcams"
   },
   {
    "slug": "telefonie-en-tablets",
    "naam": "Telefonie en tablets",
    "ico": "📱",
-   "tekst": "Smartphones, tablets en smartwatches"
+   "tekst": "Smartphones, tablets, smartwatches, e-readers en powerbanks"
   },
   {
    "slug": "gaming",
    "naam": "Gaming",
    "ico": "🎮",
-   "tekst": "Spelcomputers"
+   "tekst": "Spelcomputers, controllers, gaming headsets en gaming laptops"
+  },
+  {
+   "slug": "foto-en-video",
+   "naam": "Foto en video",
+   "ico": "📷",
+   "tekst": "Systeemcamera's en dashcams"
   },
   {
    "slug": "witgoed",
    "naam": "Witgoed",
    "ico": "🧺",
-   "tekst": "Wasmachines, drogers, koelkasten, vriezers en vaatwassers"
+   "tekst": "Wasmachines, wasdrogers, was-droogcombinaties, koelkasten, vriezers en vaatwassers"
   },
   {
    "slug": "keuken",
    "naam": "Keuken",
    "ico": "🍳",
-   "tekst": "Ovens, kookplaten, magnetrons, koffiemachines en airfryers"
+   "tekst": "Ovens, kookplaten, fornuizen, afzuigkappen, airfryers, koffiemachines, blenders en meer"
   },
   {
    "slug": "huishouden",
    "naam": "Huishouden",
    "ico": "🧹",
-   "tekst": "Steelstofzuigers en robotstofzuigers"
+   "tekst": "Stofzuigers, robotstofzuigers, strijkijzers, luchtreinigers, ventilatoren en thermostaten"
   },
   {
    "slug": "persoonlijke-verzorging",
    "naam": "Persoonlijke verzorging",
    "ico": "🪥",
-   "tekst": "Elektrische tandenborstels en scheerapparaten"
+   "tekst": "Tandenborstels, scheerapparaten, baardtrimmers, tondeuses, föhns, stijltangen en weegschalen"
   }
  ],
  "categorieen": {
@@ -164,6 +170,150 @@
   },
   "scheerapparaten": {
    "naam": "Scheerapparaten",
+   "groep": "persoonlijke-verzorging"
+  },
+  "beamers": {
+   "naam": "Beamers",
+   "groep": "tv-en-audio"
+  },
+  "platenspelers": {
+   "naam": "Platenspelers",
+   "groep": "tv-en-audio"
+  },
+  "gaming-laptops": {
+   "naam": "Gaming laptops",
+   "groep": "gaming"
+  },
+  "desktops": {
+   "naam": "Desktops",
+   "groep": "computers-en-laptops"
+  },
+  "routers": {
+   "naam": "Routers",
+   "groep": "computers-en-laptops"
+  },
+  "externe-harde-schijven": {
+   "naam": "Externe harde schijven",
+   "groep": "computers-en-laptops"
+  },
+  "usb-sticks": {
+   "naam": "USB-sticks",
+   "groep": "computers-en-laptops"
+  },
+  "webcams": {
+   "naam": "Webcams",
+   "groep": "computers-en-laptops"
+  },
+  "e-readers": {
+   "naam": "E-readers",
+   "groep": "telefonie-en-tablets"
+  },
+  "powerbanks": {
+   "naam": "Powerbanks",
+   "groep": "telefonie-en-tablets"
+  },
+  "gaming-headsets": {
+   "naam": "Gaming headsets",
+   "groep": "gaming"
+  },
+  "controllers": {
+   "naam": "Controllers",
+   "groep": "gaming"
+  },
+  "systeemcameras": {
+   "naam": "Systeemcamera's",
+   "groep": "foto-en-video"
+  },
+  "dashcams": {
+   "naam": "Dashcams",
+   "groep": "foto-en-video"
+  },
+  "was-droogcombinaties": {
+   "naam": "Was-droogcombinaties",
+   "groep": "witgoed"
+  },
+  "amerikaanse-koelkasten": {
+   "naam": "Amerikaanse koelkasten",
+   "groep": "witgoed"
+  },
+  "koel-vriescombinaties": {
+   "naam": "Koel-vriescombinaties",
+   "groep": "witgoed"
+  },
+  "waterkokers": {
+   "naam": "Waterkokers",
+   "groep": "keuken"
+  },
+  "broodroosters": {
+   "naam": "Broodroosters",
+   "groep": "keuken"
+  },
+  "blenders": {
+   "naam": "Blenders",
+   "groep": "keuken"
+  },
+  "staafmixers": {
+   "naam": "Staafmixers",
+   "groep": "keuken"
+  },
+  "keukenmachines": {
+   "naam": "Keukenmachines",
+   "groep": "keuken"
+  },
+  "fornuizen": {
+   "naam": "Fornuizen",
+   "groep": "keuken"
+  },
+  "afzuigkappen": {
+   "naam": "Afzuigkappen",
+   "groep": "keuken"
+  },
+  "contactgrills": {
+   "naam": "Contactgrills",
+   "groep": "keuken"
+  },
+  "multicookers": {
+   "naam": "Multicookers",
+   "groep": "keuken"
+  },
+  "stofzuigers": {
+   "naam": "Stofzuigers",
+   "groep": "huishouden"
+  },
+  "strijkijzers": {
+   "naam": "Strijkijzers",
+   "groep": "huishouden"
+  },
+  "luchtreinigers": {
+   "naam": "Luchtreinigers",
+   "groep": "huishouden"
+  },
+  "ventilatoren": {
+   "naam": "Ventilatoren",
+   "groep": "huishouden"
+  },
+  "slimme-thermostaten": {
+   "naam": "Slimme thermostaten",
+   "groep": "huishouden"
+  },
+  "fohns": {
+   "naam": "Föhns",
+   "groep": "persoonlijke-verzorging"
+  },
+  "stijltangen": {
+   "naam": "Stijltangen",
+   "groep": "persoonlijke-verzorging"
+  },
+  "tondeuses": {
+   "naam": "Tondeuses",
+   "groep": "persoonlijke-verzorging"
+  },
+  "baardtrimmers": {
+   "naam": "Baardtrimmers",
+   "groep": "persoonlijke-verzorging"
+  },
+  "weegschalen": {
+   "naam": "Weegschalen",
    "groep": "persoonlijke-verzorging"
   }
  },

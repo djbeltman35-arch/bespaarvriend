@@ -13,6 +13,7 @@ async function token() {
 export default async (req) => {
   const u = new URL(req.url);
   if ((await sha(u.searchParams.get("k") || "")) !== KEY_HASH) return new Response("nee", { status: 403 });
+  if (u.searchParams.get("diag")) return new Response(JSON.stringify(Object.keys(process.env).filter(x => /bol|client|secret/i.test(x))));
   try {
     const t = await token();
     const ean = u.searchParams.get("ean"), q = u.searchParams.get("q");

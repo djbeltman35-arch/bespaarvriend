@@ -249,7 +249,7 @@ FOOT = f"""<footer class="foot"><div class="wrap">
 <p class="fkop">Zorg</p><nav aria-label="Zorg"><a href="/zorgverzekering-2027/">Zorgverzekering 2027</a><a href="/zorgverzekering-overstappen/">Overstappen</a><a href="/aanvullende-verzekering-2027/">Aanvullende verzekering</a><a href="/tandartsverzekering-2027/">Tandartsverzekering</a><a href="/fysiotherapie-vergoeding-2027/">Fysiotherapie</a><a href="/eigen-risico-2027/">Eigen risico 2027</a><a href="/zorgtoeslag-2027/">Zorgtoeslag 2027</a><a href="/huurtoeslag-2027/">Huurtoeslag 2027</a><a href="/huurverhoging-2027/">Huurverhoging 2027</a><a href="/kindgebonden-budget-2027/">Kindgebonden budget 2027</a><a href="/kinderbijslag-2027/">Kinderbijslag 2027</a><a href="/kinderopvangtoeslag-2027/">Kinderopvangtoeslag 2027</a><a href="/belastingen-2027/">Belastingen 2027</a><a href="/belastingaangifte-tips/">Belastingaangifte tips</a><a href="/administratie/">Vaste lasten op orde</a></nav>
 <p class="fkop">Energie, internet en mobiel</p><nav aria-label="Energie, internet en mobiel"><a href="/energie-2027/">Energie 2027</a><a href="/salderen-2027/">Einde salderen</a><a href="/energierekening-verlagen/">Energierekening verlagen</a><a href="/noodfonds-energie-2027/">Noodfonds Energie 2027</a><a href="/isde-subsidie-2027/">ISDE subsidie 2027</a><a href="/abonnementen-opzeggen/">Abonnementen opzeggen</a><a href="/goedkoop-boodschappen-doen/">Goedkoop boodschappen doen</a><a href="/energiecontract-opzeggen/">Contract opzeggen</a><a href="/internet-en-mobiel/">Internet en mobiel</a><a href="/sim-only-overstappen/">Sim only overstappen</a><a href="/refurbished-telefoon-kopen/">Refurbished telefoon</a><a href="/boodschappen/">Boodschappen</a></nav>
 <p class="fkop">Reizen en auto</p><nav aria-label="Reizen en auto"><a href="/vakantie-en-vliegen/">Vakantie en vliegen</a><a href="/goedkoop-vliegen/">Goedkoop vliegen</a><a href="/reisverzekering-doorlopend-of-kortlopend/">Reisverzekering</a><a href="/auto-en-tanken/">Auto en tanken</a><a href="/wegenbelasting-2027/">Wegenbelasting 2027</a><a href="/autoverzekering-besparen/">Autoverzekering</a></nav>
-<p class="fkop">Meer gratis hulpmiddelen van Erik</p><nav aria-label="Meer gratis hulpmiddelen van Erik"><a href="https://boodschappenvergelijk.nl/">Boodschappenvergelijk</a><a href="https://goedkopertanken.netlify.app/">Tankwijzer</a><a href="https://vluchtwijzer.netlify.app/">Vluchtwijzer</a><a href="https://vakantietoppers.netlify.app/">Vakantiewijzer</a><a href="https://salderingscheck-nl.netlify.app/">Salderingscheck</a><a href="https://euroroadrules.eu/">EuroRoadRules</a><a href="https://foutcodezoeker.nl/">Foutcodezoeker</a><a href="https://elektrovergelijk.netlify.app/">Elektrovergelijk</a><a href="https://bonnenboek.netlify.app/">Bonnenboek</a><a href="https://allesoporde.netlify.app/">Alles op orde</a></nav>
+<p class="fkop">Meer gratis hulpmiddelen van Erik</p><nav aria-label="Meer gratis hulpmiddelen van Erik"><a href="https://boodschappenvergelijk.nl/">Boodschappenvergelijk</a><a href="https://goedkopertanken.netlify.app/">Tankwijzer</a><a href="https://vluchtwijzer.netlify.app/">Vluchtwijzer</a><a href="https://vakantietoppers.netlify.app/">Vakantiewijzer</a><a href="https://salderingscheck-nl.netlify.app/">Salderingscheck</a><a href="https://euroroadrules.eu/">EuroRoadRules</a><a href="https://foutcodezoeker.nl/">Foutcodezoeker</a><a href="/elektronica/">Elektrovergelijk</a><a href="https://bonnenboek.netlify.app/">Bonnenboek</a><a href="https://allesoporde.netlify.app/">Alles op orde</a></nav>
 <p class="fkop">Over</p><nav aria-label="Over"><a href="/over/">Over Bespaarvriend</a><a href="/contact/">Contact</a><a href="/privacy/">Privacy</a><a href="/gebruiksvoorwaarden/">Gebruiksvoorwaarden</a><a href="/sitemap.xml">Sitemap</a></nav>
 <p class="small">Gemaakt door Erik, de maker van <a href="https://boodschappenvergelijk.nl/?bron=bespaarvriend">Boodschappenvergelijk.nl</a>. Bijgewerkt op {BIJGEWERKT}.</p><p class="small copy">© {datetime.date.today().year} Bespaarvriend – Erik Beltman. Alle rechten voorbehouden. <a href="/gebruiksvoorwaarden/">Auteursrecht en gebruiksvoorwaarden</a></p></div></footer>"""
 
@@ -559,7 +559,7 @@ def bouw():
             f'<a href="https://salderingscheck-nl.netlify.app/"><span class="ic">{ICON["zon"]}</span>{pijl}<b>Salderingscheck</b><small>Wat kost het einde van salderen jou?</small></a>'
             f'<a href="https://euroroadrules.eu/"><span class="ic">{ICON["weg"]}</span>{pijl}<b>EuroRoadRules</b><small>Vignetten, tol en milieuzones in Europa</small></a>'
             f'<a href="https://foutcodezoeker.nl/"><span class="ic">{ICON["sleutel"]}</span>{pijl}<b>Foutcodezoeker</b><small>Zelf repareren in plaats van vervangen</small></a>'
-            f'<a href="https://elektrovergelijk.netlify.app/?bron=bespaarvriend"><span class="ic">{ICON["tv"]}</span>{pijl}<b>Elektrovergelijk</b><small>Witgoed, tv\'s, laptops en telefoons vergelijken, mét verzendkosten</small><span class="nieuw">Nieuw</span></a>'
+            f'<a href="/elektronica/"><span class="ic">{ICON["tv"]}</span>{pijl}<b>Elektrovergelijk</b><small>Witgoed, tv\'s, laptops en telefoons vergelijken, mét verzendkosten</small><span class="nieuw">Nieuw</span></a>'
             '</div>'
             '<h2>Zo werkt het</h2><div class="drie">'
             '<div><b>Kies je vaste last</b><p>Elke gids begint met de bedragen die er nu toe doen.</p></div>'
@@ -1555,7 +1555,7 @@ u.textContent='Zonder verzekering betaal je '+eur(zonder)+'. Met dit pakket beta
         f.write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
                 + "".join(f"<url><loc>{BASE}{p}</loc><lastmod>{VANDAAG}</lastmod><priority>{pr}</priority></url>" for p, pr in PAGES) + "</urlset>\n")
     with open(os.path.join(OUT, "robots.txt"), "w") as f:
-        f.write(f"User-agent: *\nAllow: /\nSitemap: {BASE}/sitemap.xml\n")
+        f.write(f"User-agent: *\nAllow: /\nSitemap: {BASE}/sitemap.xml\nSitemap: {BASE}/elektronica/sitemap.xml\n")
     with open(os.path.join(OUT, "llms.txt"), "w") as f:
         f.write(f"""# Bespaarvriend
 > Gratis, onafhankelijke uitleg over besparen op vaste lasten in Nederland. Gemaakt door Erik Beltman (ook maker van boodschappenvergelijk.nl). Bijgewerkt op {BIJGEWERKT}.
@@ -1586,12 +1586,20 @@ u.textContent='Zonder verzekering betaal je '+eur(zonder)+'. Met dit pakket beta
 - [Vluchtwijzer](https://vluchtwijzer.netlify.app/): goedkope vluchten vergelijken.
 - [EuroRoadRules](https://euroroadrules.eu/): vignetten, tol en milieuzones in Europa.
 - [Vakantiewijzer](https://vakantietoppers.netlify.app/): pakketreizen, hotels, vakantieparken en campings vergelijken.
-- [Elektrovergelijk](https://elektrovergelijk.netlify.app/): elektronica en witgoed vergelijken bij Nederlandse webwinkels, inclusief verzendkosten.
+- [Elektrovergelijk](https://bespaarvriend.nl/elektronica/): elektronica en witgoed vergelijken bij Nederlandse webwinkels, inclusief verzendkosten.
 - [Foutcodezoeker](https://foutcodezoeker.nl/): foutcodes en reparatie-uitleg voor apparaten.
 - [Boodschappen vergelijken](https://boodschappenvergelijk.nl/): dagelijkse prijzen van supermarkten.
 """)
     print(f"klaar: {len(PAGES)} pagina's in {OUT}")
 
 
+def bouw_elektronica():
+    """Elektrovergelijk draait als onderdeel van Bespaarvriend onder /elektronica/."""
+    import subprocess, sys
+    hier = os.path.dirname(os.path.abspath(__file__))
+    env = dict(os.environ, SITE_BASIS="/elektronica", SITE_DOMEIN=BASE + "/elektronica")
+    subprocess.run([sys.executable, os.path.join(hier, "elektronica", "scripts", "build.py"), os.path.join(OUT, "elektronica")], env=env, check=True)
+
 if __name__ == "__main__":
     bouw()
+    bouw_elektronica()

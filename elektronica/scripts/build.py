@@ -229,7 +229,7 @@ def prijstabel(p):
             f'<td class="r prijs">€ {euro(o["prijs"])}</td>'
             f'<td class="r verb">{vtxt}</td>'
             f'<td class="r tot">€ {euro(totaal(o))}</td>'
-            f'<td class="r"><a class="btn" href="{e(o["url"])}" target="_blank" rel="noopener nofollow">Bekijk</a></td></tr>')
+            f'<td class="r"><a class="btn" href="{e(winkellink(o, p))}" target="_blank" rel="{"sponsored noopener" if o["winkel"] == "bol" else "noopener nofollow"}">Bekijk</a></td></tr>')
     return ('<table class="prijzen"><thead><tr><th>Winkel</th><th class="r">Prijs</th>'
             '<th class="r verb">Verzending</th><th class="r">Totaal</th><th></th></tr></thead><tbody>'
             + ''.join(rijen) + '</tbody></table>')
@@ -357,6 +357,18 @@ def partnerblok(c):
                 + f'<a class="btn" href="{e(url)}" rel="sponsored noopener" target="_blank">{e(knop)} →</a>'
                 '<p class="bron">Koop je via deze link, dan krijgt Bespaarvriend een kleine vergoeding. Jij betaalt niets extra.</p></aside>')
     return out
+
+
+BOL_SITE = os.environ.get('BOL_SITE', '1562371')  # bol affiliate site-ID van Bespaarvriend
+
+
+def winkellink(o, p):
+    """Partnerlink waar we een goedgekeurd programma hebben; anders de gewone productlink."""
+    if o['winkel'] == 'bol' and BOL_SITE:
+        from urllib.parse import quote
+        return (f'https://partner.bol.com/click/click?p=2&t=url&s={BOL_SITE}&f=TXL'
+                f'&url={quote(o["url"], safe="")}&name={quote(p["naam"][:60], safe="")}&subid=elektronica')
+    return o['url']
 
 
 def zoekblok():

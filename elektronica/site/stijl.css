@@ -157,3 +157,9 @@ table.prijzen{width:100%;border-collapse:collapse;font-size:15px}
 .spectab{width:100%;border-collapse:collapse;font-size:15px}
 .spectab th{text-align:left;font-weight:400;color:var(--muted);padding:8px 8px 8px 0;width:45%;border-bottom:1px solid var(--line);vertical-align:top}
 .spectab td{padding:8px 0;border-bottom:1px solid var(--line);font-weight:700}
+
+.partner{background:#fffbea;border:2px solid #ffd43b;border-radius:var(--r);padding:14px 16px;margin:12px 0;display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+.partner .ad{margin:0;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--muted)}
+.partner b{font-size:18px}.partner p{margin:0}.partner .bron{font-size:12px;color:var(--muted)}
+.partner .pchips{display:flex;flex-wrap:wrap;gap:6px}.partner .pchips a{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:4px 12px;text-decoration:none;font-weight:700;font-size:14px}
+.bv{white-space:nowrap;font-size:20px;text-decoration:none}.bv span{font-size:15px}@media(max-width:640px){.bv span{display:none}}

@@ -331,6 +331,34 @@ def lijstblok(producten, groep='', cat='', sub=''):
 <p class="leeg" id="geen" hidden>Niets gevonden. Probeer een andere zoekterm.</p>''')
 
 
+# Advertenties per categorie (Erik: geen naam van de adverteerder in de titel van een tegel)
+from urllib.parse import quote as _q
+def _awin(mid, ref, doel): return f'https://www.awin1.com/cread.php?awinmid={mid}&awinaffid=3152283&clickref={ref}&ued={_q(doel, safe="")}'
+def _teufel(pad=''): return f'https://fr135.net/c/?si=15574&li=1673006&wi=449774&ws=bespaarvriend-elektronica&dl={_q(pad, safe="")}'
+_REFURB = ('Liever refurbished?', 'Gebruikte toestellen, gecontroleerd en schoongemaakt, met garantie. Vaak flink goedkoper dan nieuw.')
+PARTNERS = {
+    'smartphones': [(*_REFURB, 'Bekijk refurbished telefoons', _awin(112024, 'bespaarvriend-elektronica', 'https://www.refurbished.nl/'),
+                     [('iPhone 15', _awin(112024, 'bespaarvriend-elektronica', 'https://www.refurbished.nl/iphone-15')), ('iPhone 16', _awin(112024, 'bespaarvriend-elektronica', 'https://www.refurbished.nl/iphone-16')), ('Samsung', _awin(112024, 'bespaarvriend-elektronica', 'https://www.refurbished.nl/samsung'))])],
+    'tablets': [(*_REFURB, 'Bekijk refurbished iPads', _awin(112024, 'bespaarvriend-elektronica', 'https://www.refurbished.nl/ipad'), [])],
+    'laptops': [(*_REFURB, 'Bekijk refurbished laptops', _awin(112024, 'bespaarvriend-elektronica', 'https://www.refurbished.nl/laptops'),
+                 [('MacBook', _awin(112024, 'bespaarvriend-elektronica', 'https://www.refurbished.nl/macbook'))])],
+    'koptelefoons': [('Koptelefoons rechtstreeks van de Duitse maker', 'Een audiomerk uit Berlijn dat zelf verkoopt, zonder winkel ertussen.', 'Bekijk koptelefoons', _teufel('koptelefoons'), [])],
+    'soundbars': [('Soundbars rechtstreeks van de Duitse maker', 'Een audiomerk uit Berlijn dat zelf verkoopt, zonder winkel ertussen.', 'Bekijk soundbars', _teufel('soundbars'), [])],
+    'speakers': [('Speakers rechtstreeks van de Duitse maker', 'Een audiomerk uit Berlijn dat zelf verkoopt, zonder winkel ertussen.', 'Bekijk speakers', _teufel('speakers'), [])],
+}
+
+
+def partnerblok(c):
+    out = ''
+    for titel, tekst, knop, url, chips in PARTNERS.get(c, []):
+        ch = ''.join(f'<a href="{e(u)}" rel="sponsored noopener" target="_blank">{e(t)}</a>' for t, u in chips)
+        out += (f'<aside class="partner"><p class="ad">Advertentie</p><b>{e(titel)}</b><p>{e(tekst)}</p>'
+                + (f'<div class="pchips">{ch}</div>' if ch else '')
+                + f'<a class="btn" href="{e(url)}" rel="sponsored noopener" target="_blank">{e(knop)} →</a>'
+                '<p class="bron">Koop je via deze link, dan krijgt Bespaarvriend een kleine vergoeding. Jij betaalt niets extra.</p></aside>')
+    return out
+
+
 def zoekblok():
     return '''<form class="zoek" role="search" onsubmit="return false"><input id="q" type="search" placeholder="Zoek een product, merk of type…" aria-label="Zoeken" autocomplete="off"></form>
 <label class="schakel"><input type="checkbox" id="incl" checked> Inclusief verzendkosten</label>'''
@@ -341,7 +369,7 @@ def schrijf(pad, inhoud):
     os.makedirs(os.path.dirname(f), exist_ok=True)
     if B:
         inhoud = re.sub(r'((?:href|src|action)=["\'])/(?!/)', r'\1' + B + '/', inhoud).replace("register('/sw.js')", f"register('{B}/sw.js')")
-        inhoud = inhoud.replace('<a class="brand"', '<a class="lnk bv" href="/">← Bespaarvriend</a><a class="brand"', 1)
+        inhoud = inhoud.replace('<a class="brand"', '<a class="lnk bv" href="/" aria-label="Terug naar Bespaarvriend">←<span> Bespaarvriend</span></a><a class="brand"', 1)
     open(f, 'w').write(inhoud)
 
 
@@ -386,7 +414,7 @@ def bouw():
             subchips = ('<div class="cats subs"><a class="aan" href="' + gpad(c) + '">Alle ' + e(naam.lower()) + '</a>' + ''.join(f'<a href="{gpad(c)}{s_}/">{e(n_)}</a>' for s_, n_ in subs) + '</div>') if subs else ''
             body = f'''<section class="wrap">{kruimel((f"/{g['slug']}/", g["naam"]), (gpad(c), naam))}
 <div class="hero"><h1>{e(naam)} vergelijken</h1><p>{len(cp)} populaire {e(naam.lower())} bij Nederlandse webwinkels, inclusief verzendkosten.</p>{zoekblok()}</div>
-{subchips}{matenchips}{lijstblok(cp, "", c)}</section>'''
+{subchips}{matenchips}{partnerblok(c)}{lijstblok(cp, "", c)}</section>'''
             schrijf(f'/{g["slug"]}/{c}/', kop(f'{naam} vergelijken – goedkoopste prijs incl. verzending – {SITE}',
                                               f'Vergelijk de prijs van populaire {naam.lower()} bij Nederlandse webwinkels, inclusief verzendkosten.', f'/{g["slug"]}/{c}/') + body + SCRIPT_LIJST + VOET)
 
@@ -399,7 +427,7 @@ def bouw():
                     mchips = '<div class="cats subs"><a href="' + gpad(c) + '">Alle maten</a>' + ''.join(f'<a class="{"aan" if x == m_ else ""}" href="{gpad(c)}{spec_slug(x)}/">{e(x)}</a>' for x in maten) + '</div>'
                     body = f'''<section class="wrap">{kruimel((f"/{g['slug']}/", g["naam"]), (gpad(c), naam), (gpad(c) + sl + "/", m_))}
 <div class="hero"><h1>{e(titel_[0].upper() + titel_[1:])} vergelijken</h1><p>{len(mp)} {e(naam.lower())} van {e(m_)}, inclusief verzendkosten bij Nederlandse webwinkels.</p>{zoekblok()}</div>
-{mchips}{lijstblok(mp, "", c)}</section>'''
+{mchips}{partnerblok(c)}{lijstblok(mp, "", c)}</section>'''
                     schrijf(gpad(c) + sl + '/', kop(f'{titel_[0].upper() + titel_[1:]} vergelijken incl. verzending – {SITE}',
                                                   f'Vergelijk {naam.lower()} van {m_} bij Nederlandse webwinkels, inclusief verzendkosten.', gpad(c) + sl + '/') + body + SCRIPT_LIJST + VOET)
                     extra_urls.append(gpad(c) + sl + '/')
@@ -408,7 +436,7 @@ def bouw():
                 chips2 = '<div class="cats subs"><a href="' + gpad(c) + '">Alle ' + e(naam.lower()) + '</a>' + ''.join(f'<a class="{"aan" if x == s_ else ""}" href="{gpad(c)}{x}/">{e(y)}</a>' for x, y in subs) + '</div>'
                 body = f'''<section class="wrap">{kruimel((f"/{g['slug']}/", g["naam"]), (gpad(c), naam), (gpad(c) + s_ + "/", n_))}
 <div class="hero"><h1>{e(n_)} vergelijken</h1><p>{len(sp)} {e(naam.lower())}: {e(n_.lower())}. Prijzen inclusief verzendkosten bij Nederlandse webwinkels.</p>{zoekblok()}</div>
-{chips2}{lijstblok(sp, "", c, s_)}</section>'''
+{chips2}{partnerblok(c)}{lijstblok(sp, "", c, s_)}</section>'''
                 schrijf(gpad(c) + s_ + '/', kop(f'{n_} – {naam} vergelijken incl. verzending – {SITE}',
                                                f'{n_}: vergelijk {naam.lower()} bij Nederlandse webwinkels, inclusief verzendkosten.', gpad(c) + s_ + '/') + body + SCRIPT_LIJST + VOET)
 

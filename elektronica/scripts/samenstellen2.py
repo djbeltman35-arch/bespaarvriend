@@ -13,9 +13,9 @@ cfg = json.load(open(os.path.join(ROOT, 'data', 'config.json')))
 _ob = os.path.join(ROOT, 'raw', 'prijzen_basis.json')  # vaste basis met de oude producten (v1)
 oud = json.load(open(_ob if os.path.exists(_ob) else os.path.join(ROOT, 'data', 'prijzen.json')))
 
-WINKEL = {'mm': 'mediamarkt', 'amz': 'amazon', 'alt': 'alternate', 'az': 'azerty', 'bol': 'bol', 'mob': 'mobiel', 'bcc': 'bcc'}
+WINKEL = {'mm': 'mediamarkt', 'amz': 'amazon', 'alt': 'alternate', 'az': 'azerty', 'bol': 'bol', 'mob': 'mobiel', 'bcc': 'bcc', 'ep': 'ep', 'ps': 'proshop', 'inf': 'informatique', 'cnu': 'cameranu'}
 BASIS = {'mediamarkt': 'https://www.mediamarkt.nl', 'amazon': 'https://www.amazon.nl', 'alternate': 'https://www.alternate.nl',
-         'azerty': 'https://azerty.nl', 'bol': 'https://www.bol.com', 'mobiel': 'https://www.mobiel.nl', 'bcc': 'https://www.bcc.nl'}
+         'azerty': 'https://azerty.nl', 'bol': 'https://www.bol.com', 'mobiel': 'https://www.mobiel.nl', 'bcc': 'https://www.bcc.nl', 'ep': 'https://www.ep.nl', 'proshop': 'https://www.proshop.nl', 'informatique': 'https://www.informatique.nl', 'cameranu': 'https://www.cameranu.nl'}
 EIGEN = {'mediamarkt': {'', 'mediamarkt', 'media markt'}, 'bol': {'bol', 'bol.com', ''}, 'amazon': {'', 'amazon', 'amazon.nl', 'amazon eu s.a r.l.'}}
 ACCESSOIRE = ['oorkussen', 'hoesje', 'opberghoes', 'beschermhoes', 'bandje', 'screenprotector', 'beschermfolie', 'opzetborstel',
               'vervangingsfilter', 'stofzuigerzak', 'onderdeel', 'inktcartridge', 'bundel', 'bundle', 'refurbished', 'refurb',
@@ -86,6 +86,18 @@ for f in sorted(glob.glob(os.path.join(V2, '*_*.json'))):
             verzend = 2.99 if prijs < 20 else 0
         elif winkel == 'azerty':
             verzend = round(float(ship) * 1.21, 2) if ship else 0
+        elif winkel == 'ep':
+            if prijs < 50:
+                nee += 1; continue
+            verzend = 0  # EP: gratis thuisbezorgd vanaf € 50
+        elif winkel == 'informatique':
+            verzend = 0 if prijs >= 150 else 4.5  # Informatique: € 4,50, gratis vanaf € 150
+        elif winkel == 'cameranu':
+            verzend = 0 if prijs >= 100 else 4.99  # CameraNU: € 4,99 onder € 100
+        elif winkel == 'proshop':
+            if ship is None:
+                nee += 1; continue
+            verzend = float(ship)
         elif winkel == 'alternate':
             if ship is None:
                 nee += 1; continue

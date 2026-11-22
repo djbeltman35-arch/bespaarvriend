@@ -25,6 +25,17 @@ def _subs_van(p):
     uit = []
     for slug_, naam_, woorden in SUBS.get(p['cat'], []):
         for w in woorden:
+            if w.startswith('@merk:'):
+                if p['merk'].lower() == w[6:]:
+                    uit.append(slug_); break
+                continue
+            if w.startswith('@spec:'):  # @spec:Kenmerk=deel van waarde  of  @spec:Kenmerk==exacte waarde
+                k_, _, v_ = w[6:].partition('=')
+                waarde = str(p.get('kenmerken', {}).get(k_, '')).lower()
+                ok_ = waarde == v_[1:].lower() if v_.startswith('=') else (v_.lower() in waarde and waarde != '')
+                if ok_:
+                    uit.append(slug_); break
+                continue
             if w == '@alles' or (w.startswith('@max') and best <= float(w[4:])) or (not w.startswith('@') and w in n):
                 uit.append(slug_); break
     return uit
@@ -40,7 +51,7 @@ def _kenmerken(p):
     n = p['naam']
     k = {}
     if p['cat'] in INCH_CATS:
-        m = re.search(r'(\d{2}(?:[,.]\d)?)\s*(?:"|inch\b)', n)
+        m = re.search(r'(?<!\d)(\d{2,3}(?:[,.]\d)?)\s*(?:"|inch\b)', n)
         val = m.group(1).replace('.', ',') if m else next((v for key, v in HANDMATIG_INCH.items() if key in n), None)
         if val:
             k['Schermformaat'] = val + ' inch'
@@ -96,6 +107,47 @@ def _sortwaarde(v):
 def spec_slug(v):
     return re.sub(r'[^a-z0-9]+', '-', v.lower().replace(',', '-')).strip('-')
 
+
+# Automatische subcategorieën (zoals bij de grote webwinkels): per merk en per belangrijk kenmerk.
+_GEEN = {'Artikelnummer', 'Afhandeling van je defect', 'Oude apparaat gratis retour', 'Hoogte', 'Breedte', 'Diepte', 'Gewicht',
+         'Introductiejaar', 'Fabrikantcode', 'Kleur', 'Merk', 'Garantie', 'Productnaam', 'Bluetooth', 'Smart TV', 'Kleurdiepte',
+         'HDR ondersteuning', 'Energieklasse'}
+
+
+def _auto_subs():
+    from collections import Counter, defaultdict
+    per = defaultdict(list)
+    for p in PRODUCTEN:
+        per[p['cat']].append(p)
+    for cat, ps in per.items():
+        bestaand = SUBS.setdefault(cat, [])
+        slugs = {s[0] for s in bestaand}
+        namen = {s[1].lower() for s in bestaand}
+        _nm = lambda x: re.sub(r'[^a-z0-9]', '', x.lower())
+        kern = [_nm(s[1]) for s in bestaand]
+        dubbel = lambda v: any(c.startswith(_nm(v)) for c in kern if _nm(v))
+        # kenmerken: 2 sleutels met 2-8 waarden die elk bij minstens 3 producten voorkomen
+        kandidaten = []
+        for k in {k for p in ps for k in p.get('kenmerken', {})} - _GEEN:
+            if k.startswith('Garantie'):
+                continue
+            c = Counter(p['kenmerken'][k] for p in ps if k in p['kenmerken'])
+            goed = [(v, n) for v, n in c.items() if n >= 3 and len(v) <= 30 and v.lower() not in ('ja', 'nee', 'onbekend', 'basis', 'uitgebreid', 'standaard', 'overig', 'anders')]
+            if 2 <= len(goed) <= 8 and sum(n for _, n in goed) >= len(ps) * 0.5:
+                kandidaten.append((sum(n for _, n in goed), k, goed))
+        for _, k, goed in sorted(kandidaten, reverse=True)[:2]:
+            for v, n in sorted(goed, key=lambda x: -x[1]):
+                sl = spec_slug(v)
+                if sl and sl not in slugs and v.lower() not in namen and not dubbel(v) and not sl.endswith('-inch'):
+                    bestaand.append([sl, v, [f'@spec:{k}=={v}']]); slugs.add(sl); namen.add(v.lower())
+        # merken met minstens 3 producten
+        for m, n in Counter(p['merk'] for p in ps).most_common(10):
+            sl = spec_slug(m)
+            if n >= 3 and sl and sl not in slugs and m.lower() not in namen and not dubbel(m):
+                bestaand.append([sl, m, ['@merk:' + m.lower()]]); slugs.add(sl); namen.add(m.lower())
+
+
+_auto_subs()
 
 for _p in PRODUCTEN:
     _p['subs'] = _subs_van(_p)

@@ -10,7 +10,7 @@
    "slug": "computers-en-laptops",
    "naam": "Computers en laptops",
    "ico": "💻",
-   "tekst": "Laptops, desktops, monitoren, muizen, toetsenborden, opslag, routers en webcams"
+   "tekst": "Laptops, desktops, monitoren, onderdelen, opslag, printers, routers en accessoires"
   },
   {
    "slug": "telefonie-en-tablets",
@@ -22,13 +22,13 @@
    "slug": "gaming",
    "naam": "Gaming",
    "ico": "🎮",
-   "tekst": "Spelcomputers, controllers, gaming headsets en gaming laptops"
+   "tekst": "Spelcomputers, controllers, gaming monitoren, muizen, toetsenborden, headsets en stoelen"
   },
   {
    "slug": "foto-en-video",
    "naam": "Foto en video",
    "ico": "📷",
-   "tekst": "Systeemcamera's en dashcams"
+   "tekst": "Systeemcamera's, compactcamera's, drones, dashcams en geheugenkaarten"
   },
   {
    "slug": "witgoed",
@@ -53,6 +53,12 @@
    "naam": "Persoonlijke verzorging",
    "ico": "🪥",
    "tekst": "Tandenborstels, scheerapparaten, baardtrimmers, tondeuses, föhns, stijltangen en weegschalen"
+  },
+  {
+   "slug": "tuin-en-klussen",
+   "naam": "Tuin en klussen",
+   "ico": "🌱",
+   "tekst": "Robotmaaiers, grasmaaiers, heggenscharen, bladblazers, hogedrukreinigers en boormachines"
   }
  ],
  "categorieen": {
@@ -315,6 +321,434 @@
   "weegschalen": {
    "naam": "Weegschalen",
    "groep": "persoonlijke-verzorging"
+  },
+  "compactcameras": {
+   "naam": "Compactcamera's",
+   "groep": "foto-en-video"
+  },
+  "drones": {
+   "naam": "Drones",
+   "groep": "foto-en-video"
+  },
+  "instant-cameras": {
+   "naam": "Instant camera's",
+   "groep": "foto-en-video"
+  },
+  "geheugenkaarten": {
+   "naam": "Geheugenkaarten",
+   "groep": "foto-en-video"
+  },
+  "nas": {
+   "naam": "NAS",
+   "groep": "computers-en-laptops"
+  },
+  "tekentablets": {
+   "naam": "Tekentablets",
+   "groep": "computers-en-laptops"
+  },
+  "docking-stations": {
+   "naam": "Docking stations",
+   "groep": "computers-en-laptops"
+  },
+  "headsets": {
+   "naam": "Headsets",
+   "groep": "computers-en-laptops"
+  },
+  "pc-speakers": {
+   "naam": "PC-speakers",
+   "groep": "computers-en-laptops"
+  },
+  "monitorarmen": {
+   "naam": "Monitorarmen",
+   "groep": "computers-en-laptops"
+  },
+  "wifi-versterkers": {
+   "naam": "Wifi-versterkers",
+   "groep": "computers-en-laptops"
+  },
+  "videokaarten": {
+   "naam": "Videokaarten",
+   "groep": "computers-en-laptops"
+  },
+  "processoren": {
+   "naam": "Processoren",
+   "groep": "computers-en-laptops"
+  },
+  "interne-harde-schijven": {
+   "naam": "Interne harde schijven",
+   "groep": "computers-en-laptops"
+  },
+  "laserprinters": {
+   "naam": "Laserprinters",
+   "groep": "computers-en-laptops"
+  },
+  "scanners": {
+   "naam": "Scanners",
+   "groep": "computers-en-laptops"
+  },
+  "chromebooks": {
+   "naam": "Chromebooks",
+   "groep": "computers-en-laptops"
+  },
+  "2-in-1-laptops": {
+   "naam": "2-in-1 laptops",
+   "groep": "computers-en-laptops"
+  },
+  "gaming-monitoren": {
+   "naam": "Gaming monitoren",
+   "groep": "gaming"
+  },
+  "gaming-muizen": {
+   "naam": "Gaming muizen",
+   "groep": "gaming"
+  },
+  "gaming-toetsenborden": {
+   "naam": "Gaming toetsenborden",
+   "groep": "gaming"
+  },
+  "gaming-stoelen": {
+   "naam": "Gaming stoelen",
+   "groep": "gaming"
+  },
+  "vr-brillen": {
+   "naam": "VR-brillen",
+   "groep": "gaming"
+  },
+  "wifi-speakers": {
+   "naam": "Wifi-speakers",
+   "groep": "tv-en-audio"
+  },
+  "home-cinema-sets": {
+   "naam": "Home cinema sets",
+   "groep": "tv-en-audio"
+  },
+  "koelboxen": {
+   "naam": "Koelboxen",
+   "groep": "huishouden"
+  },
+  "versterkers": {
+   "naam": "Versterkers",
+   "groep": "tv-en-audio"
+  },
+  "receivers": {
+   "naam": "Receivers",
+   "groep": "tv-en-audio"
+  },
+  "subwoofers": {
+   "naam": "Subwoofers",
+   "groep": "tv-en-audio"
+  },
+  "hifi-speakers": {
+   "naam": "Hifi-speakers",
+   "groep": "tv-en-audio"
+  },
+  "partyspeakers": {
+   "naam": "Partyspeakers",
+   "groep": "tv-en-audio"
+  },
+  "radios": {
+   "naam": "Radio's",
+   "groep": "tv-en-audio"
+  },
+  "wekkers": {
+   "naam": "Wekkerradio's en wekkers",
+   "groep": "tv-en-audio"
+  },
+  "mediaspelers": {
+   "naam": "Mediaspelers",
+   "groep": "tv-en-audio"
+  },
+  "autoradios": {
+   "naam": "Autoradio's",
+   "groep": "tv-en-audio"
+  },
+  "microfoons": {
+   "naam": "Microfoons",
+   "groep": "tv-en-audio"
+  },
+  "all-in-one-pcs": {
+   "naam": "All-in-one pc's",
+   "groep": "computers-en-laptops"
+  },
+  "mini-pcs": {
+   "naam": "Mini-pc's",
+   "groep": "computers-en-laptops"
+  },
+  "moederborden": {
+   "naam": "Moederborden",
+   "groep": "computers-en-laptops"
+  },
+  "computervoedingen": {
+   "naam": "Computervoedingen",
+   "groep": "computers-en-laptops"
+  },
+  "pc-behuizingen": {
+   "naam": "Pc-behuizingen",
+   "groep": "computers-en-laptops"
+  },
+  "inkjetprinters": {
+   "naam": "Inkjetprinters",
+   "groep": "computers-en-laptops"
+  },
+  "labelprinters": {
+   "naam": "Labelprinters",
+   "groep": "computers-en-laptops"
+  },
+  "toetsenbord-en-muis-sets": {
+   "naam": "Toetsenbord- en muissets",
+   "groep": "computers-en-laptops"
+  },
+  "usb-hubs": {
+   "naam": "Usb-hubs",
+   "groep": "computers-en-laptops"
+  },
+  "vaste-telefoons": {
+   "naam": "Vaste telefoons",
+   "groep": "telefonie-en-tablets"
+  },
+  "seniorentelefoons": {
+   "naam": "Seniorentelefoons",
+   "groep": "telefonie-en-tablets"
+  },
+  "bluetooth-trackers": {
+   "naam": "Bluetooth-trackers",
+   "groep": "telefonie-en-tablets"
+  },
+  "smart-rings": {
+   "naam": "Smart rings",
+   "groep": "telefonie-en-tablets"
+  },
+  "racesturen": {
+   "naam": "Racesturen",
+   "groep": "gaming"
+  },
+  "cameralenzen": {
+   "naam": "Cameralenzen",
+   "groep": "foto-en-video"
+  },
+  "flitsers": {
+   "naam": "Flitsers",
+   "groep": "foto-en-video"
+  },
+  "statieven": {
+   "naam": "Statieven",
+   "groep": "foto-en-video"
+  },
+  "camcorders": {
+   "naam": "Camcorders",
+   "groep": "foto-en-video"
+  },
+  "verrekijkers": {
+   "naam": "Verrekijkers",
+   "groep": "foto-en-video"
+  },
+  "telescopen": {
+   "naam": "Telescopen",
+   "groep": "foto-en-video"
+  },
+  "inbouwvaatwassers": {
+   "naam": "Inbouwvaatwassers",
+   "groep": "witgoed"
+  },
+  "inbouwkoelkasten": {
+   "naam": "Inbouwkoelkasten",
+   "groep": "witgoed"
+  },
+  "wijnklimaatkasten": {
+   "naam": "Wijnklimaatkasten",
+   "groep": "witgoed"
+  },
+  "vrieskisten": {
+   "naam": "Vrieskisten",
+   "groep": "witgoed"
+  },
+  "koffiezetapparaten": {
+   "naam": "Filterkoffiezetapparaten",
+   "groep": "keuken"
+  },
+  "senseo": {
+   "naam": "Senseo-apparaten",
+   "groep": "keuken"
+  },
+  "nespresso": {
+   "naam": "Nespresso-apparaten",
+   "groep": "keuken"
+  },
+  "dolce-gusto": {
+   "naam": "Dolce Gusto-apparaten",
+   "groep": "keuken"
+  },
+  "melkopschuimers": {
+   "naam": "Melkopschuimers",
+   "groep": "keuken"
+  },
+  "koffiemolens": {
+   "naam": "Koffiemolens",
+   "groep": "keuken"
+  },
+  "handmixers": {
+   "naam": "Handmixers",
+   "groep": "keuken"
+  },
+  "foodprocessors": {
+   "naam": "Foodprocessors",
+   "groep": "keuken"
+  },
+  "sapcentrifuges": {
+   "naam": "Sapcentrifuges",
+   "groep": "keuken"
+  },
+  "slowjuicers": {
+   "naam": "Slowjuicers",
+   "groep": "keuken"
+  },
+  "citruspersen": {
+   "naam": "Citruspersen",
+   "groep": "keuken"
+  },
+  "wafelijzers": {
+   "naam": "Wafelijzers",
+   "groep": "keuken"
+  },
+  "gourmetstellen": {
+   "naam": "Gourmetstellen",
+   "groep": "keuken"
+  },
+  "grillplaten": {
+   "naam": "Grillplaten",
+   "groep": "keuken"
+  },
+  "rijstkokers": {
+   "naam": "Rijstkokers",
+   "groep": "keuken"
+  },
+  "slowcookers": {
+   "naam": "Slowcookers",
+   "groep": "keuken"
+  },
+  "stoomovens": {
+   "naam": "Stoomovens",
+   "groep": "keuken"
+  },
+  "inbouwovens": {
+   "naam": "Inbouwovens",
+   "groep": "keuken"
+  },
+  "ijsmachines": {
+   "naam": "IJsmachines",
+   "groep": "keuken"
+  },
+  "sodastream": {
+   "naam": "Bruiswatertoestellen",
+   "groep": "keuken"
+  },
+  "frituurpannen": {
+   "naam": "Frituurpannen",
+   "groep": "keuken"
+  },
+  "pizzaovens": {
+   "naam": "Pizzaovens",
+   "groep": "keuken"
+  },
+  "kruimeldieven": {
+   "naam": "Kruimeldieven",
+   "groep": "huishouden"
+  },
+  "stoomreinigers": {
+   "naam": "Stoomreinigers",
+   "groep": "huishouden"
+  },
+  "stoomgeneratoren": {
+   "naam": "Stoomgeneratoren",
+   "groep": "huishouden"
+  },
+  "luchtbevochtigers": {
+   "naam": "Luchtbevochtigers",
+   "groep": "huishouden"
+  },
+  "luchtontvochtigers": {
+   "naam": "Luchtontvochtigers",
+   "groep": "huishouden"
+  },
+  "elektrische-kachels": {
+   "naam": "Elektrische kachels",
+   "groep": "huishouden"
+  },
+  "slimme-deurbellen": {
+   "naam": "Slimme deurbellen",
+   "groep": "huishouden"
+  },
+  "ip-cameras": {
+   "naam": "Beveiligingscamera's",
+   "groep": "huishouden"
+  },
+  "slimme-verlichting": {
+   "naam": "Slimme verlichting",
+   "groep": "huishouden"
+  },
+  "slimme-stekkers": {
+   "naam": "Slimme stekkers",
+   "groep": "huishouden"
+  },
+  "rookmelders": {
+   "naam": "Rookmelders",
+   "groep": "huishouden"
+  },
+  "robotmaaiers": {
+   "naam": "Robotmaaiers",
+   "groep": "tuin-en-klussen"
+  },
+  "grasmaaiers": {
+   "naam": "Grasmaaiers",
+   "groep": "tuin-en-klussen"
+  },
+  "heggenscharen": {
+   "naam": "Heggenscharen",
+   "groep": "tuin-en-klussen"
+  },
+  "bladblazers": {
+   "naam": "Bladblazers",
+   "groep": "tuin-en-klussen"
+  },
+  "hogedrukreinigers": {
+   "naam": "Hogedrukreinigers",
+   "groep": "tuin-en-klussen"
+  },
+  "boormachines": {
+   "naam": "Boormachines",
+   "groep": "tuin-en-klussen"
+  },
+  "accuboormachines": {
+   "naam": "Accuboormachines",
+   "groep": "tuin-en-klussen"
+  },
+  "epilatoren": {
+   "naam": "Epilatoren",
+   "groep": "persoonlijke-verzorging"
+  },
+  "ladyshaves": {
+   "naam": "Ladyshaves",
+   "groep": "persoonlijke-verzorging"
+  },
+  "krultangen": {
+   "naam": "Krultangen",
+   "groep": "persoonlijke-verzorging"
+  },
+  "neustrimmers": {
+   "naam": "Neustrimmers",
+   "groep": "persoonlijke-verzorging"
+  },
+  "bloeddrukmeters": {
+   "naam": "Bloeddrukmeters",
+   "groep": "persoonlijke-verzorging"
+  },
+  "koortsthermometers": {
+   "naam": "Koortsthermometers",
+   "groep": "persoonlijke-verzorging"
+  },
+  "massage-apparaten": {
+   "naam": "Massage-apparaten",
+   "groep": "persoonlijke-verzorging"
   }
  },
  "winkels": {
@@ -357,6 +791,26 @@
    "naam": "BCC",
    "url": "https://www.bcc.nl",
    "verzendtekst": "We tellen alleen producten die BCC zelf verkoopt; verzendkosten volgens de productpagina."
+  },
+  "ep": {
+   "naam": "EP",
+   "url": "https://www.ep.nl",
+   "verzendtekst": "Gratis thuisbezorgd vanaf € 50. Producten onder € 50 nemen we niet op."
+  },
+  "proshop": {
+   "naam": "Proshop",
+   "url": "https://www.proshop.nl",
+   "verzendtekst": "Verzendkosten per product, zoals Proshop ze op de productpagina noemt."
+  },
+  "informatique": {
+   "naam": "Informatique",
+   "url": "https://www.informatique.nl",
+   "verzendtekst": "€ 4,50 verzendkosten, gratis vanaf € 150."
+  },
+  "cameranu": {
+   "naam": "CameraNU",
+   "url": "https://www.cameranu.nl",
+   "verzendtekst": "€ 4,99 verzendkosten onder € 100, daarboven gratis."
   }
  },
  "paginas": [
@@ -448,15 +902,113 @@
     "oled-tv",
     "OLED-tv's",
     [
+     "@spec:Schermtype==OLED",
      "oled"
     ]
    ],
    [
-    "qled-mini-led-tv",
-    "QLED en Mini-led",
+    "qled-tv",
+    "QLED-tv's",
     [
-     "qled",
-     "mini-led"
+     "@spec:Schermtype==QLED",
+     "qled"
+    ]
+   ],
+   [
+    "mini-led-tv",
+    "Mini-led tv's",
+    [
+     "@spec:Schermtype=mini-led",
+     "mini-led",
+     "mini led"
+    ]
+   ],
+   [
+    "led-tv",
+    "Led-tv's",
+    [
+     "@spec:Schermtype==LED"
+    ]
+   ],
+   [
+    "4k-tv",
+    "4K-tv's",
+    [
+     "@spec:Scherpte=4K",
+     "4k"
+    ]
+   ],
+   [
+    "8k-tv",
+    "8K-tv's",
+    [
+     "@spec:Scherpte=8K",
+     "8k"
+    ]
+   ],
+   [
+    "100hz-tv",
+    "100 Hz en gaming-tv's",
+    [
+     "@spec:Verversingssnelheid=100",
+     "@spec:Verversingssnelheid=120",
+     "@spec:Verversingssnelheid=144"
+    ]
+   ],
+   [
+    "ambilight-tv",
+    "Ambilight tv's",
+    [
+     "ambilight"
+    ]
+   ],
+   [
+    "samsung-tv",
+    "Samsung tv's",
+    [
+     "samsung"
+    ]
+   ],
+   [
+    "lg-tv",
+    "LG tv's",
+    [
+     "lg "
+    ]
+   ],
+   [
+    "philips-tv",
+    "Philips tv's",
+    [
+     "philips"
+    ]
+   ],
+   [
+    "sony-tv",
+    "Sony tv's",
+    [
+     "sony"
+    ]
+   ],
+   [
+    "tcl-tv",
+    "TCL tv's",
+    [
+     "tcl"
+    ]
+   ],
+   [
+    "hisense-tv",
+    "Hisense tv's",
+    [
+     "hisense"
+    ]
+   ],
+   [
+    "goedkope-tv",
+    "Tv's tot € 500",
+    [
+     "@max500"
     ]
    ]
   ],

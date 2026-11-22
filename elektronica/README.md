@@ -33,3 +33,8 @@ Wehkamp geeft 429 (bot-bescherming). Megekko, Expert en EP renderen zoekresultat
    bol blokkeert externe verzoeken: gebruik `scripts/bol_api.py` (bol Marketing Catalog API via bespaarvriend.nl/api/bol; sleutel in Netlify-variabelen BOL_CLIENT_ID/BOL_CLIENT_SECRET).
 4. `DUMPKEY=<sleutel> sh scripts/ophalen_v2.sh` → `raw/v2/`, daarna `python3 scripts/samenstellen2.py` (oude producten uit `raw/prijzen_basis.json` blijven behouden).
 De opslagsleutel staat niet in deze repo.
+
+## MediaMarkt als extra basis (vanaf 22 nov 2026)
+Voor categorieën waar Coolblue weinig heeft: `scripts/mm_oogst.js` in een mediamarkt.nl-tab (kaart `mm_map` in de dump: onze categorie → MediaMarkt-categoriepagina's) → `mmb_<cat>`.
+`python3 scripts/items.py mmb_a,mmb_b,... items_mm` (EAN gaat mee voor bol), daarna m2.js bij Coolblue (`cbm_*`, zoek `/zoeken?query={q}`), Amazon, EP en `bol_api.py items_mm`.
+`samenstellen2.py` neemt alleen MediaMarkt-eigen producten vanaf € 50 en slaat producten over die al in de Coolblue-basis zitten (zelfde fabrikantcode).

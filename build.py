@@ -166,6 +166,13 @@ header.top nav.top a[aria-current],header.top nav.top a.actief{background:linear
 .tegels b{font-size:17px!important;overflow-wrap:anywhere;hyphens:auto}
 @media(min-width:420px){.tegels b{font-size:19px!important}}
 @media(max-width:420px){nav.top a{font-size:13.5px!important;padding:7px 4px!important}}@media(max-width:480px){header.top nav.top a{font-size:13px!important;padding:6px 5px!important}}
+/* intro zonder groen blok, groene letters met duidelijke schaduw */
+.intro{background:#fff!important;border:2px solid #a9d6bb!important;border-radius:16px!important;box-shadow:0 4px 0 #cfe6d8,0 10px 20px rgba(8,80,47,.10)!important;color:#0e7c4a!important;overflow:hidden!important;padding:16px 14px 14px!important;margin:12px 0 6px!important}
+.intro .euro{color:#ffd43b!important;opacity:.85!important;text-shadow:3px 4px 0 #e0a800,0 6px 14px rgba(0,0,0,.2)!important}
+.intro h1{color:#0a6239!important;text-shadow:2px 3px 0 #ffd43b,0 8px 16px rgba(0,0,0,.45)!important}
+.intro .kort{color:#0a5a35!important}
+.intro .bekend{color:#1e2a22!important}
+.intro .bekend a:not(.b){color:#0e7c4a!important}
 .foot .wrap{display:grid;gap:4px}
 .foot .free{text-align:center;color:var(--muted);font-size:14px;font-weight:400;margin:0 auto 6px;max-width:52ch}
 .foot .fkop{text-align:center;font-weight:800;color:var(--ink);font-size:13px;text-transform:uppercase;letter-spacing:.06em;margin:14px 0 2px}

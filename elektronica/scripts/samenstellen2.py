@@ -13,8 +13,8 @@ cfg = json.load(open(os.path.join(ROOT, 'data', 'config.json')))
 _ob = os.path.join(ROOT, 'raw', 'prijzen_basis.json')  # vaste basis met de oude producten (v1)
 oud = json.load(open(_ob if os.path.exists(_ob) else os.path.join(ROOT, 'data', 'prijzen.json')))
 
-WINKEL = {'mm': 'mediamarkt', 'amz': 'amazon', 'alt': 'alternate', 'az': 'azerty', 'bol': 'bol', 'mob': 'mobiel', 'bcc': 'bcc', 'ep': 'ep', 'ps': 'proshop', 'inf': 'informatique', 'cnu': 'cameranu'}
-BASIS = {'mediamarkt': 'https://www.mediamarkt.nl', 'amazon': 'https://www.amazon.nl', 'alternate': 'https://www.alternate.nl',
+WINKEL = {'cbm': 'coolblue', 'mm': 'mediamarkt', 'amz': 'amazon', 'alt': 'alternate', 'az': 'azerty', 'bol': 'bol', 'mob': 'mobiel', 'bcc': 'bcc', 'ep': 'ep', 'ps': 'proshop', 'inf': 'informatique', 'cnu': 'cameranu'}
+BASIS = {'coolblue': 'https://www.coolblue.nl', 'mediamarkt': 'https://www.mediamarkt.nl', 'amazon': 'https://www.amazon.nl', 'alternate': 'https://www.alternate.nl',
          'azerty': 'https://azerty.nl', 'bol': 'https://www.bol.com', 'mobiel': 'https://www.mobiel.nl', 'bcc': 'https://www.bcc.nl', 'ep': 'https://www.ep.nl', 'proshop': 'https://www.proshop.nl', 'informatique': 'https://www.informatique.nl', 'cameranu': 'https://www.cameranu.nl'}
 EIGEN = {'mediamarkt': {'', 'mediamarkt', 'media markt'}, 'bol': {'bol', 'bol.com', ''}, 'amazon': {'', 'amazon', 'amazon.nl', 'amazon eu s.a r.l.'}}
 ACCESSOIRE = ['oorkussen', 'hoesje', 'opberghoes', 'beschermhoes', 'bandje', 'screenprotector', 'beschermfolie', 'opzetborstel',
@@ -51,17 +51,56 @@ for f in sorted(glob.glob(os.path.join(V2, 'cb_*.json'))):
             continue
         basis[str(x['id'])] = dict(x, cat=cat)
 
+# 1b. MediaMarkt-basis (raw/v2/mmb_<cat>.json) voor categorieën waar Coolblue weinig heeft.
+# Alleen producten die MediaMarkt zelf verkoopt, vanaf € 50 (onder € 50 rekent MediaMarkt verzendkosten), en niet al in de Coolblue-basis.
+def _n(s): return re.sub(r'[^a-z0-9]', '', (s or '').lower())
+cb_mpn = {_n(x.get('mpn')) for x in basis.values() if len(_n(x.get('mpn'))) >= 5}
+def mm_naam(n, merk):
+    delen = [d.strip() for d in n.split(' - ')]
+    n = delen[0] + (' ' + delen[1] if len(delen) > 1 and len(delen[1]) < 30 and not re.search(r'\d', delen[1]) else '')
+    w = n.split()
+    for i, t in enumerate(w):
+        if t.isupper() and len(t) > 3 and re.fullmatch(r"[A-Z'&]+", t):
+            w[i] = t.title()
+        elif not t.isupper():
+            break
+    n = ' '.join(w)
+    if len(n) > 70:
+        n = n[:70].rsplit(' ', 1)[0]
+    return n
+MM_MOET = {'camcorders': r'camcorder|videocamera|handycam', 'ventilatoren': r'ventilator', 'elektrische-kachels': r'kachel|verwarming|heater'}
+def mm_mpn(n, merk):
+    rest = n[len(merk):].split() if merk and n.upper().startswith(merk.upper()) else n.split()[1:]
+    for t in rest:
+        t = t.strip('(),')
+        if re.search(r'\d', t) and len(_n(t)) >= 4 and (re.search(r'[a-zA-Z]', t) or re.search(r'[-./]', t)) and not re.fullmatch(r'\d+([.,]\d+)?(gb|tb|w|l|cm|mm|kg|inch|hz|rpm|db|v|mah|cl|ml)', t.lower()):
+            return t
+    return ''
+for f in sorted(glob.glob(os.path.join(V2, 'mmb_*.json'))):
+    cat = os.path.basename(f)[4:-5]
+    for x in lees(f) or []:
+        if not x.get('p') or x['p'] < 50 or x.get('a') not in ('InStock', 'LimitedAvailability', 'PreOrder', 'OnlineOnly', ''):
+            continue
+        if (x.get('sel') or 'MediaMarkt').lower().replace(' ', '') not in ('mediamarkt', ''):
+            continue
+        merk = x.get('b') or ''
+        x = dict(x, n=mm_naam(x['n'], merk), mpn=x.get('mpn') or mm_mpn(x['n'], merk), cat=cat, mm=1)
+        if _n(x['mpn']) in cb_mpn or any(a in x['n'].lower() for a in ACCESSOIRE) or (cat in MM_MOET and not re.search(MM_MOET[cat], x['n'], re.I)):
+            continue
+        basis[str(x['id'])] = x
+
 # 2. Winkelresultaten (meerdere bestanden per winkel mogelijk: mm_1, mm_2, ...)
-aanb = {k: [{'winkel': 'coolblue', 'prijs': float(x['p']), 'verzend': 0, 'url': f'https://www.coolblue.nl/product/{k}/'}] for k, x in basis.items()}
+aanb = {k: [{'winkel': 'mediamarkt', 'prijs': float(x['p']), 'verzend': 0, 'url': 'https://www.mediamarkt.nl' + x['url']} if x.get('mm') else
+            {'winkel': 'coolblue', 'prijs': float(x['p']), 'verzend': 0, 'url': f'https://www.coolblue.nl/product/{k}/'}] for k, x in basis.items()}
 for f in sorted(glob.glob(os.path.join(V2, '*_*.json'))):
     naam = os.path.basename(f)[:-5]
     pre = naam.split('_')[0]
-    if pre == 'cb' or pre not in WINKEL:
+    if pre in ('cb', 'mmb') or pre not in WINKEL:
         continue
     winkel = WINKEL[pre]
     goed = nee = 0
     for k, r in (lees(f) or {}).items():
-        if k not in basis:
+        if k not in basis or (winkel == 'mediamarkt' and basis[k].get('mm')) or (winkel == 'coolblue' and not basis[k].get('mm')):
             continue
         prijs, besch, sel, ship, url, pnaam, gtin, vlag = (r + [None] * 8)[:8]
         ref = float(basis[k]['p'])
@@ -111,7 +150,7 @@ for f in sorted(glob.glob(os.path.join(V2, '*_*.json'))):
     log.append(f'== {naam}: {goed} goed, {nee} afgekeurd')
 
 # 2b. Oude aanbiedingen (bv. bol, Mobiel.nl) behouden voor winkels die deze keer niet opnieuw zijn opgehaald
-opgehaald = {WINKEL[os.path.basename(f).split('_')[0]] for f in glob.glob(os.path.join(V2, '*_*.json')) if os.path.basename(f).split('_')[0] in WINKEL and not os.path.basename(f).startswith('cb_')}
+opgehaald = {WINKEL[os.path.basename(f).split('_')[0]] for f in glob.glob(os.path.join(V2, '*_*.json')) if os.path.basename(f).split('_')[0] in WINKEL and not os.path.basename(f).startswith(('cb_', 'mmb_'))}
 for p in oud['producten']:
     cbid = next((re.search(r'/product/(\d+)/', o['url']).group(1) for o in p['aanbiedingen'] if o['winkel'] == 'coolblue'), None)
     if cbid in aanb:
@@ -145,7 +184,7 @@ for p in per.values():
         t = o['prijs'] + (o['verzend'] or 0)
         if o['winkel'] not in beste or t < beste[o['winkel']]['prijs'] + (beste[o['winkel']]['verzend'] or 0):
             beste[o['winkel']] = o
-    cb = beste.get('coolblue', {}).get('prijs')
+    cb = beste.get('coolblue', {}).get('prijs') or beste.get('mediamarkt', {}).get('prijs')
     p['aanbiedingen'] = [o for o in beste.values() if not cb or 0.55 * cb <= o['prijs'] <= 1.6 * cb]
     if len(p['aanbiedingen']) >= 2:
         producten.append(p)
@@ -159,7 +198,7 @@ for p in oud['producten']:
         producten.append(p)
 
 def _schoon(p):
-    cb = next((o['prijs'] for o in p['aanbiedingen'] if o['winkel'] == 'coolblue'), None)
+    cb = next((o['prijs'] for o in p['aanbiedingen'] if o['winkel'] == 'coolblue'), None) or next((o['prijs'] for o in p['aanbiedingen'] if o['winkel'] == 'mediamarkt'), None)
     p['aanbiedingen'] = [o for o in p['aanbiedingen'] if not cb or 0.55 * cb <= o['prijs'] <= 1.6 * cb]
     return len(p['aanbiedingen']) >= 2
 producten = [p for p in producten if _schoon(p)]

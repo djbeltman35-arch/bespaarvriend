@@ -36,7 +36,7 @@ for naam in (sys.argv[1].split(',') if len(sys.argv) > 1 else ['items', 'items2'
 print(len(items), 'items', flush=True)
 eans = {}
 for f in glob.glob(os.path.join(V2, '*_*.json')):
-    if os.path.basename(f).startswith(('cb_', 'bol_')):
+    if os.path.basename(f).startswith(('cb_', 'bol_', 'mmb_')):
         continue
     try:
         for k, r in json.load(open(f)).items():
@@ -48,6 +48,8 @@ for f in glob.glob(os.path.join(V2, '*_*.json')):
 res, voorbeeld = {}, None
 for it in items:
     k = str(it['k'])
+    if it.get('g') and re.fullmatch(r'\d{12,14}', str(it['g'])):
+        eans.setdefault(k, str(it['g']).zfill(13))
     p = None
     if k in eans:
         d = get(F + '&ean=' + eans[k])

@@ -129,10 +129,10 @@ def _auto_subs():
         # kenmerken: 2 sleutels met 2-8 waarden die elk bij minstens 3 producten voorkomen
         kandidaten = []
         for k in {k for p in ps for k in p.get('kenmerken', {})} - _GEEN:
-            if k.startswith('Garantie'):
+            if k.startswith('Garantie') or not re.search(r'type|soort|systeem|installatie|plaatsing|uitvoering|technologie', k, re.I) or re.search(r'etui|sluiting|aansluiting|connector|stroom|voeding|processor|batterij|accu|accessoire|pakket|ergonom|hdr|bediening|motor|verbinding|besturing|kabel|geheugenkaart|filter|lade', k, re.I):
                 continue
             c = Counter(p['kenmerken'][k] for p in ps if k in p['kenmerken'])
-            goed = [(v, n) for v, n in c.items() if n >= 3 and len(v) <= 30 and v.lower() not in ('ja', 'nee', 'onbekend', 'basis', 'uitgebreid', 'standaard', 'overig', 'anders')]
+            goed = [(v, n) for v, n in c.items() if n >= 3 and len(v) <= 30 and ',' not in v and not re.fullmatch(r'[\d.,\s]+[a-zA-Z]{0,3}', v) and v.lower() not in ('ja', 'nee', 'geen', 'gedeeltelijk', 'onbekend', 'basis', 'uitgebreid', 'standaard', 'overig', 'anders')]
             if 2 <= len(goed) <= 8 and sum(n for _, n in goed) >= len(ps) * 0.5:
                 kandidaten.append((sum(n for _, n in goed), k, goed))
         for _, k, goed in sorted(kandidaten, reverse=True)[:2]:

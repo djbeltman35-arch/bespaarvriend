@@ -26,7 +26,7 @@ Coolblue 0 · MediaMarkt gratis vanaf € 50 (onder € 50 niet opgenomen) · bo
 Wehkamp geeft 429 (bot-bescherming). Megekko, Expert en EP renderen zoekresultaten in de browser (fetch+DOMParser werkt niet; pagina zelf openen).
 
 ## Versie 2 (vanaf 22 nov 2026): matchen op fabrikantcode
-1. Coolblue-oogst: per categorie de populairste producten (filterpagina's, 2 pagina's) met prijs, fabrikantcode en specs → opslag `cb_<cat>`.
+1. Coolblue-oogst (`scripts/cb_oogst.js` in een coolblue.nl-tab): per categorie de populairste producten (filterpagina's, 2 pagina's) met prijs, fabrikantcode en specs → opslag `cb_<cat>`.
 2. `scripts/items.py <cats>` maakt de zoeklijst `items` (zoekterm = fabrikantcode, of naam bij telefoons/tablets/audio).
 3. `tools/m2.js` (gehost op elektrovergelijk.netlify.app/tools/m2.js) draait per winkel in Chrome: `window.__K=<sleutel>; window.__S={shop:'mm_2',search:'/nl/search.html?query={q}',link:'/nl/product/',wait:250,max:2}`. Een treffer telt alleen als de fabrikantcode op de productpagina staat (of alle naamwoorden kloppen bij telefoons/tablets/audio).
    Winkels: MediaMarkt (zie boven), Amazon (`/s?k={q}`, link `/dp/`, pricesel `#corePrice_feature_div .a-offscreen, .priceToPay .a-offscreen`), Alternate (`/listing.xhtml?q={q}`, `/html/product/`), Azerty (`/search?q={q}`, `/product/`).

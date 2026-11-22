@@ -30,7 +30,10 @@ def offer(p):
     return prijs, o
 
 
-items = json.loads(urllib.request.urlopen(DUMP + 'items').read())
+items = []
+for naam in (sys.argv[1].split(',') if len(sys.argv) > 1 else ['items', 'items2']):
+    items += json.loads(urllib.request.urlopen(DUMP + naam).read() or '[]')
+print(len(items), 'items', flush=True)
 eans = {}
 for f in glob.glob(os.path.join(V2, '*_*.json')):
     if os.path.basename(f).startswith(('cb_', 'bol_')):
@@ -54,7 +57,7 @@ for it in items:
         for c in d.get('results', d.get('products', [])) or []:
             c = c.get('product', c)
             t = norm(c.get('title', ''))
-            if it.get('m') and it['m'] in t or all(norm(w) in t for w in it['t'] if w not in ('zwart', 'wit', 'blauw', 'grijs', 'zilver')):
+            if (it.get('m') and it['m'] in t) or (it.get('loose') and all(norm(w) in t for w in it['t'] if w not in ('zwart', 'wit', 'blauw', 'grijs', 'zilver'))):
                 p = c; break
     if not p:
         continue
@@ -65,7 +68,12 @@ for it in items:
     ratio = float(prijs) / it['p']
     if ratio < 0.55 or ratio > 1.8:
         continue
+    lev = (o.get('deliveryDescription') or '').lower()
+    if 'niet leverbaar' in lev or 'tijdelijk' in lev:
+        continue
     url = p.get('url', '')
-    res[k] = [float(prijs), 'InStock', 'bol' if not o.get('sellerName') else o.get('sellerName'), None, url, p.get('title', '')[:120], p.get('ean', ''), 'e' if k in eans else 't']
-json.dump(res, open(os.path.join(V2, 'bol_api.json'), 'w'))
+    res[k] = [float(prijs), 'InStock', 'bol', None, url, p.get('title', '')[:120], p.get('ean', ''), 'e' if k in eans else 't']
+    if len(res) % 100 == 0:
+        print(len(res), flush=True)
+json.dump(res, open(os.path.join(V2, os.environ.get('UIT', 'bol_api') + '.json'), 'w'))
 print(len(res), 'bol-prijzen; voorbeeld:', json.dumps(voorbeeld)[:600] if voorbeeld else None)

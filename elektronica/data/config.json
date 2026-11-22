@@ -4,19 +4,19 @@
    "slug": "tv-en-audio",
    "naam": "TV en audio",
    "ico": "📺",
-   "tekst": "Televisies, soundbars, koptelefoons, oordopjes, speakers, beamers en platenspelers"
+   "tekst": "Televisies, soundbars, koptelefoons, speakers, versterkers, receivers, subwoofers, radio's en beamers"
   },
   {
    "slug": "computers-en-laptops",
    "naam": "Computers en laptops",
    "ico": "💻",
-   "tekst": "Laptops, desktops, monitoren, onderdelen, opslag, printers, routers en accessoires"
+   "tekst": "Laptops, desktops, mini-pc's, monitoren, onderdelen, opslag, printers, routers en accessoires"
   },
   {
    "slug": "telefonie-en-tablets",
    "naam": "Telefonie en tablets",
    "ico": "📱",
-   "tekst": "Smartphones, tablets, smartwatches, e-readers en powerbanks"
+   "tekst": "Smartphones, tablets, smartwatches, smart rings, vaste telefoons, e-readers en powerbanks"
   },
   {
    "slug": "gaming",
@@ -28,31 +28,31 @@
    "slug": "foto-en-video",
    "naam": "Foto en video",
    "ico": "📷",
-   "tekst": "Systeemcamera's, compactcamera's, drones, dashcams en geheugenkaarten"
+   "tekst": "Systeemcamera's, lenzen, flitsers, statieven, camcorders, drones, verrekijkers en telescopen"
   },
   {
    "slug": "witgoed",
    "naam": "Witgoed",
    "ico": "🧺",
-   "tekst": "Wasmachines, wasdrogers, was-droogcombinaties, koelkasten, vriezers en vaatwassers"
+   "tekst": "Wasmachines, drogers, koelkasten, inbouwkoelkasten, vriezers, vrieskisten, vaatwassers en wijnklimaatkasten"
   },
   {
    "slug": "keuken",
    "naam": "Keuken",
    "ico": "🍳",
-   "tekst": "Ovens, kookplaten, fornuizen, afzuigkappen, airfryers, koffiemachines, blenders en meer"
+   "tekst": "Ovens, kookplaten, airfryers, koffiemachines, Nespresso en Senseo, foodprocessors, blenders, slowjuicers en meer"
   },
   {
    "slug": "huishouden",
    "naam": "Huishouden",
    "ico": "🧹",
-   "tekst": "Stofzuigers, robotstofzuigers, strijkijzers, luchtreinigers, ventilatoren en thermostaten"
+   "tekst": "Stofzuigers, robotstofzuigers, stoomreinigers, luchtreinigers, kachels, slimme deurbellen, camera's en verlichting"
   },
   {
    "slug": "persoonlijke-verzorging",
    "naam": "Persoonlijke verzorging",
    "ico": "🪥",
-   "tekst": "Tandenborstels, scheerapparaten, baardtrimmers, tondeuses, föhns, stijltangen en weegschalen"
+   "tekst": "Tandenborstels, scheerapparaten, epilatoren, föhns, krultangen, bloeddrukmeters en massage-apparaten"
   },
   {
    "slug": "tuin-en-klussen",

@@ -24,14 +24,15 @@ a{color:var(--green-dark);text-underline-offset:3px;text-decoration-thickness:1p
 header.top{background:var(--surface);border-bottom:1px solid var(--line)}
 header.top .wrap{display:flex;align-items:center;gap:12px;padding-block:12px;max-width:1140px}
 .logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:19px;color:var(--ink);text-decoration:none}
-nav.top{margin-left:auto;display:flex;gap:4px}nav.top a{text-decoration:none;font-weight:700;font-size:15px;padding:8px 10px;border-radius:10px;color:var(--ink)}
-nav.top a:hover{background:var(--green-soft);color:var(--green-dark)}
-@media(max-width:420px){.logo{font-size:17px;gap:8px}.logo svg{width:32px;height:32px}nav.top{gap:0}nav.top a{font-size:14px;padding:7px 6px}}
+nav.top{margin-left:auto}details.hmenu>summary{list-style:none;cursor:pointer;font-weight:700;font-size:16px;padding:10px 16px;border-radius:12px;background:var(--green);color:var(--on-green);box-shadow:0 2px 6px rgba(14,124,74,.25)}details.hmenu>summary::-webkit-details-marker{display:none}details.hmenu[open]>summary{background:var(--green-dark)}details.hmenu .paneel{position:absolute;left:0;right:0;top:100%;z-index:50;background:var(--surface);box-shadow:0 18px 40px rgba(20,40,28,.18);padding:18px max(16px,calc((100vw - 1140px)/2 + 16px)) 22px;display:grid;grid-template-columns:repeat(3,1fr);gap:6px 24px;max-height:calc(100vh - 70px);overflow:auto}details.hmenu .groep p{margin:10px 0 4px;font-weight:700;font-size:15px;color:var(--muted)}details.hmenu .groep a{display:block;text-align:left;border:0!important;margin:0!important;padding:8px 10px;border-radius:10px;text-decoration:none;font-weight:700;color:var(--ink)}details.hmenu .groep a:hover{background:var(--green-soft);color:var(--green-dark)}header.top{position:relative}header.top nav.top details.hmenu .groep a{display:block!important;text-align:left!important;border:0!important;min-width:0!important;padding:9px 10px!important;font-size:15.5px!important;line-height:1.3!important;white-space:normal!important;color:var(--ink)!important;border-radius:10px!important;background:none!important;text-decoration:none!important}header.top nav.top details.hmenu .groep a:hover{background:var(--green-soft)!important;color:var(--green-dark)!important;text-decoration:none!important}header.top nav.top details.hmenu .groep a+a{border-left:0!important}@media(max-width:820px){details.hmenu .paneel{grid-template-columns:1fr 1fr}}@media(max-width:520px){details.hmenu .paneel{grid-template-columns:1fr;padding-top:6px}details.hmenu .groep{display:grid;grid-template-columns:1fr 1fr;gap:0 6px}details.hmenu .groep p{grid-column:1/-1}details.hmenu .groep a{padding:9px 8px;font-size:15px}}
+@media(max-width:420px){.logo{font-size:17px;gap:8px}.logo svg{width:32px;height:32px}}
 .crumbs{font-size:14px;color:var(--muted);margin:16px 0 0}.crumbs a{color:var(--muted)}
 h1{font:700 clamp(28px,4.6vw,40px)/1.12 var(--text);letter-spacing:-.015em;margin:14px 0 10px;text-wrap:balance}
 h2{font:700 22px/1.25 var(--text);margin:30px 0 10px}h3{font-size:18px;margin:20px 0 6px}h1,h2,h3{overflow-wrap:break-word;hyphens:auto}
 .lead{font-size:18px;color:var(--muted);margin:0 0 16px}
 .kaart{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;margin:14px 0}
+.tegels .vu{display:inline-block;margin-top:8px;font-size:12.5px;font-weight:700;color:var(--green-dark);background:var(--green-soft);border-radius:999px;padding:2px 9px}
+.uitklappen{display:grid;gap:10px;margin:16px 0 22px}details.uitklap{background:var(--surface);border-radius:var(--r);box-shadow:0 2px 4px rgba(20,40,28,.06),0 8px 20px rgba(20,40,28,.09)}details.uitklap>summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:10px;padding:16px 18px;font-weight:700;font-size:18px;line-height:1.3}details.uitklap>summary::-webkit-details-marker{display:none}details.uitklap>summary::after{content:"";margin-left:auto;flex:none;width:28px;height:28px;border-radius:50%;background:var(--green-soft) url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27%230a6239%27 stroke-width=%273%27%3E%3Cpath d=%27m6 9 6 6 6-6%27/%3E%3C/svg%3E") center/16px no-repeat;transition:transform .2s}details.uitklap[open]>summary::after{transform:rotate(180deg)}details.uitklap>.inh{padding:0 18px 16px}details.uitklap>.inh>:first-child{margin-top:0}h2.vgl{margin-top:26px}
 .uitgelicht{display:flex;gap:16px;align-items:center;text-decoration:none;color:var(--on-green);background:linear-gradient(135deg,#0e7c4a,#0a6239);border-radius:18px;padding:18px 20px;margin:18px 0;box-shadow:0 6px 14px rgba(14,124,74,.28),0 18px 40px rgba(14,124,74,.24);position:relative;overflow:hidden}.uitgelicht:hover{color:var(--on-green);transform:translateY(-2px)}.uitgelicht .gr{flex:none;width:58px;height:58px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:30px;box-shadow:0 0 0 6px rgba(255,255,255,.18)}@media (max-width:520px){.uitgelicht{align-items:flex-start;padding:34px 16px 16px;gap:12px}.uitgelicht .gr{width:44px;height:44px;font-size:24px}.uitgelicht b{font-size:18px}}.uitgelicht b{display:block;font-size:20px;line-height:1.2}.uitgelicht small{display:block;font-size:15px;opacity:.92;margin-top:3px}.uitgelicht .lbl{position:absolute;top:10px;right:12px;background:#ffd43b;color:#1e2a22;font:700 12px var(--text);padding:2px 8px;border-radius:999px}.uitgelicht .knop{display:inline-block;margin-top:10px;background:#fff;color:#0a6239;font-weight:700;padding:8px 14px;border-radius:10px}
 .kerncijfers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:16px 0}
 .kerncijfers div{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px}
@@ -244,7 +245,7 @@ def partner(url, titel, tekst, knop, artikelen=()):
             f'<a class="btn" href="{url}" rel="sponsored noopener" target="_blank">{knop}{ICON["pijl"]}</a>'
             '<p class="bron">Sluit je via deze link iets af, dan krijgt Bespaarvriend een kleine vergoeding. Jij betaalt niets extra.</p></div>')
 
-NAV = '<nav class="top" aria-label="Hoofdmenu"><a href="/zorgverzekering-2027/">Zorg</a><a href="/energie-2027/">Energie</a><a href="/internet-en-mobiel/">Internet/Mobiel</a><span class="nbr" aria-hidden="true"></span><a href="/auto-en-tanken/">Auto</a><a href="/vakantie-en-vliegen/">Vakantie</a><a href="/goedkoop-vliegen/">Vliegen</a><a href="/salderen-2027/">Saldering</a></nav>'
+NAV = '<nav class="top" aria-label="Hoofdmenu"><details class="hmenu"><summary>☰ Menu</summary><div class="paneel"><div class="groep"><p>🩺 Zorg</p><a href="/zorgverzekering-2027/">Zorgverzekering 2027</a><a href="/zorgverzekering-overstappen/">Overstappen</a><a href="/aanvullende-verzekering-2027/">Aanvullende verzekering</a><a href="/tandartsverzekering-2027/">Tandartsverzekering</a><a href="/fysiotherapie-vergoeding-2027/">Fysiotherapie</a><a href="/eigen-risico-2027/">Eigen risico</a></div><div class="groep"><p>⚡ Energie en wonen</p><a href="/energie-2027/">Energie 2027</a><a href="/salderen-2027/">Einde salderen</a><a href="/energierekening-verlagen/">Energierekening verlagen</a><a href="/energiecontract-opzeggen/">Energiecontract opzeggen</a><a href="/huurverhoging-2027/">Huurverhoging 2027</a><a href="https://stroomwekker.netlify.app/?bron=bespaarvriend">Stroomwekker (dynamisch contract)</a></div><div class="groep"><p>📱 Internet en mobiel</p><a href="/internet-en-mobiel/">Internet en mobiel</a><a href="/sim-only-overstappen/">Sim only overstappen</a><a href="/refurbished-telefoon-kopen/">Refurbished telefoon</a><a href="/abonnementen-opzeggen/">Abonnementen opzeggen</a></div><div class="groep"><p>🚗 Auto en reizen</p><a href="/auto-en-tanken/">Auto en tanken</a><a href="/autoverzekering-besparen/">Autoverzekering</a><a href="/wegenbelasting-2027/">Wegenbelasting 2027</a><a href="/vakantie-en-vliegen/">Vakantie en vliegen</a><a href="/goedkoop-vliegen/">Goedkoop vliegen</a><a href="/reisverzekering-doorlopend-of-kortlopend/">Reisverzekering</a></div><div class="groep"><p>💶 Toeslagen en geld terug</p><a href="/zorgtoeslag-2027/">Zorgtoeslag</a><a href="/huurtoeslag-2027/">Huurtoeslag</a><a href="/kindgebonden-budget-2027/">Kindgebonden budget</a><a href="/kinderbijslag-2027/">Kinderbijslag</a><a href="/kinderopvangtoeslag-2027/">Kinderopvangtoeslag</a><a href="/noodfonds-energie-2027/">Noodfonds Energie</a><a href="/isde-subsidie-2027/">ISDE subsidie</a><a href="/belastingen-2027/">Belastingen 2027</a><a href="/belastingaangifte-tips/">Belasting terug</a></div><div class="groep"><p>🛒 Boodschappen en spullen</p><a href="/boodschappen/">Boodschappen</a><a href="/goedkoop-boodschappen-doen/">Goedkoop boodschappen doen</a><a href="/elektronica/">Elektronica en witgoed</a><a href="/administratie/">Vaste lasten op orde</a></div></div></details></nav>'
 FOOT = f"""<footer class="foot"><div class="wrap">
 <p class="free">Bespaarvriend helpt je besparen op je vaste lasten. Gratis en onafhankelijk uitgelegd. Wij geven geen persoonlijk financieel advies.</p>
 <p class="fkop">Zorg</p><nav aria-label="Zorg"><a href="/zorgverzekering-2027/">Zorgverzekering 2027</a><a href="/zorgverzekering-overstappen/">Overstappen</a><a href="/aanvullende-verzekering-2027/">Aanvullende verzekering</a><a href="/tandartsverzekering-2027/">Tandartsverzekering</a><a href="/fysiotherapie-vergoeding-2027/">Fysiotherapie</a><a href="/eigen-risico-2027/">Eigen risico 2027</a><a href="/zorgtoeslag-2027/">Zorgtoeslag 2027</a><a href="/huurtoeslag-2027/">Huurtoeslag 2027</a><a href="/huurverhoging-2027/">Huurverhoging 2027</a><a href="/kindgebonden-budget-2027/">Kindgebonden budget 2027</a><a href="/kinderbijslag-2027/">Kinderbijslag 2027</a><a href="/kinderopvangtoeslag-2027/">Kinderopvangtoeslag 2027</a><a href="/belastingen-2027/">Belastingen 2027</a><a href="/belastingaangifte-tips/">Belastingaangifte tips</a><a href="/administratie/">Vaste lasten op orde</a></nav>
@@ -382,10 +383,73 @@ def _als_tegels(blokken):
         return "".join(rest) + uit
     return uit + "".join(rest)
 
+def _bovenniveau(html):
+    """Splits html in elementen op het hoogste niveau (tekst tussen tags gaat mee met het vorige element)."""
+    stuk, diepte, start, uit = 0, 0, 0, []
+    for m in _re.finditer(r'<(/?)(div|section|ul|ol|table|details|nav|script|h2|p|figure|blockquote)\b[^>]*>', html):
+        sluit, tag = m.group(1), m.group(2)
+        if not sluit:
+            if diepte == 0 and m.start() > start and html[start:m.start()].strip():
+                uit.append(html[start:m.start()])
+            if diepte == 0: start = m.start()
+            diepte += 1
+        else:
+            diepte -= 1
+            if diepte == 0:
+                uit.append(html[start:m.end()]); start = m.end()
+    if html[start:].strip(): uit.append(html[start:])
+    return uit
+
+def _uitleg_dan_vergelijken(body):
+    """Pagina-opbouw: titel en inleiding, dan de uitleg in uitklapblokken, dan de vergelijkers, dan vragen en bronnen."""
+    paid = []
+    def pak(start_tag, s):
+        while True:
+            i = s.find(start_tag)
+            if i < 0: return s
+            tag = start_tag.split()[0][1:]
+            diepte, j = 0, i
+            for m in _re.finditer(r'<(/?)' + tag + r'\b[^>]*>', s[i:]):
+                diepte += -1 if m.group(1) else 1
+                if diepte == 0: j = i + m.end(); break
+            voor = s[:i]
+            mk = _re.search(r'<h2>[^<]*</h2>\s*$', voor)
+            if mk: voor = voor[:mk.start()]
+            paid.append(s[i:j]); s = voor + s[j:]
+    for t in ('<section class="widget"', '<div class="kaart partner"'):
+        body = pak(t, body)
+    m = _re.search(r'<p class="lead">.*?</p>', body, _re.S) or _re.search(r'</h1>(</div>)?', body)
+    if not m: return _blokken_naar_boven(body)
+    kop, rest = body[:m.end()], body[m.end():]
+    els = _bovenniveau(rest)
+    zichtbaar, secties, eind, huidig = [], [], [], None
+    for e in els:
+        st = e.lstrip()
+        if st.startswith('<section class="faq"') or st.startswith('<p class="bron">Bron') or eind:
+            eind.append(e); continue
+        if st.startswith('<h2'):
+            huidig = [_re.sub(r'<[^>]+>', '', st).strip(), []]; secties.append(huidig); continue
+        if huidig is None:
+            if 'class="kerncijfers"' in st[:60] or 'class="kaart reken"' in st[:60] or (st.startswith('<p class="bron"') and zichtbaar): zichtbaar.append(e)
+            elif 'class="kaart tool"' in st[:60]: eind.insert(0, e) if False else zichtbaar.append(e)
+            else:
+                if not secties or secties[0][0] != 'Belangrijk om te weten': secties.insert(0, ['Belangrijk om te weten', []])
+                secties[0][1].append(e)
+        else:
+            huidig[1].append(e)
+    if not secties:
+        return _blokken_naar_boven(body if not paid else kop + "".join(paid) + rest)
+    tools = [e for e in zichtbaar if 'kaart tool' in e[:60]]
+    zichtbaar = [e for e in zichtbaar if e not in tools]
+    uitklap = '<div class="uitklappen">' + "".join(
+        f'<details class="uitklap"><summary>{esc(t)}</summary><div class="inh">{"".join(c)}</div></details>' for t, c in secties if "".join(c).strip()) + '</div>'
+    vgl = ('<h2 class="vgl">Vergelijk en bespaar</h2>' + _als_tegels(paid)) if paid else ''
+    return kop + "".join(zichtbaar) + uitklap + vgl + "".join(tools) + "".join(eind)
+
 def page(path, title, desc, body, ld=(), noindex=False, prio="0.8"):
     body = _re.sub(r'<table><tr><th></th>.*?</table>', lambda m: _re.sub(r'<tr><td>(.*?)</td>', r'<tr><th scope="row">\1</th>', m.group(0)).replace('<tr><th scope="row"></th>', '<tr><td></td>', 1), body, flags=_re.S)
-    if path != "/":
-        body = _blokken_naar_boven(body)
+    if path not in ("/", "/over/", "/contact/", "/privacy/", "/gebruiksvoorwaarden/", "/bedankt/", "/404.html") and not path.startswith("/elektronica"):
+        body = _uitleg_dan_vergelijken(body)
     lds = [{"@context": "https://schema.org", "@type": "WebPage", "name": title, "url": BASE + path, "description": desc, "inLanguage": "nl-NL",
             "dateModified": VANDAAG, "publisher": {"@type": "Organization", "name": "Bespaarvriend", "url": BASE}}] + list(ld)
     doc = f"""<!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -399,7 +463,7 @@ def page(path, title, desc, body, ld=(), noindex=False, prio="0.8"):
 {''.join('<script type="application/ld+json">' + json.dumps(x, ensure_ascii=False) + '</script>' for x in lds)}
 <script data-goatcounter="https://bespaarvriend.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </head><body><header class="top"><div class="wrap"><a class="logo" href="/" aria-label="Bespaarvriend, naar de startpagina">{LOGO}<span>Bespaarvriend</span></a>{NAV}</div></header>
-<main class="wrap">{body}</main>{FOOT}<script>if("serviceWorker" in navigator)navigator.serviceWorker.register("/sw.js").catch(function(){{}})</script></body></html>"""
+<main class="wrap">{body}</main>{FOOT}<script>document.addEventListener("click",function(e){{var m=document.querySelector("details.hmenu");if(m&&m.open&&!m.contains(e.target))m.open=false}});document.addEventListener("keydown",function(e){{if(e.key==="Escape"){{var m=document.querySelector("details.hmenu");if(m)m.open=false}}}});if("serviceWorker" in navigator)navigator.serviceWorker.register("/sw.js").catch(function(){{}})</script></body></html>"""
     doc = doc.replace("€ ", "€\u00a0").replace("+ €", "+\u00a0€")
     if path.endswith("/"):
         d = os.path.join(OUT, path.strip("/")); os.makedirs(d, exist_ok=True); fn = os.path.join(d, "index.html")
@@ -529,16 +593,16 @@ def bouw():
             '<p class="bekend">Van de maker van <a href="https://boodschappenvergelijk.nl/?bron=bespaarvriend">Boodschappenvergelijk.nl</a> · bekend van '
             '<a class="b" href="https://www.hartvannederland.nl/advies-en-tips/kopen-besparen/videos/goedkoop-boodschappen-doen-erik-bouwt-vergelijker" target="_blank" rel="noopener">Hart van Nederland</a> '
             '<a class="b" href="https://www.oost.nl/nieuws/3720144/rijssenaar-erik-beltman-rekent-af-met-dure-boodschappen-in-vergelijkingswebsite" target="_blank" rel="noopener">RTV Oost</a></p>'
-            '</section>' + '<a class="uitgelicht" href="https://stroomwekker.netlify.app/?bron=bespaarvriend"><span class="lbl">Nieuw · gratis</span><span class="gr" aria-hidden="true">⚡</span><span><b>Dynamisch contract? Je apparaten vanzelf aan als stroom goedkoop is</b><small>Stroomwekker zet je boiler, wasmachine, auto of thuisbatterij aan op de goedkoopste momenten.</small><span class="knop">Naar Stroomwekker →</span></span></a>' + direct +
-            '<h2>Waar wil je op besparen?</h2><div class="tegels">'
-            f'<a href="/zorgverzekering-2027/"><span class="ic">{ICON["zorg"]}</span>{pijl}<b>Zorgverzekering</b><small>Premies 2027 en overstappen</small></a>'
+            '</section>' + '<a class="uitgelicht" href="https://stroomwekker.netlify.app/?bron=bespaarvriend"><span class="lbl">Nieuw · gratis</span><span class="gr" aria-hidden="true">⚡</span><span><b>Dynamisch contract? Je apparaten vanzelf aan als stroom goedkoop is</b><small>Stroomwekker zet je boiler, wasmachine, auto of thuisbatterij aan op de goedkoopste momenten.</small><span class="knop">Naar Stroomwekker →</span></span></a>' +
+            '<h2>Waar wil je op besparen?</h2><p class="bron" style="margin-top:-4px">Per onderwerp: eerst kort uitgelegd, daarna direct vergelijken.</p><div class="tegels">'
+            f'<a href="/zorgverzekering-2027/"><span class="ic">{ICON["zorg"]}</span>{pijl}<b>Zorgverzekering</b><small>Overstappen kan <strong>tot 31 december</strong></small><span class="vu">Uitleg + vergelijken</span></a>'
+            f'<a href="/energie-2027/"><span class="ic">{ICON["energie"]}</span>{pijl}<b>Energie</b><small>Contract en tarieven voor 2027</small><span class="vu">Uitleg + vergelijken</span></a>'
+            f'<a href="/internet-en-mobiel/"><span class="ic">{ICON["internet"]}</span>{pijl}<b>Internet en mobiel</b><small>Glasvezel, tv en sim only</small><span class="vu">Uitleg + vergelijken</span></a>'
+            f'<a href="/vakantie-en-vliegen/"><span class="ic">{ICON["vlucht"]}</span>{pijl}<b>Vakantie en vliegen</b><small>Vluchten, reizen en reisverzekering</small><span class="vu">Uitleg + vergelijken</span></a>'
+            f'<a href="/auto-en-tanken/"><span class="ic">{ICON["tank"]}</span>{pijl}<b>Auto en tanken</b><small>Verzekering, brandstof en banden</small><span class="vu">Uitleg + vergelijken</span></a>'
+            f'<a href="/salderen-2027/"><span class="ic">{ICON["zon"]}</span>{pijl}<b>Zonnepanelen</b><small>Einde salderen: zo beperk je de schade</small><span class="vu">Uitleg + vergelijken</span></a>'
             f'<a href="/eigen-risico-2027/"><span class="ic">{ICON["risico"]}</span>{pijl}<b>Eigen risico</b><small>€ 400 in 2027, met rekenhulp</small></a>'
             f'<a href="/zorgtoeslag-2027/"><span class="ic">{ICON["toeslag"]}</span>{pijl}<b>Zorgtoeslag</b><small>Heb jij recht? Check het</small></a>'
-            f'<a href="/energie-2027/"><span class="ic">{ICON["energie"]}</span>{pijl}<b>Energie</b><small>Wat verandert er in 2027</small><span class="nieuw">Nieuw</span></a>'
-            f'<a href="/salderen-2027/"><span class="ic">{ICON["zon"]}</span>{pijl}<b>Einde salderen</b><small>Zonnepanelen? Zo beperk je de schade</small><span class="nieuw">Nieuw</span></a>'
-            f'<a href="/internet-en-mobiel/"><span class="ic">{ICON["internet"]}</span>{pijl}<b>Internet en mobiel</b><small>Stop met te veel betalen</small><span class="nieuw">Nieuw</span></a>'
-            f'<a href="/vakantie-en-vliegen/"><span class="ic">{ICON["vlucht"]}</span>{pijl}<b>Vakantie en vliegen</b><small>Goedkoper weg, met vergelijkers</small><span class="nieuw">Nieuw</span></a>'
-            f'<a href="/auto-en-tanken/"><span class="ic">{ICON["tank"]}</span>{pijl}<b>Auto en tanken</b><small>Brandstof en banden</small><span class="nieuw">Nieuw</span></a>'
             f'<a href="/boodschappen/"><span class="ic">{ICON["boodschappen"]}</span>{pijl}<b>Boodschappen</b><small>Vergelijken en bijhouden</small></a>'
             f'<a href="/administratie/"><span class="ic">{ICON["map"]}</span>{pijl}<b>Vaste lasten op orde</b><small>In 5 stappen overzicht</small></a>'
             '</div>'

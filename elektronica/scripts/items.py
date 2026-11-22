@@ -32,5 +32,5 @@ if __name__ == '__main__':
     cats = CATS or [l for l in get('').split() if l.startswith('cb_')]
     cats = [c.replace('cb_', '') for c in cats]
     items = build(cats)
-    req = urllib.request.Request(API + 'items', data=json.dumps(items).encode(), method='POST')
+    req = urllib.request.Request(API + (sys.argv[2] if len(sys.argv) > 2 else 'items'), data=json.dumps(items).encode(), method='POST')
     print(urllib.request.urlopen(req).read().decode(), len(items), 'items')

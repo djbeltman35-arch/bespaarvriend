@@ -107,6 +107,14 @@ for p in oud['producten']:
             if o['winkel'] != 'coolblue' and not any(x['winkel'] == o['winkel'] for x in aanb[cbid]):
                 aanb[cbid].append(o)
 
+# 2c. Per categorie de meest voorkomende kenmerken toestaan (voor nieuwe categorieën)
+from collections import Counter as _C
+_SKIP = {'Fabrikantcode', 'Breedte', 'Hoogte', 'Diepte', 'Gewicht', 'Kleur', 'Garantie', 'Materiaal', 'Merk', 'Productnaam', 'Gewicht in gram'}
+CAT_KEYS = {}
+for _cat in {x['cat'] for x in basis.values()}:
+    _c = _C(k for x in basis.values() if x['cat'] == _cat for k in (x.get('sp') or {}) if k not in _SKIP and not k.startswith('Garantie'))
+    CAT_KEYS[_cat] = {k for k, _ in _c.most_common(14)}
+
 # 3. Samenvoegen per productnaam zonder kleur (kleurvarianten worden één product)
 per = {}
 for k, x in basis.items():
@@ -116,7 +124,7 @@ for k, x in basis.items():
     p = per.setdefault(s, {'slug': s, 'naam': naam, 'cat': x['cat'], 'merk': (x.get('b') or naam.split()[0]), 'aanbiedingen': [], 'kenmerken': {}})
     p['aanbiedingen'] += aanb[k]
     for kk, vv in (x.get('sp') or {}).items():
-        if kk in SPEC_KEYS and kk not in p['kenmerken']:
+        if (kk in SPEC_KEYS or kk in CAT_KEYS.get(x['cat'], ())) and kk not in p['kenmerken']:
             p['kenmerken'][kk] = vv
 producten = []
 for p in per.values():
@@ -125,7 +133,8 @@ for p in per.values():
         t = o['prijs'] + (o['verzend'] or 0)
         if o['winkel'] not in beste or t < beste[o['winkel']]['prijs'] + (beste[o['winkel']]['verzend'] or 0):
             beste[o['winkel']] = o
-    p['aanbiedingen'] = list(beste.values())
+    cb = beste.get('coolblue', {}).get('prijs')
+    p['aanbiedingen'] = [o for o in beste.values() if not cb or 0.55 * cb <= o['prijs'] <= 1.6 * cb]
     if len(p['aanbiedingen']) >= 2:
         producten.append(p)
 

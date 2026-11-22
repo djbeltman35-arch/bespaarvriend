@@ -146,6 +146,12 @@ for p in oud['producten']:
     if p['slug'] not in nieuw and cbid not in cb_nieuw:
         producten.append(p)
 
+def _schoon(p):
+    cb = next((o['prijs'] for o in p['aanbiedingen'] if o['winkel'] == 'coolblue'), None)
+    p['aanbiedingen'] = [o for o in p['aanbiedingen'] if not cb or 0.55 * cb <= o['prijs'] <= 1.6 * cb]
+    return len(p['aanbiedingen']) >= 2
+producten = [p for p in producten if _schoon(p)]
+
 data = dict(cfg)
 data['producten'] = producten
 data['bijgewerkt'] = datetime.date.today().strftime('%-d %B %Y').replace('November', 'november').replace('December', 'december').replace('January', 'januari')

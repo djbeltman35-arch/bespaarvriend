@@ -21,12 +21,12 @@ def build(cats):
         for x in json.loads(raw):
             if not x.get('p'): continue
             m = norm(x.get('mpn') or '')
-            loose = c in LOOSE
+            loose = c.split('__')[0] in LOOSE
             name = x['n']
             t = tokens(name)
-            xs = [v for v in VAR if v not in t] + (['cellular', '5g', 'lte', '4g'] if c == 'tablets' and not {'5g', 'cellular', 'lte'} & set(name.lower().split()) else [])
+            xs = [v for v in VAR if v not in t] + (['cellular', '5g', 'lte', '4g'] if c.split('__')[0] == 'tablets' and not {'5g', 'cellular', 'lte'} & set(name.lower().split()) else [])
             q = name if (loose or len(m) < 5) else x['mpn']
-            items.append({'k': x['id'], 'c': c, 'q': q, 'm': m if len(m) >= 5 else '', 'p': x['p'], 't': t, 'x': xs, 'loose': loose or len(m) < 5})
+            items.append({'k': x['id'], 'c': c.split('__')[0], 'q': q, 'm': m if len(m) >= 5 else '', 'p': x['p'], 't': t, 'x': xs, 'loose': loose or len(m) < 5})
     return items
 if __name__ == '__main__':
     cats = CATS or [l for l in get('').split() if l.startswith('cb_')]

@@ -43,7 +43,7 @@ def lees(pad):
 # 1. Coolblue-basis
 basis = {}
 for f in sorted(glob.glob(os.path.join(V2, 'cb_*.json'))):
-    cat = os.path.basename(f)[3:-5]
+    cat = os.path.basename(f)[3:-5].split('__')[0]
     for x in lees(f) or []:
         if not x.get('p') or x.get('a') not in ('InStock', 'LimitedAvailability', 'PreOrder', 'OnlineOnly', ''):
             continue

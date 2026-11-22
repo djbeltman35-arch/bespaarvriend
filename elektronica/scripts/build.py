@@ -272,10 +272,11 @@ function filter(){const t=(q&&q.value||'').toLowerCase().trim().split(/\\s+/).fi
  if(sort)volg.forEach(k=>lijst.appendChild(k));if(aantal)aantal.textContent=zicht.length+' product'+(zicht.length==1?'':'en');
  const g=document.getElementById('geen');if(g&&sort)g.hidden=zicht.length>0;}
 document.querySelectorAll('[data-kies]').forEach(b=>b.addEventListener('click',()=>{groep=b.dataset.kies;document.querySelectorAll('[data-kies]').forEach(x=>x.classList.toggle('aan',x==b));filter();}));
-document.querySelectorAll('[data-merk-kies]').forEach(b=>b.addEventListener('click',()=>{merk=b.dataset.merkKies;document.querySelectorAll('[data-merk-kies]').forEach(x=>x.classList.toggle('aan',x==b));filter();}));
-document.querySelectorAll('[data-spec-kies]').forEach(b=>b.addEventListener('click',()=>{const g=b.dataset.specGroep;specf[g]=b.dataset.specKies;document.querySelectorAll('[data-spec-groep="'+g+'"]').forEach(x=>x.classList.toggle('aan',x==b));filter();}));
-const wis=document.getElementById('wis');wis&&wis.addEventListener('click',()=>{merk='';for(const k in specf)delete specf[k];document.querySelectorAll('[data-spec-kies],[data-merk-kies]').forEach(x=>x.classList.toggle('aan',(x.dataset.specKies===''||x.dataset.merkKies==='')));filter();});
-if(matchMedia('(max-width:700px)').matches)document.querySelectorAll('details.filters').forEach(d=>d.open=false);
+const fa=document.getElementById('factief');const telf=()=>{const n=(merk?1:0)+Object.values(specf).filter(Boolean).length;if(fa)fa.textContent=n?'('+n+')':'';document.querySelectorAll('select[data-spec-groep],select[data-merk-sel]').forEach(x=>x.classList.toggle('aan',!!x.value));};
+document.querySelectorAll('select[data-merk-sel]').forEach(x=>x.addEventListener('change',()=>{merk=x.value;telf();filter();}));
+document.querySelectorAll('select[data-spec-groep]').forEach(x=>x.addEventListener('change',()=>{specf[x.dataset.specGroep]=x.value;telf();filter();}));
+const wis=document.getElementById('wis');wis&&wis.addEventListener('click',()=>{merk='';for(const k in specf)delete specf[k];document.querySelectorAll('select[data-spec-groep],select[data-merk-sel]').forEach(x=>x.value='');telf();filter();});
+if(!matchMedia('(max-width:700px)').matches)document.querySelectorAll('details.filters').forEach(d=>d.open=true);
 q&&q.addEventListener('input',filter);sort&&sort.addEventListener('change',filter);
 inc&&inc.addEventListener('change',()=>{try{localStorage.setItem('incl',inc.checked?'1':'0')}catch(e){};herreken()});
 try{if(inc&&localStorage.getItem('incl')==='0')inc.checked=false}catch(e){}
@@ -298,33 +299,43 @@ def spectabel(p):
 
 
 def merkknoppen(producten):
-    merken = sorted({p['merk'] for p in producten})
+    merken = sorted({p['merk'] for p in producten}, key=str.lower)
     if len(merken) < 2:
         return ''
-    return ('<div class="cats merken" aria-label="Merk"><span class="lbl">Merk:</span><button class="aan" data-merk-kies="">Alle</button>'
-            + ''.join(f'<button data-merk-kies="{e(m)}">{e(m)}</button>' for m in merken) + '</div>')
+    return ('<label class="fsel"><span>Merk</span><select data-merk-sel><option value="">Alle merken</option>'
+            + ''.join(f'<option value="{e(m)}">{e(m)}</option>' for m in merken) + '</select></label>')
 
 
-def specknoppen(producten):
-    uit = ''
-    sleutels = []
+def specknoppen(producten, alleen_prijs=False):
+    """Filters als rustige keuzelijsten. Alleen kenmerken die bij de meeste producten bekend zijn en 2-12 waarden hebben."""
+    tel = {}
     for p in producten:
         for k_ in p['spec']:
-            if k_ not in sleutels:
-                sleutels.append(k_)
-    sleutels.sort(key=lambda k_: 0 if k_ == 'Prijsklasse' else 1)
+            tel[k_] = tel.get(k_, 0) + 1
+    sleutels = sorted(tel, key=lambda k_: (k_ != 'Prijsklasse', -tel[k_]))
+    uit = []
     for k_ in sleutels:
-        waarden = sorted({p['spec'][k_] for p in producten if k_ in p['spec']}, key=_sortwaarde)
-        if len(waarden) < 2:
+        if alleen_prijs and k_ != 'Prijsklasse':
             continue
-        uit += (f'<div class="cats merken" aria-label="{e(k_)}"><span class="lbl">{e(k_)}:</span><button class="aan" data-spec-groep="{e(k_)}" data-spec-kies="">Alle</button>'
-                + ''.join(f'<button data-spec-groep="{e(k_)}" data-spec-kies="{e(v)}">{e(v)}</button>' for v in waarden) + '</div>')
+        if k_ != 'Prijsklasse' and tel[k_] < max(3, len(producten) * 0.4):
+            continue
+        waarden = sorted({p['spec'][k_] for p in producten if k_ in p['spec']}, key=_sortwaarde)
+        if not 2 <= len(waarden) <= 12:
+            continue
+        naam = 'Prijs' if k_ == 'Prijsklasse' else k_
+        uit.append(f'<label class="fsel"><span>{e(naam)}</span><select data-spec-groep="{e(k_)}"><option value="">Alle</option>'
+                   + ''.join(f'<option value="{e(v)}">{e(v)}</option>' for v in waarden) + '</select></label>')
     return uit
 
 
 def lijstblok(producten, groep='', cat='', sub=''):
-    f = specknoppen(producten) + merkknoppen(producten)
-    fblok = f'<details class="filters" open><summary>Filters</summary><div class="fbody">{f}<button type="button" class="wis" id="wis">Wis alle filters</button></div></details>' if f else ''
+    sp = specknoppen(producten, alleen_prijs=not cat)
+    m_ = merkknoppen(producten)
+    velden = sp[:1] + ([m_] if m_ else []) + sp[1:]
+    zicht, meer = velden[:6], velden[6:]
+    f = ''.join(zicht) + (f'<details class="meer"><summary>Meer filters ({len(meer)})</summary><div class="fgrid">{"".join(meer)}</div></details>' if meer else '')
+    fblok = (f'<details class="filters"><summary>Filteren <span id="factief"></span></summary><div class="fbody"><div class="fgrid">{f}</div>'
+             '<button type="button" class="wis" id="wis">Wis filters</button></div></details>') if velden else ''
     return (f'''{fblok}<div class="balk"><span id="aantal"></span>
 <label>Sorteer: <select id="sort"><option value="pop">Populair</option><option value="laag">Laagste prijs</option><option value="hoog">Hoogste prijs</option><option value="verschil">Grootste prijsverschil</option></select></label></div>
 <div class="lijst" id="lijst" data-groep="{groep}" data-cat="{cat}" data-sub="{sub}">{''.join(kaart(p) for p in producten)}</div>

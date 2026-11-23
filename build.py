@@ -230,6 +230,7 @@ WIDGETS = {  # naam: (script-slug, css-klasse, extra config)
     "budgetmobiel": ("sim-only", "dc-sim-only-tool", {"limit": 3, "limitSplit": 3, "showFilters": False, "filter": {"provider": {"value": ["2"]}}}),
     "telecom": ("all-in-one", "dc-all-in-one-tool", {"limit": 3, "limitSplit": 3, "showFilters": False}),
     "vakantie": ("vacation", "dc-vacation-tool", {"limit": 3, "limitSplit": 3, "showFilters": False}),
+    "enquetes": ("market-research", "dc-market-research-tool", {"locale": "nl-NL", "limit": 25, "showFilters": True}),
 }
 
 def widget(naam, titel):
@@ -260,7 +261,7 @@ def partner(url, titel, tekst, knop, artikelen=()):
             f'<a class="btn" href="{url}" rel="sponsored noopener" target="_blank">{knop}{ICON["pijl"]}</a>'
             '<p class="bron">Sluit je via deze link iets af, dan krijgt Bespaarvriend een kleine vergoeding. Jij betaalt niets extra.</p></div>')
 
-NAV = '<nav class="top" aria-label="Hoofdmenu"><details class="hmenu"><summary>☰ Menu</summary><div class="paneel"><div class="groep"><p>🩺 Zorg</p><a href="/zorgverzekering-2027/">Zorgverzekering 2027</a><a href="/zorgverzekering-overstappen/">Overstappen</a><a href="/aanvullende-verzekering-2027/">Aanvullende verzekering</a><a href="/tandartsverzekering-2027/">Tandartsverzekering</a><a href="/fysiotherapie-vergoeding-2027/">Fysiotherapie</a><a href="/eigen-risico-2027/">Eigen risico</a></div><div class="groep"><p>⚡ Energie en wonen</p><a href="/energie-2027/">Energie 2027</a><a href="/salderen-2027/">Einde salderen</a><a href="/energierekening-verlagen/">Energierekening verlagen</a><a href="/energiecontract-opzeggen/">Energiecontract opzeggen</a><a href="/huurverhoging-2027/">Huurverhoging 2027</a><a href="https://stroomwekker.eu/?bron=bespaarvriend">Stroomwekker (dynamisch contract)</a></div><div class="groep"><p>📱 Internet en mobiel</p><a href="/internet-en-mobiel/">Internet en mobiel</a><a href="/sim-only-overstappen/">Sim only overstappen</a><a href="/refurbished-telefoon-kopen/">Refurbished telefoon</a><a href="/abonnementen-opzeggen/">Abonnementen opzeggen</a></div><div class="groep"><p>🚗 Auto en reizen</p><a href="/auto-en-tanken/">Auto en tanken</a><a href="/autoverzekering-besparen/">Autoverzekering</a><a href="/wegenbelasting-2027/">Wegenbelasting 2027</a><a href="/vakantie-en-vliegen/">Vakantie en vliegen</a><a href="/goedkoop-vliegen/">Goedkoop vliegen</a><a href="/reisverzekering-doorlopend-of-kortlopend/">Reisverzekering</a></div><div class="groep"><p>💶 Toeslagen en geld terug</p><a href="/zorgtoeslag-2027/">Zorgtoeslag</a><a href="/huurtoeslag-2027/">Huurtoeslag</a><a href="/kindgebonden-budget-2027/">Kindgebonden budget</a><a href="/kinderbijslag-2027/">Kinderbijslag</a><a href="/kinderopvangtoeslag-2027/">Kinderopvangtoeslag</a><a href="/noodfonds-energie-2027/">Noodfonds Energie</a><a href="/isde-subsidie-2027/">ISDE subsidie</a><a href="/belastingen-2027/">Belastingen 2027</a><a href="/belastingaangifte-tips/">Belasting terug</a></div><div class="groep"><p>🛒 Boodschappen en spullen</p><a href="/boodschappen/">Boodschappen</a><a href="/goedkoop-boodschappen-doen/">Goedkoop boodschappen doen</a><a href="/elektronica/">Elektronica en witgoed</a><a href="/administratie/">Vaste lasten op orde</a></div></div></details></nav>'
+NAV = '<nav class="top" aria-label="Hoofdmenu"><details class="hmenu"><summary>☰ Menu</summary><div class="paneel"><div class="groep"><p>🩺 Zorg</p><a href="/zorgverzekering-2027/">Zorgverzekering 2027</a><a href="/zorgverzekering-overstappen/">Overstappen</a><a href="/aanvullende-verzekering-2027/">Aanvullende verzekering</a><a href="/tandartsverzekering-2027/">Tandartsverzekering</a><a href="/fysiotherapie-vergoeding-2027/">Fysiotherapie</a><a href="/eigen-risico-2027/">Eigen risico</a></div><div class="groep"><p>⚡ Energie en wonen</p><a href="/energie-2027/">Energie 2027</a><a href="/salderen-2027/">Einde salderen</a><a href="/energierekening-verlagen/">Energierekening verlagen</a><a href="/energiecontract-opzeggen/">Energiecontract opzeggen</a><a href="/huurverhoging-2027/">Huurverhoging 2027</a><a href="https://stroomwekker.eu/?bron=bespaarvriend">Stroomwekker (dynamisch contract)</a></div><div class="groep"><p>📱 Internet en mobiel</p><a href="/internet-en-mobiel/">Internet en mobiel</a><a href="/sim-only-overstappen/">Sim only overstappen</a><a href="/refurbished-telefoon-kopen/">Refurbished telefoon</a><a href="/abonnementen-opzeggen/">Abonnementen opzeggen</a></div><div class="groep"><p>🚗 Auto en reizen</p><a href="/auto-en-tanken/">Auto en tanken</a><a href="/autoverzekering-besparen/">Autoverzekering</a><a href="/wegenbelasting-2027/">Wegenbelasting 2027</a><a href="/vakantie-en-vliegen/">Vakantie en vliegen</a><a href="/goedkoop-vliegen/">Goedkoop vliegen</a><a href="/reisverzekering-doorlopend-of-kortlopend/">Reisverzekering</a></div><div class="groep"><p>💶 Toeslagen en geld terug</p><a href="/zorgtoeslag-2027/">Zorgtoeslag</a><a href="/huurtoeslag-2027/">Huurtoeslag</a><a href="/kindgebonden-budget-2027/">Kindgebonden budget</a><a href="/kinderbijslag-2027/">Kinderbijslag</a><a href="/kinderopvangtoeslag-2027/">Kinderopvangtoeslag</a><a href="/noodfonds-energie-2027/">Noodfonds Energie</a><a href="/isde-subsidie-2027/">ISDE subsidie</a><a href="/belastingen-2027/">Belastingen 2027</a><a href="/belastingaangifte-tips/">Belasting terug</a><a href="/bijverdienen-met-enquetes/">Bijverdienen met enquêtes</a></div><div class="groep"><p>🛒 Boodschappen en spullen</p><a href="/boodschappen/">Boodschappen</a><a href="/goedkoop-boodschappen-doen/">Goedkoop boodschappen doen</a><a href="/elektronica/">Elektronica en witgoed</a><a href="/administratie/">Vaste lasten op orde</a></div></div></details></nav>'
 FOOT = f"""<footer class="foot"><div class="wrap">
 <p class="free">Bespaarvriend helpt je besparen op je vaste lasten. Gratis en onafhankelijk uitgelegd. Wij geven geen persoonlijk financieel advies.</p>
 <p class="fkop">Zorg</p><nav aria-label="Zorg"><a href="/zorgverzekering-2027/">Zorgverzekering 2027</a><a href="/zorgverzekering-overstappen/">Overstappen</a><a href="/aanvullende-verzekering-2027/">Aanvullende verzekering</a><a href="/tandartsverzekering-2027/">Tandartsverzekering</a><a href="/fysiotherapie-vergoeding-2027/">Fysiotherapie</a><a href="/eigen-risico-2027/">Eigen risico 2027</a><a href="/zorgtoeslag-2027/">Zorgtoeslag 2027</a><a href="/huurtoeslag-2027/">Huurtoeslag 2027</a><a href="/huurverhoging-2027/">Huurverhoging 2027</a><a href="/kindgebonden-budget-2027/">Kindgebonden budget 2027</a><a href="/kinderbijslag-2027/">Kinderbijslag 2027</a><a href="/kinderopvangtoeslag-2027/">Kinderopvangtoeslag 2027</a><a href="/belastingen-2027/">Belastingen 2027</a><a href="/belastingaangifte-tips/">Belastingaangifte tips</a><a href="/administratie/">Vaste lasten op orde</a></nav>
@@ -524,7 +525,7 @@ def artikel(path, kruim, ic, h1, lead, kern, inhoud, partnerblok, verder, faq, b
     ch, cld = crumbs(kruim, path)
     k = ('<div class="kerncijfers">' + "".join(f'<div><b>{a}</b><small>{b}</small></div>' for a, b in kern) + '</div>') if kern else ''
     v = '<h2>Verder lezen</h2><ul class="links">' + "".join(f'<li><a href="{u}">{t}</a></li>' for u, t in verder) + '</ul>'
-    br = '<p class="bron">Bronnen: ' + ", ".join(f'<a href="{u}" rel="noopener">{t}</a>' for u, t in bronnen) + f'. Bijgewerkt op {BIJGEWERKT}.</p>'
+    br = ('<p class="bron">Bronnen: ' + ", ".join(f'<a href="{u}" rel="noopener">{t}</a>' for u, t in bronnen) + f'. Bijgewerkt op {BIJGEWERKT}.</p>') if bronnen else f'<p class="bron">Bijgewerkt op {BIJGEWERKT}.</p>'
     body = (ch + f'<div class="paginakop"><span class="ic">{ICON[ic]}</span><h1>{h1}</h1></div><p class="lead">{lead}</p>' + k + inhoud + partnerblok + v + faq_html(faq) + br)
     page(path, title, desc, body, [cld, faq_ld(faq)], prio=prio)
 
@@ -628,6 +629,7 @@ def bouw():
             f'<a href="/kinderopvangtoeslag-2027/"><span class="ic">{ICON["toeslag"]}</span>{pijl}<b>Kinderopvangtoeslag</b><small>96% tot ± € 72.000</small><span class="nieuw">Nieuw</span></a>'
             f'<a href="/isde-subsidie-2027/"><span class="ic">{ICON["zon"]}</span>{pijl}<b>ISDE subsidie</b><small>Isolatie en warmtepomp</small><span class="nieuw">Nieuw</span></a>'
             f'<a href="/belastingaangifte-tips/"><span class="ic">{ICON["bon"]}</span>{pijl}<b>Belasting terug</b><small>Aftrekposten niet vergeten</small><span class="nieuw">Nieuw</span></a>'
+            f'<a href="/bijverdienen-met-enquetes/"><span class="ic">{ICON["bon"]}</span>{pijl}<b>Bijverdienen met enquêtes</b><small>Geld of cadeaubonnen voor je mening</small><span class="nieuw">Nieuw</span></a>'
             '</div>'
             '<h2>Deze data niet missen</h2>' + agenda_html() + ''
             '<h2>Meer gratis hulpmiddelen</h2><p class="bron" style="margin-top:-4px">Ook gemaakt door Erik, net zo eerlijk en gratis.</p><div class="tegels tools">'
@@ -1522,6 +1524,28 @@ u.textContent='Zonder verzekering betaal je '+eur(zonder)+'. Met dit pakket beta
          ("Hoe houd ik mijn boodschappenuitgaven bij?", "Scan je kassabonnen met een app als Bonnenboek. Dan zie je per week en per maand wat je uitgeeft.")],
         [("https://boodschappenvergelijk.nl/", "Boodschappenvergelijk.nl"), ("https://www.nibud.nl/onderwerpen/uitgaven/kosten-boodschappen/", "Nibud")],
         "Goedkoop boodschappen doen: 10 tips die elke week schelen", "Goedkoop boodschappen doen met 10 tips: vergelijk je lijstje bij 12 supermarkten, kies vaker het huismerk, plan je week en let op de prijs per kilo.")
+    artikel("/bijverdienen-met-enquetes/", "Bijverdienen met enquêtes", "bon",
+        "Bijverdienen met enquêtes: zo werkt het en wat levert het op",
+        "Bij een betaald panel vul je online vragenlijsten in en krijg je daar geld, punten of cadeaubonnen voor. Rijk word je er niet van, maar het is een makkelijke manier om iets bij te verdienen. Hieronder zie je panels waar je je gratis kunt aanmelden.",
+        [],
+        '<h2>Hoe werkt een enquêtepanel?</h2><ol class="stappen">'
+        '<li><b>Meld je gratis aan</b> bij een of meer panels. Je vult een korte vragenlijst over jezelf in, zoals je leeftijd en woonplaats.</li>'
+        '<li><b>Je krijgt uitnodigingen</b> voor onderzoeken die bij jou passen, per mail of in een app.</li>'
+        '<li><b>Vul de vragenlijst in.</b> Daarvoor krijg je geld, punten of een cadeaubon. Bij sommige panels scan je ook je boodschappen.</li>'
+        '<li><b>Wissel je tegoed in</b> zodra je de uitbetaalgrens hebt bereikt.</li></ol>'
+        '<h2>Wat levert het op?</h2><p>Per vragenlijst is de beloning meestal klein. Het loont vooral als je bij een paar panels tegelijk zit en regelmatig meedoet. Zie het als een extraatje, niet als vast inkomen.</p>'
+        '<h2>Tips</h2><ul>'
+        '<li><b>Betaal nooit om mee te doen.</b> Een betrouwbaar panel is altijd gratis.</li>'
+        '<li><b>Gebruik een apart e-mailadres</b>, dan houd je je gewone mailbox rustig.</li>'
+        '<li><b>Let op de uitbetaalgrens.</b> Kijk vooraf vanaf welk bedrag je je tegoed kunt laten uitbetalen.</li>'
+        '<li><b>Lees de privacyvoorwaarden</b> en geef alleen gegevens die nodig zijn.</li></ul>',
+        widget("enquetes", "Betaalde enquêtepanels"),
+        [("/goedkoop-boodschappen-doen/", "Goedkoop boodschappen doen"), ("/belastingaangifte-tips/", "Belasting terug"), ("/abonnementen-opzeggen/", "Abonnementen opzeggen")],
+        [("Kost meedoen aan een enquêtepanel geld?", "Nee. Aanmelden en meedoen bij een betrouwbaar panel is gratis. Vraagt een panel om geld, doe dan niet mee."),
+         ("Hoeveel kun je verdienen met enquêtes?", "Per vragenlijst meestal een klein bedrag. Wie bij meerdere panels meedoet, spaart er een leuk extraatje mee bij elkaar."),
+         ("Hoe krijg je je geld?", "Dat verschilt per panel: via je bankrekening, als cadeaubon of als punten die je inwisselt. Meestal pas vanaf een bepaald bedrag.")],
+        [],
+        "Bijverdienen met enquêtes: betaalde panels vergelijken", "Bijverdienen met online enquêtes: zo werkt een betaald panel, wat het oplevert en bij welke panels je je gratis aanmeldt. Met tips om oplichting te voorkomen.")
     artikel("/huurtoeslag-2027/", "Huurtoeslag 2027", "sleutel",
         "Huurtoeslag 2027: wat verandert er en heb jij recht?",
         "Sinds 2026 is je huur nooit meer te hoog om huurtoeslag te krijgen. In 2027 verandert er weer iets: ook het vermogen van je toeslagpartner telt mee. Zo zie je snel of je recht hebt.",

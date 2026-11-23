@@ -398,6 +398,10 @@ def lijstblok(producten, groep='', cat='', sub=''):
 from urllib.parse import quote as _q
 def _awin(mid, ref, doel): return f'https://www.awin1.com/cread.php?awinmid={mid}&awinaffid=3152283&clickref={ref}&ued={_q(doel, safe="")}'
 def _teufel(pad=''): return f'https://fr135.net/c/?si=15574&li=1673006&wi=449774&ws=bespaarvriend-elektronica&dl={_q(pad, safe="")}'
+def _dc(host, si, li, pad=''): return f'https://{host}/c/?si={si}&li={li}&wi=449774&ws=bespaarvriend-elektronica&dl={_q(pad, safe="")}'
+_JOY = ('Elektronica en huishoudapparaten van een grote webwinkel', 'Een groot online warenhuis met elektronica, huishoudapparaten en accessoires.', 'Bekijk het aanbod', _dc('glp8.net', 20823, 1881811), [])
+_EUFY = ('Robotstofzuigers, camera\'s en deurbellen', 'Slimme apparaten voor in en om het huis, veel modellen met opslag in het apparaat zelf.', 'Bekijk het aanbod', _dc('bdt9.net', 18489, 1849129), [])
+_SHOKZ = ('Open sportkoptelefoons', 'Koptelefoons die op je jukbeen rusten, zodat je verkeer en omgeving blijft horen. Populair bij hardlopers en fietsers.', 'Bekijk sportkoptelefoons', _dc('glp8.net', 22077, 1933072), [])
 _REFURB = ('Liever refurbished?', 'Gebruikte toestellen, gecontroleerd en schoongemaakt, met garantie. Vaak flink goedkoper dan nieuw.')
 PARTNERS = {
     'smartphones': [(*_REFURB, 'Bekijk refurbished telefoons', _awin(112024, 'bespaarvriend-elektronica', 'https://www.refurbished.nl/'),
@@ -405,9 +409,13 @@ PARTNERS = {
     'tablets': [(*_REFURB, 'Bekijk refurbished iPads', _awin(112024, 'bespaarvriend-elektronica', 'https://www.refurbished.nl/ipad'), [])],
     'laptops': [(*_REFURB, 'Bekijk refurbished laptops', _awin(112024, 'bespaarvriend-elektronica', 'https://www.refurbished.nl/laptops'),
                  [('MacBook', _awin(112024, 'bespaarvriend-elektronica', 'https://www.refurbished.nl/macbook'))])],
-    'koptelefoons': [('Koptelefoons rechtstreeks van de Duitse maker', 'Een audiomerk uit Berlijn dat zelf verkoopt, zonder winkel ertussen.', 'Bekijk koptelefoons', _teufel('koptelefoons'), [])],
+    'koptelefoons': [_SHOKZ, ('Koptelefoons rechtstreeks van de Duitse maker', 'Een audiomerk uit Berlijn dat zelf verkoopt, zonder winkel ertussen.', 'Bekijk koptelefoons', _teufel('koptelefoons'), [])],
     'soundbars': [('Soundbars rechtstreeks van de Duitse maker', 'Een audiomerk uit Berlijn dat zelf verkoopt, zonder winkel ertussen.', 'Bekijk soundbars', _teufel('soundbars'), [])],
     'speakers': [('Speakers rechtstreeks van de Duitse maker', 'Een audiomerk uit Berlijn dat zelf verkoopt, zonder winkel ertussen.', 'Bekijk speakers', _teufel('speakers'), [])],
+    'oordopjes': [_SHOKZ],
+    'robotstofzuigers': [_EUFY, _JOY],
+    'televisies': [_JOY],
+    'smartwatches': [_JOY],
 }
 
 

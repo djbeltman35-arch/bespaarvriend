@@ -239,7 +239,7 @@ def widget(naam, titel):
     slug, klasse, extra = WIDGETS[naam]
     cfg = {"mediaId": DC_MEDIA, "subId": "bespaarvriend-" + naam, "language": "nl", "filter": {}}
     cfg.update(extra)
-    return (f'<section class="widget" id="w-{naam}" aria-label="{esc(titel)}"><h2>{esc(titel)}</h2><p class="ad">Advertentie. Sluit je via deze vergelijker iets af, dan krijgt Bespaarvriend een vergoeding. Jij betaalt niets extra.</p>'
+    return (f'<section class="widget" id="w-{naam}" aria-label="{esc(titel)}"><h2>{esc(titel)}</h2><p class="ad">{"Advertentie. Meld je je via deze lijst aan bij een panel, dan krijgt Bespaarvriend een vergoeding. Jij betaalt niets." if naam == "enquetes" else "Advertentie. Sluit je via deze vergelijker iets af, dan krijgt Bespaarvriend een vergoeding. Jij betaalt niets extra."}</p>'
             f'<script src="https://daisycon.tools/{slug}/app.js" defer></script><div class="dc-tool {klasse}" data-config=\'{json.dumps(cfg)}\'></div></section>')
 
 from urllib.parse import quote as _q

@@ -350,6 +350,9 @@ _KORT = {
     "Maaltijdbox": ("Maaltijdbox", "Minder weggooien"),
     "Refurbished telefoon met garantie": ("Refurbished telefoons/iPads", "Met garantie"),
     "Reisverzekering": ("Reisverzekering", "Eén reis of het hele jaar"),
+    "Autoverzekering die elk jaar wordt gecheckt": ("Autoverzekering", "Elk jaar gecheckt"),
+    "Doorlopende reisverzekering, elk jaar gecheckt": ("Doorlopende reisverzekering", "Elk jaar gecheckt"),
+    "Al je verzekeringen goedkoper": ("Verzekeringen goedkoper", "Auto, woon en reis"),
     "Sim only met een duidelijke maandprijs": ("Sim only", "Vaste prijs per maand"),
     "Snellere wifi in huis": ("Snellere wifi", "Router of mesh"),
     "Vliegtickets boeken": ("Vliegtickets", "800+ maatschappijen"),
@@ -517,6 +520,7 @@ DIRECT = [
     ("/internet-en-mobiel/#mobiel", "mobiel", "Mobiel abonnement vergelijken", "Sim only of met telefoon"),
     (awin(63484, "bespaarvriend-tegel", "https://www.vliegwinkel.nl/"), "vlucht", "Vliegtickets", "Meer dan 800 maatschappijen"),
     (awin(78144, "bespaarvriend-tegel", "https://www.hansemerkur.nl/reisverzekeringen"), "koffer", "Reisverzekering", "Eén reis of het hele jaar"),
+    (awin(114590, "bespaarvriend-tegel", "https://www.surebird.nl/bespaarcheck"), "check", "Verzekeringen goedkoper", "Auto, woon en reis, elk jaar gecheckt"),
 ]
 
 
@@ -875,6 +879,7 @@ else u.textContent='Je komt waarschijnlijk in aanmerking. Hoe lager je inkomen, 
             + partner(awin(128623, "bespaarvriend-vakantie"), "eSIM voor buiten de EU", "Mobiel internet zonder dure roaming. Je zet de eSIM vooraf op je telefoon en hebt direct data bij aankomst.", "Bekijk eSIM's",
                       [(n, awin(128623, "bespaarvriend-vakantie", f"https://saily.com/nl/esim-{sl}/")) for n, sl in ESIM])
             + partner(awin(78144, "bespaarvriend-vakantie", "https://www.hansemerkur.nl/reisverzekeringen"), "Reisverzekering", "Een reisverzekering voor één reis of het hele jaar, ook voor wintersport en lange reizen.", "Bekijk reisverzekeringen", [("Doorlopend", awin(78144, "bespaarvriend-vakantie", "https://www.hansemerkur.nl/reisverzekeringen/doorlopende-reisverzekering")), ("Eén reis", awin(78144, "bespaarvriend-vakantie", "https://www.hansemerkur.nl/reisverzekeringen/kortlopende-reisverzekering")), ("Wintersport", awin(78144, "bespaarvriend-vakantie", "https://www.hansemerkur.nl/reisverzekeringen/wintersportverzekering")), ("Lang op reis", awin(78144, "bespaarvriend-vakantie", "https://www.hansemerkur.nl/lang-op-reisverzekeringen"))])
+            + partner(awin(114590, "bespaarvriend-vakantie", "https://www.surebird.nl/doorlopende-reisverzekering"), "Doorlopende reisverzekering, elk jaar gecheckt", "Ga je vaker op reis? Een doorlopende reisverzekering is dan vaak goedkoper. Elk jaar wordt gekeken of het nog goedkoper kan.", "Bekijk wat je bespaart")
             + faq_html(faq_v) +
             '<p class="bron">Bronnen: <a href="https://europa.eu/youreurope/citizens/consumers/internet-telecoms/mobile-roaming-costs/index_nl.htm" rel="noopener">Your Europe (roamen in de EU)</a>, '
             '<a href="https://vakantietoppers.netlify.app/gids/goedkoop-op-vakantie-tips.html" rel="noopener">Vakantiewijzer: 10 tips</a>. '
@@ -910,6 +915,8 @@ else u.textContent='Je komt waarschijnlijk in aanmerking. Hoe lager je inkomen, 
             + partner(banden_bnl(205, 55, 16, "zomer-banden"), "Banden vergelijken", "Vergelijk banden van verschillende winkels, ook met montage bij je in de buurt.", "Vergelijk banden",
                       [(f"{n} zomer", banden_bnl(w, h, d, "zomer-banden")) for n, w, h, d in MATEN] + [("205/55 R16 all-season", banden_bnl(205, 55, 16, "all-season-banden"))])
             + partner(awin(8311, "bespaarvriend-auto", "https://www.unitedconsumers.com/autoverzekering"), "Autoverzekering met korting", "Een autoverzekering met collectieve korting op de premie. Vul je kenteken in en zie direct wat je betaalt.", "Bereken je premie")
+            + partner(awin(114590, "bespaarvriend-auto", "https://www.surebird.nl/autoverzekering"), "Autoverzekering die elk jaar wordt gecheckt", "Zij zoeken de beste combinatie van prijs en dekking bij verschillende verzekeraars, en kijken elk jaar opnieuw of het goedkoper kan.", "Bekijk wat je bespaart",
+                      [("Autoverzekering", awin(114590, "bespaarvriend-auto", "https://www.surebird.nl/autoverzekering")), ("Al je verzekeringen", awin(114590, "bespaarvriend-auto", "https://www.surebird.nl/verzekeringspakket"))])
             + partner(awin(8311, "bespaarvriend-auto", "https://www.unitedconsumers.com/tanken"), "Korting op elke tankbeurt", "Met een tankpas van een collectief krijg je korting per liter bij veel tankstations in Nederland.", "Bekijk de tankkorting")
             + faq_html(faq_a) +
             f'<p class="bron">Bijgewerkt op {BIJGEWERKT}.</p>')

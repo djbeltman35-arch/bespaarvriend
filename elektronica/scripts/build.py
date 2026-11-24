@@ -228,6 +228,7 @@ def kop(titel, beschrijving, pad, extra_head=''):
 <meta property="og:title" content="{e(titel)}"><meta property="og:description" content="{e(beschrijving)}">
 <meta property="og:type" content="website"><meta property="og:url" content="{DOMEIN}{pad}"><meta property="og:image" content="{DOMEIN}/icons/icon-512.png">
 {extra_head}
+<script src="/installeer.js" defer></script>
 </head>
 <body>
 <header class="top">

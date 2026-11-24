@@ -14,8 +14,8 @@ function __ibCss(css) {
   var thuis = '/' + (/^\/[a-z]{2}\//.test(pad) && lang !== 'nl' ? pad.slice(1, 3) + '/' : '');
   function start() {
     __ibCss('#ia-nav{position:fixed;left:12px;bottom:12px;z-index:2147482999;display:flex;gap:8px}' +
-      '#ia-nav a{display:inline-grid;place-items:center;width:48px;height:48px;border-radius:50%;background:#0e7c4a;color:#fff;box-shadow:0 4px 14px rgba(0,0,0,.22);text-decoration:none}' +
-      '#ia-nav a:focus-visible{outline:3px solid #ffd43b;outline-offset:2px}#ia-nav svg{width:24px;height:24px}' +
+      '#ia-nav a{display:inline-grid;place-items:center;width:48px;height:48px;border-radius:12px;background:#0F2340;color:#fff;box-shadow:0 4px 14px rgba(5,15,35,.28);text-decoration:none;border:2px solid #F5B700}' +
+      '#ia-nav a:focus-visible{outline:3px solid #F5B700;outline-offset:2px}#ia-nav svg{width:24px;height:24px}' +
       '@media print{#ia-nav{display:none}}body{padding-bottom:max(76px,env(safe-area-inset-bottom))}');
     var n = document.createElement('nav'); n.id = 'ia-nav'; n.setAttribute('aria-label', W[0] + ' / ' + W[1]);
     var i = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">';

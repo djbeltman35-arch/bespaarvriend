@@ -331,6 +331,7 @@ def _blokken_naar_boven(body):
 
 _KORT = {
     "Zorgverzekering kiezen met hulp": ("Zorgverzekering kiezen", "Hulp bij je keuze"),
+    "Zorgverzekering vergelijken en meteen regelen": ("Overstappen geregeld", "Oude polis wordt opgezegd"),
     "Autoverzekeringen vergelijken": ("Autoverzekering vergelijken", "Veel verzekeraars"),
     "Alle zorgverzekeringen van 2027 naast elkaar": ("Zorgverzekering vergelijken", "Alle polissen van 2027"),
     "Zorgverzekering met collectieve korting": ("Zorgverzekering met korting", "Via een collectief"),
@@ -513,6 +514,12 @@ ZORG_VERGELIJKER += partner(awin(8601, "bespaarvriend-zorg2"),
     "Zorgverzekering kiezen met hulp",
     "Vergelijk polissen en aanvullende pakketten op wat jij belangrijk vindt, en stap direct over. Gratis.",
     "Bekijk de vergelijking")
+# Derde zorgvergelijker (Awin 8558, aangesloten 25 nov 2026). Voorwaarden: clickref verplicht, geen keywordbuying,
+# geen merknamen. Standaard landingspagina (de zorgvergelijking zelf).
+ZORG_VERGELIJKER += partner(awin(8558, "bespaarvriend-zorg3"),
+    "Zorgverzekering vergelijken en meteen regelen",
+    "Vergelijk basis- en aanvullende verzekeringen en sluit direct af. Je oude verzekering wordt automatisch voor je opgezegd. Gratis.",
+    "Vergelijk en stap over")
 
 # Tegels bovenaan de startpagina: direct naar goedgekeurde partners (geen namen van adverteerders).
 DIRECT = [

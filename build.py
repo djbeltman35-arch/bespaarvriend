@@ -496,6 +496,8 @@ def page(path, title, desc, body, ld=(), noindex=False, prio="0.8"):
 
 BRONNEN_ZORG = ('<p class="bron">Bronnen: <a href="https://www.overstappen.nl/nieuws/zorgpremies-2027-bekend-alle-polissen-duurder-premiekloof-stijgt-naar-649-euro-per-jaar/" rel="noopener">Overstappen.nl (premies 2027)</a>, '
                 '<a href="https://www.consumentenbond.nl/zorgverzekering/zorgverzekeringen-2027-zorgpremies-stijgen-fors" rel="noopener">Consumentenbond</a>, '
+                '<a href="https://radar.avrotros.nl/artikel/zorgverzekering-wordt-duurder-een-overzicht-van-de-zorgpremies-in-2027-63184" rel="noopener">Radar (premieoverzicht 2027)</a>, '
+                '<a href="https://www.keuze.nl/nieuws/goedkoopste-zorgverzekeringen-2027" rel="noopener">Keuze.nl (korting bij jaarbetaling)</a>, '
                 '<a href="https://www.rabobank.nl/particulieren/verzekering/zorgverzekering/zorgverzekering-2027" rel="noopener">Rabobank (eigen risico en data)</a>. '
                 f'Bijgewerkt op {BIJGEWERKT}.</p>')
 
@@ -662,7 +664,8 @@ def bouw():
 
     # ---------- Zorgverzekering 2027 ----------
     ch, cld = crumbs("Zorgverzekering 2027", "/zorgverzekering-2027/")
-    faq_z = [("Hoeveel kost de zorgverzekering in 2027?", "De gemiddelde basisverzekering kost in 2027 € 173,13 per maand, € 14,83 meer dan in 2026. De laagste premie is € 148,40 per maand, de hoogste € 202,50."),
+    faq_z = [("Welke zorgverzekering is het goedkoopst in 2027?", "De goedkoopste basisverzekering in 2027 is VinkVink Basis met € 148,40 per maand bij € 400 eigen risico. Daarna volgen FBTO Basis (€ 154,75) en Zilveren Kruis Basis Start (€ 159,45). Let op of de polis bij jouw zorgverleners past."),
+             ("Hoeveel kost de zorgverzekering in 2027?", "De gemiddelde basisverzekering kost in 2027 € 173,13 per maand, € 14,83 meer dan in 2026. De laagste premie is € 148,40 per maand, de hoogste € 202,50."),
              ("Is de basisverzekering overal hetzelfde?", "Wat er in het basispakket zit, bepaalt de overheid. Dat is bij elke verzekeraar gelijk. Het verschil zit vooral in de vrije keuze van zorgverlener: bij een goedkope naturapolis krijg je bij een zorgverlener zonder contract soms minder vergoed."),
              ("Tot wanneer kan ik overstappen?", "Zeg je huidige verzekering uiterlijk 31 december 2026 op. Sluit daarna uiterlijk 31 januari 2027 een nieuwe af; die gaat met terugwerkende kracht in op 1 januari 2027. Vaak zegt je nieuwe verzekeraar de oude voor je op."),
              ("Moet ik mijn aanvullende verzekering ook opzeggen?", "Niet per se. Kijk of je de aanvullende verzekering het afgelopen jaar echt hebt gebruikt. Wie weinig naar tandarts of fysio gaat, betaalt vaak meer premie dan hij terugkrijgt."),
@@ -671,6 +674,14 @@ def bouw():
             '<div class="kerncijfers"><div><b>€ 173,13</b><small>gemiddeld per maand</small></div><div><b>+ € 14,83</b><small>per maand t.o.v. 2026</small></div>'
             '<div><b>€ 148,40</b><small>laagste premie</small></div><div><b>€ 202,50</b><small>hoogste premie</small></div></div>'
             '<div class="let"><b>Verschil laagste en hoogste premie: € 649 per jaar</b>, voor dezelfde basiszorg. Met z\'n tweeën kan dat oplopen tot bijna € 1.300 per jaar.</div>'
+            '<h2>Premies 2027 op een rij</h2><p>Maandpremie van 23 veelgekozen basisverzekeringen bij het verplichte eigen risico van € 400, van laag naar hoog. In totaal zijn er ruim 60 polissen; een vergelijker toont ze allemaal. Kinderen tot 18 jaar betalen geen premie.</p>'
+            '<table><tr><th>Verzekeraar</th><th>Polis</th><th>Per maand</th><th>Per jaar</th></tr><tr><td>1. VinkVink</td><td>Basis</td><td>€ 148,40</td><td>€ 1.780,80</td></tr><tr><td>2. FBTO</td><td>Basis</td><td>€ 154,75</td><td>€ 1.857,00</td></tr><tr><td>3. Zilveren Kruis</td><td>Basis Start</td><td>€ 159,45</td><td>€ 1.913,40</td></tr><tr><td>4. Menzis</td><td>Basis Voordelig</td><td>€ 160,75</td><td>€ 1.929,00</td></tr><tr><td>5. FBTO</td><td>Basis Plus</td><td>€ 164,95</td><td>€ 1.979,40</td></tr><tr><td>6. Zilveren Kruis</td><td>BasisZeker</td><td>€ 164,95</td><td>€ 1.979,40</td></tr><tr><td>7. ZieZo</td><td>Basis</td><td>€ 164,95</td><td>€ 1.979,40</td></tr><tr><td>8. CZdirect</td><td>Basisverzekering</td><td>€ 165,15</td><td>€ 1.981,80</td></tr><tr><td>9. VGZ Bewust</td><td>Basisverzekering</td><td>€ 165,40</td><td>€ 1.984,80</td></tr><tr><td>10. Menzis</td><td>Basis</td><td>€ 165,75</td><td>€ 1.989,00</td></tr><tr><td>11. IZZ door VGZ</td><td>Variant Basis</td><td>€ 167,40</td><td>€ 2.008,80</td></tr><tr><td>12. UnitedConsumers</td><td>Basis Keuze</td><td>€ 167,40</td><td>€ 2.008,80</td></tr><tr><td>13. VGZ</td><td>Basis Keuze</td><td>€ 167,40</td><td>€ 2.008,80</td></tr><tr><td>14. Univé</td><td>Zorg Basis</td><td>€ 167,90</td><td>€ 2.014,80</td></tr><tr><td>15. Just</td><td>Basic</td><td>€ 168,50</td><td>€ 2.022,00</td></tr><tr><td>16. Salland</td><td>Basisverzekering</td><td>€ 171,45</td><td>€ 2.057,40</td></tr><tr><td>17. DSW</td><td>Basisverzekering</td><td>€ 173,25</td><td>€ 2.079,00</td></tr><tr><td>18. Stad Holland</td><td>Basisverzekering</td><td>€ 176,50</td><td>€ 2.118,00</td></tr><tr><td>19. OHRA</td><td>Basisverzekering</td><td>€ 177,35</td><td>€ 2.128,20</td></tr><tr><td>20. FBTO</td><td>Basis Vrij</td><td>€ 179,75</td><td>€ 2.157,00</td></tr><tr><td>21. Zilveren Kruis</td><td>Basis Exclusief</td><td>€ 186,95</td><td>€ 2.243,40</td></tr><tr><td>22. Menzis</td><td>Basis Vrij</td><td>€ 188,25</td><td>€ 2.259,00</td></tr><tr><td>23. CZ</td><td>Zorgvariatiepolis</td><td>€ 202,50</td><td>€ 2.430,00</td></tr></table>'
+            '<h2>Rekenvoorbeeld: zoveel scheelt overstappen</h2><p>Zit je bij de duurste polis (€ 202,50 per maand) en stap je over naar de goedkoopste (€ 148,40), dan betaal je € 54,10 per maand minder. Dat is € 649,20 per jaar. Met twee volwassenen in huis scheelt het € 1.298,40 per jaar.</p><p>Ook een kleinere stap loont: van een polis van € 177,35 naar een van € 164,95 scheelt € 148,80 per jaar per persoon.</p>'
+            '<h2>Nog meer besparen op je premie</h2><ul>'
+            '<li><b>Betaal per jaar in plaats van per maand.</b> Veel verzekeraars geven dan korting, bij VinkVink bijvoorbeeld 3%.</li>'
+            '<li><b>Kijk naar een collectiviteit</b> via je werkgever, vakbond of een patiëntenvereniging. Die geeft vaak korting op de aanvullende verzekering.</li>'
+            '<li><b>Overweeg een hoger eigen risico</b> als je weinig zorgkosten hebt. Lees eerst <a href="/eigen-risico-2027/">wanneer dat loont</a>.</li>'
+            '<li><b>Heb je een betalingsachterstand?</b> Dan kun je niet overstappen. Los die eerst op of maak een betalingsregeling.</li></ul>'
             '<h2>Zo stap je over in 4 stappen</h2><ol class="stappen">'
             '<li><b>Kijk wat je echt gebruikt.</b> Pak je jaaroverzicht erbij: welke zorg had je, en had je die aanvullende verzekering nodig?</li>'
             '<li><b>Vergelijk de premies.</b> Gebruik een onafhankelijke vergelijker (zie hieronder). Let op: naturapolis of restitutiepolis.</li>'
@@ -684,7 +695,7 @@ def bouw():
             + partner(awin(8311, "bespaarvriend-zorg", "https://www.unitedconsumers.com/zorgverzekering"), "Zorgverzekering met collectieve korting", "Via een groot collectief krijg je korting op de premie, bij bekende verzekeraars. Handig als je al weet welke polis je wilt.", "Bekijk de collectieve korting")
             + '<h2>Meer besparen op je zorgkosten</h2><ul class="links"><li><a href="/aanvullende-verzekering-2027/">Aanvullende verzekering 2027: nodig of niet?</a></li><li><a href="/tandartsverzekering-2027/">Tandartsverzekering 2027: loont het nog?</a></li><li><a href="/eigen-risico-2027/">Eigen risico 2027: loont een vrijwillig eigen risico?</a></li><li><a href="/zorgtoeslag-2027/">Zorgtoeslag 2027: heb jij recht?</a></li></ul>'
             + faq_html(faq_z) + BRONNEN_ZORG)
-    page("/zorgverzekering-2027/", "Zorgverzekering 2027: premies, verschillen en overstappen", "De zorgpremie 2027 is gemiddeld € 173,13 per maand. Laagste premie € 148,40, hoogste € 202,50: € 649 per jaar verschil. Zo stap je vóór 31 december over.",
+    page("/zorgverzekering-2027/", "Zorgverzekering 2027: premies op een rij en overstappen", "Zorgpremies 2027 op een rij: gemiddeld € 173,13 per maand, goedkoopste € 148,40 (VinkVink), duurste € 202,50. Zo stap je vóór 31 december over.",
          body, [cld, faq_ld(faq_z)], prio="0.9")
 
     # ---------- Eigen risico 2027 ----------

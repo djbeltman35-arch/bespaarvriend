@@ -673,7 +673,7 @@ def bouw():
             '<div><b>Kies je vaste last</b><p>Elke gids begint met de bedragen die er nu toe doen.</p></div>'
             '<div><b>Reken het na</b><p>Met de rekenhulpen zie je wat het voor jou betekent.</p></div>'
             '<div><b>Stap zelf over</b><p>Stap voor stap uitgelegd. De keuze maak jij.</p></div></div>'
-            '<h2>Waarom Bespaarvriend?</h2><div class="kaart"><p style="margin-top:0">Ik ben Erik, de maker van <a href="https://boodschappenvergelijk.nl/">Goedkope Boodschappen</a>. '
+            '<h2>Waarom Bespaarvriend?</h2><div class="kaart"><p style="margin-top:0">Ik ben Erik, de maker van <a href="https://boodschappenvergelijk.nl/">Boodschappenvergelijk</a>. '
             'Met Bespaarvriend wil ik mensen op dezelfde manier helpen met hun andere vaste lasten: duidelijk, eerlijk en gratis.</p>'
             '<p style="margin-bottom:0">Elke pagina noemt zijn bronnen en de datum waarop hij is bijgewerkt. Zo weet je precies waar je aan toe bent.</p>'
             '<div class="media"><span>Bekend van Hart van Nederland</span><span>RTV Oost</span></div></div>'
@@ -788,12 +788,12 @@ else u.textContent='Je komt waarschijnlijk in aanmerking. Hoe lager je inkomen, 
 
     # ---------- Over ----------
     ch, cld = crumbs("Over Bespaarvriend", "/over/")
-    body = (ch + '<h1>Over Bespaarvriend</h1><div class="kaart"><p style="margin-top:0">Bespaarvriend is gemaakt door Erik Beltman uit Rijssen, ook de maker van <a href="https://boodschappenvergelijk.nl/">Goedkope Boodschappen</a>. '
+    body = (ch + '<h1>Over Bespaarvriend</h1><div class="kaart"><p style="margin-top:0">Bespaarvriend is gemaakt door Erik Beltman uit Rijssen, ook de maker van <a href="https://boodschappenvergelijk.nl/">Boodschappenvergelijk</a>. '
             'Het doel is simpel: mensen helpen besparen in deze dure tijd, met uitleg die iedereen begrijpt.</p>'
             '<p><b>Onafhankelijk.</b> We verkopen zelf geen verzekeringen of energiecontracten. Verdienen we ooit iets aan een link, dan staat dat er duidelijk bij en verandert het niets aan de uitleg.</p>'
             '<p><b>Geen advies.</b> We leggen uit en verwijzen naar officiële bronnen en onafhankelijke vergelijkers. We geven geen persoonlijk financieel advies.</p>'
             '<p style="margin-bottom:0"><b>Klopt er iets niet?</b> Laat het weten via de <a href="/contact/">contactpagina</a>. Dan pas ik het snel aan.</p></div>')
-    page("/over/", "Over Bespaarvriend", "Bespaarvriend is gemaakt door Erik Beltman, ook de maker van Goedkope Boodschappen. Onafhankelijke uitleg over besparen, zonder verkooppraatjes.", body, [cld], prio="0.4")
+    page("/over/", "Over Bespaarvriend", "Bespaarvriend is gemaakt door Erik Beltman, ook de maker van Boodschappenvergelijk. Onafhankelijke uitleg over besparen, zonder verkooppraatjes.", body, [cld], prio="0.4")
 
     # ---------- Energie 2027 ----------
     ch, cld = crumbs("Energie 2027", "/energie-2027/")
@@ -955,13 +955,13 @@ else u.textContent='Je komt waarschijnlijk in aanmerking. Hoe lager je inkomen, 
 
     # ---------- Boodschappen ----------
     ch, cld = crumbs("Boodschappen", "/boodschappen/")
-    faq_b = [("Welke supermarkt is het goedkoopst?", "Dat verschilt per product en per week. Vergelijk daarom de producten die jij echt koopt. Goedkope Boodschappen laat per product zien waar het het goedkoopst is."),
+    faq_b = [("Welke supermarkt is het goedkoopst?", "Dat verschilt per product en per week. Vergelijk daarom de producten die jij echt koopt. Boodschappenvergelijk laat per product zien waar het het goedkoopst is."),
              ("Zijn huismerken echt goedkoper?", "Meestal wel, en vaak is de kwaliteit vergelijkbaar. Probeer bij producten die je vaak koopt eens het huismerk."),
              ("Helpt een boodschappenlijstje?", "Ja. Met een lijstje en een weekmenu koop je minder op impuls en gooi je minder weg.")]
     body = (ch + f'<div class="paginakop"><span class="ic">{ICON["boodschappen"]}</span><h1>Besparen op je boodschappen</h1></div>'
             '<p class="lead">Boodschappen zijn een van de grootste vaste uitgaven. Met vergelijken en een beetje planning houd je elke maand geld over.</p>'
             '<h2>Je eigen hulpmiddelen</h2><div class="tegels" style="grid-template-columns:1fr">'
-            + tool("https://boodschappenvergelijk.nl/", "boodschappen", "Goedkope Boodschappen", "Vergelijk de prijzen van 12 supermarkten per product.")
+            + tool("https://boodschappenvergelijk.nl/", "boodschappen", "Boodschappenvergelijk", "Vergelijk de prijzen van 12 supermarkten per product.")
             + tool("https://bonnenboek.netlify.app/", "bon", "Bonnenboek", "Scan je kassabonnen en zie per maand waar je geld naartoe gaat.")
             + '</div>'
             '<h2>Zo bespaar je op je boodschappen</h2><ol class="stappen">'

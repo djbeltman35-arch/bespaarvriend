@@ -466,7 +466,19 @@ def _uitleg_dan_vergelijken(body):
     vgl = ('<h2 class="vgl">Vergelijk en bespaar</h2>' + _als_tegels(paid)) if paid else ''
     return kop + "".join(zichtbaar) + uitklap + vgl + "".join(tools) + "".join(eind)
 
+def _kort(desc, n=158):
+    """Meta-description binnen wat Google toont: afkappen op een hele zin, anders op een woord."""
+    if len(desc) <= n:
+        return desc
+    stuk = desc[:n]
+    zin = max(stuk.rfind(". "), stuk.rfind("! "), stuk.rfind("? "))
+    if zin >= 100:
+        return stuk[:zin + 1]
+    return stuk[:stuk.rfind(" ")].rstrip(",;:–- ") + "…"
+
+
 def page(path, title, desc, body, ld=(), noindex=False, prio="0.8"):
+    desc = _kort(desc)
     body = _re.sub(r'<table><tr><th></th>.*?</table>', lambda m: _re.sub(r'<tr><td>(.*?)</td>', r'<tr><th scope="row">\1</th>', m.group(0)).replace('<tr><th scope="row"></th>', '<tr><td></td>', 1), body, flags=_re.S)
     if path not in ("/", "/over/", "/contact/", "/privacy/", "/gebruiksvoorwaarden/", "/bedankt/", "/404.html") and not path.startswith("/elektronica"):
         body = _uitleg_dan_vergelijken(body)
@@ -579,7 +591,7 @@ def agenda_html():
 def _ics_event(d, sid, titel, url, tekst):
     d0 = d.replace("-", ""); d1 = (datetime.date.fromisoformat(d) + datetime.timedelta(days=1)).isoformat().replace("-", "")
     def e(x): return x.replace("\\", "\\\\").replace(",", "\\,").replace(";", "\\;")
-    return ("BEGIN:VEVENT\r\nUID:" + sid + "-" + d0 + "@bespaarvriend.nl\r\nDTSTAMP:" + datetime.datetime.utcnow().strftime("%Y%m%dT%H%M%SZ")
+    return ("BEGIN:VEVENT\r\nUID:" + sid + "-" + d0 + "@bespaarvriend.nl\r\nDTSTAMP:" + datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%M%SZ")
             + "\r\nDTSTART;VALUE=DATE:" + d0 + "\r\nDTEND;VALUE=DATE:" + d1 + "\r\nSUMMARY:" + e(titel)
             + "\r\nDESCRIPTION:" + e(tekst + " Meer uitleg: " + BASE + url) + "\r\nURL:" + BASE + url
             + "\r\nBEGIN:VALARM\r\nACTION:DISPLAY\r\nDESCRIPTION:" + e(titel) + "\r\nTRIGGER:-P1D\r\nEND:VALARM\r\nEND:VEVENT\r\n")
@@ -1731,6 +1743,8 @@ def bouw_elektronica():
     hier = os.path.dirname(os.path.abspath(__file__))
     env = dict(os.environ, SITE_BASIS="/elektronica", SITE_DOMEIN=BASE + "/elektronica")
     subprocess.run([sys.executable, os.path.join(hier, "elektronica", "scripts", "build.py"), os.path.join(OUT, "elektronica")], env=env, check=True)
+    # De elektronica-pagina's laden /elektronica/installeer.js: zelfde installeerbalk als de rest van de site.
+    shutil.copy(os.path.join(hier, "static", "installeer.js"), os.path.join(OUT, "elektronica", "installeer.js"))
 
 if __name__ == "__main__":
     bouw()

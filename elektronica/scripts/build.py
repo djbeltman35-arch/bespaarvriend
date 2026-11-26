@@ -175,7 +175,14 @@ def actieve_subs(cat):
     return [(s_, n_) for s_, n_, _ in SUBS.get(cat, []) if any(s_ in p['subs'] for p in PRODUCTEN)]
 
 
-def maak_menu():
+_MENU_CACHE = {}
+
+
+def maak_menu(volledig=True):
+    """Menu één keer opbouwen. Productpagina's krijgen een lichter menu zonder subcategorieën
+    (scheelt ~50 kB per pagina); subcategorieën staan op de categoriepagina's zelf."""
+    if volledig in _MENU_CACHE:
+        return _MENU_CACHE[volledig]
     delen = []
     for g in GROEPEN:
         cats = [c for c, v in CATS.items() if v['groep'] == g['slug'] and any(p['cat'] == c for p in PRODUCTEN)]
@@ -183,11 +190,21 @@ def maak_menu():
             continue
         li = ''
         for c in cats:
-            sub = ''.join(f'<a class="msub" href="{gpad(c)}{s_}/">{e(n_)}</a>' for s_, n_ in actieve_subs(c))
+            sub = ''.join(f'<a class="msub" href="{gpad(c)}{s_}/">{e(n_)}</a>' for s_, n_ in actieve_subs(c)) if volledig else ''
+
             li += f'<li><a class="mcat" href="{gpad(c)}">{e(CATS[c]["naam"])}</a>{sub}</li>'
         delen.append(f'<details class="mgroep"><summary>{g["ico"]} {e(g["naam"])}</summary><a class="malles" href="/{g["slug"]}/">Alles in {e(g["naam"])} →</a><ul>{li}</ul></details>')
-    return ('<details class="menu" id="menu"><summary class="menuknop">☰ Categorieën</summary><div class="menupaneel" role="navigation" aria-label="Categorieën">'
+    _MENU_CACHE[volledig] = ('<details class="menu" id="menu"><summary class="menuknop">☰ Categorieën</summary><div class="menupaneel" role="navigation" aria-label="Categorieën">'
             + ''.join(delen) + '</div></details>')
+    return _MENU_CACHE[volledig]
+
+
+def korte_titel(*delen):
+    """Titel tot ~60 tekens (wat Google toont): laat achteraan delen weg zolang het te lang is."""
+    delen = [d for d in delen if d]
+    while len(delen) > 1 and len(' – '.join(delen)) > 60:
+        delen.pop()
+    return ' – '.join(delen)
 
 
 def kruimel(*stukken):
@@ -210,7 +227,7 @@ def totaal(o):
 
 
 def kop(titel, beschrijving, pad, extra_head=''):
-    MENU = maak_menu()
+    MENU = maak_menu(not pad.startswith('/product/'))
     return f'''<!doctype html>
 <html lang="nl">
 <head>
@@ -499,7 +516,7 @@ def bouw():
             body = f'''<section class="wrap">{kruimel((f"/{g['slug']}/", g["naam"]), (gpad(c), naam))}
 <div class="hero"><h1>{e(naam)} vergelijken</h1><p>{len(cp)} populaire {e(naam.lower())} bij Nederlandse webwinkels, inclusief verzendkosten.</p>{zoekblok()}</div>
 {subchips}{matenchips}{partnerblok(c)}{lijstblok(cp, "", c)}</section>'''
-            schrijf(f'/{g["slug"]}/{c}/', kop(f'{naam} vergelijken – goedkoopste prijs incl. verzending – {SITE}',
+            schrijf(f'/{g["slug"]}/{c}/', kop(korte_titel(f'{naam} vergelijken', 'goedkoopste prijs incl. verzending', SITE),
                                               f'Vergelijk de prijs van populaire {naam.lower()} bij Nederlandse webwinkels, inclusief verzendkosten.', f'/{g["slug"]}/{c}/') + body + SCRIPT_LIJST + VOET)
 
             maten = sorted({p['spec']['Schermformaat'] for p in cp if 'Schermformaat' in p['spec']}, key=_sortwaarde)
@@ -521,7 +538,7 @@ def bouw():
                 body = f'''<section class="wrap">{kruimel((f"/{g['slug']}/", g["naam"]), (gpad(c), naam), (gpad(c) + s_ + "/", n_))}
 <div class="hero"><h1>{e(n_)} vergelijken</h1><p>{len(sp)} {e(naam.lower())}: {e(n_.lower())}. Prijzen inclusief verzendkosten bij Nederlandse webwinkels.</p>{zoekblok()}</div>
 {chips2}{partnerblok(c)}{lijstblok(sp, "", c, s_)}</section>'''
-                schrijf(gpad(c) + s_ + '/', kop(f'{n_} – {naam} vergelijken incl. verzending – {SITE}',
+                schrijf(gpad(c) + s_ + '/', kop(korte_titel(f'{n_} – {naam} vergelijken', 'incl. verzending', SITE),
                                                f'{n_}: vergelijk {naam.lower()} bij Nederlandse webwinkels, inclusief verzendkosten.', gpad(c) + s_ + '/') + body + SCRIPT_LIJST + VOET)
 
     for p in PRODUCTEN:
@@ -544,7 +561,7 @@ def bouw():
 <p class="uitleg">We vergeleken {len(offers)} webwinkel{"s" if len(offers) != 1 else ""}. {"Het verschil tussen de goedkoopste en duurste winkel is € " + euro(verschil) + "." if verschil >= 1 else ""} Bij winkels met andere verkopers (zoals bol en Amazon) staat erbij wie het product verkoopt. Controleer altijd de actuele prijs bij de winkel.</p>
 {spectabel(p)}{('<p class="uitleg">Ook in: ' + sublinks + '</p>') if sublinks else ''}
 <p class="uitleg">Prijzen bijgewerkt op {e(BIJGEWERKT)}. <a href="/zo-vergelijken-wij/">Zo vergelijken wij</a> · <a href="/winkels/">Verzendkosten per winkel</a></p></section>'''
-        schrijf(f'/product/{p["slug"]}/', kop(f'{p["naam"]} – prijzen vergelijken – {SITE}',
+        schrijf(f'/product/{p["slug"]}/', kop(korte_titel(f"{p['naam']} – prijzen vergelijken", SITE) if len(p['naam']) <= 45 else f"{p['naam']} – prijs",
                                               f'{p["naam"]} vanaf € {euro(totaal(best))} inclusief verzendkosten. Vergelijk {len(offers)} Nederlandse webwinkels.',
                                               f'/product/{p["slug"]}/', f'<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>') + body + SCRIPT_LIJST + VOET)
 

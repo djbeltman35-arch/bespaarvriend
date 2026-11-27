@@ -190,7 +190,18 @@ header.top nav.top a[aria-current],header.top nav.top a.actief{background:linear
 @media(max-width:640px){header.top .wrap{flex-wrap:nowrap!important;gap:6px}nav.top{width:auto!important;margin-left:auto!important}.logo span{display:none}nav.top{overflow-x:auto;scrollbar-width:none;flex-wrap:nowrap}nav.top::-webkit-scrollbar{display:none}nav.top a{white-space:nowrap}}
 /* gbstijl:end */
 
-.ckeuze{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0 14px}.ckeuze>*{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:10px 8px;border-radius:14px;border:2px solid var(--line);font-weight:800;font-size:16px;line-height:1.2;text-decoration:none;color:var(--ink);background:#fff}.ckeuze small{font-weight:600;font-size:12.5px;opacity:.8;margin-top:2px}.ckeuze a:hover{border-color:var(--green-dark)}.ckeuze a:active,.ckeuze a:focus{background:#e5e7eb;border-color:#9ca3af;outline:none}.anker{scroll-margin-top:90px}
+.ckeuze{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:8px 0 14px}.ckeuze>*{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:10px 8px;border-radius:14px;border:2px solid var(--line);font-weight:800;font-size:15px;line-height:1.2;text-decoration:none;color:var(--ink);background:#fff}.ckeuze small{font-weight:600;font-size:12.5px;opacity:.8;margin-top:2px}.ckeuze a:hover{border-color:var(--green-dark)}.ckeuze a:active,.ckeuze a:focus{background:#e5e7eb;border-color:#9ca3af;outline:none}.anker,#dynamisch,#combi{scroll-margin-top:90px}#dynamisch:target,#combi:target{outline:3px solid #ffd43b;outline-offset:2px;border-radius:14px}
+
+/* Energiepagina's: drie kleine partnertegels naast elkaar */
+html body .partners-top.klein .tegels{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:8px!important;margin:0 0 8px!important}
+html body .partners-top.klein .tegels>a,html body .partners-top.klein .tegels>.tegel{grid-column:auto!important;width:auto!important;padding:10px 8px 10px!important;min-height:0!important;text-align:center}
+html body .partners-top.klein .tegels .hoofd{padding:0!important;display:block;text-align:center}
+html body .partners-top.klein .tegels .ic{width:32px!important;height:32px!important;margin:0 auto 6px!important;display:grid!important}
+html body .partners-top.klein .tegels .ic svg{width:17px!important;height:17px!important}
+html body .partners-top.klein .tegels .pijl{display:none!important}
+html body .partners-top.klein .tegels b{font-size:14px!important;line-height:1.2!important;display:block}
+html body .partners-top.klein .tegels small{font-size:12px!important;line-height:1.25!important;display:block;margin-top:3px}
+html body .partners-top.klein .tegels .tchips{display:none!important}
 """
 
 def _svg(d, extra=""):
@@ -241,8 +252,8 @@ def widget(naam, titel):
     slug, klasse, extra = WIDGETS[naam]
     # De energievergelijker van Daisycon heeft alleen vaste contracten (1, 3 of 5 jaar). Daarom bovenaan een duidelijke keuze:
     # wie een dynamisch contract zoekt, springt naar de tegel met dynamische contracten direct onder de vergelijker.
-    keuze = ('<div class="ckeuze" role="group" aria-label="Soort contract"><a href="#w-energie">Vast contract<small>vergelijk hieronder</small></a>'
-             '<a href="#dynamisch">Dynamisch contract<small>prijs per uur of kwartier ›</small></a></div>') if naam == "energie" else ""
+    keuze = ('<div class="ckeuze" role="group" aria-label="Soort contract"><a href="#w-energie">Vast<small>vergelijk hieronder</small></a>'
+             '<a href="#dynamisch">Dynamisch<small>prijs per uur of kwartier ›</small></a><a href="#combi">Gas vast, stroom dynamisch<small>zo regel je dat ›</small></a></div>') if naam == "energie" else ""
     cfg = {"mediaId": DC_MEDIA, "subId": "bespaarvriend-" + naam, "language": "nl", "filter": {}}
     cfg.update(extra)
     return (f'<section class="widget" id="w-{naam}" aria-label="{esc(titel)}"><h2>{esc(titel)}</h2><p class="ad">{"Advertentie. Meld je je via deze lijst aan bij een panel, dan krijgt Bespaarvriend een vergoeding. Jij betaalt niets." if naam == "enquetes" else "Advertentie. Sluit je via deze vergelijker iets af, dan krijgt Bespaarvriend een vergoeding. Jij betaalt niets extra."}</p>'
@@ -254,9 +265,16 @@ def awin(mid, ref, doel=None):
     return u + (f"&amp;ued={_q(doel, safe='')}" if doel else "")
 def dc(host, si, li, ref, pad=""):
     return f"https://{host}/c/?si={si}&amp;li={li}&amp;wi=449774&amp;ws={ref}&amp;dl={_q(pad, safe='')}"
+def combi_blok(ref):
+    # Gas vast + stroom dynamisch. De Daisycon-vergelijker kan niet "alleen gas" vergelijken (wel "alleen stroom"), dus:
+    # houd je vaste gascontract en sluit alleen stroom dynamisch af. Deze aanbieder heeft een los dynamisch stroomcontract
+    # (Daisycon "single fuel": vergoeding ook voor alleen stroom).
+    return (partner(dc("d.energyzero.nl", 20943, 1892250, ref + "-combi"), "Gas vast, stroom dynamisch",
+            "Stroom en gas hoeven niet bij dezelfde leverancier. Houd je huidige vaste gascontract en sluit alleen stroom dynamisch af. Kies bij deze aanbieder voor dynamische stroom, zonder gas.",
+            "Bekijk dynamische stroom"))
 def dynamisch_blok(ref):
-    return '<div id="dynamisch" class="anker"></div>' + partner(dc("glp8.net", 19921, 1848248, ref, "nl"), "Dynamisch energiecontract afsluiten", "Een contract waarbij je per uur de actuele stroomprijs betaalt. Past als je je verbruik kunt verschuiven naar goedkope uren.", "Bekijk dynamisch contract",
-                   [("Per uur afgerekend", dc("glp8.net", 19921, 1848248, ref, "nl")), ("Met inzicht-app", dc("d.energyzero.nl", 20943, 1892250, ref))])
+    return partner(dc("glp8.net", 19921, 1848248, ref), "Dynamisch energiecontract afsluiten", "Een contract waarbij je per uur de actuele stroomprijs betaalt. Past als je je verbruik kunt verschuiven naar goedkope uren.", "Bekijk dynamisch contract",
+                   [("Per uur afgerekend", dc("glp8.net", 19921, 1848248, ref)), ("Met inzicht-app", dc("d.energyzero.nl", 20943, 1892250, ref))])
 def batterij_actie(ref):
     """Tijdelijke actie (t/m 4 januari 2027): 8% extra korting op de Mix-serie met code KQ135. Verdwijnt daarna vanzelf bij de volgende build."""
     if datetime.date.today() > datetime.date(2027, 1, 4):
@@ -352,7 +370,7 @@ _KORT = {
     "Banden vergelijken": ("Banden vergelijken", "Ook met montage"),
     "Boodschappenbox van de boer": ("Box van de boer", "Vers, thuisbezorgd"),
     "Energiecontract vergelijken": ("Energiecontract vergelijken", "Alle grote leveranciers"),
-    "Energiecontracten vergelijken": ("Energiecontract vergelijken", "Alle grote leveranciers"),
+    "Energiecontracten vergelijken": ("Energie vergelijken", "Alle grote leveranciers"),
     "Thuisbatterij met 8% extra korting": ("Thuisbatterij 8% extra korting", "Code KQ135, t/m 4 januari"),
     "Huurauto inclusief verzekering": ("Huurauto", "Alle verzekeringen inbegrepen"),
     "Internet en tv met korting": ("Internet en tv", "Met korting via een collectief"),
@@ -360,6 +378,8 @@ _KORT = {
     "Sim only": ("Sim only", "Kies je provider"),
     "Glasvezel en internet thuis": ("Glasvezel thuis", "Kies je provider"),
     "Internet en tv": ("Internet en tv", "Kies je provider"),
+    "Gas vast, stroom dynamisch": ("Gas vast, stroom dynamisch", "Houd je vaste gascontract"),
+    "Dynamisch energiecontract afsluiten": ("Dynamisch contract", "Prijs per uur"),
     "Korting op elke tankbeurt": ("Tankkorting", "Korting per liter"),
     "Maaltijdbox": ("Maaltijdbox", "Minder weggooien"),
     "Refurbished telefoon met garantie": ("Refurbished telefoons/iPads", "Met garantie"),
@@ -382,6 +402,7 @@ def _icoon_voor(t):
             return ic
     return "check"
 
+_ANKER = {"Dynamisch energiecontract afsluiten": "dynamisch", "Gas vast, stroom dynamisch": "combi"}  # doel van de keuzeknoppen boven de energievergelijker
 _KIES = {"Telefoon met abonnement", "Sim only", "Glasvezel en internet thuis", "Internet en tv"}  # tegels die eerst de providerkeuze tonen
 
 def _als_tegels(blokken):
@@ -402,18 +423,19 @@ def _als_tegels(blokken):
                 kop = f'<div class="hoofd">{ic}<b>{naam}</b><small>{kort}</small></div>'
             else:
                 kop = f'<a class="hoofd" href="{url}" rel="sponsored noopener" target="_blank">{ic}{pijl}<b>{naam}</b><small>{kort}</small></a>'
-            anker = "kies-" + _re.sub(r'[^a-z0-9]+', '-', titel.lower()).strip('-')
+            anker = _ANKER.get(titel) or "kies-" + _re.sub(r'[^a-z0-9]+', '-', titel.lower()).strip('-')
             tegels.append(f'<div class="tegel met-keuze" id="{anker}">{kop}<div class="pchips tchips">{chips.group(1)}</div></div>')
         else:
-            tegels.append(f'<a href="{url}" rel="sponsored noopener" target="_blank">{ic}{pijl}<b>{naam}</b><small>{kort}</small></a>')
+            idattr = f' id="{_ANKER[titel]}"' if titel in _ANKER else ""
+            tegels.append(f'<a{idattr} href="{url}" rel="sponsored noopener" target="_blank">{ic}{pijl}<b>{naam}</b><small>{kort}</small></a>')
     tegels = [t for t in tegels if not t.startswith('<div')] + [t for t in tegels if t.startswith('<div')]
     uit = '<div class="partners-top"><div class="tegels direct">' + "".join(tegels) + '</div>' + (('<div class="keuzes">' + "".join(extra) + '</div>') if extra else '')
     uit += ('<script>(function(){var g={"#internet":["kies-internet-en-tv","kies-glasvezel-en-internet-thuis"],"#mobiel":["kies-telefoon-met-abonnement","kies-sim-only"]}[location.hash];'
             'if(!g)return;g.forEach(function(id,i){var e=document.getElementById(id);if(!e)return;e.classList.add("uitgelicht");'
             'if(!i){e.classList.add("eerste");setTimeout(function(){e.scrollIntoView({block:"start"})},60)}})})()</script>')
     uit += '<p class="bron" style="margin-top:6px">Advertentie: deze tegels gaan naar partners. Sluit je iets af, dan krijgt Bespaarvriend een kleine vergoeding. Jij betaalt niets extra.</p></div>'
-    if any("dc-energy-tool" in r for r in rest):  # energiepagina's: eerst de vergelijker, dan de tegels
-        return "".join(rest) + uit
+    if any("dc-energy-tool" in r for r in rest):  # energiepagina's: eerst de vergelijker, dan de tegels (klein, 3 naast elkaar)
+        return "".join(rest) + uit.replace('<div class="partners-top">', '<div class="partners-top klein">', 1)
     return uit + "".join(rest)
 
 def _bovenniveau(html):
@@ -833,7 +855,7 @@ else u.textContent='Je komt waarschijnlijk in aanmerking. Hoe lager je inkomen, 
             '<li><b>Kijk wanneer je contract afloopt.</b> Heb je een variabel contract, dan kun je altijd overstappen. Bij een vast contract kan eerder stoppen geld kosten.</li>'
             '<li><b>Vergelijk op de tarieven vanaf 2027.</b> Heb je zonnepanelen? Let dan vooral op de terugleververgoeding en de terugleverkosten vanaf 1 januari, niet alleen op de prijs per kWh.</li>'
             '<li><b>Verbruik slim.</b> Met zonnepanelen loont het om stroom te gebruiken als de zon schijnt: wasmachine, vaatwasser of auto opladen overdag.</li></ol>'
-            + widget("energie", "Energie vergelijken") + dynamisch_blok("bespaarvriend-energie") + partner(awin(8520, "bespaarvriend-energie", "https://www.gaslicht.com/energievergelijken"), "Energiecontracten vergelijken", "Vergelijk contracten van alle grote leveranciers, inclusief de tarieven en terugleververgoeding vanaf 2027.", "Vergelijk energiecontracten", [("3 jaar vast", awin(8520, "bespaarvriend-energie", "https://www.gaslicht.com/energievergelijken/energiecontract-3-jaar-vast")), ("Dynamisch contract", awin(8520, "bespaarvriend-energie", "https://www.gaslicht.com/energievergelijken/dynamisch-energiecontract-vergelijken")), ("Aanbiedingen", awin(8520, "bespaarvriend-energie", "https://www.gaslicht.com/energievergelijken/energie-aanbiedingen")), ("Zonnepanelen en 2027", awin(8520, "bespaarvriend-energie", "https://www.gaslicht.com/zonnepanelen/afschaffen-salderingsregeling"))]) +
+            + widget("energie", "Energie vergelijken") + dynamisch_blok("bespaarvriend-energie") + combi_blok("bespaarvriend-energie") + partner(awin(8520, "bespaarvriend-energie", "https://www.gaslicht.com/energievergelijken"), "Energiecontracten vergelijken", "Vergelijk contracten van alle grote leveranciers, inclusief de tarieven en terugleververgoeding vanaf 2027.", "Vergelijk energiecontracten", [("3 jaar vast", awin(8520, "bespaarvriend-energie", "https://www.gaslicht.com/energievergelijken/energiecontract-3-jaar-vast")), ("Dynamisch contract", awin(8520, "bespaarvriend-energie", "https://www.gaslicht.com/energievergelijken/dynamisch-energiecontract-vergelijken")), ("Aanbiedingen", awin(8520, "bespaarvriend-energie", "https://www.gaslicht.com/energievergelijken/energie-aanbiedingen")), ("Zonnepanelen en 2027", awin(8520, "bespaarvriend-energie", "https://www.gaslicht.com/zonnepanelen/afschaffen-salderingsregeling"))]) +
             '<h2>Vast, variabel of dynamisch?</h2><table><tr><th>Contract</th><th>Prijs</th><th>Past bij</th></tr>'
             '<tr><td><b>Vast</b></td><td>Staat vast voor 1, 2 of 3 jaar</td><td>Wie zekerheid wil over het maandbedrag</td></tr>'
             '<tr><td><b>Variabel</b></td><td>Kan tussentijds wijzigen</td><td>Wie flexibel wil blijven en wil kunnen overstappen</td></tr>'
@@ -1656,7 +1678,7 @@ u.textContent='Zonder verzekering betaal je '+eur(zonder)+'. Met dit pakket beta
         '<li><b>Wassen op 30 graden</b> en de droger laten staan als het kan. Dat scheelt veel stroom.</li>'
         '<li><b>Pas je termijnbedrag aan.</b> Te hoog betaal je voor niets vooruit, te laag geeft een naheffing. Kijk elk kwartaal even in de app van je leverancier.</li></ol>'
         '<div class="let"><b>Zonnepanelen?</b> Vanaf 1 januari 2027 stopt het salderen. Lees <a href="/salderen-2027/">wat het einde van salderen voor jou betekent</a>.</div>',
-        widget("energie", "Energie vergelijken") + dynamisch_blok("bespaarvriend-energierekening") + partner(awin(8520, "bespaarvriend-energierekening", "https://www.gaslicht.com/energievergelijken"), "Energiecontracten vergelijken", "Vergelijk contracten van alle grote leveranciers, met de tarieven voor 2027.", "Vergelijk energiecontracten", [("3 jaar vast", awin(8520, "bespaarvriend-energierekening", "https://www.gaslicht.com/energievergelijken/energiecontract-3-jaar-vast")), ("Dynamisch contract", awin(8520, "bespaarvriend-energierekening", "https://www.gaslicht.com/energievergelijken/dynamisch-energiecontract-vergelijken"))]),
+        widget("energie", "Energie vergelijken") + dynamisch_blok("bespaarvriend-energierekening") + combi_blok("bespaarvriend-energierekening") + partner(awin(8520, "bespaarvriend-energierekening", "https://www.gaslicht.com/energievergelijken"), "Energiecontracten vergelijken", "Vergelijk contracten van alle grote leveranciers, met de tarieven voor 2027.", "Vergelijk energiecontracten", [("3 jaar vast", awin(8520, "bespaarvriend-energierekening", "https://www.gaslicht.com/energievergelijken/energiecontract-3-jaar-vast")), ("Dynamisch contract", awin(8520, "bespaarvriend-energierekening", "https://www.gaslicht.com/energievergelijken/dynamisch-energiecontract-vergelijken"))]),
         [("/energie-2027/", "Energie 2027: alles wat verandert"), ("/salderen-2027/", "Einde salderen 2027"), ("/energiecontract-opzeggen/", "Energiecontract opzeggen")],
         [("Waarom wordt mijn energierekening duurder in 2027?", "Vooral door hogere netbeheerkosten. De energiebelasting op gas stijgt iets, die op stroom daalt iets. Per saldo betaalt een gemiddeld huishouden ongeveer € 149 per jaar meer."),
          ("Wat is de vermindering energiebelasting?", "Een vaste korting op je energierekening van € 628,69 in 2027 (inclusief btw). Je leverancier trekt die automatisch af."),
@@ -1679,7 +1701,7 @@ u.textContent='Zonder verzekering betaal je '+eur(zonder)+'. Met dit pakket beta
         '<li><b>Vergelijk op de tarieven vanaf 2027.</b> Kijk niet alleen naar de prijs per kWh, maar vooral naar de terugleververgoeding en de terugleverkosten.</li>'
         '<li><b>Reken een thuisbatterij eerst door.</b> Een batterij slaat overdag stroom op voor de avond. Of dat loont, hangt af van jouw verbruik en teruglevering. Reken het uit met de Salderingscheck.</li>'
         '<li><b>Overweeg een dynamisch contract.</b> Daarmee kun je stroom gebruiken als die goedkoop is. Dat past vooral als je je verbruik kunt verschuiven.</li></ol>',
-        widget("energie", "Energie vergelijken") + batterij_blok("bespaarvriend-saldering") + dynamisch_blok("bespaarvriend-saldering") + partner(awin(8520, "bespaarvriend-saldering", "https://www.gaslicht.com/energievergelijken"), "Energiecontracten vergelijken", "Vergelijk contracten met de terugleververgoeding en terugleverkosten vanaf 2027.", "Vergelijk energiecontracten", [("3 jaar vast", awin(8520, "bespaarvriend-saldering", "https://www.gaslicht.com/energievergelijken/energiecontract-3-jaar-vast")), ("Dynamisch contract", awin(8520, "bespaarvriend-saldering", "https://www.gaslicht.com/energievergelijken/dynamisch-energiecontract-vergelijken"))]),
+        widget("energie", "Energie vergelijken") + batterij_blok("bespaarvriend-saldering") + dynamisch_blok("bespaarvriend-saldering") + combi_blok("bespaarvriend-saldering") + partner(awin(8520, "bespaarvriend-saldering", "https://www.gaslicht.com/energievergelijken"), "Energiecontracten vergelijken", "Vergelijk contracten met de terugleververgoeding en terugleverkosten vanaf 2027.", "Vergelijk energiecontracten", [("3 jaar vast", awin(8520, "bespaarvriend-saldering", "https://www.gaslicht.com/energievergelijken/energiecontract-3-jaar-vast")), ("Dynamisch contract", awin(8520, "bespaarvriend-saldering", "https://www.gaslicht.com/energievergelijken/dynamisch-energiecontract-vergelijken"))]),
         [("/energie-2027/", "Energie 2027: alles wat verandert"), ("/energiecontract-opzeggen/", "Energiecontract opzeggen")],
         [("Stopt salderen echt op 1 januari 2027?", "Ja. De salderingsregeling stopt in één keer op 1 januari 2027, zonder geleidelijke afbouw. Tot en met 31 december 2026 saldeer je nog volledig."),
          ("Hoeveel krijg ik nog voor teruggeleverde stroom?", "Minimaal 50% van de kale leveringsprijs, dus zonder energiebelasting en btw. Die ondergrens geldt tot 2030. Sommige leveranciers bieden meer."),

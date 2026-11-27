@@ -1746,6 +1746,33 @@ def bouw_elektronica():
     # De elektronica-pagina's laden /elektronica/installeer.js: zelfde installeerbalk als de rest van de site.
     shutil.copy(os.path.join(hier, "static", "installeer.js"), os.path.join(OUT, "elektronica", "installeer.js"))
 
+def maak_redirects():
+    """Pagina's die ooit bestonden maar nu weg zijn (vervallen subcategorieën en producten) krijgen een 301
+    naar de dichtstbijzijnde pagina die nog wel bestaat, zodat Google geen 404 ziet. Lijst: elektronica/data/oude_urls.txt."""
+    hier = os.path.dirname(os.path.abspath(__file__))
+    lijst = os.path.join(hier, "elektronica", "data", "oude_urls.txt")
+    if not os.path.exists(lijst):
+        return
+    def bestaat(u):
+        return os.path.isfile(os.path.join(OUT, u.strip("/"), "index.html"))
+    regels = []
+    for u in sorted({r.strip() for r in open(lijst, encoding="utf-8") if r.strip().startswith("/")}):
+        if bestaat(u):
+            continue
+        delen = u.strip("/").split("/")
+        doel = "/"
+        while delen:
+            delen.pop()
+            kandidaat = "/" + "/".join(delen) + "/" if delen else "/"
+            if kandidaat == "/" or bestaat(kandidaat):
+                doel = kandidaat
+                break
+        regels.append(f"{u} {doel} 301")
+    with open(os.path.join(OUT, "_redirects"), "a", encoding="utf-8") as f:
+        f.write("\n".join(regels) + "\n")
+    print(f"_redirects: {len(regels)} oude adressen doorgestuurd")
+
 if __name__ == "__main__":
     bouw()
     bouw_elektronica()
+    maak_redirects()

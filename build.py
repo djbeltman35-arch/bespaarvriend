@@ -251,8 +251,14 @@ def dc(host, si, li, ref, pad=""):
 def dynamisch_blok(ref):
     return partner(dc("glp8.net", 19921, 1848248, ref, "nl"), "Dynamisch energiecontract afsluiten", "Een contract waarbij je per uur de actuele stroomprijs betaalt. Past als je je verbruik kunt verschuiven naar goedkope uren.", "Bekijk dynamisch contract",
                    [("Per uur afgerekend", dc("glp8.net", 19921, 1848248, ref, "nl")), ("Met inzicht-app", dc("d.energyzero.nl", 20943, 1892250, ref))])
+def batterij_actie(ref):
+    """Tijdelijke actie (t/m 4 januari 2027): 8% extra korting op de Mix-serie met code KQ135. Verdwijnt daarna vanzelf bij de volgende build."""
+    if datetime.date.today() > datetime.date(2027, 1, 4):
+        return ""
+    url = dc("glp8.net", 20779, 1881195, ref + "-actie", "products/solarflow-mix-series")
+    return partner(url, "Thuisbatterij met 8% extra korting", "Code KQ135, t/m 4 januari. Extra korting bovenop de actieprijs op de grotere thuisbatterijen voor het hele huis.", "Bekijk de actie")
 def batterij_blok(ref):
-    return partner(dc("glp8.net", 20779, 1881195, ref), "Plug-and-play thuisbatterij", "Een batterij die je zelf in het stopcontact steekt, zonder installateur. Slaat overdag zonnestroom op voor de avond.", "Bekijk thuisbatterijen",
+    return batterij_actie(ref) + partner(dc("glp8.net", 20779, 1881195, ref), "Plug-and-play thuisbatterij", "Een batterij die je zelf in het stopcontact steekt, zonder installateur. Slaat overdag zonnestroom op voor de avond.", "Bekijk thuisbatterijen",
                    [("Instapmodel", dc("glp8.net", 20779, 1881195, ref, "products/zendure-solarflow-1600-ac")), ("Ander merk", dc("glp8.net", 23136, 1970556, ref, "nl")), ("Slimme energiemeter", dc("partner.homewizard.com", 18407, 1795784, ref, "nl/"))])
 def partner(url, titel, tekst, knop, artikelen=()):
     chips = ''.join((f'<a href="{u}">{esc(t)}</a>' if u.startswith('#') else f'<a href="{u}" rel="sponsored noopener" target="_blank">{esc(t)}</a>') for t, u in artikelen)
@@ -341,6 +347,7 @@ _KORT = {
     "Boodschappenbox van de boer": ("Box van de boer", "Vers, thuisbezorgd"),
     "Energiecontract vergelijken": ("Energiecontract vergelijken", "Alle grote leveranciers"),
     "Energiecontracten vergelijken": ("Energiecontract vergelijken", "Alle grote leveranciers"),
+    "Thuisbatterij met 8% extra korting": ("Thuisbatterij 8% extra korting", "Code KQ135, t/m 4 januari"),
     "Huurauto inclusief verzekering": ("Huurauto", "Alle verzekeringen inbegrepen"),
     "Internet en tv met korting": ("Internet en tv", "Met korting via een collectief"),
     "Telefoon met abonnement": ("Telefoon met abonnement", "Kies je provider"),
@@ -362,7 +369,7 @@ _KORT = {
 
 def _icoon_voor(t):
     t = t.lower()
-    for woorden, ic in ((("zorg", "tand"), "zorg"), (("energie", "stroom", "gas"), "energie"), (("wifi", "router", "internet", "tv"), "internet"),
+    for woorden, ic in ((("zorg", "tand"), "zorg"), (("energie", "stroom", "gas", "batterij"), "energie"), (("wifi", "router", "internet", "tv"), "internet"),
                         (("telefoon", "sim", "esim", "mobiel"), "mobiel"), (("vlieg",), "vlucht"), (("reis",), "koffer"),
                         (("huurauto", "auto", "band", "tank"), "tank"), (("boodschap", "maaltijd", "boer"), "boodschappen")):
         if any(w in t for w in woorden):

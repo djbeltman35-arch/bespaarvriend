@@ -189,6 +189,8 @@ header.top nav.top a[aria-current],header.top nav.top a.actief{background:linear
 .kaart.partner,.kaart.tool{border:2px solid var(--green)!important;border-radius:16px!important;box-shadow:0 3px 0 rgba(8,80,47,.28),0 8px 18px rgba(0,0,0,.08)}
 @media(max-width:640px){header.top .wrap{flex-wrap:nowrap!important;gap:6px}nav.top{width:auto!important;margin-left:auto!important}.logo span{display:none}nav.top{overflow-x:auto;scrollbar-width:none;flex-wrap:nowrap}nav.top::-webkit-scrollbar{display:none}nav.top a{white-space:nowrap}}
 /* gbstijl:end */
+
+.ckeuze{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0 14px}.ckeuze>*{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:10px 8px;border-radius:14px;border:2px solid var(--line);font-weight:800;font-size:16px;line-height:1.2;text-decoration:none;color:var(--ink);background:#fff}.ckeuze small{font-weight:600;font-size:12.5px;opacity:.8;margin-top:2px}.ckeuze .on{border-color:var(--green-dark);background:var(--green-soft);color:var(--green-dark)}.ckeuze a:hover{border-color:var(--green-dark)}.anker{scroll-margin-top:90px}
 """
 
 def _svg(d, extra=""):
@@ -237,10 +239,14 @@ def widget(naam, titel):
     if not DAISYCON_GEKEURD or naam not in WIDGETS:
         return ""
     slug, klasse, extra = WIDGETS[naam]
+    # De energievergelijker van Daisycon heeft alleen vaste contracten (1, 3 of 5 jaar). Daarom bovenaan een duidelijke keuze:
+    # wie een dynamisch contract zoekt, springt naar de tegel met dynamische contracten direct onder de vergelijker.
+    keuze = ('<div class="ckeuze" role="group" aria-label="Soort contract"><span class="on">Vast contract<small>vergelijk hieronder</small></span>'
+             '<a href="#dynamisch">Dynamisch contract<small>prijs per uur of kwartier ›</small></a></div>') if naam == "energie" else ""
     cfg = {"mediaId": DC_MEDIA, "subId": "bespaarvriend-" + naam, "language": "nl", "filter": {}}
     cfg.update(extra)
     return (f'<section class="widget" id="w-{naam}" aria-label="{esc(titel)}"><h2>{esc(titel)}</h2><p class="ad">{"Advertentie. Meld je je via deze lijst aan bij een panel, dan krijgt Bespaarvriend een vergoeding. Jij betaalt niets." if naam == "enquetes" else "Advertentie. Sluit je via deze vergelijker iets af, dan krijgt Bespaarvriend een vergoeding. Jij betaalt niets extra."}</p>'
-            f'<script src="https://daisycon.tools/{slug}/app.js" defer></script><div class="dc-tool {klasse}" data-config=\'{json.dumps(cfg)}\'></div></section>')
+            + keuze + f'<script src="https://daisycon.tools/{slug}/app.js" defer></script><div class="dc-tool {klasse}" data-config=\'{json.dumps(cfg)}\'></div></section>')
 
 from urllib.parse import quote as _q
 def awin(mid, ref, doel=None):
@@ -249,7 +255,7 @@ def awin(mid, ref, doel=None):
 def dc(host, si, li, ref, pad=""):
     return f"https://{host}/c/?si={si}&amp;li={li}&amp;wi=449774&amp;ws={ref}&amp;dl={_q(pad, safe='')}"
 def dynamisch_blok(ref):
-    return partner(dc("glp8.net", 19921, 1848248, ref, "nl"), "Dynamisch energiecontract afsluiten", "Een contract waarbij je per uur de actuele stroomprijs betaalt. Past als je je verbruik kunt verschuiven naar goedkope uren.", "Bekijk dynamisch contract",
+    return '<div id="dynamisch" class="anker"></div>' + partner(dc("glp8.net", 19921, 1848248, ref, "nl"), "Dynamisch energiecontract afsluiten", "Een contract waarbij je per uur de actuele stroomprijs betaalt. Past als je je verbruik kunt verschuiven naar goedkope uren.", "Bekijk dynamisch contract",
                    [("Per uur afgerekend", dc("glp8.net", 19921, 1848248, ref, "nl")), ("Met inzicht-app", dc("d.energyzero.nl", 20943, 1892250, ref))])
 def batterij_actie(ref):
     """Tijdelijke actie (t/m 4 januari 2027): 8% extra korting op de Mix-serie met code KQ135. Verdwijnt daarna vanzelf bij de volgende build."""
